@@ -456,25 +456,32 @@ else
 					}
 				}
 				
-				$sql = $data->select_query("groups", "WHERE teamname=$patrol", "id");
-				if ($data->num_rows($sql))
-				{	
-					$patrol = $data->fetch_array($sql);
-					
-					if ($patrol['ispatrol'] == 0)
-					{
-						$data->update_query("groups", "ispatrol = 1", "id={$patrol['id']}");
-					}
-					
-					$patrol = $patrol['id'];
-				}
-				else
-				{
-					$data->insert_query("groups", "NULL, $patrol, 1, 0, 0, 0, '', '', ''");
-					$sql = $data->select_fetch_one_row("groups", "WHERE teamname=$patrol", "id");
-					$patrol = $sql['id'];
-				}
-				
+        if ($patrol != 'NULL')
+        {
+            $sql = $data->select_query("groups", "WHERE teamname=$patrol", "id");
+            if ($data->num_rows($sql))
+            {	
+              $patrol = $data->fetch_array($sql);
+              
+              if ($patrol['ispatrol'] == 0)
+              {
+                $data->update_query("groups", "ispatrol = 1", "id={$patrol['id']}");
+              }
+              
+              $patrol = $patrol['id'];
+            }
+            else
+            {
+              $data->insert_query("groups", "NULL, $patrol, 1, 0, 0, 0, '', '', ''");
+              $sql = $data->select_fetch_one_row("groups", "WHERE teamname=$patrol", "id");
+              $patrol = $sql['id'];
+            }
+        }
+        else
+        {
+            $patrol = 0;
+        }
+        
 				$data->insert_query("members", "'', $firstname, $middlename, $lastname, $dob, $sex, $address, $cellnumber, $homenumber, $worknumber, $email, $medicalname, $medicalnumber, $docname, $docnum, $medical, $section, $patrol, $type, 0, $fatherId, $motherId, $primaryGuard, $awardScheme, ''");
 			}
 			

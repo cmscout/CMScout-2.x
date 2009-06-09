@@ -67,8 +67,7 @@ else
         {   
             if ($_GET['main'] == 1)
             {
-                $name = get_page_name($id);
-                $pagename = "index.php?page=$name";
+                $pagename = "index.php?page=$id&type=static";
             }
             show_admin_message("Page updated", "$pagename"); 
         } 

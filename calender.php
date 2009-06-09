@@ -29,8 +29,6 @@ if (!defined('SCOUT_NUKE'))
     die("You have accessed this page illegally, please go use the main menu");
 $location = "Calendar";
 /********************************************Check if user is allowed*****************************************/
-require_once "{$bit}includes/iCalcreator.class.php";
-
 function number_days($month)
 {
     global $year;
@@ -453,10 +451,10 @@ if ($_GET['action'] != "ical")
                     if ($allowed)
                     {
                         $display['id'] = $calitems[$calnumber]['id'];
-                        $display['startdatestamp'] = strtotime(strftime("%Y-%m-%d", $calitems[$calnumber]['startdate']));
-                        $display['enddatestamp'] = strtotime(strftime("%Y-%m-%d ", $calitems[$calnumber]['enddate']));
-                        $display['startdate'] = strftime("%Y-%m-%d ", $calitems[$calnumber]['startdate']);
-                        $display['enddate'] = strftime("%Y-%m-%d", $calitems[$calnumber]['enddate']);
+                        $display['startdatestamp'] = strtotime(strftime("%Y/%m/%d", $calitems[$calnumber]['startdate']));
+                        $display['enddatestamp'] = strtotime(strftime("%Y/%m/%d ", $calitems[$calnumber]['enddate']));
+                        $display['startdate'] = strftime("%Y/%m/%d ", $calitems[$calnumber]['startdate']);
+                        $display['enddate'] = strftime("%Y/%m/%d", $calitems[$calnumber]['enddate']);
                         $display['colour'] = $calitems[$calnumber]['colour'];
                         $display['summary'] = censor($calitems[$calnumber]['summary']);
                         $display['detail'] = censor(truncate(strip_tags($calitems[$calnumber]['detail']), 150));
@@ -605,16 +603,23 @@ if ($_GET['action'] != "ical")
         elseif ($_GET['view'] == "month" || ($_GET['view'] == "" && $config['defaultview'] == "Month"))
         {       
             $days = number_days($monthnum);
-
+                /* 1: Mon
+                2: Tues
+                3: Wed
+                4: Thurs
+                5: Fri
+                6: Sat
+                7: Sun
+                */
+            $weekStartDayNumber = $config['startday'] != 0 ? $config['startday']: 1 ;
+            
             $monthstart = strtotime("$year-$monthnum-01 00:00:00 ");
             $monthend = strtotime("$year-$monthnum-$days 23:59:59");
 
             $items = array();
             $maxHeight = 1;
-            $dateArray = getdate(mktime(0,0,0,$monthnum,1,$year));
             
             $maxHeight = 0;
-            $numberweeks = ceil(($days+$dateArray['wday'])/7);
             
             $calitems = $data->select_fetch_all_rows($numcalendar, "calendar_items", "WHERE ((((startdate >= $monthstart OR enddate >= $monthend) AND startdate <= $monthend) OR (startdate <= $monthstart AND enddate >= $monthstart)) AND allowed=1 AND trash=0) ORDER BY startdate ASC");
 
@@ -652,23 +657,36 @@ if ($_GET['action'] != "ical")
                 $startdate[$key] = $row['startdate'];
             }
             array_multisort($startdate, SORT_ASC, $calitems);
+            $dateArray = getdate(mktime(0,0,0,$monthnum,1,$year));
+            $dateArray['wday'] = $dateArray['wday'] == 0 ? 7 : $dateArray['wday'];
 
-            for ($week=1;$week<=$numberweeks;$week++)
+           $numberWeeks = ceil(($days+$dateArray['wday'])/7) + ($dateArray['wday'] == $weekStartDayNumber - 1 ? + 1 : 0);
+
+            for ($week=1;$week<=$numberWeeks;$week++)
             {
-                $weekStartDay = ($week*7-(7-1))-($dateArray['wday']);
-                $weekEndDay = ($week*7-(7-7))-($dateArray['wday']);
-                
-                $weekStartDay = $weekStartDay < 1 ? 1 : $weekStartDay;
-                $weekEndDay = $weekEndDay > $days ? $days : $weekEndDay;
-                
-                $weekStart = strtotime("$year-$monthnum-$weekStartDay 00:00:00");
-                $weekEnd = strtotime("$year-$monthnum-$weekEndDay 23:59:59");
+              $weekStartDay = ($week*7-(7-1))-($dateArray['wday']);
+              $weekStartDay +=  $weekStartDayNumber != 7 ? $weekStartDayNumber : 0;
+              $weekStartDay -= $dateArray['wday'] == $weekStartDayNumber - 1 ? 7 : 0;
+              
+              if ($week == 1 && $weekStartDay > 1)
+              {
+                  $fix = true;
+                  $numberWeeks++;
+              }
+              
+              $weekStartDay -= $fix ? 7 : 0;
+              
+              $weekEndDay = $weekStartDay + 6;
+              if ($weekStartDay <= $days && $weekEndDay >= 1)
+              {                
+                $weekStart = strtotime("$year-$monthnum-" . ($weekStartDay < 1 ? 1 : $weekStartDay) . " 00:00:00");
+                $weekEnd = strtotime("$year-$monthnum-" . ($weekEndDay > $days ? $days : $weekEndDay) . " 23:59:59");
                 
                 $none['itemhere'] = false;
                 
                 $items[$week]['number'] = 0;
-                $items[$week]['start'] =$weekStart;
-                $items[$week]['end'] =$weekEnd;
+                $items[$week]['start'] = $weekStart;
+                $items[$week]['end'] = $weekEnd;
                 for($numcal=0;$numcal<=$numcalendar;$numcal++)
                 {
                     $temp = $calitems[$numcal];
@@ -679,16 +697,18 @@ if ($_GET['action'] != "ical")
 
                     if ((($startdate >= $weekStart || $enddate >= $weekEnd) && $startdate <= $weekEnd) || ($startdate <= $weekStart && $enddate >= $weekStart))
                     {
+  
                         $items[$week]['number']++;
                         $groups = unserialize($temp['groups']);
                         if (is_array($groups))
                         {
-                        $allowed = in_group($groups);
+                          $allowed = in_group($groups);
                         }
                         else
                         {
-                        $allowed = true;
+                          $allowed = true;
                         }
+                      
                         if ($allowed)
                         {
                             $display['summary'] = censor($temp['summary']);
@@ -696,12 +716,12 @@ if ($_GET['action'] != "ical")
                             $display['id'] = $temp['id'];
                             $display['detail'] = censor(truncate(strip_tags($temp['detail']), 150));
                             $display['details'] = ($temp['detail'] == ''  || $temp['detail'] == NULL || $temp['ical']) ? 0 : 1;
-                            $display['startdate'] = strftime("%Y-%m-%d", $temp['startdate']);
-                            $display['enddate'] = strftime("%Y-%m-%d", $temp['enddate']);
+                            $display['startdate'] = strftime("%Y/%m/%d", $temp['startdate']);
+                            $display['enddate'] = strftime("%Y/%m/%d", $temp['enddate']);
                             $display['starttime'] = strftime("%H:%M", $temp['startdate']);
                             $display['endtime'] = strftime("%H:%M", $temp['enddate']);
-                            $display['startdatestamp'] = strtotime(strftime("%Y-%m-%d", $temp['startdate']));
-                            $display['enddatestamp'] = strtotime(strftime("%Y-%m-%d ", $temp['enddate']));
+                            $display['startdatestamp'] = strtotime(strftime("%Y/%m/%d", $temp['startdate']));
+                            $display['enddatestamp'] = strtotime(strftime("%Y/%m/%d ", $temp['enddate']));
                             
                             $temp['startdate'] = ($temp['startdate'] < $weekStart) ? $weekStart : $display['startdatestamp'];
 
@@ -714,16 +734,20 @@ if ($_GET['action'] != "ical")
                             
                             for ($day=1;$day<=7;$day++)
                             {
-                                $tempDay = ($week*7-(7-$day))-($dateArray['wday']);
-                                $datestamp = strtotime("$year-$monthnum-$tempDay");
-                                $items[$week][$day][] = ($datestamp <= $temp['enddate'] && $datestamp >= $temp['startdate']) ? $display : $none;
+                                $tempDay = $weekStartDay + $day - 1;
+                                if ($tempDay <= $days)
+                                {
+                                  $datestamp = strtotime("$year-$monthnum-$tempDay");
+                                  $items[$week][$day][] = ($datestamp <= $temp['enddate'] && $datestamp >= $temp['startdate']) ? $display : $none;
+                                }
                             }
                         }
                     }
                 }
                 $maxHeight = $items[$week]['number'] > $maxHeight ? $items[$week]['number'] : $maxHeight;
+              }
             }
-            
+
             $previousYear = $year - 1;
             $nextYear = $year + 1;
             $previousMonth = $monthnums[$month] - 1;
@@ -771,101 +795,134 @@ if ($_GET['action'] != "ical")
             <tr>
             <th colspan=\"7\" class=\"calendar_bighead\">$month - $year</th>
             </tr>
-              <tr>
-                <th width=\"14%\" class=\"calendar_head\">Sunday</th>
-                <th width=\"14%\" class=\"calendar_head\">Monday</th>
-                <th width=\"14%\" class=\"calendar_head\">Tuesday</th>
-                <th width=\"14%\" class=\"calendar_head\">Wednesday</th>
-                <th width=\"14%\" class=\"calendar_head\">Thursday</th>
-                <th width=\"14%\" class=\"calendar_head\">Friday</th>
-                <th width=\"14%\" class=\"calendar_head\">Saturday</th>
-              </tr>";
-             
-            $dateArray = getdate(mktime(0,0,0,$monthnum,1,$year));
-            $doneItems = 0;
-            $startNum = $dateArray['wday'] + 1;
-            for($week=1;$week<=ceil(($days+$dateArray['wday'])/7);$week++)
-            {
+              <tr>";
 
-                $calendar .= "<tr style=\"height:1em;\">";
-                for ($j=1;$j<=7;$j++)
-                {
-                    $tempDay = ($week*7-(7-$j))-($dateArray['wday']);
-                    if ((($j >= $startNum && $week == 1) || ($week > 1)) && $tempDay <= $days)
-                    {
-                        if ($monthnums[$today_date['month']] == $monthnum && $today_date['day'] == $tempDay && $today_date['year'] == $year)
-                        {
-                            $calendar .= "<td class=\"calendar_today\">$tempDay</td>";
-                        }
-                        else
-                        {
-                            $calendar .= "<td class=\"calendar_day\">$tempDay</td>";
-                        }
-                    }
-                    else
-                    {
-                        $calendar .= "<td class=\"calendar_day_invalid\">&nbsp;</td>";
-                    }
-                }
-                $calendar .= "</tr>";
+            $weekDays = array(1=>"Monday", 2=>"Tuesday", 3=>"Wednesday", 4=>"Thursday", 5=>"Friday", 6=>"Saturday", 7=>"Sunday");
+            for ($i=$weekStartDayNumber;$i<7+$weekStartDayNumber;$i++)
+            {
+                if ($i <= 7)
+                    $calendar .= "<th width=\"14%\" class=\"calendar_head\">" . $weekDays[$i] . "</th>";
+                else
+                    $calendar .= "<th width=\"14%\" class=\"calendar_head\">" . $weekDays[$i-7] . "</th>";                
+            }
+            $calendar .="
+              </tr>";
+            $dateArray = getdate(mktime(0,0,0,$monthnum,1,$year));
+
+            //$dateArray['wday'] = $dateArray['wday'] == 0 ? 7 : $dateArray['wday'];
+            $doneItems = 0;
+            $lookUp = array(1=>array(1=>1,2=>7,3=>6,4=>5,5=>4,6=>3,7=>2),
+                            2=>array(1=>2,2=>1,3=>7,4=>6,5=>5,6=>4,7=>3),
+                            3=>array(1=>3,2=>2,3=>1,4=>7,5=>6,6=>5,7=>4),
+                            4=>array(1=>4,2=>3,3=>2,4=>1,5=>7,6=>6,7=>5),
+                            5=>array(1=>5,2=>4,3=>3,4=>2,5=>1,6=>7,7=>6),
+                            6=>array(1=>6,2=>5,3=>4,4=>3,5=>2,6=>1,7=>7),
+                            0=>array(1=>7,2=>6,3=>5,4=>4,5=>3,6=>2,7=>1));
+                            
+            $startNum = $lookUp[$dateArray['wday']][$weekStartDayNumber]; 
+            $dateArray['wday'] = $dateArray['wday'] == 0 ? 7 : $dateArray['wday'];
+            
+           //echo ceil(($days+$dateArray['wday'])/7) + ($dateArray['wday'] == $weekStartDayNumber - 1 ? + 1 : 0);
+            $numberWeeks = ceil(($days+$dateArray['wday'])/7) + ($dateArray['wday'] == $weekStartDayNumber - 1 ? + 1 : 0);
+            for($week=1;$week<=$numberWeeks;$week++)
+            {
+                $weekStart = ($week*7-(7-1))-($dateArray['wday']);
+                $weekStart +=  $weekStartDayNumber != 7 ? $weekStartDayNumber : 0;
+                $weekStart -= $dateArray['wday'] == $weekStartDayNumber - 1 ? 7 : 0;
                 
-                $numberRows = $items[$week]['number'];
-                
-                for ($k=0;$k<$numberRows;$k++)
+                if ($week == 1 && $weekStart > 1)
                 {
-                    $calendar .= "<tr style=\"height:1.4em;\">";
-                    for ($j=1;$j<=7;$j++)
-                    {
-                        $tempDay = ($week*7-(7-$j))-($dateArray['wday']);
-                        
-                        if ((($j >= $startNum && $week == 1) || ($week > 1)) && $tempDay <= $days)
-                        {
-                            if ($items[$week][$j][$k]['itemhere'] && !$items[$week][$j][$k]['placed'])
-                            {
-                                if ($tempDay + $items[$week][$j][$k]['length'] > $days)
-                                {
-                                    $items[$week][$j][$k]['length'] = ($days - $tempDay)+1;
-                                }
-                                $colour = rgb2hex2rgb($items[$week][$j][$k]['color']);
-                                $colour1['b'] = $colour1['g'] = $colour1['r'] = ($colour['r'] + $colour['g'] + $colour['b'])/3 > 100 ? 0 : 255;
-                                $colour = rgb2hex2rgb($colour1['r'] . '.' . $colour1['g'] . '.' . $colour1['b']);
-                                $calendar .= "<td colspan=\"{$items[$week][$j][$k]['length']}\" class=\"calendar_item\" style=\"vertical-align:middle;\"><div class=\"calendar_item_div\" style=\"background-color:{$items[$week][$j][$k]['color']};color:{$colour};border-color:{$colour}\"><span style=\"color:{$colour};\" class=\"hintanchor\" title=\"{$items[$week][$j][$k]['shortsummary']} :: &lt;b&gt;Start Date: &lt;/b&gt;{$items[$week][$j][$k]['startdate']}&lt;br /&gt;&lt;b&gt;Start Time: &lt;/b&gt;{$items[$week][$j][$k]['starttime']}&lt;br /&gt;&lt;b&gt;End Date: &lt;/b&gt;{$items[$week][$j][$k]['enddate']}&lt;br /&gt;&lt;b&gt;End Time: &lt;/b&gt;{$items[$week][$j][$k]['endtime']}&lt;br /&gt;{$items[$week][$j][$k]['detail']}\">{$items[$week][$j][$k]['summary']}</span>". ($items[$week][$j][$k]['details'] == 1 ? "<a href=\"index.php?page=calender&amp;item={$items[$week][$j][$k]['id']}&amp;menuid={$menuid}\"><img src=\"{$templateinfo['imagedir']}page.gif\" alt=\"Read more\" title=\"Read more\" border=\"0\"/></a>" : '') ."</div></td>";
-                                for ($l=$j;$l<=7;$l++)
-                                {
-                                    if ($items[$week][$l][$k]['itemhere'])
-                                    {
-                                        $items[$week][$l][$k]['placed'] = true;
-                                    }
-                                }
-                            }
-                            elseif (!$items[$week][$j][$k]['itemhere'])
-                            {
-                                $calendar .= "<td class=\"calendar_item\">&nbsp;</td>";
-                            }
-                        }
-                        else
-                        {
-                            $calendar .= "<td class=\"calendar_day_invalid\">&nbsp;</td>";
-                        }
-                    }
-                    $calendar .= "</tr>";
+                    $fix = true;
+                    $numberWeeks++;
                 }
                 
-                $bufferHeight = ($maxHeight - $numberRows)+2;
-                $calendar .= "<tr style=\"height:{$bufferHeight}em;\">";
-                for ($j=1;$j<=7;$j++)
+                $weekStart -= $fix ? 7 : 0;
+
+                if ($weekStart <= $days && $weekStart + 6 >= 1)
                 {
-                    $tempDay = ($week*7-(7-$j))-($dateArray['wday']);
-                    if ((($j >= $startNum && $week == 1) || ($week > 1)) && $tempDay <= $days)
-                    {
-                        $calendar .= "<td class=\"calendar_spacer\" >&nbsp;</td>";
+                  $calendar .= "<tr style=\"height:1em;\">";
+                  for ($j=1;$j<=7;$j++)
+                  {
+                      $tempDay = ($weekStart + $j) - 1;
+
+                      if ((($j >= $startNum && $week == 1) || ($week > 1)) && $tempDay <= $days && $tempDay > 0)
+                      {
+                          if ($monthnums[$today_date['month']] == $monthnum && $today_date['day'] == $tempDay && $today_date['year'] == $year)
+                          {
+                              $calendar .= "<td class=\"calendar_today\">$tempDay</td>";
+                          }
+                          else
+                          {
+                              $calendar .= "<td class=\"calendar_day\">$tempDay</td>";
+                          }
+                      }
+                      else
+                      {
+                          $calendar .= "<td class=\"calendar_day_invalid\">&nbsp;</td>";
+                      }
+                  }
+                  $calendar .= "</tr>";
+                  
+                  $numberRows = $items[$week]['number'];
+                  
+                  for ($k=0;$k<$numberRows;$k++)
+                  {
+                      $calendar .= "<tr style=\"height:1.4em;\">";
+                      for ($j=1;$j<=7;$j++)
+                      {
+                        $tempDay = ($weekStart + $j) - 1;
+                          
+                          if ((($j >= $startNum && $week == 1) || ($week > 1)) && $tempDay <= $days && $tempDay > 0)
+                          {
+                              if ($items[$week][$j][$k]['itemhere'] && !$items[$week][$j][$k]['placed'])
+                              {
+                                  if ($tempDay + $items[$week][$j][$k]['length'] > $days)
+                                  {
+                                      $items[$week][$j][$k]['length'] = ($days - $tempDay)+1;
+                                  }
+                                  $colour = rgb2hex2rgb($items[$week][$j][$k]['color']);
+                                  $colour1['b'] = $colour1['g'] = $colour1['r'] = ($colour['r'] + $colour['g'] + $colour['b'])/3 > 100 ? 0 : 255;
+                                  $colour = rgb2hex2rgb($colour1['r'] . '.' . $colour1['g'] . '.' . $colour1['b']);
+                                  $calendar .= "<td colspan=\"{$items[$week][$j][$k]['length']}\" class=\"calendar_item\" style=\"vertical-align:middle;\"><div class=\"calendar_item_div\" style=\"background-color:{$items[$week][$j][$k]['color']};color:{$colour};border-color:{$colour}\"><span style=\"color:{$colour};\" class=\"hintanchor\" title=\"{$items[$week][$j][$k]['shortsummary']} :: &lt;b&gt;Start Date: &lt;/b&gt;{$items[$week][$j][$k]['startdate']}&lt;br /&gt;&lt;b&gt;Start Time: &lt;/b&gt;{$items[$week][$j][$k]['starttime']}&lt;br /&gt;&lt;b&gt;End Date: &lt;/b&gt;{$items[$week][$j][$k]['enddate']}&lt;br /&gt;&lt;b&gt;End Time: &lt;/b&gt;{$items[$week][$j][$k]['endtime']}&lt;br /&gt;{$items[$week][$j][$k]['detail']}\">{$items[$week][$j][$k]['summary']}</span>". ($items[$week][$j][$k]['details'] == 1 ? "<a href=\"index.php?page=calender&amp;item={$items[$week][$j][$k]['id']}&amp;menuid={$menuid}\"><img src=\"{$templateinfo['imagedir']}page.gif\" alt=\"Read more\" title=\"Read more\" border=\"0\"/></a>" : '') ."</div></td>";
+                                  for ($l=$j;$l<=7;$l++)
+                                  {
+                                      if ($items[$week][$l][$k]['itemhere'])
+                                      {
+                                          $items[$week][$l][$k]['placed'] = true;
+                                      }
+                                  }
+                              }
+                              elseif (!$items[$week][$j][$k]['itemhere'])
+                              {
+                                  $calendar .= "<td class=\"calendar_item\">&nbsp;</td>";
+                              }
+                          }
+                          else
+                          {
+                              $calendar .= "<td class=\"calendar_day_invalid\">&nbsp;</td>";
+                          }
+                      }
+                      $calendar .= "</tr>";
                     }
-                    else
-                    {
-                        $calendar .= "<td  class=\"calendar_spacer_invalid\">&nbsp;</td>";
-                    }
+                
+                
+                  $bufferHeight = ($maxHeight - $numberRows)+2;
+                  $calendar .= "<tr style=\"height:{$bufferHeight}em;\">";
+                  for ($j=1;$j<=7;$j++)
+                  {
+                      $tempDay = ($weekStart + $j) - 1;
+
+                      if ((($j >= $startNum && $week == 1) || ($week > 1)) && $tempDay <= $days && $tempDay > 0)
+                      {
+                          $calendar .= "<td class=\"calendar_spacer\" >&nbsp;</td>";
+                      }
+                      else
+                      {
+                          $calendar .= "<td  class=\"calendar_spacer_invalid\">&nbsp;</td>";
+                      }
+                  }
+                  $calendar .= "</tr>";
                 }
-                $calendar .= "</tr>";
             }
 		    
             $calendar .= "</table>	     
@@ -903,7 +960,7 @@ if ($_GET['action'] != "ical")
                     }
                     
                 $calendar .= "  </select>&nbsp;
-                   <select name=\"year\" onchange=\"form1.submit()\" class=\"inputbox\">";
+                   <select name=\"year\" onchange=\"form1.submit()\" cass=\"inputbox\">";
                     for ($i=$today_date['year']-5;$i<=$today_date['year']+5;$i++) 
                     {
                         $calendar .= "<option value=\"$i\"";
@@ -980,8 +1037,8 @@ if ($_GET['action'] != "ical")
                         $temp['startdate'] = $temp['startdate'];
                         $temp['enddate'] = $temp['enddate'];
                         $height = $temp['detail'] != NULL ? 'auto' : 50;
-                        $temp['sdate'] = strftime("%Y-%m-%d", $temp['startdate']);
-                        $temp['edate'] = strftime("%Y-%m-%d", $temp['enddate']);
+                        $temp['sdate'] = strftime("%Y/%m/%d", $temp['startdate']);
+                        $temp['edate'] = strftime("%Y/%m/%d", $temp['enddate']);
                         $temp['stime'] = strftime("%H:%M", $temp['startdate']);
                         $temp['etime'] = strftime("%H:%M", $temp['enddate']);
                         $calendar .= "
@@ -1024,6 +1081,8 @@ if ($_GET['action'] != "ical")
 }
 else
 {
+    require_once "{$bit}includes/iCalcreator.class.php";
+
     $calendar = new vcalendar();;
     $calsql = $data->select_query("calendar_items", "WHERE allowed = 1 AND trash=0");     
     while($temp = $data->fetch_array($calsql))

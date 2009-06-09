@@ -62,7 +62,7 @@ else
             $stopdate = $_POST['date_stop'] != "" ? safesql(strtotime($_POST['date_stop']), "int") : 0;
             $pollq = safesql($_POST['question'], "text");
 
-            $sql = $data->insert_query("polls", "'', {$pollq}, 0, $timestamp, {$stopdate}, $options, $results, 1, 0");
+            $sql = $data->insert_query("polls", "'', {$pollq}, $timestamp, {$stopdate}, $options, $results, 1, 0");
             show_admin_message("Poll added", "$pagename"); 
         }        
     }

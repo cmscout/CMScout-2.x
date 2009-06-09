@@ -216,6 +216,19 @@
     <option value="Month" {if ($configs.defaultview == "Month")}selected="selected"{/if}>Month</option>
     <option value="List" {if ($configs.defaultview == "List")}selected="selected"{/if}>List</option>
     </select>{else}{$configs.defaultview}{/if}</div></div><br />
+
+    <div class="fieldItem"><label for="startday" class="label">Week starting day<span class="hintanchor" title="The day that the calendar should start its week."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+    <div class="inputboxwrapper">{if $editallowed}<select name="startday" id="startday" class="inputbox">
+    <option value="1" {if ($configs.startday == "1")}selected="selected"{/if}>Monday</option>
+    <option value="2" {if ($configs.startday == "2")}selected="selected"{/if}>Tuesday</option>
+    <option value="3" {if ($configs.startday == "3")}selected="selected"{/if}>Wednesday</option>
+    <option value="4" {if ($configs.startday == "4")}selected="selected"{/if}>Thursday</option>
+    <option value="5" {if ($configs.startday == "5")}selected="selected"{/if}>Friday</option>
+    <option value="6" {if ($configs.startday == "6")}selected="selected"{/if}>Saturday</option>
+    <option value="7" {if ($configs.startday == "7")}selected="selected"{/if}>Sunday</option>
+    </select>{else}{$configs.defaultview}{/if}</div></div><br />
+    
+    
     </div>
     {if $editallowed}<div class="submitWrapper">
         <input type="submit" name="Submit" value="Update Config"  class="button" />&nbsp;

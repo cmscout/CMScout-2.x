@@ -66,7 +66,7 @@ if ($_POST['Submit'] == "Submit")
             }
             $results = safesql(serialize($results), "text");
 
-            $sql = $data->insert_query("polls", "NULL, {$poll['pollq']}, 0, $timestamp, {$poll['stopdate']}, $options, $results, $allow, 0");
+            $sql = $data->insert_query("polls", "NULL, {$poll['pollq']}, $timestamp, {$poll['stopdate']}, $options, $results, $allow, 0");
             if ($sql)
             {
                 $polling = $data->select_fetch_one_row("polls", "WHERE question = {$poll['pollq']} AND date_start=$timestamp ORDER BY id DESC", "id");

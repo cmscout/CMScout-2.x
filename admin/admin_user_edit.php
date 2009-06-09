@@ -66,8 +66,8 @@ else
         
         if ($config['dubemail'] == 0)
         {
-            $email = safesql($_POST['email'], "text");
-            $datas = $data->select_query("users", "WHERE email=$email AND id != $safe_id");
+            $temail = safesql($_POST['email'], "text");
+            $datas = $data->select_query("users", "WHERE email=$temail AND id != $safe_id");
             $numrows = $data->num_rows($datas);
             if ($numrows > 0) 
             {

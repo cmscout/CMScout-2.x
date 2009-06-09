@@ -1,1 +1,1455 @@
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('F L;(K(){M.4w=2U G.1c!="41"&&2U G.3o!="41"&&2U G.3o.4y=="5w";M.2D=3F.59?3F.59:3F.6w;M.2D=M.2D?M.2D.2O().15(/-[a-z]+$/,""):\'4D\';E(M.2D!=\'4D\'){F C=G.1m(\'3M\')[0].1m(\'1R\');F D="";Z(F i=0,1H;1H=C[i];i++){E(1H.2g&&1H.2g.1s(/3A/)){D=1H.2g.15("3A","6p/"+M.2D);2t}};E(D!=""){M.1R=G.1c(\'1R\');M.1R.2x="2e/6f";M.1R.2g=D;M.1R.1M("65","61-8");G.1m(\'3M\')[0].V(M.1R)}};M.2Y=["5P","5L","5G","5E","5C","5v","5u","5t","5p","5n","5l","5i"];M.2i=["5g","5e","5d","5c","6F","6D","6B"];M.2w=["4Z 1P","4T 1P","4Z 1O","4T 1O"];M.4R=[31,28,31,30,31,30,31,31,30,31,30,31];M.1I=K(a,b){a=(a+12)%12;F c=M.4R[a];E(((0==(b%4))&&((0!=(b%3Z))||(0==(b%68))))&&a==1){c=29};Q c};K M(B){16.1A={};Z(3l 1K B){16[3l]=16.1A[3l]=B[3l]};16.J=R S();16.5O=1;16.2q=P;16.5J=2n;16.3i=1b;16.2u=0;16.2b=0;16.2v=P;16.3L=R S();16.1v=16.1A.1v=0;16.2k=P;16.1E=1b;16.2W=[];16.1T=[];16.11;16.1t;F o=16;o.1d={1Z:K(e){o.1X();E(!o.1E)Q 1b;E(e==P)e=G.2C.2h;F a=e.4l?e.4l:e.5f;E(a==13){o.3E();o.2R();Q o.1r(e)}W E(a==27){o.2R();Q o.1r(e)}W E(a==32||a==0){o.J=R S();o.2A();Q o.1r(e)};/*@2z@*//*@E(@3C)E(R S().57()-o.3L.57()<3Z)Q o.1r(e);o.3L=R S();/*@2y@*/E((a>49&&a<56)||(a>6y&&a<6v)){E(a>4W)a-=(4W-48);a-=49;o.1v=(o.1v+a)%7;o.2A();Q o.1r(e)};E(a<37||a>40)Q 1a;F d=R S(o.J).6o();E(a==37){E(e.3y){d=R S(o.J);d.1V(1B.3b(d.Y(),M.1I(d.U()-1,d.14())));d.3u(d.U()-1)}W{d-=24*60*60*2n}}W E(a==39){E(e.3y){d=R S(o.J);d.1V(1B.3b(d.Y(),M.1I(d.U()+1,d.14())));d.3u(d.U()+1)}W{d+=24*60*60*2n}}W E(a==38){E(e.3y){d=R S(o.J);d.1V(1B.3b(d.Y(),M.1I(d.U(),d.14()+1)));d.3s(d.14()+1)}W{d-=7*24*60*60*2n}}W E(a==40){E(e.3y){d=R S(o.J);d.1V(1B.3b(d.Y(),M.1I(d.U(),d.14()-1)));d.3s(d.14()-1)}W{d+=7*24*60*60*2n}};F b=R S(d);E(!o.2d(b)){o.J=b};o.2A();Q o.1r(e)},1C:K(e){E(e==P)e=G.2C.2h;F a=e.2c!=P?e.2c:e.3r;o.1X();F b=1b;1F(a.1Y){E(a.H&&(a.H=="1j-"+o.H||a.H=="1j-T-"+o.H)){b=1a;2t}1Q{a=a.1Y}1S(63){2t}}E(b)Q 1a;L.3U()},2l:K(e){o.1X();E(G.O("J-1y-2H")){G.O("J-1y-2H").H=""};16.H="J-1y-2H";o.J.1V(16.23.5X)},1q:K(e){E(o.2u!=o.2b)Q 1b;E(e==P)e=G.2C.2h;F a=e.2c!=P?e.2c:e.3r;1F(a.5W!=1)a=a.1Y;F d=R S(o.J);F n=1W(a.23.5U);E(5T(n)){Q 1a};d.1V(n);o.J=d;o.3E();o.2R();o.1X();Q o.1r(e)},2Z:K(e){E(e==P)e=G.2C.2h;F a=e.2c!=P?e.2c:e.3r;o.1X();E(a&&a.I&&a.I.1f(\'1k\')!=-1){Q 1b}L.2p(G,"3W",o.1d.3k);o.2s=2n;o.42=3Y[1];o.2N=3Y[2];o.2M=3Y[3];o.3v();o.4t();Q o.1r(e)},3k:K(e){o.1X();o.5F=1a;o.2s=2n;o.2N=0;o.2M=0;o.42=0}};o.4s=K(){Z(4b 1K o.1A){o[4b]=o.1A[4b]}};o.3N=K(a){o.11.17.2u=+a/3Z;o.11.17.5B=\'5A(2u=\'+a+\')\';o.2u=a};o.3e=K(){1p.2X(o.2v);F a=1B.4o(o.2u+((o.2b-o.2u)/4));o.3N(a);E(1B.3g(o.2b-a)>3&&!o.3K){o.2v=1p.3J(K(){o.3e()},50)}W{o.3N(o.2b);E(o.2b==0){o.11.17.2E="3I";o.1E=1b}W{o.1E=1a}1p.2X(o.2v);o.2v=P}};o.1r=K(e){E(e==P)e=G.2C.2h;E(e.4n){e.4n();e.5s()}/*@2z@*//*@E(@3C)e.5r=1a;e.5q=1b;/*@2y@*/Q 1b};o.4t=K(){o.2q=1p.3J(o.3v,o.2s);o.3i=1a};o.1X=K(){1p.2X(o.2q);o.2q=P;o.3i=1b};o.3v=K(){F d=o.J;d.1V(1B.3b(d.Y()+o.42,M.1I(d.U()+o.2M,d.14()+o.2N)));d.3u(d.U()+o.2M);d.3s(d.14()+o.2N);o.J=d;E(o.2s>50){o.2s=50+1B.4o(((o.2s-50)/1.8))};o.2A();E(o.3i)o.2q=1p.3J(o.3v,o.2s)};o.2V=K(){Q G.O(o.H.15(/^1j-/,\'\'))||1b};o.5o=K(a){E(X(a).1f(/^(\\d\\d?\\d\\d)(0[1-9]|1[2j])(0[1-9]|[12][0-9]|3[26])$/)==-1)a=\'\';o.1e=o.1A.1e=a};o.5m=K(a){E(X(a).1f(/^(\\d\\d?\\d\\d)(0[1-9]|1[2j])(0[1-9]|[12][0-9]|3[26])$/)==-1)a=\'\';o.1g=o.1A.1g=a};o.5k=K(a){o.1L=o.1A.1L=a};o.5j=K(a){F b=[];Z(F i=a.1i;i--;){E(a[i].1s(/^(\\d\\d\\d\\d|\\*\\*\\*\\*)(0[1-9]|1[2j]|\\*\\*)(0[1-9]|[12][0-9]|3[26])$/)!=-1)b[b.1i]=a[i]}E(b.1i){o.2W=b;o.1T=[]}};o.5h=K(a){F b=[];Z(F i=a.1i;i--;){E(a[i].1s(/^(\\d\\d\\d\\d|\\*\\*\\*\\*)(0[1-9]|1[2j]|\\*\\*)(0[1-9]|[12][0-9]|3[26]|\\*\\*)$/)!=-1&&a[i]!="********")b[b.1i]=a[i]};E(b.1i){o.2W=[];o.1T=b}};o.3H=K(y,m){E(o.1T.1i)Q o.4m(y,m);F a={};F d=M.1I(m-1,y);m=m<10?"0"+X(m):m;Z(F i=o.2W.1i;i--;){F b=o.2W[i].15("****",y).15("**",m);E(b<1W(X(y)+m+"26")||b>1W(y+X(m)+d))3G;a[b]=1}Q a};o.4m=K(y,m){F a={};F d=M.1I(m-1,y);m=m<10?"0"+X(m):m;F b,1x,2T,2S,36,1k;Z(F c=1;c<=d;c++){b=c<10?"0"+X(c):c;1k=1a;Z(F i=o.1T.1i;i--;){1x=o.1T[i];36=X(o.1T[i]).1l(0,4);2S=X(o.1T[i]).1l(4,2);2T=X(o.1T[i]).1l(6,2);E(36==y&&2S==m&&2T==b){1k=1b;2t}E(36=="****"||2S=="**"||2T=="**"){E(36=="****")1x=1x.15(/^\\*\\*\\*\\*/,y);E(2S=="**")1x=1x=1x.1l(0,4)+X(m)+1x.1l(6,2);E(2T=="**")1x=1x.15(/\\*\\*/,b);E(1x==X(y+X(m)+b)){1k=1b;2t}}};E(1k)a[X(y+X(m)+b)]=1};Q a};o.4k=K(e){E(e==P)e=G.2C.2h;F a=e.2c!=P?e.2c:e.3r;E(a.2Q.2O()!="1n"){1F(a.2Q.2O()!="1n")a=a.1Y}F b=0;1F(a.4j){a=a.4j;E(a.2Q.2O()=="1n")b++}o.1v=(o.1v+b)%7;o.2A();Q o.1r(e)};o.4i=K(a){F b=o.4h(a);E(1p.5b){Q b}F c=(G.3f&&G.3f!="4g")?G.3o:G.2P;F d=G.58?c.3D:1p.6E;F e=G.58?c.4f:1p.6C;F f=o.55(a);F g=b[1]-f[1]+e;F h=b[0]-f[0]+d;Q[h,g]};o.55=K(a){F t=0,l=0;54{t+=a.4f||0;l+=a.3D||0;a=a.1Y}1F(a);Q[l,t]};o.4h=K(a){F t=0,l=0;54{t+=a.6A||0;l+=a.6z||0;a=a.6x}1F(a);Q[l,t]};o.51=K(){E(!o.4Y||!o.2V())Q;o.11.17.4X="6u";o.11.17.3d=o.11.17.3c="6t";o.11.17.2E="4e";F a=o.11.4d;F b=o.11.4y;o.11.17.4X="1E";o.11.17.2E="3I";F c=G.O(\'1j-T-\'+o.H);F d=o.4i(c);F e=(G.3f&&G.3f!="4g")?G.3o:G.2P;E(1o(e.4U+e.3D)<1o(b+d[0])){o.11.17.3d=1B.3g(1o((e.4U+e.3D)-b))+"2I"}W{o.11.17.3d=d[0]+"2I"};E(1o(e.6s+e.4f)<1o(a+d[1]+c.4d+2)){o.11.17.3c=1B.3g(1o(d[1]-(a+2)))+"2I"}W{o.11.17.3c=1B.3g(1o(d[1]+c.4d+2))+"2I"};E(o.1h){o.1h.17.3c=o.11.17.3c;o.1h.17.3d=o.11.17.3d;o.1h.17.6r=b+"2I";o.1h.17.6q=(a-2)+"2I"}};o.4S=K(){F a=1b;F b;Z(F i=o.1e;i<=o.1g;i++){b=X(i);E(!o.1L[R S(b.1l(0,4),b.1l(6,2),b.1l(4,2)).4a()-1]){a=1a;2t}};E(!a)o.1L=o.1A.1L=[0,0,0,0,0,0,0]};o.2d=K(a){E(!o.1e&&!o.1g)Q 1b;F b=1b;E(!a){b=1a;a=o.J};F d=(a.Y()<10)?"0"+a.Y():a.Y();F m=((a.U()+1)<10)?"0"+(a.U()+1):a.U()+1;F y=a.14();F c=X(y)+X(m)+X(d);E(o.1e){E(1o(c)<1o(o.1e)){E(!b)Q 1a;o.J=R S(o.1e.1l(0,4),o.1e.1l(4,2)-1,o.1e.1l(6,2),5,0,0);Q 1b}};E(o.1g){E(1o(c)>1o(o.1g)){E(!b)Q 1a;o.J=R S(o.1g.1l(0,4),o.1g.1l(4,2)-1,o.1g.1l(6,2),5,0,0)}};Q 1b};o.34=K(){/*@2z@*//*@E(@47<=5.6)E(!G.O("35")){F a="./4Q.4P";F b=G.1m(\'3M\')[0].1m(\'1R\');Z(F i=0,1H;1H=b[i];i++){E(1H.2g&&1H.2g.1s(/3A.4O$/)){a=1H.2g.15("3A.4O","4Q.4P");2t}};o.1h=G.1c(\'6n\');o.1h.2g=a;o.1h.1M(\'I\',\'6m\');o.1h.6l="46";o.1h.6k="0";o.1h.3B=o.1h.H="35";G.2P.V(o.1h)}W{o.1h=G.O("35")};/*@2y@*/E(2U(2f)=="6j"&&o.45){M.2w=2f.2w;M.2Y=2f.2Y;M.2i=2f.2i;E(2f.2B)M.2B=2f.2B;E(2f.1v)o.1v=o.1A.1v=2f.1v};o.11=G.1c(\'11\');o.11.17.6i=6h;o.11.H="1j-"+o.H;o.11.I="M";G.1m(\'2P\')[0].V(o.11);F c=G.1c(\'4L\');F d=G.1c(\'4K\');F f=X.44(43);o.1t=G.1c(\'1t\');F g=G.1c(\'3t\');F h=G.1c(\'1n\');o.11.V(o.1t);o.1t.V(d);d.V(g);g.V(h);F j=G.1c(\'1w\');j.1M("2x","1w");j.I="1D-T T-4I";j.H=o.H+"-1D-1O-T";j.V(G.1z(\'\\6g\'));j.1U=M.2w[2];j.1C=K(e){o.1d.2Z(e,0,-1,0)};h.V(j);j=P;F j=G.1c(\'1w\');j.1M("2x","1w");j.I="1D-T";j.H=o.H+"-1D-1P-T";j.V(G.1z("\\6e"));j.1U=M.2w[0];j.1C=K(e){o.1d.2Z(e,0,0,-1)};h.V(j);j=P;o.1N=G.1c(\'1n\');/*@2z/*@E(@3C)o.1N.1M(\'6d\',\'5\');@W@*/o.1N.1M(\'6c\',\'5\');/*@2y@*/o.1N.1M(\'2e-6b\',\'6a\');g.V(o.1N);h=G.1c(\'1n\');g.V(h);F j=G.1c(\'1w\');j.1M("2x","1w");j.I="1G-T T-4I";j.H=o.H+"-1G-1P-T";j.V(G.1z(\'\\69\'));j.1U=M.2w[1];j.1C=K(e){o.1d.2Z(e,0,0,1)};h.V(j);j=P;F j=G.1c(\'1w\');j.1M("2x","1w");j.I="1G-T";j.H=o.H+"-1G-1O-T";j.V(G.1z(\'\\67\'));j.1U=M.2w[3];j.1C=K(e){o.1d.2Z(e,0,1,0)};h.V(j);j=P;o.1t.V(c);F k,21;Z(F l=0;l<7;l++){k=G.1c(\'3t\');E(l!=0)c.V(k);W d.V(k);Z(F m=0;m<7;m++){21=(l==0)?G.1c(\'1n\'):G.1c(\'2r\');k.V(21);E(l!=0){21.V(G.1z(f))}W{21.I="J-1y-3p-4H";21.66="21"};21=P}k=P};c=d=g=h=P;o.4Y=1a};o.4G=K(){K 3X(a){Q X(a).1i<2?"64".62(0,2-X(a).1i)+X(a):a}o.2k=P;F b=o.2V();E(!b)Q;E(!o.3h){F c=L.2o(b.22,o.2J.1f(/m-d-y/i)!=-1)}W{F e=G.O(o.H+\'-2m\')?1o(G.O(o.H+\'-2m\').22)||R S().U()+1:R S().U()+1;F f=G.O(o.H+\'-2a\')?1o(G.O(o.H+\'-2a\').22)||R S().Y():R S().Y();F c=L.2o(e+"/"+f+"/"+(b.22||R S().14()),1a)}E(!c){c=X(R S().14())+3X(R S().U()+1)+3X(R S().Y())}F d,m,y;y=c.1l(0,4);m=c.1l(4,2);d=c.1l(6,2);E(!y||!m||!d||R S(y,m-1,d)==\'5Z S\'||R S(y,m-1,d)==\'5Y\'){o.J=R S();o.J.3T(5);Q};o.J.3u(m-1);o.J.3s(y);o.J.1V(d);o.J.3T(5);o.2k=R S(o.J)};o.3E=K(){F a=o.2V();E(!a)Q;F d=(o.J.Y()<10)?"0"+o.J.Y():o.J.Y();F m=((o.J.U()+1)<10)?"0"+(o.J.U()+1):o.J.U()+1;F b=o.J.14();F c=o.3H(b,m);F e=(o.J.4a()+6)%7;E(!(o.1L[e]||X(b)+m+d 1K c)){E(o.3h){G.O(o.H+"-2a").22=d;G.O(o.H+"-2m").22=m;a.22=b;G.O(o.H+"-2a").4F();E(G.O(o.H+"-2a").2L)G.O(o.H+"-2a").2L();E(G.O(o.H+"-2m").2L)G.O(o.H+"-2m").2L()}W{a.22=o.2J.15(\'y\',b).15(\'m\',m).15(\'d\',d).15(/-/g,o.2G);a.4F()};E(a.2L)a.2L()}};o.2A=K(){E(G.O("J-1y-2H")){G.O("J-1y-2H").H=""};F i;F a="";F b=6;F c=7;F f=0;F g=X.44(43);F h=R 4E(b);Z(i=0;i<b;i++){h[i]=R 4E(c)};o.2d();F j=R S(o.J.14(),o.J.U(),2);j.3T(5);F m=((j.U()+1)<10)?"0"+(j.U()+1):j.U()+1;F y=j.14();F k=o.3H(o.J.14(),o.J.U()+1);F l=R S();F n=M.2Y[o.J.U()]+g+o.J.14();1F(o.1N.23)o.1N.33(o.1N.23);o.1N.V(G.1z(n));G.O(o.H+"-1D-1O-T").I=G.O(o.H+"-1D-1O-T").I.15("1k","");E(o.2d(R S((y-1),1W(m)-1,M.1I(1W(m)-1,y-1)))){G.O(o.H+"-1D-1O-T").I+=" 1k";o.2N=0}G.O(o.H+"-1D-1P-T").I=G.O(o.H+"-1D-1P-T").I.15("1k","");E(o.2d(R S(y,(1W(m)-2),M.1I(1W(m)-2,y)))){G.O(o.H+"-1D-1P-T").I+=" 1k";o.2M=0}G.O(o.H+"-1G-1O-T").I=G.O(o.H+"-1G-1O-T").I.15("1k","");E(o.2d(R S((y+1),1W(m)-1,1))){G.O(o.H+"-1G-1O-T").I+=" 1k";o.2N=0}G.O(o.H+"-1G-1P-T").I=G.O(o.H+"-1G-1P-T").I.15("1k","");E(o.2d(R S(y,1W(m),1))){G.O(o.H+"-1G-1P-T").I+=" 1k";o.2M=0}Z(i=1;i<32;i++){j.1V(i);F p=(j.4a()+6)%7;F q=((p-o.1v)+7)%7;F r={2e:"",I:"",H:""};F d=(j.Y()<10)?"0"+j.Y():j.Y();F s=X(y)+m+d;E(j.U()==o.J.U()){h[f][q]={2e:"",I:"",H:""};F t=j.Y()==l.Y()&&j.U()==l.U()&&j.14()==l.14();E(o.2k!=P&&o.2k.Y()==j.Y()&&o.2k.U()==j.U()&&o.2k.14()==j.14()){h[f][q].I="J-1y-5V-J"};E(o.J.Y()==j.Y()&&o.J.14()==j.14()){h[f][q].H="J-1y-2H"};E(o.3j[p]){h[f][q].I+=" J-1y-3S"};E(t){h[f][q].I="J-1y-3n"};E(o.2d(j)){h[f][q].I="3R-3Q-1J"}W E(o.1L[p]||s 1K k){h[f][q].I="3p-1k"};h[f][q].2e=j.Y();h[f][q].I+=" 5S-"+j.Y()+\'-\'+j.U()+" "+" 5R-"+j.Y()+\'-\'+j.U()+\'-\'+j.14();E(q==6)f++}};F u,d,2F;F v=o.1t.1m(\'4K\')[0].1m(\'3t\')[1].1m(\'1n\');Z(F y=0;y<7;y++){d=(o.1v+y)%7;2F=v[y].1m("1w");E(2F.1i&&2F.1i>0){2F[0].1q=2F.3P=P}1F(v[y].23)v[y].33(v[y].23);v[y].1U=M.2i[d];E(y>0){T=G.1c("5Q");T.I="1j-3p-4H";T.1q=T.3P=v[y].1q=o.4k;T.V(G.1z(M.2B?M.2B[d]:M.2i[d].3m(0)));v[y].V(T);T.1U=M.2i[d];T=P}W{v[y].V(G.1z(M.2B?M.2B[d]:M.2i[d].3m(0)));v[y].1q=P}};F w=o.1t.1m(\'4L\')[0].1m(\'3t\');F z;Z(F y=0;y<b;y++){F A=w[y].1m(\'2r\');Z(F x=0;x<c;x++){z=A[x];1F(z.23)z.33(z.23);E(2U h[y][x]!="41"){z.I=h[y][x].I;z.H=h[y][x].H;z.V(G.1z(h[y][x].2e));E(h[y][x].I!="3R-3Q-1J"){z.2l=o.1d.2l;z.1q=h[y][x].I.1f(/3p-1k|3R-3Q-1J/)!=-1?o.1r:o.1d.1q;z.1U=M.2Y[o.J.U()]+g+h[y][x].2e+","+g+o.J.14()}W{z.2l=P;z.1q=o.1r;z.1U=""}}W{z.I="";z.H="";z.2l=P;z.1q=K(e){Q o.1r(e)};z.V(G.1z(g));z.1U=""}}}};o.4C=K(){E(o.1e&&o.1g&&(o.1g-o.1e<7)){o.4S()}o.3e()};o.4B=K(){F a=o.2V();E(!a||o.1E||a.1k)Q;o.4s();o.4G();o.2A();o.51();L.2p(G,"3V",o.1d.1C);L.2p(G,"3q",o.1d.1Z);/*@2z@*//*@E(@3C)L.1u(G,"3q",o.1d.1Z);L.2p(G,"3O",o.1d.1Z);/*@2y@*/o.2b=o.3K?5N:5M;o.11.17.2E="4e";E(o.1h){o.1h.17.2E="4e"}o.3e();o.1E=1a};o.2R=K(){E(!o.1E)Q;o.1X();1Q{L.1u(G,"3V",o.1d.1C)}1S(e){};1Q{L.1u(G,"3W",o.1d.3k)}1S(e){};1Q{L.1u(G,"3q",o.1d.1Z)}1S(e){};1Q{L.1u(G,"3O",o.1d.1Z)}1S(e){};E(o.1h){o.1h.17.2E="3I"};o.2b=0;o.3e();o.1E=1b};o.2K=K(){1Q{L.1u(G,"3V",o.1d.1C)}1S(e){};1Q{L.1u(G,"3W",o.1d.3k)}1S(e){};1Q{L.1u(G,"3q",o.1d.1Z)}1S(e){};1Q{L.1u(G,"3O",o.1d.1Z)}1S(e){};F a=o.1t.1m("1n");Z(F i=0,1n;1n=a[i];i++){1n.2l=1n.5K=1n.1C=1n.1q=P}F b=o.1t.1m("2r");Z(F i=0,2r;2r=b[i];i++){2r.2l=2r.1q=P}F c=o.1t.1m("1w");Z(F i=0,d;d=c[i];i++){d.1C=d.1q=d.3P=P}2X(o.2v);2X(o.2q);o.2v=o.2q=P;/*@2z@*//*@E(@47<=5.6)o.1h=P;/*@2y@*/E(G.O(o.H.15(/^1j-/,\'1j-T-\'))){F d=G.O(o.H.15(/^1j-/,\'1j-T-\'));d.1q=d.4A=P}o.1N=o.1t=o.11=P;o=P};o.34();o.4C()};L={18:{},2p:K(a,b,c,d){d||(d=1a);E(a.4z){a["e"+b+c]=c;a[b+c]=K(){a["e"+b+c](1p.2h)};a.4z("4x"+b,a[b+c])}W{a.5I(b,c,1a)}},1u:K(a,b,c,d){d||(d=1a);E(a.4J){a.4J("4x"+b,a[b+c]);a[b+c]=P}W{a.5H(b,c,1a)}},3U:K(a){Z(25 1K L.18){E(a&&a==L.18[25].H){3G};E(G.O(L.18[25].H)){L.18[25].2R()}}},4v:K(){F a;Z(a 1K L.18){E(!G.O(L.18[a].H)){3w=G.O("1j-"+L.18[a].H);L.18[a].2K();L.18[a]=P;4u L.18[a];E(3w){3w.1Y.33(3w)}}}},2K:K(){Z(25 1K L.18){L.18[25].2K();L.18[25]=P;4u L.18[25]};L.18=P;/*@2z@*//*@E(@47<=5.6)E(G.O("35")){G.2P.33(G.O("35"))}/*@2y@*/M.1R=P;L.1u(1p,\'4M\',L.34);L.1u(1p,\'4N\',L.2K)},2o:K(a,b){F c=[{3a:/^(0?[1-9]|[12][0-9]|3[26])([- \\/.])(0?[1-9]|1[2j])([- \\/.])((\\d\\d)?\\d\\d)$/,d:1,m:3,y:5},{3a:/^(0?[1-9]|1[2j])([- \\/.])(0?[1-9]|[12][0-9]|3[26])([- \\/.])((\\d\\d)?\\d\\d)$/,d:3,m:1,y:5},{3a:/^(\\d\\d\\d\\d)([- \\/.])(0?[1-9]|1[2j])([- \\/.])(0?[1-9]|[12][0-9]|3[26])$/,d:5,m:3,y:1}];F e;F f=0;1F(f<3){e=(f+(b?4:3))%3;E(a.1s(c[e].3a)){3x=a.1s(c[e].3a);y=3x[c[e].y];m=3x[c[e].m];d=3x[c[e].d];E(m.1i==1)m="0"+m;E(d.1i==1)d="0"+d;E(y.1i!=4)y=(1o(y)<50)?\'20\'+y:\'19\'+y;Q X(y)+m+d};f++};Q 0},34:K(){E(!M.4w)Q;L.4v();F b=G.1m(\'4c\');F c=/4r-3z-([1-7]){1,6}/g;F d=/46-5D/g;F e=/3S-3z-([1-7]){1,7}/g;F f=/1J-1e-(\\d\\d\\d\\d-\\d\\d-\\d\\d)/g;F g=/1J-1g-(\\d\\d\\d\\d-\\d\\d-\\d\\d)/g;F h=/2J-(d-m-y|m-d-y|y-m-d)/g;F k=/2G-(4q|4V|4p|5a)/g;F l=/46-45/g;Z(F i=0,N;N=b[i];i++){E(N.I&&(N.I.1f(h)!=-1||N.I.1f(/53-J/)!=-1)&&N.2x=="2e"&&N.3B){E(!N.H){E(G.O(N.3B))3G;N.H=N.3B};F m={H:N.H,1e:"",1g:"",2G:"/",2J:"d-m-y",3j:[0,0,0,0,0,1,1],1L:[0,0,0,0,0,0,0],45:N.I.1f(l)==-1,3h:0,3K:N.I.1f(d)!=-1};E(N.I.1f(/53-J/)!=-1){E(G.O(N.H+\'-2a\')&&G.O(N.H+\'-2m\')&&G.O(N.H+\'-2a\').2Q.2O()=="4c"&&G.O(N.H+\'-2m\').2Q.2O()=="4c"){m.3h=1}};E(N.I.1f(h)!=-1){m.2J=N.I.1s(h)[0].15(\'2J-\',\'\')};E(N.I.1f(k)!=-1){F n={4q:".",4p:" ",5a:"-",4V:"/"};m.2G=(N.I.1s(k)[0].15(\'2G-\',\'\')1K n)?n[N.I.1s(k)[0].15(\'2G-\',\'\')]:"/"};E(N.I.1f(e)!=-1){F o=N.I.1s(e)[0].15(/3S-3z-/,\'\');m.3j=[0,0,0,0,0,0,0];Z(F j=0;j<o.1i;j++){m.3j[o.3m(j)-1]=1}};E(N.I.1f(c)!=-1){F o=N.I.1s(c)[0].15(/4r-3z-/,\'\');m.1L=[0,0,0,0,0,0,0];Z(F j=0;j<o.1i;j++){m.1L[o.3m(j)-1]=1}};E(N.I.1f(/1J-1e-3n/i)!=-1){m.1e=L.2o((R S().U()+1)+"/"+R S().Y()+"/"+R S().14(),1a)}W E(N.I.1f(f)!=-1){m.1e=L.2o(N.I.1s(f)[0].15(/1J-1e-/,\'\'),1b);E(!m.1e){m.1e=\'\'}};E(N.I.1f(/1J-1g-3n/i)!=-1&&N.I.1f(/1J-1e-3n/i)==-1){m.1g=L.2o((R S().U()+1)+"/"+R S().Y()+"/"+R S().14(),1a)}W E(N.I.1f(g)!=-1){m.1g=L.2o(N.I.1s(g)[0].15(/1J-1g-/,\'\'),1b);E(!m.1g){m.1g=\'\'}};E(G.O(\'1j-\'+N.H)){Z(F p 1K m){L.18[N.H].1A[p]=m[p]};L.18[N.H].5z=L.18[N.H].5y=[]};E(!G.O("1j-T-"+N.H)){F q=G.1c(\'1w\');q.1M("2x","1w");q.I="J-1y-5x";q.H="1j-T-"+N.H;q.V(G.1z(X.44(43)));E(N.52){N.1Y.6G(q,N.52)}W{N.1Y.V(q)}}W{F q=G.O("1j-T-"+N.H)};q.1q=q.4A=K(){F a=16.H.15(\'1j-T-\',\'\');L.3U(a);E(a 1K L.18&&!L.18[a].1E){L.18[a].4B()};Q 1b};E(!G.O(\'1j-\'+N.H)){L.18[N.H]=R M(m)};q=P}}}}})();L.2p(1p,\'4M\',L.34);L.2p(1p,\'4N\',L.2K);',62,415,'||||||||||||||||||||||||||||||||||||||||if|var|document|id|className|date|function|datePickerController|datePicker|inp|getElementById|null|return|new|Date|but|getMonth|appendChild|else|String|getDate|for||div|||getFullYear|replace|this|style|datePickers||true|false|createElement|events|low|search|high|iePopUp|length|fd|disabled|substr|getElementsByTagName|th|parseInt|window|onclick|killEvent|match|table|removeEvent|firstDayOfWeek|button|tmp|picker|createTextNode|defaults|Math|onmousedown|prev|visible|while|next|scriptFile|getDaysPerMonth|range|in|disableDays|setAttribute|titleBar|year|month|try|script|catch|enabledDates|title|setDate|Number|stopTimer|parentNode|onkeydown||col|value|firstChild||dp|01||||dd|opacityTo|target|outOfRange|text|fdLocale|src|event|fullDay|012|dateSet|onmouseover|mm|1000|dateFormat|addEvent|timer|td|timerInc|break|opacity|fadeTimer|titles|type|end|cc_on|updateTable|dayAbbr|parentWindow|languageinfo|display|butt|divider|hover|px|format|destroy|onchange|monthInc|yearInc|toLowerCase|body|tagName|hide|me|de|typeof|getElem|disabledDates|clearTimeout|months|incDec||||removeChild|create|iePopUpHack|ye||||regExp|min|top|left|fade|compatMode|abs|splitDate|timerSet|highlightDays|clearTimer|opt|charAt|today|documentElement|day|keypress|srcElement|setFullYear|tr|setMonth|onTimer|dpElem|res|ctrlKey|days|datepicker|name|_win32|scrollLeft|returnFormattedDate|navigator|continue|getDisabledDates|none|setTimeout|noFade|interval|head|setOpacity|keydown|onkeypress|of|out|highlight|setHours|hideAll|mousedown|mouseup|m2c|arguments|100||undefined|dayInc|160|fromCharCode|locale|no|_jscript_version|||getDay|def|input|offsetHeight|block|scrollTop|BackCompat|cumulativeOffset|truePosition|previousSibling|setFirstDayOfWeek|keyCode|getEnabledDates|stopPropagation|round|space|dot|disable|reset|startTimer|delete|cleanUp|isSupported|on|offsetWidth|attachEvent|onpress|show|init|en|Array|focus|setDateFromInput|header|spacer|detachEvent|thead|tbody|load|unload|js|html|blank|daysPerMonth|equaliseDates|Next|clientWidth|slash|96|visibility|created|Previous||resize|nextSibling|split|do|realOffset||getTime|all|language|dash|opera|Thursday|Wednesday|Tuesday|charCode|Monday|setEnabledDates|December|setDisabledDates|setDisabledDays|November|setRangeHigh|October|setRangeLow|September|returnValue|cancelBubble|preventDefault|August|July|June|number|control|disabledDays|enabledDays|alpha|filter|May|transparency|April|stopped|March|removeEventListener|addEventListener|pause|onmouseout|February|90|99|yearinc|January|BUTTON|dmy|dm|isNaN|data|selected|nodeType|nodeValue|NaN|Invalid||utf|substring|err|00|charset|scope|u00BB|400|u203A|center|align|colspan|colSpan|u2039|javascript|u00AB|9999|zIndex|object|frameBorder|scrolling|iehack|iframe|valueOf|lang|height|width|clientHeight|0px|hidden|104|userLanguage|offsetParent|97|offsetLeft|offsetTop|Sunday|pageYOffset|Saturday|pageXOffset|Friday|insertBefore'.split('|'),0,{}))
+/*
+        DatePicker v4.4 by frequency-decoder.com
+
+        Released under a creative commons Attribution-ShareAlike 2.5 license (http://creativecommons.org/licenses/by-sa/2.5/)
+
+        Please credit frequency-decoder in any derivative work - thanks.
+        
+        You are free:
+
+        * to copy, distribute, display, and perform the work
+        * to make derivative works
+        * to make commercial use of the work
+
+        Under the following conditions:
+
+                by Attribution.
+                --------------
+                You must attribute the work in the manner specified by the author or licensor.
+
+                sa
+                --
+                Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under a license identical to this one.
+
+        * For any reuse or distribution, you must make clear to others the license terms of this work.
+        * Any of these conditions can be waived if you get permission from the copyright holder.
+*/
+var datePickerController;
+
+(function() {
+
+// Detect the browser language
+datePicker.languageinfo = navigator.language ? navigator.language : navigator.userLanguage;
+datePicker.languageinfo = datePicker.languageinfo ? datePicker.languageinfo.toLowerCase().replace(/-[a-z]+$/, "") : 'en';
+
+// Load the appropriate language file
+var scriptFiles = document.getElementsByTagName('head')[0].getElementsByTagName('script');
+var loc = scriptFiles[scriptFiles.length - 1].src.substr(0, scriptFiles[scriptFiles.length - 1].src.lastIndexOf("/")) + "/lang/" + datePicker.languageinfo + ".js";
+
+var script  = document.createElement('script');
+script.type = "text/javascript";
+script.src  = loc;
+script.setAttribute("charset", "utf-8");
+/*@cc_on
+/*@if(@_win32)
+        var bases = document.getElementsByTagName('base');
+        if (bases.length && bases[0].childNodes.length) {
+                bases[0].appendChild(script);
+        } else {
+                document.getElementsByTagName('head')[0].appendChild(script);
+        };
+@else @*/
+document.getElementsByTagName('head')[0].appendChild(script);
+/*@end
+@*/
+script  = null;
+
+// Defaults should the locale file not load
+datePicker.months       = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+datePicker.fullDay      = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+datePicker.titles       = ["Previous month","Next month","Previous year","Next year", "Today", "Show Calendar"];
+
+datePicker.getDaysPerMonth = function(nMonth, nYear) {
+        nMonth = (nMonth + 12) % 12;
+        return (((0 == (nYear%4)) && ((0 != (nYear%100)) || (0 == (nYear%400)))) && nMonth == 1) ? 29: [31,28,31,30,31,30,31,31,30,31,30,31][nMonth];
+};
+
+function datePicker(options) {
+
+        this.defaults          = {};
+        for(opt in options) { this[opt] = this.defaults[opt] = options[opt]; };
+        
+        this.date              = new Date();
+        this.yearinc           = 1;
+        this.timer             = null;
+        this.pause             = 1000;
+        this.timerSet          = false;
+        this.fadeTimer         = null;
+        this.interval          = new Date();
+        this.firstDayOfWeek    = this.defaults.firstDayOfWeek;
+        this.dayInc = this.monthInc = this.yearInc = this.opacity = this.opacityTo = 0;
+        this.dateSet           = null;
+        this.visible           = false;
+        this.disabledDates     = [];
+        this.enabledDates      = [];
+        this.nbsp              = String.fromCharCode( 160 );
+        var o = this;
+        
+        o.events = {
+                onblur:function(e) {
+                        o.removeKeyboardEvents();
+                },
+                onfocus:function(e) {
+                        o.addKeyboardEvents();
+                },
+                onkeydown: function (e) {
+                        o.stopTimer();
+                        if(!o.visible) return false;
+
+                        if(e == null) e = document.parentWindow.event;
+                        var kc = e.keyCode ? e.keyCode : e.charCode;
+
+                        if( kc == 13 ) {
+                                // close (return)
+                                var td = document.getElementById(o.id + "-date-picker-hover");
+                                if(!td || td.className.search(/out-of-range|day-disabled/) != -1) return o.killEvent(e);
+                                o.returnFormattedDate();
+                                o.hide();
+                                return o.killEvent(e);
+                        } else if(kc == 27) {
+                                // close (esc)
+                                o.hide();
+                                return o.killEvent(e);
+                        } else if(kc == 32 || kc == 0) {
+                                // today (space)
+                                o.date =  new Date();
+                                o.updateTable();
+                                return o.killEvent(e);
+                        };
+
+                        // Internet Explorer fires the keydown event faster than the JavaScript engine can
+                        // update the interface. The following attempts to fix this.
+                        /*@cc_on
+                        @if(@_win32)
+                                if(new Date().getTime() - o.interval.getTime() < 100) return o.killEvent(e);
+                                o.interval = new Date();
+                        @end
+                        @*/
+
+                        if ((kc > 49 && kc < 56) || (kc > 97 && kc < 104)) {
+                                if (kc > 96) kc -= (96-48);
+                                kc -= 49;
+                                o.firstDayOfWeek = (o.firstDayOfWeek + kc) % 7;
+                                o.updateTable();
+                                return o.killEvent(e);
+                        };
+
+                        if ( kc < 37 || kc > 40 ) return true;
+
+                        var d = new Date( o.date ).valueOf();
+
+                        if ( kc == 37 ) {
+                                // ctrl + left = previous month
+                                if( e.ctrlKey ) {
+                                        d = new Date( o.date );
+                                        d.setDate( Math.min(d.getDate(), datePicker.getDaysPerMonth(d.getMonth() - 1,d.getFullYear())) );
+                                        d.setMonth( d.getMonth() - 1 );
+                                } else {
+                                        d = new Date( o.date.getFullYear(), o.date.getMonth(), o.date.getDate() - 1 );
+                                };
+                        } else if ( kc == 39 ) {
+                                // ctrl + right = next month
+                                if( e.ctrlKey ) {
+                                        d = new Date( o.date );
+                                        d.setDate( Math.min(d.getDate(), datePicker.getDaysPerMonth(d.getMonth() + 1,d.getFullYear())) );
+                                        d.setMonth( d.getMonth() + 1 );
+                                } else {
+                                        d = new Date( o.date.getFullYear(), o.date.getMonth(), o.date.getDate() + 1 );
+                                };
+                        } else if ( kc == 38 ) {
+                                // ctrl + up = next year
+                                if( e.ctrlKey ) {
+                                        d = new Date( o.date );
+                                        d.setDate( Math.min(d.getDate(), datePicker.getDaysPerMonth(d.getMonth(),d.getFullYear() + 1)) );
+                                        d.setFullYear( d.getFullYear() + 1 );
+                                } else {
+                                        d = new Date( o.date.getFullYear(), o.date.getMonth(), o.date.getDate() - 7 );
+                                };
+                        } else if ( kc == 40 ) {
+                                // ctrl + down = prev year
+                                if( e.ctrlKey ) {
+                                        d = new Date( o.date );
+                                        d.setDate( Math.min(d.getDate(), datePicker.getDaysPerMonth(d.getMonth(),d.getFullYear() - 1)) );
+                                        d.setFullYear( d.getFullYear() - 1 );
+                                } else {
+                                        d = new Date( o.date.getFullYear(), o.date.getMonth(), o.date.getDate() + 7 );
+                                };
+                        };
+
+                        var tmpDate = new Date(d);
+
+                        if(o.outOfRange(tmpDate)) return o.killEvent(e);
+                        
+                        var cacheDate = new Date(o.date);
+                        o.date = tmpDate;
+
+                        if(cacheDate.getFullYear() != o.date.getFullYear() || cacheDate.getMonth() != o.date.getMonth()) o.updateTable();
+                        else {
+                                o.disableTodayButton();
+                                var tds = o.table.getElementsByTagName('td');
+                                var txt;
+                                var start = o.date.getDate() - 6;
+                                if(start < 0) start = 0;
+
+                                for(var i = start, td; td = tds[i]; i++) {
+                                        txt = Number(td.firstChild.nodeValue);
+                                        if(isNaN(txt) || txt != o.date.getDate()) continue;
+                                        o.removeHighlight();
+                                        td.id = o.id + "-date-picker-hover";
+                                        td.className = td.className.replace(/date-picker-hover/g, "") + " date-picker-hover";
+                                };
+                        };
+                        return o.killEvent(e);
+                },
+                gotoToday: function(e) {
+                        o.date = new Date();
+                        o.updateTable();
+                        return o.killEvent(e);
+                },
+                onmousedown: function(e) {
+                        if ( e == null ) e = document.parentWindow.event;
+                        var el = e.target != null ? e.target : e.srcElement;
+
+                        var found = false;
+                        while(el.parentNode) {
+                                if(el.id && (el.id == "fd-"+o.id || el.id == "fd-but-"+o.id)) {
+                                        found = true;
+                                        break;
+                                };
+                                try {
+                                        el = el.parentNode;
+                                } catch(err) {
+                                        break;
+                                };
+                        };
+                        if(found) return true;
+                        o.stopTimer();
+                        datePickerController.hideAll();
+                },
+                onmouseover: function(e) {
+                        o.stopTimer();
+                        var txt = this.firstChild.nodeValue;
+                        if(this.className == "out-of-range" || txt.search(/^[\d]+$/) == -1) return;
+                        
+                        o.removeHighlight();
+                        
+                        this.id = o.id+"-date-picker-hover";
+                        this.className = this.className.replace(/date-picker-hover/g, "") + " date-picker-hover";
+                        
+                        o.date.setDate(this.firstChild.nodeValue);
+                        o.disableTodayButton();
+                },
+                onclick: function(e) {
+                        if(o.opacity != o.opacityTo || this.className.search(/out-of-range|day-disabled/) != -1) return false;
+                        if ( e == null ) e = document.parentWindow.event;
+                        var el = e.target != null ? e.target : e.srcElement;
+                        while ( el.nodeType != 1 ) el = el.parentNode;
+                        var d = new Date( o.date );
+                        var txt = el.firstChild.data;
+                        if(txt.search(/^[\d]+$/) == -1) return;
+                        var n = Number( txt );
+                        if(isNaN(n)) { return true; };
+                        d.setDate( n );
+                        o.date = d;
+                        o.returnFormattedDate();
+                        if(!o.staticPos) o.hide();
+                        o.stopTimer();
+                        return o.killEvent(e);
+                },
+                incDec: function(e) {
+                        if ( e == null ) e = document.parentWindow.event;
+                        var el = e.target != null ? e.target : e.srcElement;
+
+                        if(el && el.className && el.className.search('fd-disabled') != -1) { return false; }
+                        datePickerController.addEvent(document, "mouseup", o.events.clearTimer);
+                        o.timerInc      = 800;
+                        o.dayInc        = arguments[1];
+                        o.yearInc       = arguments[2];
+                        o.monthInc      = arguments[3];
+                        o.timerSet      = true;
+
+                        o.updateTable();
+                        return true;
+                },
+                clearTimer: function(e) {
+                        o.stopTimer();
+                        o.timerInc      = 1000;
+                        o.yearInc       = 0;
+                        o.monthInc      = 0;
+                        o.dayInc        = 0;
+                        datePickerController.removeEvent(document, "mouseup", o.events.clearTimer);
+                }
+        };
+        o.stopTimer = function() {
+                o.timerSet = false;
+                window.clearTimeout(o.timer);
+        };
+        o.removeHighlight = function() {
+                if(document.getElementById(o.id+"-date-picker-hover")) {
+                        document.getElementById(o.id+"-date-picker-hover").className = document.getElementById(o.id+"-date-picker-hover").className.replace("date-picker-hover", "");
+                        document.getElementById(o.id+"-date-picker-hover").id = "";
+                };
+        };
+        o.reset = function() {
+                for(def in o.defaults) { o[def] = o.defaults[def]; };
+        };
+        o.setOpacity = function(op) {
+                o.div.style.opacity = op/100;
+                o.div.style.filter = 'alpha(opacity=' + op + ')';
+                o.opacity = op;
+        };
+        o.fade = function() {
+                window.clearTimeout(o.fadeTimer);
+                o.fadeTimer = null;
+                delete(o.fadeTimer);
+                
+                var diff = Math.round(o.opacity + ((o.opacityTo - o.opacity) / 4));
+
+                o.setOpacity(diff);
+
+                if(Math.abs(o.opacityTo - diff) > 3 && !o.noTransparency) {
+                        o.fadeTimer = window.setTimeout(o.fade, 50);
+                } else {
+                        o.setOpacity(o.opacityTo);
+                        if(o.opacityTo == 0) {
+                                o.div.style.display = "none";
+                                o.visible = false;
+                        } else {
+                                o.visible = true;
+                        };
+                };
+        };
+        o.killEvent = function(e) {
+                e = e || document.parentWindow.event;
+                
+                if(e.stopPropagation) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                };
+                
+                /*@cc_on
+                @if(@_win32)
+                e.cancelBubble = true;
+                e.returnValue = false;
+                @end
+                @*/
+                return false;
+        };
+        o.getElem = function() {
+                return document.getElementById(o.id.replace(/^fd-/, '')) || false;
+        };
+        o.setRangeLow = function(range) {
+                if(String(range).search(/^(\d\d?\d\d)(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$/) == -1) range = '';
+                o.low = o.defaults.low = range;
+                if(o.staticPos) o.updateTable(true);
+        };
+        o.setRangeHigh = function(range) {
+                if(String(range).search(/^(\d\d?\d\d)(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$/) == -1) range = '';
+                o.high = o.defaults.high = range;
+                if(o.staticPos) o.updateTable(true);
+        };
+        o.setDisabledDays = function(dayArray) {
+                o.disableDays = o.defaults.disableDays = dayArray;
+                if(o.staticPos) o.updateTable(true);
+        };
+        o.setDisabledDates = function(dateArray) {
+                var fin = [];
+                for(var i = dateArray.length; i-- ;) {
+                        if(dateArray[i].match(/^(\d\d\d\d|\*\*\*\*)(0[1-9]|1[012]|\*\*)(0[1-9]|[12][0-9]|3[01])$/) != -1) fin[fin.length] = dateArray[i];
+                };
+                if(fin.length) {
+                        o.disabledDates = fin;
+                        o.enabledDates = [];
+                        if(o.staticPos) o.updateTable(true);
+                };
+        };
+        o.setEnabledDates = function(dateArray) {
+                var fin = [];
+                for(var i = dateArray.length; i-- ;) {
+                        if(dateArray[i].match(/^(\d\d\d\d|\*\*\*\*)(0[1-9]|1[012]|\*\*)(0[1-9]|[12][0-9]|3[01]|\*\*)$/) != -1 && dateArray[i] != "********") fin[fin.length] = dateArray[i];
+                };
+                if(fin.length) {
+                        o.disabledDates = [];
+                        o.enabledDates = fin;
+                        if(o.staticPos) o.updateTable(true);
+                };
+        };
+        o.getDisabledDates = function(y, m) {
+                if(o.enabledDates.length) return o.getEnabledDates(y, m);
+                var obj = {};
+                var d = datePicker.getDaysPerMonth(m - 1, y);
+                m = m < 10 ? "0" + String(m) : m;
+                for(var i = o.disabledDates.length; i-- ;) {
+                        var tmp = o.disabledDates[i].replace("****", y).replace("**", m);
+                        if(tmp < Number(String(y)+m+"01") || tmp > Number(y+String(m)+d)) continue;
+                        obj[tmp] = 1;
+                };
+                return obj;
+        };
+        o.getEnabledDates = function(y, m) {
+                var obj = {};
+                var d = datePicker.getDaysPerMonth(m - 1, y);
+                m = m < 10 ? "0" + String(m) : m;
+                var day,tmp,de,me,ye,disabled;
+                for(var dd = 1; dd <= d; dd++) {
+                        day = dd < 10 ? "0" + String(dd) : dd;
+                        disabled = true;
+                        for(var i = o.enabledDates.length; i-- ;) {
+                                tmp = o.enabledDates[i];
+                                ye  = String(o.enabledDates[i]).substr(0,4);
+                                me  = String(o.enabledDates[i]).substr(4,2);
+                                de  = String(o.enabledDates[i]).substr(6,2);
+
+                                if(ye == y && me == m && de == day) {
+                                        disabled = false;
+                                        break;
+                                }
+                                
+                                if(ye == "****" || me == "**" || de == "**") {
+                                        if(ye == "****") tmp = tmp.replace(/^\*\*\*\*/, y);
+                                        if(me == "**")   tmp = tmp = tmp.substr(0,4) + String(m) + tmp.substr(6,2);
+                                        if(de == "**")   tmp = tmp.replace(/\*\*/, day);
+
+                                        if(tmp == String(y + String(m) + day)) {
+                                                disabled = false;
+                                                break;
+                                        };
+                                };
+                        };
+                        if(disabled) obj[String(y + String(m) + day)] = 1;
+                };
+                return obj;
+        };
+        o.setFirstDayOfWeek = function(e) {
+                if ( e == null ) e = document.parentWindow.event;
+                var elem = e.target != null ? e.target : e.srcElement;
+                if(elem.tagName.toLowerCase() != "th") {
+                        while(elem.tagName.toLowerCase() != "th") elem = elem.parentNode;
+                };
+                var cnt = 0;
+                while(elem.previousSibling) {
+                        elem = elem.previousSibling;
+                        if(elem.tagName.toLowerCase() == "th") cnt++;
+                };
+                o.firstDayOfWeek = (o.firstDayOfWeek + cnt) % 7;
+                o.updateTableHeaders();
+                return o.killEvent(e);
+        };
+        o.truePosition = function(element) {
+                var pos = o.cumulativeOffset(element);
+                if(window.opera) { return pos; }
+                var iebody      = (document.compatMode && document.compatMode != "BackCompat")? document.documentElement : document.body;
+                var dsocleft    = document.all ? iebody.scrollLeft : window.pageXOffset;
+                var dsoctop     = document.all ? iebody.scrollTop  : window.pageYOffset;
+                var posReal     = o.realOffset(element);
+                return [pos[0] - posReal[0] + dsocleft, pos[1] - posReal[1] + dsoctop];
+        };
+        o.realOffset = function(element) {
+                var t = 0, l = 0;
+                do {
+                        t += element.scrollTop  || 0;
+                        l += element.scrollLeft || 0;
+                        element = element.parentNode;
+                } while (element);
+                return [l, t];
+        };
+        o.cumulativeOffset = function(element) {
+                var t = 0, l = 0;
+                do {
+                        t += element.offsetTop  || 0;
+                        l += element.offsetLeft || 0;
+                        element = element.offsetParent;
+                } while (element);
+                return [l, t];
+        };
+        o.resize = function() {
+                if(!o.created || !o.getElem()) return;
+                
+                o.div.style.visibility = "hidden";
+                if(!o.staticPos) { o.div.style.left = o.div.style.top = "0px"; }
+                o.div.style.display = "block";
+                
+                var osh = o.div.offsetHeight;
+                var osw = o.div.offsetWidth;
+                
+                o.div.style.visibility = "visible";
+                o.div.style.display = "none";
+                
+                if(!o.staticPos) {
+                        var elem          = document.getElementById('fd-but-' + o.id);
+                        var pos           = o.truePosition(elem);
+                        var trueBody      = (document.compatMode && document.compatMode!="BackCompat") ? document.documentElement : document.body;
+                        var scrollTop     = window.devicePixelRatio || window.opera ? 0 : trueBody.scrollTop;
+                        var scrollLeft    = window.devicePixelRatio || window.opera ? 0 : trueBody.scrollLeft;
+
+                        if(parseInt(trueBody.clientWidth+scrollLeft) < parseInt(osw+pos[0])) {
+                                o.div.style.left = Math.abs(parseInt((trueBody.clientWidth+scrollLeft) - osw)) + "px";
+                        } else {
+                                o.div.style.left  = pos[0] + "px";
+                        };
+
+                        if(parseInt(trueBody.clientHeight+scrollTop) < parseInt(osh+pos[1]+elem.offsetHeight+2)) {
+                                o.div.style.top   = Math.abs(parseInt(pos[1] - (osh + 2))) + "px";
+                        } else {
+                                o.div.style.top   = Math.abs(parseInt(pos[1] + elem.offsetHeight + 2)) + "px";
+                        };
+                };
+                /*@cc_on
+                @if(@_jscript_version <= 5.6)
+                if(o.staticPos) return;
+                o.iePopUp.style.top    = o.div.style.top;
+                o.iePopUp.style.left   = o.div.style.left;
+                o.iePopUp.style.width  = osw + "px";
+                o.iePopUp.style.height = (osh - 2) + "px";
+                @end
+                @*/
+        };
+        o.equaliseDates = function() {
+                var clearDayFound = false;
+                var tmpDate;
+                for(var i = o.low; i <= o.high; i++) {
+                        tmpDate = String(i);
+                        if(!o.disableDays[new Date(tmpDate.substr(0,4), tmpDate.substr(6,2), tmpDate.substr(4,2)).getDay() - 1]) {
+                                clearDayFound = true;
+                                break;
+                        };
+                };
+                if(!clearDayFound) o.disableDays = o.defaults.disableDays = [0,0,0,0,0,0,0];
+        };
+        o.outOfRange = function(tmpDate) {
+                if(!o.low && !o.high) return false;
+
+                var level = false;
+                if(!tmpDate) {
+                        level = true;
+                        tmpDate = o.date;
+                };
+                
+                var d  = (tmpDate.getDate() < 10) ? "0" + tmpDate.getDate() : tmpDate.getDate();
+                var m  = ((tmpDate.getMonth() + 1) < 10) ? "0" + (tmpDate.getMonth() + 1) : tmpDate.getMonth() + 1;
+                var y  = tmpDate.getFullYear();
+                var dt = String(y)+String(m)+String(d);
+
+                if(o.low && parseInt(dt) < parseInt(o.low)) {
+                        if(!level) return true;
+                        o.date = new Date(o.low.substr(0,4), o.low.substr(4,2)-1, o.low.substr(6,2), 5, 0, 0);
+                        return false;
+                };
+                if(o.high && parseInt(dt) > parseInt(o.high)) {
+                        if(!level) return true;
+                        o.date = new Date( o.high.substr(0,4), o.high.substr(4,2)-1, o.high.substr(6,2), 5, 0, 0);
+                };
+                return false;
+        };
+        o.createButton = function() {
+                if(o.staticPos) { return; };
+                
+                var but;
+                
+                if(!document.getElementById("fd-but-" + o.id)) {
+                        var inp = o.getElem();
+                        
+                        but = document.createElement('a');
+                        but.href = "#";
+
+                        var span = document.createElement('span');
+                        span.appendChild(document.createTextNode(String.fromCharCode( 160 )));
+
+                        but.className = "date-picker-control";
+                        but.title = (typeof(fdLocale) == "object" && options.locale && fdLocale.titles.length > 5) ? fdLocale.titles[5] : "";
+
+                        but.id = "fd-but-" + o.id;
+                        but.appendChild(span);
+
+                        if(inp.nextSibling) {
+                                inp.parentNode.insertBefore(but, inp.nextSibling);
+                        } else {
+                                inp.parentNode.appendChild(but);
+                        };
+                } else {
+                        but = document.getElementById("fd-but-" + o.id);
+                };
+
+                but.onclick = but.onpress = function(e) {
+                        e = e || window.event;
+                        var inpId = this.id.replace('fd-but-','');
+                        try { var dp = datePickerController.getDatePicker(inpId); } catch(err) { return false; };
+
+                        if(e.type == "press") {
+                                var kc = e.keyCode != null ? e.keyCode : e.charCode;
+                                if(kc != 13) { return true; };
+                                if(dp.visible) {
+                                        hideAll();
+                                        return false;
+                                };
+                        };
+
+                        if(!dp.visible) {
+                                datePickerController.hideAll(inpId);
+                                dp.show();
+                        } else {
+                                datePickerController.hideAll();
+                        };
+                        return false;
+                };
+                but = null;
+        },
+        o.create = function() {
+                
+                function createTH(details) {
+                        var th = document.createElement('th');
+                        if(details.thClassName) th.className = details.thClassName;
+                        if(details.colspan) {
+                                /*@cc_on
+                                /*@if (@_win32)
+                                th.setAttribute('colSpan',details.colspan);
+                                @else @*/
+                                th.setAttribute('colspan',details.colspan);
+                                /*@end
+                                @*/
+                        };
+                        /*@cc_on
+                        /*@if (@_win32)
+                        th.unselectable = "on";
+                        /*@end@*/
+                        return th;
+                };
+                
+                function createThAndButton(tr, obj) {
+                        for(var i = 0, details; details = obj[i]; i++) {
+                                var th = createTH(details);
+                                tr.appendChild(th);
+                                var but = document.createElement('span');
+                                but.className = details.className;
+                                but.id = o.id + details.id;
+                                but.appendChild(document.createTextNode(details.text));
+                                but.title = details.title || "";
+                                if(details.onmousedown) but.onmousedown = details.onmousedown;
+                                if(details.onclick)     but.onclick     = details.onclick;
+                                if(details.onmouseout)  but.onmouseout  = details.onmouseout;
+                                th.appendChild(but);
+                        };
+                };
+                
+                /*@cc_on
+                @if(@_jscript_version <= 5.6)
+                        if(!document.getElementById("iePopUpHack")) {
+                                o.iePopUp = document.createElement('iframe');
+                                o.iePopUp.src = "javascript:'<html></html>';";
+                                o.iePopUp.setAttribute('className','iehack');
+                                o.iePopUp.scrolling="no";
+                                o.iePopUp.frameBorder="0";
+                                o.iePopUp.name = o.iePopUp.id = "iePopUpHack";
+                                document.body.appendChild(o.iePopUp);
+                        } else {
+                                o.iePopUp = document.getElementById("iePopUpHack");
+                        };
+                @end
+                @*/
+                
+                if(typeof(fdLocale) == "object" && o.locale) {
+                        datePicker.titles  = fdLocale.titles;
+                        datePicker.months  = fdLocale.months;
+                        datePicker.fullDay = fdLocale.fullDay;
+                        // Optional parameters
+                        if(fdLocale.dayAbbr) datePicker.dayAbbr = fdLocale.dayAbbr;
+                        if(fdLocale.firstDayOfWeek) o.firstDayOfWeek = o.defaults.firstDayOfWeek = fdLocale.firstDayOfWeek;
+                };
+                
+                o.div = document.createElement('div');
+                o.div.style.zIndex = 9999;
+                o.div.id = "fd-"+o.id;
+                o.div.className = "datePicker";
+                
+                if(!o.staticPos) {
+                        document.getElementsByTagName('body')[0].appendChild(o.div);
+                } else {
+                        elem = o.getElem();
+                        if(!elem) {
+                                o.div = null;
+                                return;
+                        };
+                        o.div.className += " staticDP";
+                        o.div.setAttribute("tabIndex", "0");
+                        o.div.onfocus = o.events.onfocus;
+                        o.div.onblur  = o.events.onblur;
+                        elem.parentNode.insertBefore(o.div, elem.nextSibling);
+                        if(o.hideInput && elem.type && elem.type == "text") elem.setAttribute("type", "hidden");
+                };
+                
+                //var nbsp = String.fromCharCode( 160 );
+                var tr, row, col, tableHead, tableBody;
+
+                o.table = document.createElement('table');
+                o.div.appendChild( o.table );
+                
+                tableHead = document.createElement('thead');
+                o.table.appendChild( tableHead );
+                
+                tr  = document.createElement('tr');
+                tableHead.appendChild(tr);
+
+                // Title Bar
+                o.titleBar = createTH({thClassName:"date-picker-title", colspan:7});
+                tr.appendChild( o.titleBar );
+                tr = null;
+                
+                var span = document.createElement('span');
+                span.className = "month-display";
+                o.titleBar.appendChild(span);
+
+                span = document.createElement('span');
+                span.className = "year-display";
+                o.titleBar.appendChild(span);
+
+                span = null;
+                
+                tr  = document.createElement('tr');
+                tableHead.appendChild(tr);
+
+                createThAndButton(tr, [{className:"prev-but", id:"-prev-year-but", text:"\u00AB", title:datePicker.titles[2], onmousedown:function(e) { o.events.incDec(e,0,-1,0); }, onmouseout:o.events.clearTimer },{className:"prev-but", id:"-prev-month-but", text:"\u2039", title:datePicker.titles[0], onmousedown:function(e) { o.events.incDec(e,0,0,-1); }, onmouseout:o.events.clearTimer },{colspan:3, className:"today-but", id:"-today-but", text:datePicker.titles.length > 4 ? datePicker.titles[4] : "Today", onclick:o.events.gotoToday},{className:"next-but", id:"-next-month-but", text:"\u203A", title:datePicker.titles[1], onmousedown:function(e) { o.events.incDec(e,0,0,1); }, onmouseout:o.events.clearTimer },{className:"next-but", id:"-next-year-but", text:"\u00BB", title:datePicker.titles[3], onmousedown:function(e) { o.events.incDec(e,0,1,0); }, onmouseout:o.events.clearTimer }]);
+
+                tableBody = document.createElement('tbody');
+                o.table.appendChild( tableBody );
+
+                for(var rows = 0; rows < 7; rows++) {
+                        row = document.createElement('tr');
+
+                        if(rows != 0) tableBody.appendChild(row);
+                        else          tableHead.appendChild(row);
+                        
+                        for(var cols = 0; cols < 7; cols++) {
+                                col = (rows == 0) ? document.createElement('th') : document.createElement('td');
+
+                                row.appendChild(col);
+                                if(rows != 0) {
+                                        col.appendChild(document.createTextNode(o.nbsp));
+                                        col.onmouseover = o.events.onmouseover;
+                                        col.onclick = o.events.onclick;
+                                } else {
+                                        col.className = "date-picker-day-header";
+                                        col.scope = "col";
+                                };
+                                col = null;
+                        };
+                        row = null;
+                };
+
+                // Table headers
+                var but;
+                var ths = o.table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[2].getElementsByTagName('th');
+                for ( var y = 0; y < 7; y++ ) {
+                        if(y > 0) {
+                                but = document.createElement("span");
+                                but.className = "fd-day-header";
+                                but.onclick = ths[y].onclick = o.setFirstDayOfWeek;
+                                but.appendChild(document.createTextNode(o.nbsp));
+                                ths[y].appendChild(but);
+                                but = null;
+                        } else {
+                                ths[y].appendChild(document.createTextNode(o.nbsp));
+                        };
+                };
+                
+                o.ths = o.table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[2].getElementsByTagName('th');
+                o.trs = o.table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                o.updateTableHeaders();
+                
+                tableBody = tableHead = tr = createThAndButton = createTH = null;
+
+                if(o.low && o.high && (o.high - o.low < 7)) { o.equaliseDates(); };
+                
+                o.created = true;
+                
+                if(o.staticPos) {
+                        var yyN = document.getElementById(o.id);
+                        datePickerController.addEvent(yyN, "change", o.changeHandler);
+                        if(o.splitDate) {
+                                var mmN = document.getElementById(o.id+'-mm');
+                                var ddN = document.getElementById(o.id+'-dd');
+                                datePickerController.addEvent(mmN, "change", o.changeHandler);
+                                datePickerController.addEvent(ddN, "change", o.changeHandler);
+                        };
+                        
+                        o.show();
+                } else {
+                        o.createButton();
+                        o.resize();
+                        o.fade();
+                };
+        };
+        o.changeHandler = function() {
+                o.setDateFromInput();
+                o.updateTable();
+        };
+        o.setDateFromInput = function() {
+                function m2c(val) {
+                        return String(val).length < 2 ? "00".substring(0, 2 - String(val).length) + String(val) : val;
+                };
+
+                o.dateSet = null;
+                
+                var elem = o.getElem();
+                if(!elem) return;
+
+                if(!o.splitDate) {
+                        var date = datePickerController.dateFormat(elem.value, o.format.search(/m-d-y/i) != -1);
+                } else {
+                        var mmN = document.getElementById(o.id+'-mm');
+                        var ddN = document.getElementById(o.id+'-dd');
+                        var tm = parseInt(mmN.tagName.toLowerCase() == "input"  ? mmN.value  : mmN.options[mmN.selectedIndex].value, 10);
+                        var td = parseInt(ddN.tagName.toLowerCase() == "input"  ? ddN.value  : ddN.options[ddN.selectedIndex].value, 10);
+                        var ty = parseInt(elem.tagName.toLowerCase() == "input" ? elem.value : elem.options[elem.selectedIndex || 0].value, 10);
+                        var date = datePickerController.dateFormat(tm + "/" + td + "/" + ty, true);
+                };
+
+                var badDate = false;
+                if(!date) {
+                        badDate = true;
+                        date = String(new Date().getFullYear()) + m2c(new Date().getMonth()+1) + m2c(new Date().getDate());
+                };
+
+                var d,m,y;
+                y = Number(date.substr(0, 4));
+                m = Number(date.substr(4, 2)) - 1;
+                d = Number(date.substr(6, 2));
+
+                var dpm = datePicker.getDaysPerMonth(m, y);
+                if(d > dpm) d = dpm;
+
+                if(new Date(y, m, d) == 'Invalid Date' || new Date(y, m, d) == 'NaN') {
+                        badDate = true;
+                        o.date = new Date();
+                        o.date.setHours(5);
+                        return;
+                };
+
+                o.date = new Date(y, m, d);
+                o.date.setHours(5);
+
+                if(!badDate) o.dateSet = new Date(o.date);
+                m2c = null;
+        };
+        o.setSelectIndex = function(elem, indx) {
+                var len = elem.options.length;
+                indx = Number(indx);
+                for(var opt = 0; opt < len; opt++) {
+                        if(elem.options[opt].value == indx) {
+                                elem.selectedIndex = opt;
+                                return;
+                        };
+                };
+        },
+        o.returnFormattedDate = function() {
+
+                var elem = o.getElem();
+                if(!elem) return;
+                
+                var d                   = (o.date.getDate() < 10) ? "0" + o.date.getDate() : o.date.getDate();
+                var m                   = ((o.date.getMonth() + 1) < 10) ? "0" + (o.date.getMonth() + 1) : o.date.getMonth() + 1;
+                var yyyy                = o.date.getFullYear();
+                var disabledDates       = o.getDisabledDates(yyyy, m);
+                var weekDay             = ( o.date.getDay() + 6 ) % 7;
+
+                if(!(o.disableDays[weekDay] || String(yyyy)+m+d in disabledDates)) {
+
+                        if(o.splitDate) {
+                                var ddE = document.getElementById(o.id+"-dd");
+                                var mmE = document.getElementById(o.id+"-mm");
+
+                                if(ddE.tagName.toLowerCase() == "input") { ddE.value = d; }
+                                else { o.setSelectIndex(ddE, d); /*ddE.selectedIndex = d - 1;*/ };
+                                
+                                if(mmE.tagName.toLowerCase() == "input") { mmE.value = m; }
+                                else { o.setSelectIndex(mmE, m); /*mmE.selectedIndex = m - 1;*/ };
+                                
+                                if(elem.tagName.toLowerCase() == "input") elem.value = yyyy;
+                                else {
+                                        o.setSelectIndex(elem, yyyy); /*
+                                        for(var opt = 0; opt < elem.options.length; opt++) {
+                                                if(elem.options[opt].value == yyyy) {
+                                                        elem.selectedIndex = opt;
+                                                        break;
+                                                };
+                                        };
+                                        */
+                                };
+                        } else {
+                                elem.value = o.format.replace('y',yyyy).replace('m',m).replace('d',d).replace(/-/g,o.divider);
+                        };
+                        if(!elem.type || elem.type && elem.type != "hidden"){ elem.focus(); }
+                        if(o.staticPos) {
+                                o.dateSet = new Date( o.date );
+                                o.updateTable();
+                        };
+                        
+                        // Programmatically fire the onchange event
+                        if(document.createEvent) {
+                                var onchangeEvent = document.createEvent('HTMLEvents');
+                                onchangeEvent.initEvent('change', true, false);
+                                elem.dispatchEvent(onchangeEvent);
+                        } else if(document.createEventObject) {
+                                elem.fireEvent('onchange');
+                        };
+                };
+        };
+        o.disableTodayButton = function() {
+                var today = new Date();
+                document.getElementById(o.id + "-today-but").className = document.getElementById(o.id + "-today-but").className.replace("fd-disabled", "");
+                if(o.outOfRange(today) || (o.date.getDate() == today.getDate() && o.date.getMonth() == today.getMonth() && o.date.getFullYear() == today.getFullYear())) {
+                        document.getElementById(o.id + "-today-but").className += " fd-disabled";
+                        document.getElementById(o.id + "-today-but").onclick = null;
+                } else {
+                        document.getElementById(o.id + "-today-but").onclick = o.events.gotoToday;
+                };
+        };
+        o.updateTableHeaders = function() {
+                var d, but;
+                var ths = o.ths;
+                for ( var y = 0; y < 7; y++ ) {
+                        d = (o.firstDayOfWeek + y) % 7;
+                        ths[y].title = datePicker.fullDay[d];
+
+                        if(y > 0) {
+                                but = ths[y].getElementsByTagName("span")[0];
+                                but.removeChild(but.firstChild);
+                                but.appendChild(document.createTextNode(datePicker.dayAbbr ? datePicker.dayAbbr[d] : datePicker.fullDay[d].charAt(0)));
+                                but.title = datePicker.fullDay[d];
+                                but = null;
+                        } else {
+                                ths[y].removeChild(ths[y].firstChild);
+                                ths[y].appendChild(document.createTextNode(datePicker.dayAbbr ? datePicker.dayAbbr[d] : datePicker.fullDay[d].charAt(0)));
+                        };
+                };
+                o.updateTable();
+        };
+
+        o.updateTable = function(noCallback) {
+
+                if(o.timerSet) {
+                        var d = new Date(o.date);
+                        d.setDate( Math.min(d.getDate()+o.dayInc, datePicker.getDaysPerMonth(d.getMonth()+o.monthInc,d.getFullYear()+o.yearInc)) );
+                        d.setMonth( d.getMonth() + o.monthInc );
+                        d.setFullYear( d.getFullYear() + o.yearInc );
+                        o.date = d;
+                };
+                
+                if(!noCallback && "onupdate" in datePickerController && typeof(datePickerController.onupdate) == "function") datePickerController.onupdate(o);
+
+                o.outOfRange();
+                o.disableTodayButton();
+                
+                // Set the tmpDate to the second day of this month (to avoid daylight savings time madness on Windows)
+                var tmpDate = new Date( o.date.getFullYear(), o.date.getMonth(), 2 );
+                tmpDate.setHours(5);
+
+                var tdm = tmpDate.getMonth();
+                var tdy = tmpDate.getFullYear();
+
+                // Do the disableDates for this year and month
+                var disabledDates = o.getDisabledDates(o.date.getFullYear(), o.date.getMonth() + 1);
+
+                var today = new Date();
+
+                // Previous buttons out of range
+                var b = document.getElementById(o.id + "-prev-year-but");
+                b.className = b.className.replace("fd-disabled", "");
+                if(o.outOfRange(new Date((tdy - 1), Number(tdm), datePicker.getDaysPerMonth(Number(tdm), tdy-1)))) {
+                        b.className += " fd-disabled";
+                        if(o.yearInc == -1) o.stopTimer();
+                };
+
+                b = document.getElementById(o.id + "-prev-month-but")
+                b.className = b.className.replace("fd-disabled", "");
+                if(o.outOfRange(new Date(tdy, (Number(tdm) - 1), datePicker.getDaysPerMonth(Number(tdm)-1, tdy)))) {
+                        b.className += " fd-disabled";
+                        if(o.monthInc == -1)  o.stopTimer();
+                };
+
+                // Next buttons out of range
+                b= document.getElementById(o.id + "-next-year-but")
+                b.className = b.className.replace("fd-disabled", "");
+                if(o.outOfRange(new Date((tdy + 1), Number(tdm), 1))) {
+                        b.className += " fd-disabled";
+                        if(o.yearInc == 1)  o.stopTimer();
+                };
+
+                b = document.getElementById(o.id + "-next-month-but")
+                b.className = b.className.replace("fd-disabled", "");
+                if(o.outOfRange(new Date(tdy, Number(tdm) + 1, 1))) {
+                        b.className += " fd-disabled";
+                        if(o.monthInc == 1)  o.stopTimer();
+                };
+
+                b = null;
+                
+                var cd = o.date.getDate();
+                var cm = o.date.getMonth();
+                var cy = o.date.getFullYear();
+                
+                // Title Bar
+                var span = o.titleBar.getElementsByTagName("span");
+                while(span[0].firstChild) span[0].removeChild(span[0].firstChild);
+                while(span[1].firstChild) span[1].removeChild(span[1].firstChild);
+                span[0].appendChild(document.createTextNode(datePicker.months[cm] + o.nbsp));
+                span[1].appendChild(document.createTextNode(cy));
+
+                tmpDate.setDate( 1 );
+                        
+                var dt, cName, td, tds, i;
+                var weekDay = ( tmpDate.getDay() + 6 ) % 7;
+                var firstColIndex = (( (weekDay - o.firstDayOfWeek) + 7 ) % 7) - 1;
+                var dpm = datePicker.getDaysPerMonth(cm, cy);
+
+                var todayD = today.getDate();
+                var todayM = today.getMonth();
+                var todayY = today.getFullYear();
+                
+                var c = "class";
+                /*@cc_on
+                @if(@_win32)
+                c = "className";
+                @end
+                @*/
+
+                var stub = String(tdy) + (String(tdm+1).length < 2 ? "0" + (tdm+1) : tdm+1);
+                
+                for(var row = 0; row < 6; row++) {
+
+                        tds = o.trs[row].getElementsByTagName('td');
+
+                        for(var col = 0; col < 7; col++) {
+                        
+                                td = tds[col];
+                                td.removeChild(td.firstChild);
+
+                                td.setAttribute("id", "");
+                                td.setAttribute("title", "");
+
+                                i = (row * 7) + col;
+                        
+                                if(i > firstColIndex && i <= (firstColIndex + dpm)) {
+                                        dt = i - firstColIndex;
+
+                                        tmpDate.setDate(dt);
+                                        td.appendChild(document.createTextNode(dt));
+                                        
+                                        if(o.outOfRange(tmpDate)) {
+                                                td.setAttribute(c, "out-of-range");
+                                        } else {
+
+                                                cName = [];
+                                                weekDay = ( tmpDate.getDay() + 6 ) % 7;
+
+                                                if(dt == todayD && tdm == todayM && tdy == todayY) {
+                                                        cName.push("date-picker-today");
+                                                };
+
+                                                if(o.dateSet != null && o.dateSet.getDate() == dt && o.dateSet.getMonth() == tdm && o.dateSet.getFullYear() == tdy) {
+                                                        cName.push("date-picker-selected-date");
+                                                };
+                                                
+                                                if(o.disableDays[weekDay] || stub + String(dt < 10 ? "0" + dt : dt) in disabledDates) {
+                                                        cName.push("day-disabled");
+                                                } else if(o.highlightDays[weekDay]) {
+                                                        cName.push("date-picker-highlight");
+                                                };
+                                                
+                                                if(cd == dt) {
+                                                        td.setAttribute("id", o.id + "-date-picker-hover");
+                                                        cName.push("date-picker-hover");
+                                                };
+                                                
+                                                cName.push("dm-" + dt + '-' + (tdm + 1) + " " + " dmy-" + dt + '-' + (tdm + 1) + '-' + tdy);
+                                                td.setAttribute(c, cName.join(' '));
+                                                td.setAttribute("title", datePicker.months[cm] + o.nbsp + dt + "," + o.nbsp + cy);
+                                        };
+                                } else {
+                                        td.appendChild(document.createTextNode(o.nbsp));
+                                        td.setAttribute(c, "date-picker-unused");
+                                };
+                        };
+                };
+
+                if(o.timerSet) {
+                        o.timerInc = 50 + Math.round(((o.timerInc - 50) / 1.8));
+                        o.timer = window.setTimeout(o.updateTable, o.timerInc);
+                };
+        };
+        o.addKeyboardEvents = function() {
+                datePickerController.addEvent(document, "keypress", o.events.onkeydown);
+                /*@cc_on
+                @if(@_win32)
+                datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
+                datePickerController.addEvent(document, "keydown", o.events.onkeydown);
+                @end
+                @*/
+                if(window.devicePixelRatio) {
+                        datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
+                        datePickerController.addEvent(document, "keydown", o.events.onkeydown);
+                };
+        };
+        o.removeKeyboardEvents =function() {
+                datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
+                datePickerController.removeEvent(document, "keydown",  o.events.onkeydown);
+        };
+        o.show = function() {
+                var elem = o.getElem();
+                if(!elem || o.visible || elem.disabled) return;
+
+                o.reset();
+                o.setDateFromInput();
+                o.updateTable();
+                
+                if(!o.staticPos) o.resize();
+                
+                datePickerController.addEvent(o.staticPos ? o.table : document, "mousedown", o.events.onmousedown);
+
+                if(!o.staticPos) { o.addKeyboardEvents(); };
+                
+                o.opacityTo = o.noTransparency ? 99 : 90;
+                o.div.style.display = "block";
+                /*@cc_on
+                @if(@_jscript_version <= 5.6)
+                if(!o.staticPos) o.iePopUp.style.display = "block";
+                @end
+                @*/
+
+                o.fade();
+                o.visible = true;
+        };
+        o.hide = function() {
+                if(!o.visible) return;
+                o.stopTimer();
+                if(o.staticPos) return;
+                
+                datePickerController.removeEvent(document, "mousedown", o.events.onmousedown);
+                datePickerController.removeEvent(document, "mouseup",  o.events.clearTimer);
+                o.removeKeyboardEvents();
+                
+                /*@cc_on
+                @if(@_jscript_version <= 5.6)
+                o.iePopUp.style.display = "none";
+                @end
+                @*/
+                
+                o.opacityTo = 0;
+                o.fade();
+                o.visible = false;
+                var elem = o.getElem();
+                if(!elem.type || elem.type && elem.type != "hidden") { elem.focus(); };
+        };
+        o.destroy = function() {
+                // Cleanup for Internet Explorer
+                datePickerController.removeEvent(o.staticPos ? o.table : document, "mousedown", o.events.onmousedown);
+                datePickerController.removeEvent(document, "mouseup",   o.events.clearTimer);
+                o.removeKeyboardEvents();
+
+                if(o.staticPos) {
+                        var yyN = document.getElementById(o.id);
+                        datePickerController.removeEvent(yyN, "change", o.changeHandler);
+                        if(o.splitDate) {
+                                var mmN = document.getElementById(o.id+'-mm');
+                                var ddN = document.getElementById(o.id+'-dd');
+
+                                datePickerController.removeEvent(mmN, "change", o.changeHandler);
+                                datePickerController.removeEvent(ddN, "change", o.changeHandler);
+                        };
+                        o.div.onfocus = o.div.onblur = null;
+                };
+                
+                var ths = o.table.getElementsByTagName("th");
+                for(var i = 0, th; th = ths[i]; i++) {
+                        th.onmouseover = th.onmouseout = th.onmousedown = th.onclick = null;
+                };
+                
+                var tds = o.table.getElementsByTagName("td");
+                for(var i = 0, td; td = tds[i]; i++) {
+                        td.onmouseover = td.onclick = null;
+                };
+
+                var butts = o.table.getElementsByTagName("span");
+                for(var i = 0, butt; butt = butts[i]; i++) {
+                        butt.onmousedown = butt.onclick = butt.onkeypress = null;
+                };
+                
+                o.ths = o.trs = null;
+                
+                clearTimeout(o.fadeTimer);
+                clearTimeout(o.timer);
+                o.fadeTimer = o.timer = null;
+                
+                /*@cc_on
+                @if(@_jscript_version <= 5.6)
+                o.iePopUp = null;
+                @end
+                @*/
+                
+                if(!o.staticPos && document.getElementById(o.id.replace(/^fd-/, 'fd-but-'))) {
+                        var butt = document.getElementById(o.id.replace(/^fd-/, 'fd-but-'));
+                        butt.onclick = butt.onpress = null;
+                };
+                
+                if(o.div && o.div.parentNode) {
+                        o.div.parentNode.removeChild(o.div);
+                };
+                
+                o.titleBar = o.table = o.div = null;
+                o = null;
+        };
+        o.create();
+};
+
+datePickerController = function() {
+        var datePickers = {};
+        var uniqueId    = 0;
+        
+        var addEvent = function(obj, type, fn) {
+                if( obj.attachEvent ) {
+                        obj["e"+type+fn] = fn;
+                        obj[type+fn] = function(){obj["e"+type+fn]( window.event );};
+                        obj.attachEvent( "on"+type, obj[type+fn] );
+                } else {
+                        obj.addEventListener( type, fn, true );
+                };
+        };
+        var removeEvent = function(obj, type, fn) {
+                try {
+                        if( obj.detachEvent ) {
+                                obj.detachEvent( "on"+type, obj[type+fn] );
+                                obj[type+fn] = null;
+                        } else {
+                                obj.removeEventListener( type, fn, true );
+                        };
+                } catch(err) {};
+        };
+        var hideAll = function(exception) {
+                var dp;
+                for(dp in datePickers) {
+                        if(!datePickers[dp].created || datePickers[dp].staticPos) continue;
+                        if(exception && exception == datePickers[dp].id) { continue; };
+                        if(document.getElementById(datePickers[dp].id))  { datePickers[dp].hide(); };
+                };
+        };
+        var cleanUp = function() {
+                var dp;
+                for(dp in datePickers) {
+                        if(!document.getElementById(datePickers[dp].id)) {
+                                if(!datePickers[dp].created) continue;
+                                datePickers[dp].destroy();
+                                datePickers[dp] = null;
+                                delete datePickers[dp];
+                        };
+                };
+        };
+        var destroy = function() {
+                for(dp in datePickers) {
+                        if(!datePickers[dp].created) continue;
+                        datePickers[dp].destroy();
+                        datePickers[dp] = null;
+                        delete datePickers[dp];
+                };
+                datePickers = null;
+                /*@cc_on
+                @if(@_jscript_version <= 5.6)
+                        if(document.getElementById("iePopUpHack")) {
+                                document.body.removeChild(document.getElementById("iePopUpHack"));
+                        };
+                @end
+                @*/
+                datePicker.script = null;
+                removeEvent(window, 'load', datePickerController.create);
+                removeEvent(window, 'unload', datePickerController.destroy);
+        };
+        var dateFormat = function(dateIn, favourMDY) {
+                var dateTest = [
+                        { regExp:/^(0?[1-9]|[12][0-9]|3[01])([- \/.])(0?[1-9]|1[012])([- \/.])((\d\d)?\d\d)$/, d:1, m:3, y:5 },  // dmy
+                        { regExp:/^(0?[1-9]|1[012])([- \/.])(0?[1-9]|[12][0-9]|3[01])([- \/.])((\d\d)?\d\d)$/, d:3, m:1, y:5 },  // mdy
+                        { regExp:/^(\d\d\d\d)([- \/.])(0?[1-9]|1[012])([- \/.])(0?[1-9]|[12][0-9]|3[01])$/,    d:5, m:3, y:1 }   // ymd
+                        ];
+
+                var start;
+                var cnt = 0;
+                while(cnt < 3) {
+                        start = (cnt + (favourMDY ? 4 : 3)) % 3;
+                        if(dateIn.match(dateTest[start].regExp)) {
+                                res = dateIn.match(dateTest[start].regExp);
+                                y = res[dateTest[start].y];
+                                m = res[dateTest[start].m];
+                                d = res[dateTest[start].d];
+                                if(m.length == 1) m = "0" + m;
+                                if(d.length == 1) d = "0" + d;
+                                if(y.length != 4) y = (parseInt(y) < 50) ? '20' + y : '19' + y;
+                                return String(y)+m+d;
+                        };
+                        cnt++;
+                };
+                return 0;
+        };
+        var joinNodeLists = function() {
+                if(!arguments.length) { return []; }
+                var nodeList = [];
+                for (var i = 0; i < arguments.length; i++) {
+                        for (var j = 0, item; item = arguments[i][j]; j++) {
+                                nodeList[nodeList.length] = item;
+                        };
+                };
+                return nodeList;
+        };
+        var addDatePicker = function(inpId, options) {
+                if(!(inpId in datePickers)) {
+                        datePickers[inpId] = new datePicker(options);
+                };
+        };
+        var getDatePicker = function(inpId) {
+                if(!(inpId in datePickers)) { throw "No datePicker has been created for the form element with an id of '" + inpId.toString() + "'"; };
+                return datePickers[inpId];
+        };
+        var grepRangeLimits = function(sel) {
+                var range = [];
+                for(var i = 0; i < sel.options.length; i++) {
+                        if(sel.options[i].value.search(/^\d\d\d\d$/) == -1) { continue; };
+                        if(!range[0] || Number(sel.options[i].value) < range[0]) { range[0] = Number(sel.options[i].value); };
+                        if(!range[1] || Number(sel.options[i].value) > range[1]) { range[1] = Number(sel.options[i].value); };
+                };
+                return range;
+        };
+        var create = function(inp) {
+                if(!(typeof document.createElement != "undefined" && typeof document.documentElement != "undefined" && typeof document.documentElement.offsetWidth == "number")) return;
+
+                var inputs  = (inp && inp.tagName) ? [inp] : joinNodeLists(document.getElementsByTagName('input'), document.getElementsByTagName('select'));
+                var regExp1 = /disable-days-([1-7]){1,6}/g;             // the days to disable
+                var regExp2 = /no-transparency/g;                       // do not use transparency effects
+                var regExp3 = /highlight-days-([1-7]){1,7}/g;           // the days to highlight in red
+                var regExp4 = /range-low-(\d\d\d\d-\d\d-\d\d)/g;        // the lowest selectable date
+                var regExp5 = /range-high-(\d\d\d\d-\d\d-\d\d)/g;       // the highest selectable date
+                var regExp6 = /format-(d-m-y|m-d-y|y-m-d)/g;            // the input/output date format
+                var regExp7 = /divider-(dot|slash|space|dash)/g;        // the character used to divide the date
+                var regExp8 = /no-locale/g;                             // do not attempt to detect the browser language
+                var regExp9 = /no-fade/g;                               // always show the datepicker
+                var regExp10 = /hide-input/g;                           // hide the input
+                var regExp11 = /first-week-day-([1-7])/g;               // first day of the week
+                
+                for(var i=0, inp; inp = inputs[i]; i++) {
+                        if(inp.className && (inp.className.search(regExp6) != -1 || inp.className.search(/split-date/) != -1) && ((inp.tagName.toLowerCase() == "input" && (inp.type == "text" || inp.type == "hidden")) || inp.tagName.toLowerCase() == "select")) {
+
+                                if(inp.id && document.getElementById('fd-'+inp.id)) { continue; };
+                                
+                                if(!inp.id) { inp.id = "fdDatePicker-" + uniqueId++; };
+                                
+                                var options = {
+                                        id:inp.id,
+                                        low:"",
+                                        high:"",
+                                        divider:"/",
+                                        format:"d-m-y",
+                                        highlightDays:[0,0,0,0,0,1,1],
+                                        disableDays:[0,0,0,0,0,0,0],
+                                        locale:inp.className.search(regExp8) == -1,
+                                        splitDate:0,
+                                        noTransparency:inp.className.search(regExp2) != -1,
+                                        staticPos:inp.className.search(regExp9) != -1,
+                                        hideInput:inp.className.search(regExp10) != -1,
+                                        firstDayOfWeek:0
+                                };
+
+                                if(!options.staticPos) {
+                                        options.hideInput = false;
+                                } else {
+                                        options.noTransparency = true;
+                                };
+                                
+                                // Split the date into three parts ?
+                                if(inp.className.search(/split-date/) != -1) {
+                                        if(document.getElementById(inp.id+'-dd') && document.getElementById(inp.id+'-mm') && document.getElementById(inp.id+'-dd').tagName.search(/input|select/i) != -1 && document.getElementById(inp.id+'-mm').tagName.search(/input|select/i) != -1) {
+                                                options.splitDate = 1;
+                                        };
+                                };
+                                
+                                // Date format(variations of d-m-y)
+                                if(inp.className.search(regExp6) != -1) {
+                                        options.format = inp.className.match(regExp6)[0].replace('format-','');
+                                };
+                                
+                                // What divider to use, a "/", "-", "." or " "
+                                if(inp.className.search(regExp7) != -1) {
+                                        var dividers = { dot:".", space:" ", dash:"-", slash:"/" };
+                                        options.divider = (inp.className.search(regExp7) != -1 && inp.className.match(regExp7)[0].replace('divider-','') in dividers) ? dividers[inp.className.match(regExp7)[0].replace('divider-','')] : "/";
+                                };
+
+                                // The days to highlight
+                                if(inp.className.search(regExp3) != -1) {
+                                        var tmp = inp.className.match(regExp3)[0].replace(/highlight-days-/, '');
+                                        options.highlightDays = [0,0,0,0,0,0,0];
+                                        for(var j = 0; j < tmp.length; j++) {
+                                                options.highlightDays[tmp.charAt(j) - 1] = 1;
+                                        };
+                                };
+
+                                // The days to disable
+                                if(inp.className.search(regExp1) != -1) {
+                                        var tmp = inp.className.match(regExp1)[0].replace(/disable-days-/, '');
+                                        options.disableDays = [0,0,0,0,0,0,0];
+                                        for(var j = 0; j < tmp.length; j++) {
+                                                options.disableDays[tmp.charAt(j) - 1] = 1;
+                                        };
+                                };
+
+                                // First day of week
+                                if(inp.className.search(regExp11) != -1) {
+                                        var tmp = inp.className.match(regExp11)[0].replace(/first-week-day-/, '');
+                                        options.firstDayOfWeek = parseInt(tmp);
+                                };
+
+
+                                // The lower limit
+                                if(inp.className.search(/range-low-today/i) != -1) {
+                                        options.low = datePickerController.dateFormat((new Date().getMonth() + 1) + "/" + new Date().getDate() + "/" + new Date().getFullYear(), true);
+                                } else if(inp.className.search(regExp4) != -1) {
+                                        options.low = datePickerController.dateFormat(inp.className.match(regExp4)[0].replace(/range-low-/, ''), false);
+                                        if(!options.low) {
+                                                options.low = '';
+                                        };
+                                };
+
+                                // The higher limit
+                                if(inp.className.search(/range-high-today/i) != -1 && inp.className.search(/range-low-today/i) == -1) {
+                                        options.high = datePickerController.dateFormat((new Date().getMonth() + 1) + "/" + new Date().getDate() + "/" + new Date().getFullYear(), true);
+                                } else if(inp.className.search(regExp5) != -1) {
+                                        options.high = datePickerController.dateFormat(inp.className.match(regExp5)[0].replace(/range-high-/, ''), false);
+                                        if(!options.high) {
+                                                options.high = '';
+                                        };
+                                };
+
+                                // Always round lower & higher limits if a selectList involved
+                                if(inp.tagName.search(/select/i) != -1) {
+                                        var range = grepRangeLimits(inp);
+                                        options.low  = options.low  ? range[0] + String(options.low).substr(4,4)  : datePickerController.dateFormat(range[0] + "/01/01");
+                                        options.high = options.high ? range[1] + String(options.low).substr(4,4)  : datePickerController.dateFormat(range[1] + "/12/31");
+                                };
+
+                                addDatePicker(inp.id, options);
+                        };
+                };
+        }
+        
+        return {
+                addEvent:addEvent,
+                removeEvent:removeEvent,
+                create:create,
+                destroy:destroy,
+                cleanUp:cleanUp,
+                addDatePicker:addDatePicker,
+                getDatePicker:getDatePicker,
+                dateFormat:dateFormat,
+                datePickers:datePickers,
+                hideAll:hideAll
+        };
+}();
+
+})();
+
+datePickerController.addEvent(window, 'load', datePickerController.create);
+datePickerController.addEvent(window, 'unload', datePickerController.destroy);

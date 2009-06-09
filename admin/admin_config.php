@@ -97,7 +97,8 @@ else
                             "copyright"=>true,
                             "disclaimer"=>true,
                             "allowemails"=>true,
-			    "defaultview" => true);
+                            "defaultview" => true,
+                            "startday" => true);
                             
     $submit = $_POST['Submit'];
     $new = array();

@@ -51,7 +51,7 @@ if ($cat != "" || $action != "")
     {
         case "album" :
             $pagenum = 2;
-	    $scriptList['slimbox'] = 1;
+            $scriptList['slimbox'] = 1;
             if ($_POST['Submit'] == "Update")
             {
                 $group = safesql($_POST['group'], "int");
@@ -494,7 +494,6 @@ if ($cat != "" || $action != "")
             elseif ($action == "adddownload")
             {
                 $download = safesql($_POST['download'], "int");
-                echo $download;
                 $permissions = safesql($_POST['permissions'], "int");
                 
                 if ($download != 0)
