@@ -34,7 +34,6 @@ $number_photos = 0;
 if (!$inarticle) {$albumid = 0;}
 $album_name = '';
 $limit = $config['numpage'];
-if ($limit == 0) $limit = 6;
 $where =  $config['photopath'] . "/";
 $number_of_photos = 0;
 $ppatrol = isset($_GET['patrol']) ? $_GET['patrol'] : "";
@@ -165,15 +164,16 @@ $ppatrol = isset($_GET['patrol']) ? $_GET['patrol'] : "";
         //then get photo file names and captions from database
         $photosql = $data->select_query("photos", "WHERE album_id = $albumid AND allowed = 1 ORDER BY date ASC");
         $number_of_photos = $data->num_rows($photosql);
-        $pagelimit = ($number_of_photos-$start) <= $limit ? ($number_of_photos-$start) : $limit ;
-        if (!$inarticle) 
+        $limit = $config['pagephoto'] == 1 ? $limit : $number_of_photos;
+        $pagelimit = ($number_of_photos-$start) <= $limit ? ($number_of_photos-$start) : $limit;
+        if (!$inarticle && $config['pagephoto'] == 1) 
         {
             $photosql = $data->select_query("photos", "WHERE album_id = $albumid AND allowed = 1 ORDER BY date ASC LIMIT $start, $pagelimit");
         }
     }
     
     //Pagenation working out
-    if (!$inarticle)
+    if (!$inarticle && $config['pagephoto'] == 1)
     { 
         if ($number_of_photos > 0) 
         {

@@ -31,24 +31,26 @@ $scriptIncludes = array();
 $cssIncludes = array();
 $domReady = array();
 
-$tinyMCEGzip ['advanced'] = "tinyMCE_GZ.init({
-  plugins : \"table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,style\",
-	languages : 'en',
+$tinyMCEGzip ['advanced'] = 'tinyMCE_GZ.init({
+  plugins : "layer,spellchecker,media,emotions,table,advhr,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,style,inlinepopups",
+  themes : "advanced",
+	languages : "en",
 	disk_cache : true,
 	debug : false
-});";
-$tinyMCEGzip ['advanced'] = "";
+});';
+
 $tinyMCE['advanced'] = 'tinyMCE.init
     ({
         mode : "exact",
         elements: "story",
         theme : "advanced",
-  plugins : "table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,style",
+        languages : "en",
+        plugins : "emotions,table,advhr,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,style",
         theme_advanced_buttons1_add : "fontselect,fontsizeselect,styleprops,separator,spellchecker",
         theme_advanced_buttons2_add : "separator,insertdate,inserttime,media,separator,forecolor,backcolor",
         theme_advanced_buttons2_add_before: "cut,copy,paste,pastetext,pasteword,separator,search,replace,separator",
         theme_advanced_buttons3_add_before : "tablecontrols,separator",
-        theme_advanced_buttons3_add : "emotions,advhr,separator,print,separator,ltr,rtl,separator,fullscreen,separator,insertlayer",
+        theme_advanced_buttons3_add : "emotions,advhr,separator,print,separator,fullscreen,separator,insertlayer",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
@@ -70,8 +72,6 @@ $tinyMCEGzip ['simple'] = "tinyMCE_GZ.init({
 	disk_cache : true,
 	debug : false
 });";  
-$tinyMCEGzip ['simple'] = "";
-
 
 $tinyMCE['simple'] = 'tinyMCE.init({
 		mode : "exact",
@@ -95,13 +95,13 @@ $tinyMCE['simple'] = 'tinyMCE.init({
        doctype : "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">"
 	});';
     
+$scriptIncludes['tinymce'] = 'tiny_mce/tiny_mce_gzip.js';
 $scriptIncludes['mootools'] = 'scripts/mootools.js';
 $scriptIncludes['gallery'] = 'scripts/jd.gallery.js';
 $scriptIncludes['datepicker'] = 'scripts/datepicker.js';
 $scriptIncludes['mooRainbow'] = 'scripts/mooRainbow.js';
 $scriptIncludes['mootabs'] = 'scripts/SimpleTabs.js';
 $scriptIncludes['slimbox'] = 'scripts/slimbox.js';
-$scriptIncludes['tinymce'] = 'tiny_mce/tiny_mce.js';
 
 $cssIncludes['gallery'] = 'jd.gallery.css';
 $cssIncludes['datepicker'] = 'datepicker.css';

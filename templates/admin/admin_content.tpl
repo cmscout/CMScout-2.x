@@ -48,7 +48,7 @@
     <input name="gaccess" id="gaccess:no" type="radio" value="0"  /><label for="gaccess:no">No</label></div><br />
 
 </div>
-      <textarea id="editor" name="editor" style="width:100%; height:50em" class="inputbox"></textarea>
+      <textarea id="editor" name="editor" style="width:100%; height:500px" class="inputbox"></textarea>
 	  
     <div class="submitWrapper"> 
         <input type="submit" name="Submit" value="Submit" class="button" />
@@ -72,7 +72,7 @@
       <label for="fname" class="label">Friendly Name<span class="hintanchor" title="General name for the page."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
       <div class="inputboxwrapper">{if $editallowed}<input name="fname" type="text" id="fname" class="inputbox" onblur="checkElement('fname', 'text', true, 0, 0, '');" value="{$contents.friendly}" /><br /><span class="fieldError" id="fnameError">Required</span>{else}{$contents.friendly}{/if}</div><br />
     </div>
-      {if $editallowed}<textarea id="editor" name="editor" style="width:100%; height:50em" class="inputbox">{$Showcontent}</textarea>{else}{$Showcontent}{/if}
+      {if $editallowed}<textarea id="editor" name="editor" style="width:100%; height:500px" class="inputbox">{$Showcontent}</textarea>{else}{$Showcontent}{/if}
 	  
     {if $editallowed}<div class="submitWrapper"> 
         <input type="submit" name="Submit" value="Submit" class="button" />

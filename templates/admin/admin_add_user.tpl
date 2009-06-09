@@ -7,19 +7,17 @@
 <fieldset>
 <legend>Website Access</legend>
 <label for="usernames" class="label">Username<span class="hintanchor"title="Required :: Username for the user"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-<div class="inputboxwrapper">{if !$limitgroup}<input name="usernames" id="usernames" type="text" size="40" value="{$post.usernames}" class="inputbox" onblur="checkElement('usernames', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="usernamesError">Required</span>{else}{$post.uname}{/if}</div><br />
+<div class="inputboxwrapper"><input name="usernames" id="usernames" type="text" size="40" value="{$post.usernames}" class="inputbox" onblur="checkElement('usernames', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="usernamesError">Required</span></div><br />
     
-{if !$limitgroup}
  <label for="passwords" class="label">Password<span class="hintanchor"title="Password for the user, must be longer then 6 characters"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><input name="passwords" id="passwords" type="text" size="40" class="inputbox" value="{$post.passwords}" onblur="checkElement('passwords', 'text', true, 6, 0, '');" /><br /><span class="fieldError" id="passwordsError">Required: Must be longer then 6 characters</span></div><br />
-{/if}
     
 <label for="status" class="label">Status<span class="hintanchor"title="If a user's status is set to inactive the user will not be able to login."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-<div class="inputboxwrapper">{if !$limitgroup}<select name="status" id="status" class="inputbox">
+<div class="inputboxwrapper"><select name="status" id="status" class="inputbox">
 <option value="1" {if $post.status == 1}selected{/if}>Active</option>
 <option value="0" {if $post.status == 0}selected{/if}>Inactive</option>
 <option value="-1" {if $post.status == -1}selected{/if}>Block</option>
-</select>{else}{if $post.status == 1}Active{else}Inactive{/if}{/if}</div><br />
+</select></div><br />
     
 <label for="zone" class="label">Timezone<span class="hintanchor"title="The users timezone."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><select name="zone" id="zone" class="inputbox">

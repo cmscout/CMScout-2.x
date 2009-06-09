@@ -135,7 +135,16 @@ if ($content == '' || !isset($content))
 }
 elseif ($sitecontent == "" && file_exists($content . $phpex)) 
 {
-    include($content . $phpex);
+    if (get_auth($content, 0) == 1)
+    {
+        include($content . $phpex);
+    }
+    else
+    {
+        $dataC = true;
+        $dbpage = false;
+        show_message("You do not have the required permissions to view that page", "index.php?page=patrolpages&patrol=$patrolid&menuid=$menuid");
+    }
 }
 else
 {

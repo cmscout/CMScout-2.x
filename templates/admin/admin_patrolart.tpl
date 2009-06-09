@@ -218,7 +218,7 @@ function getAlbumData()
 <label for="summary" class="label"><b>Short summary</b><span class="hintanchor" title="Optional :: A short summary of the article."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><textarea id="summary" name="summary" rows="20" class="inputbox">{$row.summary}</textarea></div><br />
 </div>
-<textarea id="editor" name="editor" style="width:100%; height:50em" class="inputbox">{$row.detail}</textarea>	
+<textarea id="editor" name="editor" style="width:100%; height:500px" class="inputbox">{$row.detail}</textarea>	
 <div class="submitWrapper">
 <input type="submit" name="Submit" value="Submit" class="button" />
 <input name="Cancel" type="button" id="Cancel" value="Cancel" onclick="window.location = '{$pagename}';" class="button" />

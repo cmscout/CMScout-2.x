@@ -204,6 +204,10 @@
     <div class="inputboxwrapper">{if $editallowed}<input type="radio" name="albumdisplay" id="albumdisplay:yes" value="1" {if $configs.albumdisplay == 1}checked="checked"{/if} /><label for="albumdisplay:yes">Yes</label>
     <input name="albumdisplay" id="albumdisplay:no" type="radio" value="0" {if $configs.albumdisplay == 0}checked="checked"{/if} /><label for="albumdisplay:no">No</label>{else}{if $configs.albumdisplay}Yes{else}No{/if}{/if}</div></div><br />
 
+    <div class="fieldItem"><span class="label">Pagenate photo albums<span class="hintanchor" title="Should photo albums be split into pages. The number of photos on a page is set with the Items per page option below."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></span>
+    <div class="inputboxwrapper">{if $editallowed}<input type="radio" name="pagephoto" id="pagephoto:yes" value="1" {if $configs.pagephoto == 1}checked="checked"{/if} /><label for="pagephoto:yes">Yes</label>
+    <input name="pagephoto" id="pagephoto:no" type="radio" value="0" {if $configs.pagephoto == 0}checked="checked"{/if} /><label for="pagephoto:no">No</label>{else}{if $configs.pagephoto}Yes{else}No{/if}{/if}</div></div><br />
+
     <div class="fieldItem"><label for="numsidebox" class="label">Items on sideboxes<span class="hintanchor" title="Number of items to show in sideboxes. Default value is 5"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper">{if $editallowed}<input type="text" name="numsidebox" id="numsidebox" value="{$configs.numsidebox}" class="inputbox" onblur="checkElement('numsidebox', 'number', true, 0, 0, '');" /><br /><span class="fieldError" id="numsideboxError">Required: Must be a number.</span>{else}{$configs.numsidebox}{/if}</div></div><br />
     

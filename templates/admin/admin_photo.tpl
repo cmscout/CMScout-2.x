@@ -107,6 +107,53 @@ function add()
     document.getElementById('albumedit').style.display = 'none';
     document.getElementById('editphoto').style.display='none';
 }
+
+ function changeoptions(type)
+ {
+    var numoptions = document.getElementById('numoptions').value;
+    var optiondiv = document.getElementById('photouploads');
+    var temp = '';
+    var html = '';
+    for(var i=1;i<=numoptions;i++)
+    {
+        temp = ''; 
+        if (document.getElementById('filename[' + i + ']')) 
+        {
+            temp = document.getElementById('filename[' + i + ']').value; 
+            temp2 = document.getElementById('caption[' + i + ']').value; 
+        }
+        {/literal}
+        html = html + '<h3>Photo ' + i + '</h3><div class="fieldItem"><label for="filename" class="label">Photograph<span class="hintanchor" title="Select the photo file."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label><div class="inputboxwrapper"><input id="filename[' + i + ']" name="filename[' + i + ']" type="file" size="50" maxlength="255" class="inputbox" /></div></div><br /><div class="fieldItem"><label for="caption" class="label">Caption<span class="hintanchor" title="Caption for the photo."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label><div class="inputboxwrapper"><input id="caption[' + i + ']" name="caption[' + i + ']" type="text" size="50" maxlength="255" class="inputbox" /></div></div><br />';
+        {literal}
+    }
+    optiondiv.innerHTML = '';
+    optiondiv.innerHTML = html;
+ }
+ 
+ function addone(type)
+ {
+    document.getElementById('numoptions').value++;
+    if (document.getElementById('numoptions').value > 10)
+    {
+        document.getElementById('numoptions').value = 10;
+    }
+    changeoptions(type);
+ }
+ 
+ function takeone(type)
+ {
+    var value = document.getElementById('numoptions').value;
+    
+    if (--value == 0)
+    {
+        document.getElementById('numoptions').value = 1;
+    }
+    else
+    {
+        document.getElementById('numoptions').value--;
+    }
+    changeoptions(type);
+ }
 //-->
 </script>
 {/literal}
@@ -114,7 +161,7 @@ function add()
 {include file="../scripts/validator.tpl"}
 </script>
 	<h3>{$albuminfo.album_name}</h3>
-<div align="center"><a href="#" onclick="update();">Edit Album</a>&nbsp;|&nbsp;<a href="#" onclick="add();">Add Photo</a></div>
+<div align="center"><a href="#" onclick="update();">Edit Album</a>&nbsp;|&nbsp;<a href="#" onclick="add();">Add Photos</a></div>
 <div id="albumedit" class="field" style="display:none;">
 <form action="{$editFormAction}" method="post" name="form2" onsubmit="return checkForm([['name','text',true,0,0,'']]);">
 <fieldset>
@@ -140,14 +187,19 @@ function add()
 <div id="photoupload" class="field" style="display:none;">
 <form action="{$editFormAction}" method="post" enctype="multipart/form-data" name="form3">
 <fieldset>
-<legend>Upload Photo</legend>
-<label for="filename" class="label">Filename<span class="hintanchor" title="Select the photo file."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-<div class="inputboxwrapper"><input id="filename" name="filename" type="file" size="50" maxlength="255" class="inputbox" /></div><br />
+<legend>Upload Photos</legend>
+<div class="fieldItem"><label for="numoptions" class="label">Number of photos to upload</label><div class="inputboxwrapper"><input type="text" size="10" class="inputbox" name="numoptions" id="numoptions"  onchange="changeoptions({$item.type})" value="1" style="width:70%"/><a href="#" onclick="takeone({$item.type});"><img src="{$tempdir}admin/images/small_arrow_delete.png" title="[-]" border="0"/></a><a href="#" onclick="addone({$item.type});"><img src="{$tempdir}admin/images/small_arrow_add.png" title="[+]" border="0"/></a></div></div><br />
+<div id="photouploads">
+<h3>Photo 1</h3>
+<div class="fieldItem"><label for="filename" class="label">Photograph<span class="hintanchor" title="Select the photo file."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="inputboxwrapper"><input id="filename[1]" name="filename[1]" type="file" size="50" maxlength="255" class="inputbox" /></div></div><br />
 
-<label for="caption" class="label">Caption<span class="hintanchor" title="Caption for the photo."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-<div class="inputboxwrapper"><input id="caption" name="caption" type="text" size="50" maxlength="255" class="inputbox" /></div><br />
+<div class="fieldItem"><label for="caption" class="label">Caption<span class="hintanchor" title="Caption for the photo."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="inputboxwrapper"><input id="caption[1]" name="caption[1]" type="text" size="50" maxlength="255" class="inputbox" /></div></div><br />
+</div>
+
 <div class="submitWrapper">
- <input type="submit" name="Submit" value="Upload Photo" class="button" />
+ <input type="submit" name="Submit" value="Upload Photos" class="button" />
  <input type="reset" name="Submit2" value="Cancel" onclick="document.getElementById('photoupload').style.display='none';" class="button" />
 </div>
 </fieldset>
@@ -157,7 +209,7 @@ function add()
 <form action="{$editFormAction}" method="post" enctype="multipart/form-data" name="form1">
 <fieldset>
 <legend>Edit Photo</legend>
-<span class="label">Existing Photo<span class="hintanchor" title="Preview of the current photo"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></span><div id="photopreview" class="inputboxwrapper"></div>
+<span class="label">Existing Photo<span class="hintanchor" title="Preview of the current photo"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></span><div id="photopreview" class="inputboxwrapper"></div><br />
 <label for="editfilename" class="label">New File<span class="hintanchor" title="Select a new photo here. Leave blank if you do not wish to change the photo."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><input id="editfilename" name="editfilename" type="file" size="50" maxlength="255" class="inputbox" /></div><br />
 

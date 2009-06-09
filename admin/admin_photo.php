@@ -106,7 +106,7 @@ else
 
         if ($action == "view") 
         {
-	   $scriptList['slimbox'] = 1;
+            $scriptList['slimbox'] = 1;
             $id = safesql($_GET['id'], "int");
             $query = $data->select_query("album_track", "WHERE id = $id AND trash=0");
             $albuminfo = $data->fetch_array($query);
@@ -133,7 +133,6 @@ else
             $tpl->assign("albuminfo", $albuminfo);
             $tpl->assign('id', $id);
             $tpl->assign("photopath", $config["photopath"] . "/");
-           
             
             if ($_POST['Submit'] == "Update")
             {
@@ -142,31 +141,34 @@ else
                 $data->update_query("album_track", "album_name=$name, patrol=$group", "ID = $id");
                 show_admin_message("Album updated", "$pagename&action=view&id=$id"); 
             }
-            elseif($_POST['Submit'] == "Upload Photo")
+            elseif($_POST['Submit'] == "Upload Photos")
             {
-                if ($_FILES['filename']['name'] == '')
+                $number_added = 0;
+                for ($i = 1;$i<=$_POST['numoptions'];$i++)
                 {
-                    show_message("You need to select a file to upload", "$pagename&action=view&id={$id}");
-                    exit;
-                }
-                if (($_FILES['filename']['type'] == 'image/gif') || ($_FILES['filename']['type'] == 'image/jpeg') || ($_FILES['filename']['type'] == 'image/png') || ($_FILES['filename']['type'] == 'image/pjpeg')) 
-                {
-                    $filestuff = uploadpic($_FILES['filename'], $config['photox'], $config['photoy'], true);
-                    $filename = $filestuff['filename'];
-                    $desc = $_POST['caption'];
-                    $insert = sprintf("NULL, %s, %s, %s, $timestamp, 1",
-                                        safesql($filename, "text"),
-                                        safesql($desc, "text"),
-                                        safesql($id, "int"));
+                    if ($_FILES['filename']['name'][$i] == '' && ($_FILES['filename']['type'][$i] == 'image/gif') || ($_FILES['filename']['type'][$i] == 'image/jpeg') || ($_FILES['filename']['type'][$i] == 'image/png') || ($_FILES['filename']['type'][$i] == 'image/pjpeg')) 
+                    {
+                        $fileinfo['name'] = $_FILES['filename']['name'][$i];
+                        $fileinfo['type'] = $_FILES['filename']['type'][$i];
+                        $fileinfo['tmp_name'] = $_FILES['filename']['tmp_name'][$i];
+                        $fileinfo['error'] = $_FILES['filename']['error'][$i];
+                        $fileinfo['size'] = $_FILES['filename']['size'][$i];
+                        $filestuff = uploadpic($fileinfo, $config['photox'], $config['photoy'], true);
+                        $filename = $filestuff['filename'];
+                        $desc = $_POST['caption'][$i];
+                        $insert = sprintf("NULL, %s, %s, %s, $timestamp, 1",
+                                            safesql($filename, "text"),
+                                            safesql($desc, "text"),
+                                            safesql($id, "int"));
 
-                    $data->insert_query("photos", $insert, "", "", false);
-                    
-                    show_admin_message("Photo added", "$pagename&action=view&id=$id"); 
-                } 
-                else
-                {
-                    show_message("Sorry, we only accept .gif, .jpg, .jpeg or .png images.<br />And the file that you wish to upload is a {$_FILES['filename']['type']}", "$pagename&action=view&id={$id}");
+                        if ($data->insert_query("photos", $insert, "", "", false))
+                        {
+                            $number_added++;
+                        }
+                        
+                    } 
                 }
+                show_admin_message("$number_added photos added", "$pagename&action=view&id=$id"); 
             }
             elseif ($_POST['Submit'] == "Update Photo") 
             {

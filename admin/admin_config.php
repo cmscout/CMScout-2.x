@@ -98,7 +98,8 @@ else
                             "disclaimer"=>true,
                             "allowemails"=>true,
                             "defaultview" => true,
-                            "startday" => true);
+                            "startday" => true,
+                            "pagephoto" => true);
                             
     $submit = $_POST['Submit'];
     $new = array();

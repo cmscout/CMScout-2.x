@@ -59,7 +59,7 @@ function insertHTML(html) {
     <div class="inputboxwrapper"><input name="public" type="radio" id="public" id="puplic:yes" value="1" checked="checked" /><label for="public:yes">Yes</label>&nbsp;<input name="public" type="radio" id="public" value="0"  id="puplic:no"/><label for="public:no">No</label></div><br />
     
     </div>
-      <textarea id="editor" name="editor" style="width:100%;height:50em" class="inputbox"></textarea><br />
+      <textarea id="editor" name="editor" style="width:100%;height:500px" class="inputbox"></textarea><br />
       <div style="width:100%"><div style="font-weight:bold;text-align:center;font-size:big;">CMScout Tags</div>
 <div class="field" style="border:1px dashed #000">
 <div style="font-weight:bold;text-align:left;font-size:big;">Number of:</div>
@@ -104,7 +104,7 @@ function insertHTML(html) {
     <div class="inputboxwrapper"><input name="public" type="radio" id="public" id="puplic:yes" value="1" {if $item.special == 1}checked="checked"{/if} /><label for="public:yes">Yes</label>&nbsp;<input name="public" type="radio" id="public" value="0"  id="puplic:no" {if $item.special == 0}checked="checked"{/if}/><label for="public:no">No</label></div><br />
     </div>
       {if $editallowed}
-      <textarea id="editor" name="editor" style="width:100%;height:50em" class="inputbox">{$item.content}</textarea><br />
+      <textarea id="editor" name="editor" style="width:100%;height:500px" class="inputbox">{$item.content}</textarea><br />
       <div style="width:100%"><div style="font-weight:bold;text-align:center;font-size:big;">CMScout Tags</div>
 <div class="field" style="border:1px dashed #000">
 <div style="font-weight:bold;text-align:center;font-size:big;">Number of:</div>

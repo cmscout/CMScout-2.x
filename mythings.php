@@ -79,44 +79,56 @@ if ($cat != "" || $action != "")
             $tpl->assign("photos", $photos);
             $tpl->assign("photopath", $config["photopath"] . "/");
             
-            if($_POST['Submit'] == "Upload Photo")
+            if($_POST['Submit'] == "Upload Photos")
             {
-                if ($_FILES['filename']['name'] == '')
+                $number_added = 0;
+                for ($i = 1;$i<=$_POST['numoptions'];$i++)
                 {
-                    show_message("You need to select a file to upload", "index.php?page=mythings&cat=album&action=edit&id={$id}&menuid={$menuid}");
-                    exit;
+                    if ($_FILES['filename']['name'][$i] == '' && ($_FILES['filename']['type'][$i] == 'image/gif') || ($_FILES['filename']['type'][$i] == 'image/jpeg') || ($_FILES['filename']['type'][$i] == 'image/png') || ($_FILES['filename']['type'][$i] == 'image/pjpeg')) 
+                    {
+                        $fileinfo['name'] = $_FILES['filename']['name'][$i];
+                        $fileinfo['type'] = $_FILES['filename']['type'][$i];
+                        $fileinfo['tmp_name'] = $_FILES['filename']['tmp_name'][$i];
+                        $fileinfo['error'] = $_FILES['filename']['error'][$i];
+                        $fileinfo['size'] = $_FILES['filename']['size'][$i];
+                        $filestuff = uploadpic($fileinfo, $config['photox'], $config['photoy'], true);
+                        $filename = $filestuff['filename'];
+                        $desc = $_POST['caption'][$i];
+                        $insert = sprintf("NULL, %s, %s, %s, $timestamp",
+                                            safesql($filename, "text"),
+                                            safesql($desc, "text"),
+                                            safesql($id, "int"));
+            
+                        if(confirm('photo') == 1 && $album['allowed'] == 1)
+                        {
+                            $insert .= ", 0";
+                        }
+                        else
+                        {
+                            $insert .= ", 1";
+                        }
+
+                        if ($data->insert_query("photos", $insert, "", "", false))
+                        {
+                            $number_added++;
+                        }
+                        
+                        if(confirm('photo') == 1 && $album['allowed'] == 1)
+                        {
+                            $extrabit = "Your photos first need to be reviewed by an administrator before they will be visible on the website.";
+                        }
+                    } 
                 }
-                if (($_FILES['filename']['type'] == 'image/gif') || ($_FILES['filename']['type'] == 'image/jpeg') || ($_FILES['filename']['type'] == 'image/png') || ($_FILES['filename']['type'] == 'image/pjpeg')) 
+                
+                if ($extrabit)
                 {
-                    $filestuff = uploadpic($_FILES['filename'], $config['photox'], $config['photoy'], true);
-                    $filename = $filestuff['filename'];
-                    $desc = $_POST['caption'];
-                    $album = $data->fetch_array($data->select_query("album_track", "WHERE ID=$id"));
-                    $insert = sprintf("NULL, %s, %s, %s, $timestamp",
-                                        safesql($filename, "text"),
-                                        safesql($desc, "text"),
-                                        safesql($id, "int"));
-                    if(confirm('photo') == 1 && $album['allowed'] == 1)
-                    {
-                        $insert .= ", 0";
-                    }
-                    else
-                    {
-                        $insert .= ", 1";
-                    }
-                    $data->insert_query("photos", $insert, "", "", false) ;
-                    if(confirm('photo') == 1 && $album['allowed'] == 1)
-                    {
-                        $extrabit = "It first needs to be reviewed before it will be visible on the website.";
-                        confirmMail("photo", $album);
-                    }
-                    $data->update_query("users", "numphotos = numphotos + 1", "id='{$check['id']}'");
-                    show_message("Your photo has been added. $extrabit", "index.php?page=mythings&cat=album&action=edit&id={$id}&menuid={$menuid}");
-                } 
-                else
-                {
-                    show_message("Sorry, we only accept .gif, .jpg, .jpeg or .png images.", "index.php?page=mythings&cat=album&action=edit&id={$id}&menuid={$menuid}");
+                    confirmMail("photo", $album);
                 }
+                if ($number_added > 0 )
+                {
+                    $data->update_query("users", "numphotos = numphotos + $number_added", "id='{$check['id']}'"); 
+                }
+                show_message("$number_added photos added. $extrabit", "index.php?page=mythings&cat=album&action=edit&id={$id}&menuid={$menuid}"); 
             }
             elseif ($_POST['Submit'] == "Update Photo") 
             {

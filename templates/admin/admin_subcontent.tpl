@@ -50,7 +50,7 @@ document.location = "admin.php?page=subsite&subpage=subcontent&action=delete&sid
       <div class="inputboxwrapper"><input name="fname" type="text" id="fname" class="inputbox" onblur="checkElement('fname', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="fnameError">Required</span></div><br />
     
     </div>
-      <textarea id="editor" name="editor" style="width:100%; height:50em" class="inputbox"></textarea>
+      <textarea id="editor" name="editor" style="width:100%; height:500px" class="inputbox"></textarea>
 	  
     <div class="submitWrapper"> 
         <input type="submit" name="Submit" value="Submit" class="button" />
@@ -75,7 +75,7 @@ document.location = "admin.php?page=subsite&subpage=subcontent&action=delete&sid
       <div class="inputboxwrapper">{if $editallowed}<input name="fname" type="text" id="fname" class="inputbox" onblur="checkElement('fname', 'text', true, 0, 0, '');" value="{$item.friendly}" /><br /><span class="fieldError" id="fnameError">Required</span>{else}{$item.friendly}{/if}</div><br />
       
     </div>
-      {if $editallowed}<textarea id="editor" name="editor" style="width:100%; height:50em" class="inputbox">{$item.content}</textarea>{else}{$item.content}{/if}
+      {if $editallowed}<textarea id="editor" name="editor" style="width:100%; height:500px" class="inputbox">{$item.content}</textarea>{else}{$item.content}{/if}
 	  
     {if $editallowed}<div class="submitWrapper"> 
         <input type="submit" name="Submit" value="Submit" class="button" />

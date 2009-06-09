@@ -9,25 +9,30 @@
 <![endif]-->
 {if $editor == true}
 {literal}
-<script language="javascript" type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
+<script language="javascript" type="text/javascript" src="tiny_mce/tiny_mce_gzip.js"></script>
+<script type="text/javascript">
+tinyMCE_GZ.init({
+	plugins : 'advimage,advlink,table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,ibrowser,style',
+	themes : 'advanced',
+	languages : 'en',
+	disk_cache : true,
+	debug : false
+});
+</script>
 <script language="javascript" type="text/javascript">
 tinyMCE.init
     ({
-        {/literal}   
-        {if $editormode != true}
+{/literal}{if $editormode != true}
         mode : "exact",
-        elements: "editor",
-        {else}
-        mode : "textareas",
-        {/if}
-        {literal}
+        elements: "editor",{else}mode : "textareas",{/if}{literal}
         theme : "advanced",
+        languages : 'en',
         plugins : "advimage,advlink,table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,ibrowser,style",
         theme_advanced_buttons1_add : "fontselect,fontsizeselect,styleprops,separator,spellchecker",
         theme_advanced_buttons2_add : "separator,insertdate,inserttime,media,separator,forecolor,backcolor",
         theme_advanced_buttons2_add_before: "cut,copy,paste,pastetext,pasteword,separator,search,replace,separator",
         theme_advanced_buttons3_add_before : "tablecontrols,separator",
-        theme_advanced_buttons3_add : "emotions,advhr,separator,print,separator,ltr,rtl,separator,fullscreen,separator,insertlayer,ibrowser",
+        theme_advanced_buttons3_add : "emotions,advhr,separator,print,separator,fullscreen,separator,insertlayer,ibrowser",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
