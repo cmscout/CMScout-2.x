@@ -1,0 +1,12 @@
+DROP TABLE `!#prefix#!attendance`;
+DROP TABLE `!#prefix#!authteam`;
+DROP TABLE `!#prefix#!authuser`;
+DROP TABLE `!#prefix#!calendar_detail`;
+DROP TABLE `!#prefix#!help`;
+DROP TABLE `!#prefix#!patrolcontent`;
+DROP TABLE `!#prefix#!pollitems`;
+DROP TABLE `!#prefix#!records`;
+DROP TABLE `!#prefix#!registerinfo`;
+DROP TABLE `!#prefix#!subcontent`;
+DROP TABLE `!#prefix#!temp`;
+DROP TABLE `!#prefix#!allowedpages`;

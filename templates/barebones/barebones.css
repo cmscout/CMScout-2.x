@@ -1,0 +1,530 @@
+/*The default user message infobar class - This may be changed or removed*/
+#infobar a, #infobar a:link, #infobar a:visited, #infobar a:active
+{
+	display: block;
+	float: left;
+	clear: both;
+	width: 100%;
+	padding: .1em .3em .1em 2em;
+	border-bottom: 1px inset;
+	text-decoration: none;
+	cursor: default;
+}
+
+#infobar a:hover {
+	color: HighlightText;
+	background-color: Highlight;
+}
+
+#errorbar a, #errorbar a:link, #errorbar a:visited, #errorbar a:active
+{
+	display: block;
+	float: left;
+	clear: both;
+	width: 100%;
+	padding: .1em .3em .1em 2em;
+	border-bottom: 1px inset;
+	text-decoration: none;
+	cursor: default;
+}
+
+#errorbar a:hover {
+
+}
+
+/*Classes for BB Code - May be changed as you see fit*/
+ul.bb-list-unordered { }
+ol.bb-list-ordered { }
+ol.bb-list-ordered-d { list-style-type:decimal; }
+ol.bb-list-ordered-lr { list-style-type:lower-roman; }
+ol.bb-list-ordered-ur { list-style-type:upper-roman; }
+ol.bb-list-ordered-la { list-style-type:lower-alpha; }
+ol.bb-list-ordered-ua { list-style-type:upper-alpha; }
+ol.bb-listitem { }
+
+.bb-code,
+.bb-php {
+  border: 1px solid black;
+  padding: 10px;
+  font-family: Courier;
+  white-space: nowrap;
+}
+
+.bb-quote {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.bb-email { }
+.bb-url { }
+
+.bb-image {
+  border-width: 0;
+  border-style: none;
+}
+
+/*Class for buttons*/
+.button {
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+  font-style       : normal;
+  font-weight      : bold;
+  padding		   : 3px;
+  border           : 1px solid #000;
+}
+
+/*Class for form fields*/
+.inputbox {
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+  border           : 1px solid #000;
+}
+
+/*Class for form fieldsets*/
+fieldset
+{
+	width: 90%;
+	margin:30px;
+	padding:4px;
+}
+
+/*Class for form legends*/
+legend
+{
+	border: 1px solid #000;
+	padding: 2px 6px;
+	font-size:large;
+	font-weight:bold;
+}
+
+/*Class for tables. The background-color is the colour of the border in tables*/
+table.table {
+	background-color: #000;
+}
+
+/*Class for table rows*/
+.row
+{
+	background-color: #FFFFFF;
+}
+
+/*Class for normal table headers*/
+th.normalhead {
+ color:#000;
+ text-align:center;
+ font-size:large;
+ background-color:#fff;	
+}
+
+/*Class for smaller table headers*/
+th.smallhead {
+ color:#000;
+ text-align:center;
+ background-color:#fff;	
+}
+
+/*Classes for tabs and some built in menus (such as the subsite pages, and the user CP)*/
+.mootabs_title {
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	height: 24px;
+	text-align:center;
+	border-bottom: 1px solid #000;
+}
+
+.mootabs_title li {
+	float: left;
+	background-color: #444;
+	color: #fff;
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	cursor: pointer;
+	height: 20px;
+	border: 1px solid #000;
+	text-align:center;
+}
+
+.mootabs_title li.active {
+	background: #fff;
+	color: #000;
+}
+
+.mootabs_title li.mouseOver {
+  background-color : #555;
+  color            : #fff;
+}
+
+.mootabs_panel {
+	display: none;
+	background-color: #fff;
+	position: relative;
+	width: 100%;
+	top: -1px;
+	clear: both;
+	overflow: auto;
+}
+
+.mootabs_panel.active {
+	background-color: #fff;
+	display: block;
+	padding-top:1px;
+	border:1px solid #000;
+	border-top:0px;
+}
+
+.left_title {
+	width:140px;
+	float:left;
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	text-align:center;
+}
+
+.left_title li {
+	background-color: #444;
+	color: #fff;
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	height: 20px;
+	border: 1px solid #000;
+	text-align:center;
+	vertical-align:middle;
+	display: block;
+}
+
+.left_title a {
+	color: #fff;
+	cursor: pointer;
+	height: 20px;
+	width:124px;
+	display:block;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.left_title li:hover {
+  background-color : #777;
+  color            : #fff;
+}
+
+.left_title li.active {
+	background: #fff;
+	color: #000;
+}
+
+.left_title li.active a {
+	color: #000;
+	cursor: pointer;
+	height: 20px;
+	text-align:center;
+}
+
+.left_title li.mouseOver {
+  background-color : #777;
+  color            : #fff;
+}
+
+.top_title {
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0px;
+	margin-right: 15px;
+	padding: 0px;
+	height: 24px;
+	text-align:center;
+}
+
+.top_title li {
+	float:left;
+	background-color: #444;
+	color: #fff;
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	height: 20px;
+	border: 1px solid #000;
+	text-align:center;
+	vertical-align:middle;
+	display: block;
+}
+
+.top_title a {
+	color: #fff;
+	cursor: pointer;
+	height: 20px;
+	display:block;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.top_title li:hover {
+  background-color : #777;
+  color            : #fff;
+}
+
+.top_title li.active {
+	background: #fff;
+	color: #000;
+}
+
+.top_title li.active a {
+	color: #000;
+	cursor: pointer;
+	height: 20px;
+	text-align:center;
+}
+
+.top_title li.mouseOver {
+  background-color : #777;
+  color            : #fff;
+}
+
+/*Class for the error text under fields*/
+.error {
+	font-family: Tahoma;
+	font-size: 10pt;
+	color: red;
+	display:none;
+}
+
+/*Classes used by articles*/
+.article
+{
+}
+
+.articletitle
+{
+	margin:1px;
+}
+
+.articleinfo
+{
+	clear:both;
+	text-align:right;
+	color:#888;
+	font-size:small;
+}
+
+.articlebottom
+{
+	clear:both;
+	border-top: 1px solid black;
+}
+.articlepicture
+{
+	float:left;
+	margin:10px;
+	margin-top:5px;
+}
+
+.articledetail
+{
+	padding:2px;
+	clear:both;
+}
+
+.articlephotos
+{
+	padding:2px;
+	margin-left:20px;
+	width:100%;
+	text-align:center;
+}
+
+.articlecomments
+{
+	padding:2px;
+	margin-right:20px;
+	width:100%;
+}
+
+.comments
+{
+	margin:5px;
+	padding: 2px;
+	border-bottom: 1px solid black;
+	width:100%;
+}
+
+.commentname
+{
+	text-align:left;
+	color:#888;
+	font-size:small;
+}
+
+.articlecomments h3
+{
+	margin:1px;
+}
+
+.articlephotos h3
+{
+	margin:1px;
+}
+
+/*Classes for checklists*/
+.checklist {
+    border: 1px solid #ccc;
+    list-style: none;
+    height: 20em;
+    overflow: auto;
+    width: 16em;
+}
+
+.checklist, .checklist li { margin: 0; padding: 0; }
+
+.checklist label {
+    display: block;
+    padding-left: 25px;
+    text-indent: -25px;
+}
+
+.checklist label:hover { background: #335368; color: #feffff; }
+
+* html .checklist label { height: 1%; }
+
+/*Classes used by forum posts*/
+.post
+{
+	padding:5px;
+}
+
+.signature
+{
+	padding:5px;
+	margin-top:10px;
+	border-top:1px solid #000;
+}
+
+/*Classes used by forms*/
+.field .inputboxwrapper
+{
+  display: block;
+  width: 70%;
+  float: left;
+  margin-bottom: 20px;
+  text-align:left;
+}
+
+.field .inputbox {
+	width: 90%;
+}
+
+.field .label {
+	display: block;
+	width:25%;
+	float: left;
+	margin-bottom: 20px;
+	text-align: right;
+	padding-right: 10px;
+	font-weight:bold;
+}
+
+
+.field br {
+	clear: left;
+}
+
+.submitWrapper {
+	text-align:center;
+}
+
+ /*CSS for link that shows hint onmouseover*/
+.hintanchor{
+font-weight: bold;
+color: #335368;
+margin: 3px 8px;
+text-decoration:none;
+}
+
+.tool-tip {
+	color: #feffff;
+	z-index: 13000;
+}
+ 
+.tool-title {
+	font-weight: bold;
+	margin: 0;
+	color: #C4D4DF;
+	padding: 8px 8px 4px;
+	background: #335368;
+}
+ 
+.tool-text {
+	padding: 4px 8px 8px;
+	background: #335368;
+}
+
+/*Used by the search button on the Scout Search sidebox*/
+.searchButton {
+  width: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer; /* hand-shaped cursor */
+  cursor: hand; /* for IE 5.x */
+}
+
+/*Select image class used by places where you select an image from an album*/
+.selectImage{
+	border-color:#00ff00;
+	background-color:black;
+}
+
+/*Classes used by the calendar*/
+.calendar_today {color:#ffffff; background-color:#00038a;border:1px solid #00038a;border-bottom:0px;}
+.calendar_day {border:1px solid #00038a;border-bottom:0px;background-color: #FFFFFF;}
+.calendar_spacer {border:1px solid #00038a;border-top:0px;background-color: #FFFFFF;}
+.calendar_item {border:1px solid #00038a;border-top:0px;border-bottom:0px;background-color: #FFFFFF;padding:0px;}
+.calendar_item_div {padding:1px;}
+.calendar_year_view_head {border:1px solid #00038a; color:#000000; text-align:center; font-size:large; background-color:#fff;padding:4px;}
+.calendar_year_view_row {border:1px solid #00038a;background-color: #FFFFFF;text-align:center;padding:4px;}
+.calendar_year_view_row2 {border:1px solid #00038a;background-color: #FFFFFF;text-align:left;padding:0px;}
+.calendar_year_view_row_today {color:#ffffff; background-color:#00038a; text-align:center; font-style:italic; font-weight:bolder;}
+.calendar_head { text-align:center; background-color:#fff;color:#000000;border:1px solid #00038a;}
+.calendar_bighead { text-align:center; font-size:large; background-color:#fff;color:#fff;border:1px solid #00038a;} 
+
+/*Classes used by photo albums*/
+.photoblocks {
+	float:left;
+	text-align:center;
+	vertical-align:middle;
+	width:150px;
+	height:150px;
+	margin: 5px;
+	padding:5px;
+	border: 3px double #777;
+	display:block;
+}
+
+.photoblocks a
+{
+	border: 0px;
+}
+
+/*Generic text classes*/
+.smalltext
+{
+	color:#444;
+	font-size:small;
+}
+
+.tinytext
+{
+	color:#999;
+	font-size:8pt;
+}
+
+/*Used by side boxes*/
+.sidebox
+{
+  
+}
+
+.sidebox a
+{
+  line-height: 1.5em;
+}

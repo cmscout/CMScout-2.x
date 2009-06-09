@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>..:.:.:: CMScout Install Documentation :: How to Install ::.:.:..</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="docs.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<center style="margin:20px;">
+<div class="outside-box" style="height:135px;"><span style="text-align:left;"><img align="left" src="logo.gif" alt="CMScout" /></span></div>
+	<div class="outside-box" style="border-top: none;">
+        ..:.:.:: CMScout Install Documentation ::.:.:..
+	</div>
+	<div class="outside-box" style="border-top: none;">
+<table cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				<td valign="top">
+					<div style="padding-bottom: 3px;">
+				     <div class="nav-title">Menu ::.:.:..</div>
+					<a href="index.html" class="nav-link">Index</a>
+					<a href="requirements.html" class="nav-link">Requirements</a>
+					<a href="features.html" class="nav-link">Features</a>
+					<a href="installation.html#clean" class="nav-link">Clean Install</a>
+					<a href="installation.html#migrate" class="nav-link">Mirgrate from 1.x</a>
+					<a href="installation.html#upgrade" class="nav-link">Upgrade</a>
+					<a href="changelog.html" class="nav-link">Changelog</a>
+				      </div>
+  				</td>
+				<td valign="top" width="100%" style="padding-left: 3px; padding-right: 3px;">
+					<!-- NEWS-ITEM -->
+                       <div style="padding-bottom: 3px;">
+						<div class="inside-box" align="left">
+                           <div>How to Install ::.::.:..</div>
+						</div>
+                        <div class="inside-box" style="border-top: none;" align="left">
+			<p>Goto <a href="http://manual.cmscout.za.net/index.php?title=Installation">http://manual.cmscout.za.net/index.php?title=Installation</a> to access an up-to-date version of this guide</p>
+<a name="clean"></a><h1>Clean Installation</h1>  
+<p>To perform a clean installation click on the <b>Clean installation</b> option.
+</p><p>Before you run the CMScout installer, please ensure that you have created a database, and a user that has permissions to access that database.
+</p><p>You will then be presented with a screen that shows what requirements CMScout 2 needs to install, ensure all the requirements are satisfied before continuing with the installation.
+</p><p>Follow the simple guided instructions and fill in all the required details.
+</p><p>If this is the first time that you are installing CMScout 2, it is recommended that you install the sample content as it will serve as a starting point for your own website.
+</p><p>Once you have entered all the required information, and agreed to the license agreement, click on <b>install</b>. The CMScout installer will the proceed to install the database tables, and setup the configuration file. Once this is done, you should delete the install directory for security reasons, CMScout will refuse to start if the directory is still there.
+</p>
+<a name="migrate"></a><h1>Mirgrate from 1.x</h1>  
+<p>Before you begin the migration process, please ensure that you have a up-to-date backup of all the files and the database for your site. Your site is required to be version 1.23 or 1.24 for the migration script to work.
+</p><p>In order to have the migration work the best please delete all files and folders in the directory that your CMScout 1.x site was installed, except the following folders:
+</p>
+<ul><li>photos/
+</li><li>avatars/
+</li><li>downloads/
+</li><li>images/
+</li></ul>
+<p>These folders contain files that you have uploaded to your website.
+</p><p>After you have deleted all the files and folders, upload the extracted CMScout 2.x package that you downloaded to your website. If you are asked to overwrite any files, say yes.
+</p><p>Point your browser to your websites address.
+</p><p>To migrate from a existing CMScout 1.x installation, click on the <b>Migrate from CMScout 1.x</b> button.
+</p><p>Ensure that the permissions are correct, and click on next.
+</p><p>Enter in your existing database information and click on next.
+
+</p><p>The migrator will then check to see if there is a CMScout 1.x installation in the directory. You will then be required to select who the main administrator of the website is, and which group is the administration group, and which group is the default user group. Once you have selected the groups and users click on next, and then click on install.
+</p><p>After it has installed, please delete the install directory before continuing to use your website.
+</p><p><b>Note:</b>
+Due to large changes between CMScout 1.x and 2.x you will be required to add or update the following items:
+</p>
+<ul><li>Forum Access Rights
+</li><li>Authorizations
+</li><li>RSS Feeds
+</li><li>Sub Site and Group Site menu items
+</li><li>Frontpage items
+</li><li>Menu items will need to be published
+</li></ul>
+<a name="upgrade"></a><h1>Upgrade</h1>  
+<p>In order to upgrade a existing CMScout 2.x installation to the latest version (For example, version 2.00 to version 2.01) download the changed files package for your version of CMScout. 
+</p><p>Extract the package, and upload the files to your website.
+</p><p>Goto <i><a href="http://www.yoursite.com/install" class='external free' title="http://www.yoursite.com/install" rel="nofollow">http://www.yoursite.com/install</a></i> and click on <b>Upgrade existing CMScout 2.x1 installation to CMScout 2.x2</b> (Where 2.x1 is your current version, and 2.x2 is the version you are upgrading too).
+</p><p>The upgrade script will check to make sure that you can upgrade your installation. 
+</p><p>If you can, click on the Upgrade button.
+</p><p>Your installation should then be upgraded. Delete the install directory to continue using your newly upgrade CMScout website.
+</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+	</div>
+</center>
+
+	<div class="outside-box" style="border-top: none;">
+		&copy;2007 CMScout Group
+	</div>
+</body>
+</html>
