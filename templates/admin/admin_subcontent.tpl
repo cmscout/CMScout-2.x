@@ -10,7 +10,7 @@ document.location = "admin.php?page=subsite&subpage=subcontent&action=delete&sid
 //-->
 </script>
   {/literal}
-  <h2>{$subsitename} Content Manager</h2>
+  <h2>{$sitename} Content Manager</h2>
 {if $action!="edit" && $action!="new" && $action != "moveitem"}
 <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=new&amp;sid={$siteid}" title="Add Page"><img src="{$tempdir}admin/images/add.png" alt="Add Page" border="0" /></a>&nbsp;{/if}<a href="admin.php?page=subsite&amp;subpage=submenu&amp;sid={$siteid}" title="Menu Manager"><img src="{$tempdir}admin/images/menu.png" alt="Menu Manager" border="0" /></a>&nbsp;<a href="admin.php?page=subsite" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a></div>
 {if $numcontent > 0}
@@ -32,7 +32,7 @@ document.location = "admin.php?page=subsite&subpage=subcontent&action=delete&sid
 	{/section}</tbody>
 </table>
 {else}
-<div align="center">No content for {$subsitename}</div>
+<div align="center">No content for {$sitename}</div>
 {/if}
 {elseif $action=="new"}
 <script type="text/javascript">

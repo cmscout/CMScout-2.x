@@ -614,11 +614,10 @@ text-decoration:none;
 	font-size:8pt;
 }
 
-.sidebox
+.sidebox .inputbox
 {
-  
+ width : 148px;	
 }
-
 .sidebox a
 {
 line-height: 1.5em;

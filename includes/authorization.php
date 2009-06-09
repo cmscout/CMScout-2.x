@@ -129,7 +129,7 @@ class auth
 		$data->update_query("users", "uid = ''", "uid='$uid'", "", "", false);
         
 		setcookie ($cookiename, "", 0);
-		return false;
+		return $this->addguest(0);
 	}
     
     function auth() 

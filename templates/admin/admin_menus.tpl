@@ -362,7 +362,7 @@ function checkAll(type)
     
      <div id="urldiv" style="display: {if $item.type != 5 && $action == 'edititem'}none;{else}'';{/if}">
      <label for="url" class="label">External Address<span class="hintanchor" title="The address of the external website."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label> 
-     <div class="inputboxwrapper">http://<input name="url" type="text" id="url" value="{if $item.type==5}{$item.item}{/if}" class="inputbox" size="50" onblur="checkElement('url', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="urlError">Required</span></div><br />
+     <div class="inputboxwrapper">http://<input name="url" type="text" id="url" value="{if $item.type==5}{$item.item}{/if}" class="inputbox" size="255" onblur="checkElement('url', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="urlError">Required</span></div><br />
      </div>
      
     <label for="target" class="label">Target<span class="hintanchor" title="How should the link be opened."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>

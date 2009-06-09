@@ -58,18 +58,11 @@ else
         
         if ($content == NULL || $content == "" ||$content == "NULL") $content = "Nothing here";
         
-	if ($data->num_rows($data->select_query("static_content", "WHERE name=$name")) == 0)
-	{
-		$Update = $data->update_query("static_content", " content=$content, friendly=$friendly, special=$public", "id=$safe_id");    
-		if ($Update)
-		{
-		    show_admin_message("Content updated", "admin.php?page=patrol&subpage=patrolcontent&pid=$patrolid");
-		}
-	}
-	else
-	{
-		    show_admin_message("Item with that name already exists", "admin.php?page=patrol&subpage=patrolcontent&pid=$patrolid&action=new", true);  
-	}
+        $Update = $data->update_query("static_content", " content=$content, friendly=$friendly, special=$public", "id=$safe_id");    
+        if ($Update)
+        {
+            show_admin_message("Content updated", "admin.php?page=patrol&subpage=patrolcontent&pid=$patrolid");
+        }
         $action = "";
     } 
     elseif ($Submit == "Submit" && $action == "new" && pageauth("patrol", "add") == 1) 
@@ -108,11 +101,11 @@ else
     }
     elseif ($action=="delete" && pageauth("patrol", "delete") == 1) 
     {
-        $sql = $data->delete_query("static_content", "type=1 AND id=$safe_id");
-        if ($sql)
-        {
-            show_admin_message("Content deleted", "admin.php?page=patrol&subpage=patrolcontent&pid=$patrolid");
-        }
+        $delete = $data->update_query("static_content", "trash=1", "id=$safe_id");
+        if ($delete)
+        {   
+            show_admin_message("Content sent to trash, Contact the Administrator if you wish to recover it.", "admin.php?page=patrol&subpage=patrolcontent&pid=$patrolid");
+        }  
         $action = "";
     }
     elseif ($action == "putfront" && pageauth("patrol", "edit"))

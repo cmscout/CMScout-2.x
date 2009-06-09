@@ -43,7 +43,7 @@ $installed = 0;
 $errors = "";
 $gotoplace = "";
 $stage = isset($_POST['stage']) ? $_POST['stage'] : 0;
-$version = "2.00";
+$version = "2.01";
 
 if($stage == '' || !isset($stage))
 {
@@ -166,7 +166,7 @@ else
     $exists['config'] = file_exists($cms_root . $dir);
 }
 
-$dir = 'logfile.'.$phpEx;
+$dir = 'logfile.txt';
 $write['logfile'] = $exists['logfile'] = true;
 if (file_exists($cms_root . $dir))
 {

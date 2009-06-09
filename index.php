@@ -69,7 +69,7 @@ else $action = "";
 if ($action == 'logout') 
 {
     $islogged = false;
-    $Auth->logout();
+    $check = $Auth->logout();
     $tempcss = change_theme_dir();
     $loggedout = true;
     $panel = false;
@@ -244,6 +244,15 @@ if ($messages)
     {
         $tpl->assign("nohide", true);
     }
+}
+
+if ($_GET['ae'] == 2)
+{
+    $tpl->assign("infomessage", "Your account has been activated. You can now login. (Click on the message to hide)");
+}
+elseif ($_GET['ae'] == 1)
+{
+    $tpl->assign("infomessage", "The account you are trying to activate does not exist, or your activation code is incorrect. (Click on the message to hide)");
 }
 
 include('scripts.php');

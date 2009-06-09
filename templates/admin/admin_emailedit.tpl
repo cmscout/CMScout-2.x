@@ -34,14 +34,14 @@ function add(addWhat)
 </script>
 {/literal}
 <div align="center">
-<form name="Content" method="post">
+<form name="Content" method="post" action="">
 <fieldset class="formlist">
 <legend>Edit {$email.name}</legend>
 <div class="field">
 <label for="subject" class="label">Subject<span class="hintanchor" title="Subject for the email."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><input name="subject" type="text" id="subject" class="inputbox" value="{$email.subject}" onblur="checkElement('subject', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="subjectError">Required</span></div><br />
 <label for="subject" class="label">Subject<span class="hintanchor" title="The body of the email, you may not use any HTML, but you can use the supplied CMScout Tags."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-<div class="inputboxwrapper"><textarea id="email" name="email" rows="30" class="inputbox" onblur="checkElement('email', 'text', true, 0, 0, '');">{$email.email}</textarea></div>
+<div class="inputboxwrapper"><textarea id="email" name="email" rows="30" cols="50" class="inputbox" onblur="checkElement('email', 'text', true, 0, 0, '');">{$email.email}</textarea></div>
 <br /><span class="fieldError" id="emailError">Required</span></div><br />
 <div style="width:100%"><div style="font-weight:bold;text-align:center;font-size:big;">CMScout Tags</div>
 <div class="field" style="border:1px dashed #000">
@@ -62,5 +62,5 @@ function add(addWhat)
         </div>
 </fieldset>
 </form>
-<div align="center">
+</div>
 {/if}

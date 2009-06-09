@@ -40,11 +40,11 @@ if ($code != '')
 {
     if ($data->update_query("users", "status=1, activationcode=0", "id=$id AND activationcode=$code") != 0)
     {
-        show_message("Account Activated. You can now log in");
+        header("location:index.php?ac=2");
     }
     else
     {
-        header("location:index.php");
+        header("location:index.php?ac=1");
     }
 }
 else

@@ -97,11 +97,11 @@ else
     
     if ($action=="delete" && pageauth("subsite", "delete") == 1) 
     {
-        $sql = $data->delete_query("static_content", "type=2 AND id=$safe_id");
-        if ($sql)
-        {
-            show_admin_message("Content deleted", "admin.php?page=subsite&subpage=subcontent&sid=$siteid");
-        }
+        $delete = $data->update_query("static_content", "trash=1", "id=$safe_id");
+        if ($delete)
+        {   
+            show_admin_message("Content sent to trash, Contact the Administrator if you wish to recover it.", "admin.php?page=subsite&subpage=subcontent&sid=$siteid");
+        }  
         $action = "";
     }
     elseif ($action == "putfront" && pageauth("subsite", "edit"))

@@ -37,11 +37,13 @@ $perrow = 1;
 $sitemenu = "<ul class=\"left_title\">";
 
 //Side Menu
+$site = NULL;
 if ($_GET['site'] != "")
 {
      $site = $_GET['site'];
      $tpl->assign("siteid", $site);
 }
+
 $safe_patrolid = safesql($patrolid, "int");
 $sql = $data->select_query("groups", "WHERE id=$safe_patrolid", "id, teamname");
 if ($data->num_rows($sql) > 0)
@@ -61,7 +63,14 @@ if ($data->num_rows($itemsql) > 0)
         if ($items['type'] == 1) 
         {
             $pages = $items['item'];
-            $sitemenu .= "<li><a href=\"index.php?page=patrolpages&amp;patrol=$patrolid&amp;site=$site&amp;content=$pages&amp;menuid=$menuid\" class=\"$style\">{$items['name']}</a></li>";
+            if ($site != NULL)
+            {
+                $sitemenu .= "<li><a href=\"index.php?page=patrolpages&amp;patrol=$patrolid&amp;site=$site&amp;content=$pages&amp;menuid=$menuid\" class=\"$style\">{$items['name']}</a></li>";
+            }
+            else
+            {
+                $sitemenu .= "<li><a href=\"index.php?page=patrolpages&amp;patrol=$patrolid&amp;content=$pages&amp;menuid=$menuid\" class=\"$style\">{$items['name']}</a></li>";
+            }
         } 
         elseif ($items['type'] == 2) 
         {
@@ -69,7 +78,7 @@ if ($data->num_rows($itemsql) > 0)
             $codes = $t['code'];
             if (($t['type'] == 4 || $t['type'] == 5) && $code != "patrolpages") 
             {
-                if (isset($site))
+                if ($site != NULL)
                 {
                     $sitemenu .= "<li><a href=\"index.php?page=patrolpages&amp;patrol=$patrolid&amp;site=$site&amp;content=$codes&amp;menuid=$menuid\" class=\"$style\">{$items['name']}</a></li>";
                 }
@@ -80,7 +89,7 @@ if ($data->num_rows($itemsql) > 0)
             }
             elseif ($code == "patrolpages")
             {
-                if (isset($site))
+                if ($site != NULL)
                 {
                     $sitemenu .= "<li><a href=\"index.php?page=patrolpages&amp;patrol=$patrolid&amp;site=$site&amp;menuid=$menuid\" class=\"$style\">{$items['name']}</a></li>";
                 }
@@ -136,9 +145,9 @@ else
     $editlink = "admin.php?page=patrol&amp;subpage=patrolcontent&id=$content&action=edit&pid=$patrolid";
 }
 
-if ($sitecontent == "$%$#PageOFF%$^$%")
+if ($sitecontent === false)
 {
-    $sitecontent = "<span id=\"error\">The page is only available to members of the group.</span>";
+    show_message("That page is only accessible by members of the group", $site != NULL ? "index.php?page=patrolpages&patrol=$patrolid&menuid=$menuid&site=$site" : "index.php?page=patrolpages&patrol=$patrolid&menuid=$menuid");
 }
    
 if ($pagenum == 0) 

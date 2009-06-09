@@ -17,9 +17,9 @@ function confirmunPublish(articleId)
 {/literal}
 <h2>News Manager</h2>
 {if $action != "edit" && $action != "new"}
-{if $numnews > 0}
 {if $addallowed}<div class="toplinks"><a href="{$pagename}&amp;action=new" title="Add News Item"><img src="{$tempdir}admin/images/add.png" alt="Add News Item" border="0" /></a>
 </div>{/if}
+{if $numnews > 0}
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table sortable-onload-4-reverse rowstyle-alt paginate-15" id="sortTable">
 <thead>
   <tr valign="top"> 

@@ -28,7 +28,7 @@
 </td>
 <td style="width:400px;">
     <p class="accTitle2">Online Users</p>
-    <div class="accContent2"><table width="390px" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-10" id="sortTable3">
+    <div class="accContent2"><table width="390" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-10" id="sortTable3">
     <thead>
       <tr>
         <th scope="col" class="smallhead sortable">Username</th>
@@ -66,7 +66,7 @@
     <div class="inputboxwrapper" style="width:10px;">{$stats.posts}</div></div><br />
     </div></div>
     <p class="accTitle2">Groups</p>
-    <div class="accContent2"><table width="390px" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable2">
+    <div class="accContent2"><table width="390" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable2">
     <thead>
       <tr>
         <th scope="col" class="smallhead sortable">Name</th>
@@ -93,7 +93,7 @@
       <tbody>
     {section name=users loop=$nummembers}
     <tr class="text">
-      <td class="text"><a href="admin.php?page=troop&action=view&id={$members[users].id}">{$members[users].lastName}, {$members[users].firstName}</a></td>
+      <td class="text"><a href="admin.php?page=troop&amp;action=view&amp;id={$members[users].id}">{$members[users].lastName}, {$members[users].firstName}</a></td>
       <td class="text">{$members[users].relations}</td>
       <td class="text">{$members[users].home}</td>
       <td class="text">{$members[users].cell}</td>

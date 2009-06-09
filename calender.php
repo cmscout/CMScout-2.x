@@ -126,7 +126,6 @@ $today_date["month"] = $date['month'];
 $today_date["year"] = $date['year'];
 $today_date["day"] = $date['mday'];
 
-
 if (isset($_GET['item'])) $itemid = safesql($_GET['item'], "int");
 if ($_GET['action'] != "ical")
 {
@@ -436,6 +435,8 @@ if ($_GET['action'] != "ical")
             for($calnumber=0;$calnumber<$numcalendar;$calnumber++)
             {
                 $groups = unserialize($calitems[$calnumber]['groups']);
+                $calitems[$calnumber]['startdate'] = $calitems[$calnumber]['startdate'] - getuseroffset($check['uname']);
+                $calitems[$calnumber]['enddate'] = $calitems[$calnumber]['enddate'] - getuseroffset($check['uname']);
                 $startdate = getdate($calitems[$calnumber]['startdate']);
                 $enddate = getdate($calitems[$calnumber]['enddate']); 
 
@@ -461,22 +462,22 @@ if ($_GET['action'] != "ical")
                         $display['detail'] = censor(truncate(strip_tags($calitems[$calnumber]['detail']), 150));
                         $display['starttime'] = strftime("%H:%M", $calitems[$calnumber]['startdate']);
                         $display['endtime'] = strftime("%H:%M", $calitems[$calnumber]['enddate']);
-                        
+
                         $calitems[$calnumber]['position'] = 0;
                         $startMonth = $startdate['mon'];
                         $endMonth = $enddate['mon'];
 			
-			if ($startdate['year'] < $year)
-			{
-				$startMonth = 1;
-				$startdate['mday'] = 1;
-			}
-			
-			if ($enddate['year'] > $year)
-			{
-				$endMonth = 12;
-				$enddate['mday'] = 31;
-			}
+                        if ($startdate['year'] < $year)
+                        {
+                            $startMonth = 1;
+                            $startdate['mday'] = 1;
+                        }
+                        
+                        if ($enddate['year'] > $year)
+                        {
+                            $endMonth = 12;
+                            $enddate['mday'] = 31;
+                        }
 
                         for($pos=0;$pos<=max(array_keys($summaries[$startMonth][$startdate['mday']]['item']))+1;$pos++)
                         {
@@ -671,6 +672,8 @@ if ($_GET['action'] != "ical")
                 for($numcal=0;$numcal<=$numcalendar;$numcal++)
                 {
                     $temp = $calitems[$numcal];
+                    $temp['startdate'] = $temp['startdate'] - getuseroffset($check['uname']);
+                    $temp['enddate'] = $temp['enddate'] - getuseroffset($check['uname']);
                     $startdate = $temp['startdate'];
                     $enddate = $temp['enddate'];
 
@@ -678,14 +681,14 @@ if ($_GET['action'] != "ical")
                     {
                         $items[$week]['number']++;
                         $groups = unserialize($temp['groups']);
-			    if (is_array($groups))
-			    {
-				$allowed = in_group($groups);
-			    }
-			    else
-			    {
-				$allowed = true;
-			    }
+                        if (is_array($groups))
+                        {
+                        $allowed = in_group($groups);
+                        }
+                        else
+                        {
+                        $allowed = true;
+                        }
                         if ($allowed)
                         {
                             $display['summary'] = censor($temp['summary']);
@@ -963,22 +966,36 @@ if ($_GET['action'] != "ical")
                 for ($i=0;$i<$numcalendar;$i++)
                 {
                     $temp = $calitems[$i];
-                    $height = $temp['detail'] != NULL ? 'auto' : 50;
-                    $temp['sdate'] = strftime("%Y-%m-%d", $temp['startdate']);
-                    $temp['edate'] = strftime("%Y-%m-%d", $temp['enddate']);
-                    $temp['stime'] = strftime("%H:%M", $temp['startdate']);
-                    $temp['etime'] = strftime("%H:%M", $temp['enddate']);
-                    $calendar .= "
-    <div style=\"border:1px solid #000;margin:2px;padding:10px;clear:both;height:{$height}px\">
-    <div style=\"clear:both\"><h3 style=\"text-align:left;margin:0px;padding:0px;\">" . censor($temp['summary']) ."</h3>
-    <span class=\"smalltext\"><b>Start Date: </b>{$temp['sdate']} | <b>Start Time: </b>{$temp['stime']}</span><br />
-    <span class=\"smalltext\"><b>End Date: </b>{$temp['edate']} | <b>End Time: </b>{$temp['etime']}</span>
-    </div>";
-                    if ($temp['detail'] != NULL)
+                    $groups = unserialize($temp['groups']);
+                    if (is_array($groups))
                     {
-                        $calendar .= "<div>".censor($temp['detail'])."</div>";  
+                    $allowed = in_group($groups);
                     }
-                    $calendar .= "</div>";                
+                    else
+                    {
+                    $allowed = true;
+                    }
+                    if ($allowed)
+                    {
+                        $temp['startdate'] = $temp['startdate'] - getuseroffset($check['uname']);
+                        $temp['enddate'] = $temp['enddate'] - getuseroffset($check['uname']);
+                        $height = $temp['detail'] != NULL ? 'auto' : 50;
+                        $temp['sdate'] = strftime("%Y-%m-%d", $temp['startdate']);
+                        $temp['edate'] = strftime("%Y-%m-%d", $temp['enddate']);
+                        $temp['stime'] = strftime("%H:%M", $temp['startdate']);
+                        $temp['etime'] = strftime("%H:%M", $temp['enddate']);
+                        $calendar .= "
+        <div style=\"border:1px solid #000;margin:2px;padding:10px;clear:both;height:{$height}px\">
+        <div style=\"clear:both\"><h3 style=\"text-align:left;margin:0px;padding:0px;\">" . censor($temp['summary']) ."</h3>
+        <span class=\"smalltext\"><b>Start Date: </b>{$temp['sdate']} | <b>Start Time: </b>{$temp['stime']}</span><br />
+        <span class=\"smalltext\"><b>End Date: </b>{$temp['edate']} | <b>End Time: </b>{$temp['etime']}</span>
+        </div>";
+                        if ($temp['detail'] != NULL)
+                        {
+                            $calendar .= "<div>".censor($temp['detail'])."</div>";  
+                        }
+                        $calendar .= "</div>";             
+                    }                        
                 }
             }
             else

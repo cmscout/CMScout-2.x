@@ -47,7 +47,7 @@ else
     if($_GET['action'] == "logout")
     {
         $id = safesql($_GET['id'], "int");
-        $info = $data->select_fetch_one_row("users", "id=$id");
+        $info = $data->select_fetch_one_row("users", "WHERE id=$id");
         $data->delete_query("onlineusers", "uname='{$info['uname']}'");
 		$data->update_query("users", "uid = ''", "id=$id");
         header('location:admin.php');

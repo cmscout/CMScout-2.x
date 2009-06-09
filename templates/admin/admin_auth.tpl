@@ -71,7 +71,7 @@ function checkAll(type, action)
     <table style="width:500px" class="formlist" align="center">
     <tr><td class="text" align="center" colspan="2"><div align="center">
     <div class="field">
-        <label for="name" class="label">For<img src="{$tempdir}admin/images/help.png" class="hintanchor" title="For which group does this authorisation apply?" /></label><div class="inputboxwrapper"><select name="name" id="name" class="inputbox">
+        <label for="name" class="label">For<img src="{$tempdir}admin/images/help.png" class="hintanchor" alt="Hint" title="For which group does this authorisation apply?" /></label><div class="inputboxwrapper"><select name="name" id="name" class="inputbox">
         <optgroup label="Users">
             {section name=user loop=$numusers}
                 <option value="{$users[user].id}.user" {if $item.authname == $users[user].id && $item.type == 1}selected="selected"{/if}>{$users[user].uname}</option>
@@ -103,9 +103,9 @@ function checkAll(type, action)
 <thead>
 <tr>
     <th class="smallhead">Page</th>
-    <th class="smallhead" width="50px;">Allow</th>
-    <th class="smallhead" width="50px;">Ignore</th>
-    <th class="smallhead" width="50px;">Disallow</th>
+    <th class="smallhead" width="50">Allow</th>
+    <th class="smallhead" width="50">Ignore</th>
+    <th class="smallhead" width="50">Disallow</th>
 </tr>
 </thead>
 <tbody>
@@ -132,9 +132,9 @@ function checkAll(type, action)
 <thead>
 <tr>
     <th class="smallhead">Page</th>
-    <th class="smallhead" width="50px;">Allow</th>
-    <th class="smallhead" width="50px;">Ignore</th>
-    <th class="smallhead" width="50px;">Disallow</th>
+    <th class="smallhead" width="50">Allow</th>
+    <th class="smallhead" width="50">Ignore</th>
+    <th class="smallhead" width="50">Disallow</th>
 </tr>
 </thead>
 <tbody>
@@ -162,9 +162,9 @@ function checkAll(type, action)
 <thead>
 <tr>
     <th class="smallhead">Page</th>
-    <th class="smallhead" width="50px;">Allow</th>
-    <th class="smallhead" width="50px;">Ignore</th>
-    <th class="smallhead" width="50px;">Disallow</th>
+    <th class="smallhead" width="50">Allow</th>
+    <th class="smallhead" width="50">Ignore</th>
+    <th class="smallhead" width="50">Disallow</th>
 </tr>
 </thead>
 <tbody>
@@ -195,9 +195,9 @@ No content pages available
 <thead>
 <tr>
     <th class="smallhead">Page</th>
-    <th class="smallhead" width="50px;">Allow</th>
-    <th class="smallhead" width="50px;">Ignore</th>
-    <th class="smallhead" width="50px;">Disallow</th>
+    <th class="smallhead" width="50">Allow</th>
+    <th class="smallhead" width="50">Ignore</th>
+    <th class="smallhead" width="50">Disallow</th>
 </tr>
 </thead>
 <tbody>

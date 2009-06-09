@@ -39,34 +39,41 @@ function show_message ($message, $page=false, $postback = false, $customuid = fa
 {
     global $check, $data;
     $uid = safesql(($customuid ? $customuid : $check['uid']), "text");
-    $message = safesql($message, "text", true, true, true);
-    if ($postback)
+    if ($uid != 'NULL')
     {
-        $tempPost = $_POST;
-        $post = array();
-        foreach($tempPost as $id => $value)
+        $message = safesql($message, "text", true, true, true);
+        if ($postback)
         {
-            if ($id != "captcha" && $id != "password" && $id != "repassword" && $id != "validation" && strtolower($id) != "submit")
+            $tempPost = $_POST;
+            $post = array();
+            foreach($tempPost as $id => $value)
             {
-                $temp['id'] = $id;
-                $temp['value'] = $value;
-                $post[] = $temp;
+                if ($id != "captcha" && $id != "password" && $id != "repassword" && $id != "validation" && strtolower($id) != "submit")
+                {
+                    $temp['id'] = $id;
+                    $temp['value'] = $value;
+                    $post[] = $temp;
+                }
             }
         }
-    }
-    $post = safesql(serialize($post), "text");
-    $data->insert_query("messages", "'', $uid, $message, $type, $post");
+        $post = safesql(serialize($post), "text");
+        $data->insert_query("messages", "'', $uid, $message, $type, $post");
 
-    if ($page)
-    {
-        header("Location:$page");
-        echo "<script>window.location='$page';</script>";
+        if ($page)
+        {
+            header("Location:$page");
+            echo "<script>window.location='$page';</script>";
+        }
+        else
+        {
+            header("Location:index.php");
+        }
+        exit;
     }
     else
     {
         header("Location:index.php");
     }
-    exit;
     return;
 }
 
@@ -126,12 +133,12 @@ function change_theme_dir($themeid = false, $useSmarty = true)
 {
 	global $config, $tpl, $data, $check;
 	
-    if (!$themeid) 
+    if (!$themeid && $config['allowtemplate'] == 1) 
     {
         $themeid = isset($check['theme_id']) ? $check['theme_id'] : 0;
     }
     
-	if (!isset($themeid) || ($themeid == 0) || (empty($themeid))) 
+	if (!isset($themeid) || ($themeid == 0) || (empty($themeid)) || $config['allowtemplate'] == 0) 
     {
         $themeid = $config['defaulttheme'];
 	} 
@@ -307,13 +314,26 @@ function get_frontpage_patrol($patrolname)
 function get_page_subs($page, $site, $type) 
 {
     global $data, $check;
-    $page = safesql($page, "text");
-    $site = safesql($site, "text");
-    $type = safesql($type, "text");
-    $pages = $data->select_query("static_content", "WHERE id=$page AND type=$type AND pid=$site");
+    $safepage = safesql($page, "text");
+    $safesite = safesql($site, "text");
+    $safetype = safesql($type, "text");
+    $pages = $data->select_query("static_content", "WHERE id=$safepage AND type=$safetype AND pid=$safesite");
     $page =  $data->fetch_array($pages);
-    
-    return $page['content'];
+    if ($page['special'] == 0 && $type == 1 && $data->num_rows($pages) > 0)
+    {
+        if (in_group(array($site)))
+        {
+            return $page['content'];
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return $page['content'];
+    }
 } //get_sub_page
 
 function get_page_id_subs($page, $site, $type) 
@@ -2085,13 +2105,13 @@ function email($type, $options)
                     $title = $options[1]['name'];
                     $type = "download";
                     $link = $config['siteaddress'] . "index.php?page=downloads&id={$options[1]['id']}&action=down&catid={$options[1]['cat']}";
-                    $extract = truncate($options[1]['descs'], 100);
+                    $extract = truncate(strip_tags($options[1]['descs']), 100);
                     break;
                 case 'news':
                     $title = $options[1]['title'];
                     $type = "news item";
                     $link = $config['siteaddress'] . "index.php?page=news&id={$options[1]['id']}";
-                    $extract = truncate($options[1]['news'], 100);
+                    $extract = truncate(strip_tags($options[1]['news']), 100);
                     break;
             }
             break;
@@ -2134,9 +2154,19 @@ function confirmMail($type, $item)
             case 'event':
                 $title = $item['summary'];
                 $type = "event";
-                $link = $item['detail'] ? $config['siteaddress'] . "index.php?page=calender&id={$item['id']}" : "No link";
-                $extract = $item['detail'] ? truncate(strip_tags($item['detail']), 100) : "None";
-                $id = $item['id'];
+                $startdate = strftime("%Y-%m-%d", $item['startdate']);
+                $starttime = strftime("%H:%M", $item['startdate']);
+                $enddate = strftime("%Y-%m-%d", $item['enddate']);
+                $endtime = strftime("%H:%M", $item['enddate']);
+                
+                $dateDetails = "Start Date: $startdate\r\nStart Time: $starttime\r\nEnd Date: $enddate\r\nEnd Time: $endtime";
+                
+                $date = getdate($item['startdate']);
+                $month = $date['mon'];
+                $year = $date['year'];
+                
+                $link = $item['detail'] ? $config['siteaddress'] . "index.php?page=calender&id={$item['id']}" : $config['siteaddress'] . "index.php?page=calender&view=month&month=$month&year=$year";
+                $extract = $item['detail'] ? $dateDetails . "\r\n\r\n" . truncate(strip_tags($item['detail']), 100) : $dateDetails;
                 break;
             case 'album':
                 $title = $item['album_name'];
@@ -2149,14 +2179,14 @@ function confirmMail($type, $item)
                 $title = $item['name'];
                 $type = "download";
                 $link = $config['siteaddress'] . "index.php?page=downloads&id={$item['id']}&action=down&catid={$item['cat']}";
-                $extract = truncate($item['descs'], 100);
+                $extract = truncate(strip_tags($item['descs']), 100);
                 $id = $item['id'];
                 break;
             case 'news':
                 $title = $item['title'];
                 $type = "news";
                 $link = $config['siteaddress'] . "index.php?page=news&id={$item['id']}";
-                $extract = truncate($item['news'], 100);
+                $extract = truncate(strip_tags($item['news']), 100);
                 $id = $item['id'];
                 break;
             case 'photo':
@@ -2228,7 +2258,7 @@ function sendMail($address, $name, $subject, $message)
         $mail->Subject = $subject;
 
         // Body
-        $mail->Body = $message;
+        $mail->Body = str_replace(array("<br", "<br />"), "\r\n", $message);
 
         // Add an address to send to.
         $mail->AddAddress($address, $name);
@@ -2269,7 +2299,7 @@ function forumEmail($type, $post, $fid, $topic_id=false)
     $postuname = $check['uname'];
     $website = $config['troopname'];
     $link = get_path("index.php?page=forums&action=topic&t=$topic_id&late=1");
-    $extract = truncate($post['posttext'], 300);
+    $extract = strip_tags($post['posttext']);
     $id = $post['id'];   
     if ($type == "reply")
     {

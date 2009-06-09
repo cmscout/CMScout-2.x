@@ -41,14 +41,14 @@ if ($submit == "Search" || isset($_POST['templatesearch']))
 {
     if ( isset($_POST['templatesearch']))
     {
-	$search = $_POST['templatesearch'];
-	$safe_search = safesql($search, "text");
-	$_POST['content'] = 1;
-	$_POST['article'] = 1;
-	$_POST['forum'] = 1;
-	$_POST['news'] = 1;
-	$_POST['events'] = 1;
-	$_POST['pm'] = 1;
+        $search = $_POST['templatesearch'];
+        $safe_search = safesql($search, "text");
+        $_POST['content'] = 1;
+        $_POST['article'] = 1;
+        $_POST['forum'] = 1;
+        $_POST['news'] = 1;
+        $_POST['events'] = 1;
+        $_POST['pm'] = 1;
     }
     
     $numcontentresults = 0;
@@ -56,28 +56,28 @@ if ($submit == "Search" || isset($_POST['templatesearch']))
     if ($_POST['content'] == 1)
     {
         $sql = $data->select_query("static_content", "WHERE (MATCH(friendly, content) AGAINST ($safe_search IN BOOLEAN MODE)) HAVING score > 0.1 ORDER BY score DESC", "*, MATCH(friendly, content) AGAINST ($safe_search) AS score");
-
+        
         $numcontentresults += $data->num_rows($sql);
         while($temp = $data->fetch_array($sql))
-	{
-		if ($temp['type'] == 0)
-		{
-			$temp['itemtype'] = 1;
-		}
-		elseif ($temp['type'] == 1)
-		{
-			$sql2 = $data->select_fetch_one_row("groups", "WHERE id = {$temp['pid']}", "teamname");
-			$temp['groupname'] = $sql2['teamname'];
-			$temp['itemtype'] = 2;
-		}
-		elseif ($temp['type'] == 2)
-		{
-			$sql2 = $data->select_fetch_one_row("subsites", "WHERE id = {$temp['pid']}", "name");
-			$temp['site'] = $sql2['name'];
-			$temp['itemtype'] = 8;
-		}
-		$contentresults[] = $temp;
-	}
+        {
+            if ($temp['type'] == 0)
+            {
+                $temp['itemtype'] = 1;
+            }
+            elseif ($temp['type'] == 1)
+            {
+                $sql2 = $data->select_fetch_one_row("groups", "WHERE id = {$temp['pid']}", "teamname");
+                $temp['groupname'] = $sql2['teamname'];
+                $temp['itemtype'] = 2;
+            }
+            elseif ($temp['type'] == 2)
+            {
+                $sql2 = $data->select_fetch_one_row("subsites", "WHERE id = {$temp['pid']}", "name");
+                $temp['site'] = $sql2['name'];
+                $temp['itemtype'] = 8;
+            }
+            $contentresults[] = $temp;
+        }
     }
     
     if ($_POST['article'] == 1)
@@ -86,10 +86,10 @@ if ($submit == "Search" || isset($_POST['templatesearch']))
 
         $numcontentresults += $data->num_rows($sql);
         while($temp = $data->fetch_array($sql))
-	{
-		$temp['itemtype'] = 3;
-		$contentresults[] = $temp;
-	}
+        {
+            $temp['itemtype'] = 3;
+            $contentresults[] = $temp;
+        }
     }
     
     if ($_POST['forum'] == 1)

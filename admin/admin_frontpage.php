@@ -88,7 +88,7 @@ else
             $temp = explode(".", $_POST['itemid']);
             $itemid = safesql($temp[0], "int");
             $type = safesql(($temp[1]=="dynamic" ? 1 : 0), "int"); 
-            $sql = $data->update_query("frontpage", "itemid = $itemid, type = $type", "id=$id");
+            $sql = $data->update_query("frontpage", "item = $itemid, type = $type", "id=$id");
             if ($sql)
             {
                 show_admin_message("Item updated", "$pagename");

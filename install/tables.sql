@@ -564,7 +564,7 @@ CREATE TABLE `!#prefix#!menu_items` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(50) NOT NULL default '',
   `cat` int(11) NOT NULL default '0',
-  `item` varchar(50) default NULL,
+  `item` varchar(255) default NULL,
   `pos` mediumint(9) NOT NULL default '0',
   `type` tinyint(4) NOT NULL default '0',
   `parent` int(11) NOT NULL default '0',

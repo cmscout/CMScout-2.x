@@ -46,31 +46,31 @@ if (isset($_GET['id']))
             case 'article':
                 $temp2 = $data->select_fetch_one_row("patrol_articles", "WHERE ID=$attachId", "ID, title");
                 $attachment['name'] = $temp2['title'];
-                $attachment['link'] = "index.php?page=patrolarticle&id={$attachId}&menuid={$menuid}&action=view";
+                $attachment['link'] = "index.php?page=patrolarticle&amp;id={$attachId}&amp;menuid={$menuid}&amp;action=view";
                 $attachment['type'] = "Article";
                 break;
             case 'album':
                 $temp2 = $data->select_fetch_one_row("album_track", "WHERE ID=$attachId", "ID, album_name");
                 $attachment['name'] = $temp2['album_name'];
-                $attachment['link'] = "index.php?page=photos&album={$attachId}&menuid={$menuid}";
+                $attachment['link'] = "index.php?page=photos&amp;album={$attachId}&amp;menuid={$menuid}";
                 $attachment['type'] = "Photo Album";
                 break;
             case 'event':
                 $temp2 = $data->select_fetch_one_row("calendar_items", "WHERE id=$attachId", "id, summary");
                 $attachment['name'] = $temp2['summary'];
-                $attachment['link'] = "index.php?page=calender&item={$attachId}&menuid={$menuid}";
+                $attachment['link'] = "index.php?page=calender&amp;item={$attachId}&amp;menuid={$menuid}";
                 $attachment['type'] = "Event";
                 break;
             case 'download':
                 $temp2 = $data->select_fetch_one_row("downloads", "WHERE id=$attachId", "id, name, cat");
                 $attachment['name'] = $temp2['name'];
-                $attachment['link'] = "index.php?page=downloads&id={$attachId}&action=down&catid={$temp2['cat']}&menuid={$menuid}";
+                $attachment['link'] = "index.php?page=downloads&amp;id={$attachId}&amp;action=down&amp;catid={$temp2['cat']}&amp;menuid={$menuid}";
                 $attachment['type'] = "Download";
                 break;
             case 'news':
                 $temp2 = $data->select_fetch_one_row("newscontent", "WHERE id=$attachId", "id, title");
                 $attachment['name'] = $temp2['title'];
-                $attachment['link'] = "index.php?page=news&id={$attachId}&menuid={$menuid}";
+                $attachment['link'] = "index.php?page=news&amp;id={$attachId}&amp;menuid={$menuid}";
                 $attachment['type'] = "News";
                 break;
         }
@@ -139,31 +139,31 @@ else
 		    case 'article':
 			$temp2 = $data->select_fetch_one_row("patrol_articles", "WHERE ID=$attachId", "ID, title");
 			$attachment['name'] = $temp2['title'];
-			$attachment['link'] = "index.php?page=patrolarticle&id={$attachId}&menuid={$menuid}&action=view";
+			$attachment['link'] = "index.php?page=patrolarticle&amp;id={$attachId}&amp;menuid={$menuid}&amp;action=view";
 			$attachment['type'] = "Article";
 			break;
 		    case 'album':
 			$temp2 = $data->select_fetch_one_row("album_track", "WHERE ID=$attachId", "ID, album_name");
 			$attachment['name'] = $temp2['album_name'];
-			$attachment['link'] = "index.php?page=photos&album={$attachId}&menuid={$menuid}";
+			$attachment['link'] = "index.php?page=photos&amp;album={$attachId}&amp;menuid={$menuid}";
 			$attachment['type'] = "Photo Album";
 			break;
 		    case 'event':
 			$temp2 = $data->select_fetch_one_row("calendar_items", "WHERE id=$attachId", "id, summary");
 			$attachment['name'] = $temp2['summary'];
-			$attachment['link'] = "index.php?page=calender&item={$attachId}&menuid={$menuid}";
+			$attachment['link'] = "index.php?page=calender&amp;item={$attachId}&amp;menuid={$menuid}";
 			$attachment['type'] = "Event";
 			break;
 		    case 'download':
 			$temp2 = $data->select_fetch_one_row("downloads", "WHERE id=$attachId", "id, name, cat");
 			$attachment['name'] = $temp2['name'];
-			$attachment['link'] = "index.php?page=downloads&id={$attachId}&action=down&catid={$temp2['cat']}&menuid={$menuid}";
+			$attachment['link'] = "index.php?page=downloads&amp;id={$attachId}&amp;action=down&amp;catid={$temp2['cat']}&amp;menuid={$menuid}";
 			$attachment['type'] = "Download";
 			break;
 		    case 'news':
 			$temp2 = $data->select_fetch_one_row("newscontent", "WHERE id=$attachId", "id, title");
 			$attachment['name'] = $temp2['title'];
-			$attachment['link'] = "index.php?page=news&id={$attachId}&menuid={$menuid}";
+			$attachment['link'] = "index.php?page=news&amp;id={$attachId}&amp;menuid={$menuid}";
 			$attachment['type'] = "News";
 			break;
             }

@@ -43,7 +43,7 @@ $installed = 0;
 $errors = "";
 $gotoplace = "";
 $stage = isset($_POST['stage']) ? $_POST['stage'] : 0;
-$version = "2.00";
+$version = "2.01";
 $upgradefrom = "1.23";
 
 if($stage == '' || !isset($stage))
@@ -179,7 +179,7 @@ else
     $exists['config'] = file_exists($cms_root . $dir);
 }
 
-$dir = 'logfile.'.$phpEx;
+$dir = 'logfile.txt';
 $write['logfile'] = $exists['logfile'] = true;
 if (file_exists($cms_root . $dir))
 {
@@ -653,25 +653,25 @@ if($stage == 2)
     $sql = mysql_query("select * from {$database['prefix']}menu_items");
     while ($temp = mysql_fetch_array($sql))
     {
-	switch($temp['type'])
-	{
-		case 1:
-			$temp2 = mysql_fetch_array(mysql_query("select id from {$database['prefix']}static_content where name = '{$temp['item']}'"));
-			mysql_query("update {$database['prefix']}menu_items set item={$temp2['id']} where id='{$temp['id']}'");
-			break;
-		case 2:
-		case 3:
-			$temp2 = mysql_fetch_array(mysql_query("select id from {$database['prefix']}functions where name = '{$temp['item']}'"));
-			mysql_query("update {$database['prefix']}menu_items set item={$temp2['id']} where id='{$temp['id']}'");
-			break;
-		case 4:
-			$temp2 = mysql_fetch_array(mysql_query("select id from {$database['prefix']}subsites where name = '{$temp['item']}'"));
-			mysql_query("update {$database['prefix']}menu_items set item={$temp2['id']} where id='{$temp['id']}'");
-			break;
-		case 5:
-			mysql_query("update {$database['prefix']}menu_items set item={$temp['url']} where id='{$temp['id']}'");
-			break;
-	}
+        switch($temp['type'])
+        {
+            case 1:
+                $temp2 = mysql_fetch_array(mysql_query("select id from {$database['prefix']}static_content where name = '{$temp['item']}'"));
+                mysql_query("update {$database['prefix']}menu_items set item={$temp2['id']} where id='{$temp['id']}'");
+                break;
+            case 2:
+            case 3:
+                $temp2 = mysql_fetch_array(mysql_query("select id from {$database['prefix']}functions where name = '{$temp['item']}'"));
+                mysql_query("update {$database['prefix']}menu_items set item={$temp2['id']} where id='{$temp['id']}'");
+                break;
+            case 4:
+                $temp2 = mysql_fetch_array(mysql_query("select id from {$database['prefix']}subsites where name = '{$temp['item']}'"));
+                mysql_query("update {$database['prefix']}menu_items set item={$temp2['id']} where id='{$temp['id']}'");
+                break;
+            case 5:
+                mysql_query("update {$database['prefix']}menu_items set item={$temp['url']} where id='{$temp['id']}'");
+                break;
+        }
     }
     
     //Apply table changes
@@ -754,8 +754,10 @@ if($stage == 2)
       
       //menu_items
       mysql_query("alter table {$database['prefix']}menu_items drop url") or die("Error at " . __LINE__ . ": " . mysql_error()); 
-      
-      //newscontent
+      mysql_query("ALTER TABLE `{$database['prefix']}menu_items` CHANGE `item` `item` VARCHAR( 255 ) NULL DEFAULT NULL;
+") or die("Error at " . __LINE__ . ": " . mysql_error()); 
+
+        //newscontent
       mysql_query("alter table {$database['prefix']}newscontent ADD attachment varchar(20) NOT NULL AFTER `event`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
       mysql_query("alter table {$database['prefix']}newscontent ADD trash tinyint(4) NOT NULL AFTER `allowed`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
       

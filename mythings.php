@@ -451,8 +451,9 @@ if ($cat != "" || $action != "")
                     if (validate($_POST['validation']))
                     {
                         $summary = safesql($_POST['summary'], "text");
-                        $startdate = safesql(strtotime($_POST['sdate']) + $_POST['stime']['Hour']*60*60 + $_POST['stime']['Minute']*60 - getuseroffset($check['uname']), "int");
-                        $enddate = safesql(strtotime($_POST['edate']) + $_POST['etime']['Hour']*60*60 + $_POST['etime']['Minute']*60 - getuseroffset($check['uname']), "int");
+
+                        $startdate = safesql(strtotime($_POST['sdate']) + $_POST['stime']['Hour']*60*60 + $_POST['stime']['Minute']*60);
+                        $enddate = safesql(strtotime($_POST['edate']) + $_POST['etime']['Hour']*60*60 + $_POST['etime']['Minute']*60);
                         $detail = safesql($_POST['story'], "text", false);
                         $colour = safesql($_POST['colour'], "text");
 

@@ -116,9 +116,7 @@
                     <a href="{$menu.right[cats].items[itemloop].link}" class="nav-link">{$menu.right[cats].items[itemloop].name|upper}</a>
                {elseif $menu.right[cats].items[itemloop].type == 4}
 	        {assign var="sideitemid" value=$menu.right[cats].items[itemloop].id}
-               {if $menu.right[cats].numitems > 1}<br />{/if}
                     <div class="inside-box">{eval var=$menu.right[cats].items[itemloop].link}</div>
-                    {if $menu.right[cats].numitems > 1}<br />{/if}
                {/if}
                {if $menu.right[cats].items[itemloop].subitems != 0}
                    {section name=subitemloop loop=$menu.left[cats].items[itemloop].subitems}

@@ -151,8 +151,9 @@ $onDomReady .= "var r = new MooRainbow('colourSelector', {
         if ($submit == "Submit")
         {
             $summary = safesql($_POST['summary'], "text");
-            $startdate = safesql(strtotime($_POST['sdate']), "int");
-            $enddate = safesql(strtotime($_POST['edate']), "int");
+            $startdate = strtotime($_POST['sdate']) + $_POST['stime']['Hour']*60*60 + $_POST['stime']['Minute']*60;
+            $enddate = strtotime($_POST['edate']) + $_POST['etime']['Hour']*60*60 + $_POST['etime']['Minute']*60;
+
             $detail = safesql($_POST['editor'], "text", false);
             $colour = safesql($_POST['colour'], "text");
             $groupallowed = safesql(serialize($_POST['groups']), "text");

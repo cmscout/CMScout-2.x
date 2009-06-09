@@ -113,7 +113,7 @@ if ($action == '' || ($action == "view" && $id == 'NULL') || ($action == "topic"
     $rssuname = safesql(md5($check['uname']), "text");
     if ($patrol != "")
     {
-        if ($data->num_rows($data->select_query("rssfeeds", "WHERE itemid=$patrol AND type=5 AND uname=$rssuname", "id")))
+        if ($data->num_rows($data->select_query("rssfeeds", "WHERE itemid=$patrolid AND type=5 AND uname=$rssuname", "id")))
         {
             $rss = 1;
         }

@@ -6,7 +6,7 @@
     </tr>
     <tr valign="top">
         {if $sitemenu != ""}
-        <td nowrap width="15%" class="sitemenu">
+        <td nowrap="nowrap" width="15%" class="sitemenu">
             <div align="center">{eval var=$sitemenu}</div>
         </td>
         {/if}
