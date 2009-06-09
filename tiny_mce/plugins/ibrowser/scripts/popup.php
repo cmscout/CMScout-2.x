@@ -9,7 +9,7 @@
 	// License: GPL - see license.txt
 	// (c)2005 All rights reserved.
 	// ================================================
-	// Revision: 1.0                   Date: 06/14/2005
+	// Revision: 1.0                   Date: 07/15/2006
 	// ================================================
 
 	if ( get_magic_quotes_gpc() ) {
@@ -60,7 +60,7 @@
 // = load/hide message, date: 02/08/2005                      =
 // ============================================================
 	function hideloadmessage() {
-		document.getElementById('dialogLoadMessage').style.display = 'none'
+		document.getElementById('dialogLoadMessage').style.display = 'none';
 	}
 </script>
 <style type="text/css">
@@ -91,7 +91,10 @@ body {
 </style>
 </head>
 <body onload="resizeWinTo('iDiv'); hideloadmessage();">
-<?php include dirname(__FILE__) . '/loadmsg.php'; ?>
-	<div id="iDiv" style="position:absolute; left:0px; top:0px;"><img onclick="window.close();" src="<?php echo $src; ?>" border="0" alt="<?php echo $clTxt; ?>" title="<?php echo $clTxt; ?>" style="cursor: pointer;"/></div>
+<?php 
+	include dirname(__FILE__) . '/loadmsg.php';
+?>
+<div id="iDiv" style="position:absolute; left:0px; top:0px;">
+	<img onclick="window.close();" src="<?php echo $src; ?>" border="0" alt="<?php echo $clTxt; ?>" title="<?php echo $clTxt; ?>" style="cursor: pointer;"/></div>
 </body>
 </html>

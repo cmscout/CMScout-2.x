@@ -1,9 +1,3 @@
-function popuphelp(what)
-{
-	var url = "index.php?page=help&ex=nomenu&helppage=" + what;
-	window.open(url, 'Help', 'HEIGHT=480,resizable=yes,WIDTH=400,scrollbars=yes');
-}
-
 function fileBrowser (field_name, url, type, win) {
 
     //alert("Field_Name: " + field_name + "\nURL: " + url + "\nType: " + type + "\nWin: " + win); // debug/testing
@@ -20,18 +14,17 @@ function fileBrowser (field_name, url, type, win) {
         winHeight = 115;
     }
 
-    tinyMCE.openWindow({
-        file : "../../../browser.php?" + "type=" + type,
+    tinyMCE.activeEditor.windowManager.open({
+        file : "browser.php?" + "type=" + type,
         title : "Browser",
         width : winWidth,  // Your dimensions may differ - toy around with them!
         height : winHeight,
+        resizable : "yes",
+        inline : "yes",
         close_previous : "no"
     }, {
         window : win,
-        input : field_name,
-        resizable : "yes",
-        inline : "yes",  // This parameter only has an effect if you use the inlinepopups plugin!
-        editor_id : tinyMCE.getWindowArg("editor_id")
+        input : field_name
     });
     return false;
   }

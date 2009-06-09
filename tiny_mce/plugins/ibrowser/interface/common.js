@@ -10,19 +10,19 @@
 // (c)2005 All rights reserved.
 // File: common.js
 // ================================================
-// Revision: 1.0                   Date: 10/07/2005
+// Revision: 1.0                   Date: 08/10/2006
 // ================================================	
 	//=========================================================================
 	// common code for all wysiwyg editor interfaces like tinyMCE, FCKeditor,
 	// SPAW, Xinha, and HTMLarea
 	//=========================================================================
-	// initiate iBrowser object
-	function iBrowser() {		
+	// initiate iBrowser object	
+	function iBrowser() {	
 	}
 	var ib = new iBrowser;
 	//-------------------------------------------------------------------------
 	// open iBrowser
-	function iBrowser_open() {		
+	function iBrowser_open() {			
 		ib.oEditor.contentWindow.focus();
 		var wArgs = {};
 		var elm = ib.selectedElement;		
@@ -220,8 +220,8 @@
 		wArgs.alt 			= oImageElement.alt;
 		wArgs.title 		= oImageElement.title;
 		if (!wArgs.rsrc) { // if not random picture
-			wArgs.width 	= oImageElement.style.width  ? oImageElement.style.width  : oImageElement.width;
-			wArgs.height 	= oImageElement.style.height ? oImageElement.style.height : oImageElement.height;
+			wArgs.width 	= oImageElement.style.width  ? parseInt(oImageElement.style.width)  : oImageElement.width;
+			wArgs.height 	= oImageElement.style.height ? parseInt(oImageElement.style.height) : oImageElement.height;
 		}
 		wArgs.border 		= oImageElement.border;
 		wArgs.align 		= oImageElement.align;

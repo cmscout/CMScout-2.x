@@ -10,13 +10,13 @@
 	// (c)2005 All rights reserved.
 	// File: ibrowser.php
 	// ================================================
-	// Revision: 1.3                   Date: 12/10/2005
+	// Revision: 1.3                   Date: 08/29/2006
 	// ================================================
 	
 	//-------------------------------------------------------------------------
 	// unset $cfg['ilibs_incl'] - dynamic image library
 	if (isset($cfg['ilibs_inc'])) {
-		unset($cfg['ilibs_inc']);
+		$cfg['ilibs_inc'] = '';
 	}
 	//-------------------------------------------------------------------------
 	// include configuration settings
@@ -1106,7 +1106,7 @@
                         <img src="images/dirview_off.gif" onClick="switchList();" onMouseOver="this.src='images/dirview.gif';" onMouseOut="this.src='images/dirview_off.gif';" alt="<?php echo $l->m('in_052'); ?>" title="<?php echo $l->m('in_052'); ?>" width="16" height="16" border="0" /></span>
                       </div>
                       <div id="inSelDiv">
-                        <iframe name="inSelFrame" id="inSelFrame" src="scripts/rfiles.php?clib=<?php echo $clib; ?>" style="width: 100%; height: 100%px;" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+                        <iframe name="inSelFrame" id="inSelFrame" src="scripts/rfiles.php?clib=<?php echo $clib; ?>" style="width: 100%; height: 100%;" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>
                       </div>
                     </div>
                   </div>
@@ -1200,7 +1200,7 @@
               <div id="fileDivWrap" class="showit">
                 <div class="rowDiv">
                   <div class="btnRight">
-                    <?php if ($cfg['create'] && isset($cfg['ilibs_inc'])) {; ?>
+				    <?php if ($cfg['create'] && isset($cfg['ilibs_inc'])) {; ?>
                     <img src="images/dir_off.gif" onClick="changeClass(0,'fileDiv','showit','fiDirDiv','showit','fiUplDiv','hideit','fiRenDiv','hideit','fiDelDiv','hideit');" onMouseOver="this.src='images/dir.gif';" onMouseOut="this.src='images/dir_off.gif';" alt="<?php echo $l->m('in_027'); ?>" title="<?php echo $l->m('in_027'); ?>" width="16" height="16" />
                     <?php }; ?>
                     <?php if ($cfg['upload']) {; ?>
@@ -1238,7 +1238,7 @@
                         <img onClick="renameClick();" src="images/okclick_off.gif" onMouseOver="this.src='images/okclick.gif';" onMouseOut="this.src='images/okclick_off.gif';" alt="<?php echo $l->m('in_017'); ?>" title="<?php echo $l->m('in_017'); ?>" width="16" height="16" border="0" />
                       </div>
                       <label for="in_srcnew"> <span class="pad10"> <?php echo $l->m('in_016'); ?> </span> </label>
-                      <input class="fldlg" id="in_srcnew" name="in_srcnew" type="text" value="" onKeyUp="RemoveInvalidChars(this, '[^A-Za-z0-9 \_]'); ForceLowercase(this); CharacterReplace(this, ' ', '_'); return false;"  />
+                      <input class="fldlg" id="in_srcnew" name="in_srcnew" type="text" value="" onKeyUp="RemoveInvalidChars(this, '[^A-Za-z0-9 \_-]'); ForceLowercase(this); CharacterReplace(this, ' ', '_'); return false;"  />
                     </div>
                   </div>
                   <?php }; ?>
@@ -1249,7 +1249,7 @@
                         <img onClick="createClick();" src="images/okclick_off.gif" onMouseOver="this.src='images/okclick.gif';" onMouseOut="this.src='images/okclick_off.gif';" alt="<?php echo $l->m('in_026'); ?>" title="<?php echo $l->m('in_026'); ?>" width="16" height="16" border="0" />
                       </div>
                       <label for="in_srcnew"> <span class="pad10"> <?php echo $l->m('in_025'); ?> </span> </label>
-                      <input class="fldlg" id="in_dirnew" name="in_dirnew" type="text" value="" onKeyUp="RemoveInvalidChars(this, '[^A-Za-z0-9 \_]'); ForceLowercase(this); CharacterReplace(this, ' ', '_'); return false;" />
+                      <input class="fldlg" id="in_dirnew" name="in_dirnew" type="text" value="" onKeyUp="RemoveInvalidChars(this, '[^A-Za-z0-9 \_-]'); ForceLowercase(this); CharacterReplace(this, ' ', '_'); return false;" />
                     </div>
                   </div>
                   <?php }; ?>
@@ -1263,7 +1263,7 @@
 							$max = isset($cfg['umax']) && $cfg['umax'] >= 1 ? $cfg['umax'] : 1;					
 							for($i=1; $i <= $max; $i++) {; ?>
                       <label for="nfile"> <span class="pad10"> <?php echo $l->m('in_018'); if ($max > 1){ echo ' (' . $i . ')';} ?> </span> </label>
-                      <input name="nfile[]" type="file" class="fldlg" id="nfile[]" accept="image/*" />
+                      <input name="nfile[]" type="file" class="fldlg" id="nfile[]" size="53" accept="image/*" />
                       <?php }; ?>
                     </div>
                     <div class="rowDiv">
@@ -1413,7 +1413,7 @@
                   <div class="btnRight">
                     <img class="hlpBtn" src="images/help_off.gif" onMouseOver="this.src='images/help.gif';" onMouseOut="this.src='images/help_off.gif';" onClick="alert(this.alt);" alt="<?php echo $l->m('at_033'); ?>" title="<?php echo $l->m('at_033'); ?>" width="16" height="16" border="0" />
                   </div>
-                  <label for="pr_caption"> <span class="title"> <?php echo $l->m('at_032'); ?> </span> </label>
+                  <label for="pr_chkCaption"> <span class="title"> <?php echo $l->m('at_032'); ?> </span> </label>
                   <input name="pr_chkCaption" type="checkbox" class="chkBox" id="pr_chkCaption" onChange="updateStyle()" value="1" />
                   <span class="frmText">(<?php echo $l->m('at_034'); ?>)</span>
                 </div>

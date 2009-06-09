@@ -26,14 +26,14 @@ function smarty_function_html_select_time($params, &$smarty)
     require_once $smarty->_get_plugin_filepath('shared','make_timestamp');
     require_once $smarty->_get_plugin_filepath('function','html_options');
     /* Default values. */
-    $prefix             = null;
+    $prefix             = "Time_";
     $time               = time();
     $display_hours      = true;
     $display_minutes    = true;
-    $display_seconds    = false;
+    $display_seconds    = true;
     $display_meridian   = true;
     $use_24_hours       = true;
-    $minute_interval    = 15;
+    $minute_interval    = 1;
     $second_interval    = 1;
     /* Should the select boxes be part of an array when returned from PHP?
        e.g. setting it to "birthday", would create "birthday[Hour]",
@@ -45,8 +45,6 @@ function smarty_function_html_select_time($params, &$smarty)
     $minute_extra       = null;
     $second_extra       = null;
     $meridian_extra     = null;
-    $class              = null;
-    $style              = null;
 
     foreach ($params as $_key=>$_value) {
         switch ($_key) {
@@ -58,8 +56,6 @@ function smarty_function_html_select_time($params, &$smarty)
             case 'minute_extra':
             case 'second_extra':
             case 'meridian_extra':
-            case 'class':
-            case 'style':
                 $$_key = (string)$_value;
                 break;
 
@@ -102,12 +98,6 @@ function smarty_function_html_select_time($params, &$smarty)
         if (null !== $all_extra){
             $html_result .= ' ' . $all_extra;
         }
-        if (null !== $class){
-            $html_result .= ' class="' . $class . '"';
-        }
-        if (null !== $style){
-            $html_result .= ' style="' . $style . '"';
-        }
         $html_result .= '>'."\n";
         $html_result .= smarty_function_html_options(array('output'          => $hours,
                                                            'values'          => $hours,
@@ -133,12 +123,6 @@ function smarty_function_html_select_time($params, &$smarty)
         }
         if (null !== $all_extra){
             $html_result .= ' ' . $all_extra;
-        }
-        if (null !== $class){
-            $html_result .= ' class="' . $class . '"';
-        }
-        if (null !== $style){
-            $html_result .= ' style="' . $style . '"';
         }
         $html_result .= '>'."\n";
         
@@ -168,12 +152,6 @@ function smarty_function_html_select_time($params, &$smarty)
         if (null !== $all_extra){
             $html_result .= ' ' . $all_extra;
         }
-        if (null !== $class){
-            $html_result .= ' class="' . $class . '"';
-        }
-        if (null !== $style){
-            $html_result .= ' style="' . $style . '"';
-        }
         $html_result .= '>'."\n";
         
         $html_result .= smarty_function_html_options(array('output'          => $seconds,
@@ -197,12 +175,6 @@ function smarty_function_html_select_time($params, &$smarty)
         }
         if (null !== $all_extra){
             $html_result .= ' ' . $all_extra;
-        }
-        if (null !== $class){
-            $html_result .= ' class="' . $class . '"';
-        }
-        if (null !== $style){
-            $html_result .= ' style="' . $style . '"';
         }
         $html_result .= '>'."\n";
         

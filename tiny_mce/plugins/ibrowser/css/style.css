@@ -268,10 +268,10 @@ div.rowDiv span.frmText {
 	padding-bottom: 3px;
 }
 div.rowDiv input.fldlg, div.rowDiv select.fldlg {
-	width: 334px;
+	width: 355px;
 }
 * html div.rowDiv input.fldlg, * html div.rowDiv select.fldlg {
-	width: 336px;
+	width: 357px;
 }
 div.rowDiv input.fldmlg {
 	width: 334px;

@@ -9,16 +9,7 @@
 <![endif]-->
 {if $editor == true}
 {literal}
-<script language="javascript" type="text/javascript" src="tiny_mce/tiny_mce_gzip.js"></script>
-<script type="text/javascript">
-tinyMCE_GZ.init({
-	plugins : 'autosave,table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,directionality,fullscreen,inlinepopups,layer,spellchecker,media,style',
-	themes : 'advanced',
-	languages : 'en',
-	disk_cache : true,
-	debug : false
-});
-</script>
+<script language="javascript" type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
 <script language="javascript" type="text/javascript">
 tinyMCE.init
     ({
@@ -31,7 +22,7 @@ tinyMCE.init
         {/if}
         {literal}
         theme : "advanced",
-        plugins : "table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,directionality,fullscreen,inlinepopups,layer,spellchecker,media,ibrowser,style",
+        plugins : "advimage,advlink,table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,ibrowser,style",
         theme_advanced_buttons1_add : "fontselect,fontsizeselect,styleprops,separator,spellchecker",
         theme_advanced_buttons2_add : "separator,insertdate,inserttime,media,separator,forecolor,backcolor",
         theme_advanced_buttons2_add_before: "cut,copy,paste,pastetext,pasteword,separator,search,replace,separator",
@@ -39,10 +30,13 @@ tinyMCE.init
         theme_advanced_buttons3_add : "emotions,advhr,separator,print,separator,ltr,rtl,separator,fullscreen,separator,insertlayer,ibrowser",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        theme_advanced_resizing : true,
+        theme_advanced_resize_horizontal : false,
         theme_advanced_path_location : "bottom",
         plugin_insertdate_dateFormat : "%Y-%m-%d",
         plugin_insertdate_timeFormat : "%H:%M:%S",
-	content_css : "default.css",
+        content_css : "default.css",
         spellchecker_languages : "+English=en",
         file_browser_callback : "fileBrowser",
         button_tile_map : true,

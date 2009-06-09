@@ -32,25 +32,28 @@ $cssIncludes = array();
 $domReady = array();
 
 $tinyMCEGzip ['advanced'] = "tinyMCE_GZ.init({
-	plugins : 'table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,directionality,fullscreen,inlinepopups,layer,spellchecker,media',
-	themes : 'advanced',
+  plugins : \"table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,style\",
 	languages : 'en',
 	disk_cache : true,
 	debug : false
 });";
+$tinyMCEGzip ['advanced'] = "";
 $tinyMCE['advanced'] = 'tinyMCE.init
     ({
         mode : "exact",
         elements: "story",
         theme : "advanced",
-        plugins : "table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,directionality,fullscreen,inlinepopups,layer,spellchecker, media",
-        theme_advanced_buttons1_add : "fontselect,fontsizeselect,separator,spellchecker",
+  plugins : "table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,style",
+        theme_advanced_buttons1_add : "fontselect,fontsizeselect,styleprops,separator,spellchecker",
         theme_advanced_buttons2_add : "separator,insertdate,inserttime,media,separator,forecolor,backcolor",
         theme_advanced_buttons2_add_before: "cut,copy,paste,pastetext,pasteword,separator,search,replace,separator",
         theme_advanced_buttons3_add_before : "tablecontrols,separator",
-        theme_advanced_buttons3_add : "emotions,advhr,separator,print,separator,ltr,rtl,separator,fullscreen,separator,insertlayer,moveforward,movebackward,absolute",
+        theme_advanced_buttons3_add : "emotions,advhr,separator,print,separator,ltr,rtl,separator,fullscreen,separator,insertlayer",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        theme_advanced_resizing : true,
+        theme_advanced_resize_horizontal : false,
         theme_advanced_path_location : "bottom",
         plugin_insertdate_dateFormat : "%Y-%m-%d",
         plugin_insertdate_timeFormat : "%H:%M:%S",
@@ -66,7 +69,9 @@ $tinyMCEGzip ['simple'] = "tinyMCE_GZ.init({
 	languages : 'en',
 	disk_cache : true,
 	debug : false
-});";       
+});";  
+$tinyMCEGzip ['simple'] = "";
+
 
 $tinyMCE['simple'] = 'tinyMCE.init({
 		mode : "exact",
@@ -76,8 +81,12 @@ $tinyMCE['simple'] = 'tinyMCE.init({
         theme_advanced_buttons1 : "separator,cut,copy,paste,pastetext,pasteword,separator,spellchecker,separator,bold,italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,forecolor,backcolor",
         theme_advanced_buttons2 : "separator,bullist,numlist,separator,undo,redo,separator,link,unlink,image,separator,emotions,charmap,separator,cleanup,help,code,separator",
         theme_advanced_buttons3 : "fontselect,fontsizeselect", 
-		theme_advanced_toolbar_location : "top",
-		theme_advanced_toolbar_align : "left",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        theme_advanced_resizing : true,
+        theme_advanced_resize_horizontal : false,
+        theme_advanced_path_location : "bottom",
 	    plugin_insertdate_dateFormat : "%Y-%m-%d",
 	    plugin_insertdate_timeFormat : "%H:%M:%S",
         file_browser_callback : "fileBrowser",
@@ -92,7 +101,7 @@ $scriptIncludes['datepicker'] = 'scripts/datepicker.js';
 $scriptIncludes['mooRainbow'] = 'scripts/mooRainbow.js';
 $scriptIncludes['mootabs'] = 'scripts/SimpleTabs.js';
 $scriptIncludes['slimbox'] = 'scripts/slimbox.js';
-$scriptIncludes['tinymce'] = 'tiny_mce/tiny_mce_gzip.js';
+$scriptIncludes['tinymce'] = 'tiny_mce/tiny_mce.js';
 
 $cssIncludes['gallery'] = 'jd.gallery.css';
 $cssIncludes['datepicker'] = 'datepicker.css';

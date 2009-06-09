@@ -23,15 +23,44 @@
 }
   </style>
 <script type="text/javascript">
-var win = tinyMCE.getWindowArg("window");
-var input = tinyMCE.getWindowArg("input");
-var res = tinyMCE.getWindowArg("resizable");
-var inline = tinyMCE.getWindowArg("inline");
+var win = tinyMCEPopup.getWindowArg("window");
+var input = tinyMCEPopup.getWindowArg("input");
+var res = tinyMCEPopup.getWindowArg("resizable");
+var inline = tinyMCEPopup.getWindowArg("inline");
 
 {/literal}
 {if $browserTitle == "Image"}
 {literal}
-function insertImage(id) 
+var FileBrowserDialogue = {
+    init : function () {
+        // ensure window title in inlinepopups
+        var obj; 
+        var inlinepopups = false; 
+        for (obj in tinyMCE.selectedInstance.plugins)
+            if (tinyMCE.selectedInstance.plugins[obj] == "inlinepopups")
+                inlinepopups = true;
+
+        if (inlinepopups)
+            tinyMCE.setWindowTitle(window, document.getElementsByTagName("title")[0].innerHTML);
+    },
+    insertImage : function (id) {
+          {/literal}var URL = "getphoto.php?pic="+id;{literal}
+
+        // insert information now
+        win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = URL;
+
+        // for image browsers: update image dimensions
+        if (win.ImageDialog.getImageData) win.ImageDialog.getImageData();
+        if (win.ImageDialog.showPreviewImage) win.ImageDialog.showPreviewImage(URL);
+
+        // close popup window
+        tinyMCEPopup.close();
+    }
+}
+
+tinyMCEPopup.onInit.add(FileBrowserDialogue.init, FileBrowserDialogue);
+
+/*function insertImage(id) 
 {
   //call this function only after page has loaded
   //otherwise tinyMCEPopup.close will close the
@@ -48,10 +77,37 @@ function insertImage(id)
 
   // close popup window
   tinyMCEPopup.close();
-}
+}*/
 {/literal}
 {else}
 {literal}
+
+var FileBrowserDialogue = {
+    init : function () {
+        // ensure window title in inlinepopups
+        var obj; 
+        var inlinepopups = false; 
+        for (obj in tinyMCE.selectedInstance.plugins)
+            if (tinyMCE.selectedInstance.plugins[obj] == "inlinepopups")
+                inlinepopups = true;
+
+        if (inlinepopups)
+            tinyMCE.setWindowTitle(window, document.getElementsByTagName("title")[0].innerHTML);
+    },
+    insertItem : function () {
+          var URL = document.theform.pickItem.value;
+
+        // insert information now
+        win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = URL;
+
+        // close popup window
+        tinyMCEPopup.close();
+    }
+}
+
+tinyMCEPopup.onInit.add(FileBrowserDialogue.init, FileBrowserDialogue);
+
+/*
 function insertItem() {
   //call this function only after page has loaded
   //otherwise tinyMCEPopup.close will close the
@@ -65,11 +121,11 @@ function insertItem() {
 
   // close popup window
   tinyMCEPopup.close();
-  }
+  }*/
 {/literal}
 {/if}
 {literal}
-myInitFunction = function () {
+/*myInitFunction = function () {
     // ensure window title in inlinepopups
     var obj; 
     var inlinepopups = false; 
@@ -79,7 +135,7 @@ myInitFunction = function () {
 
     if (inlinepopups)
         tinyMCE.setWindowTitle(window, document.getElementsByTagName("title")[0].innerHTML);
-}
+}*/
 
 {/literal}
 {if $browserTitle == "Image"}
@@ -91,7 +147,7 @@ function getAlbumData()
     var albums = new Array();
     {/literal}
     {section name=album loop=$numalbum}
-       {if $albums[album].numphotos}albums[{$albums[album].ID}] = "<table width=\"100%\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\"><tr style=\"height:136px\">{section name=photos loop=$albums[album].numphotos}<td width=\"136px\" style=\"vertical-align:middle;\"><div align=\"center\"><a href=\"javascript:insertImage('{$albums[album].photos[photos].ID}');\" title=\"Insert Photo\"><img class=\"image\" border=\"0\" src=\"thumbnail.php?pic={$albums[album].photos[photos].ID}\" alt=\"Insert Photo\" /></a></div></td>{if ($smarty.section.photos.iteration % 3 == 0)}</tr><tr style=\"height:136px\">{/if}{/section}</tr></table>";{/if}
+       {if $albums[album].numphotos}albums[{$albums[album].ID}] = "<table width=\"100%\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\"><tr style=\"height:136px\">{section name=photos loop=$albums[album].numphotos}<td width=\"136px\" style=\"vertical-align:middle;\"><div align=\"center\"><a href=\"#\" onclick=\"FileBrowserDialogue.insertImage('{$albums[album].photos[photos].ID}');\" title=\"Insert Photo\"><img class=\"image\" border=\"0\" src=\"thumbnail.php?pic={$albums[album].photos[photos].ID}\" alt=\"Insert Photo\" /></a></div></td>{if ($smarty.section.photos.iteration % 3 == 0)}</tr><tr style=\"height:136px\">{/if}{/section}</tr></table>";{/if}
     {/section}
     {literal}
     description_div = document.getElementById('showAlbum');
@@ -104,7 +160,7 @@ function getAlbumData()
 </script>
 {/literal}
 </head>
-<body onload="tinyMCEPopup.executeOnLoad('myInitFunction();')">
+<body>
 
 {if $browserTitle == "Image"}
 	<div class="tabs">
@@ -145,7 +201,7 @@ function getAlbumData()
 		</div>
 </div>
 {else}
-<form name="theform" id="theform" onsubmit="insertItem();return false;" action="#">
+<form name="theform" id="theform" onsubmit="FileBrowserDialogue.insertItem();return false;" action="#">
 	<div class="tabs">
 		<ul>
 			<li id="general_tab" class="current"><span>Insert Link</span></li>

@@ -9,7 +9,7 @@
 	// License: GPL - see license.txt
 	// (c)2005 All rights reserved.
 	// ================================================
-	// Revision: 1.0                   Date: 07/07/2005
+	// Revision: 1.0                   Date: 09/11/2006
 	// ================================================
 	
 	//-------------------------------------------------------------------------
@@ -37,6 +37,7 @@
 	$nfile = (isset($_REQUEST['nfile']) ? $_REQUEST['nfile'] : '');
 	// set list view	
 	$list = (isset($_REQUEST['flist']) ? $_REQUEST['flist'] : $cfg['list']);	
+	$list = false;
 	//-------------------------------------------------------------------------
 	// file/directory actions			
 	if ($param[0] == 'delete') {			// ACTION: delete image
@@ -266,7 +267,10 @@ html, body {
 			ksort($files);							
 			$dfmt = "m-d-Y";
 			foreach ($files as $filename => $ext) {										
-				$size     = getimagesize($path . basename($filename));				
+				$size     = @getimagesize($path . basename($filename));		
+				if( $size === false ) {
+					 continue;
+				}
 				$fsize    = filesize($path . basename($filename));						
 				$modified = date($dfmt, filemtime($path . basename($filename)));
 				$created  = date($dfmt, filectime($path . basename($filename)));								
@@ -345,6 +349,13 @@ html, body {
   		global $l;
 				
 		if (!$cfg['rename']) {
+			return false;
+		}
+		
+		// check new file extension
+		$ext = strtolower(substr($nfile,strrpos($nfile, '.')+1));
+		if (!in_array($ext, $cfg['valid'])) { 						// invalid image / file extension			
+			echo $l->m('er_029');			
 			return false;
 		}
 		
@@ -506,7 +517,7 @@ html, body {
 	//-------------------------------------------------------------------------
 	// escape and clean up file name (only lowercase letters, numbers and underscores are allowed) 
 	function fixFileName($file) {
-		$file = ereg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($file))));
+		$file = ereg_replace("[^a-z0-9._-]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($file))));
 		return $file;
 	}
 	//-------------------------------------------------------------------------

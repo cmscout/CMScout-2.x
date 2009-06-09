@@ -128,8 +128,8 @@ $pageid = get_page_id_subs($content, $patrolid, 1);
 if ($content == '' || !isset($content)) 
 {
     $sitecontent = get_frontpage_subs($patrolid, 1);	
-    $edit = adminauth("patrol", "edit") ? true : false;
-    $add = adminauth("patrol", "add") ? true : false;
+    $edit = (adminauth("patrol", "edit") && !adminauth("patrol", "limit")) || (adminauth("patrol", "edit") && adminauth("patrol", "limit") && user_group_id($check['id'], $patrolid)) ? true : false;
+    $add = (adminauth("patrol", "add") && !adminauth("patrol", "limit")) || (adminauth("patrol", "add") && adminauth("patrol", "limit") && user_group_id($check['id'], $patrolid)) ? true : false;
     $addlink = "admin.php?page=patrol&amp;subpage=patrolcontent&amp;action=new&amp;pid=$patrolid";
     $editlink = "admin.php?page=patrol&amp;subpage=patrolmenus&amp;pid=$patrolid";
 }
@@ -139,8 +139,8 @@ elseif ($sitecontent == "" && file_exists($content . $phpex))
 }
 else
 {
-    $edit = adminauth("patrol", "edit") ? true : false;
-    $add = adminauth("patrol", "add") ? true : false;
+    $edit = (adminauth("patrol", "edit") && !adminauth("patrol", "limit")) || (adminauth("patrol", "edit") && adminauth("patrol", "limit") && user_group_id($check['id'], $patrolid)) ? true : false;
+    $add = (adminauth("patrol", "add") && !adminauth("patrol", "limit")) || (adminauth("patrol", "add") && adminauth("patrol", "limit") && user_group_id($check['id'], $patrolid)) ? true : false;
     $addlink = "admin.php?page=patrol&amp;subpage=patrolcontent&amp;action=new&amp;pid=$patrolid";
     $editlink = "admin.php?page=patrol&amp;subpage=patrolcontent&amp;id=$content&amp;action=edit&amp;pid=$patrolid";
 }
