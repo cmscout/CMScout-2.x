@@ -435,8 +435,8 @@ if ($_GET['action'] != "ical")
             for($calnumber=0;$calnumber<$numcalendar;$calnumber++)
             {
                 $groups = unserialize($calitems[$calnumber]['groups']);
-                $calitems[$calnumber]['startdate'] = $calitems[$calnumber]['startdate'] - getuseroffset($check['uname']);
-                $calitems[$calnumber]['enddate'] = $calitems[$calnumber]['enddate'] - getuseroffset($check['uname']);
+                $calitems[$calnumber]['startdate'] = $calitems[$calnumber]['startdate'];
+                $calitems[$calnumber]['enddate'] = $calitems[$calnumber]['enddate'];
                 $startdate = getdate($calitems[$calnumber]['startdate']);
                 $enddate = getdate($calitems[$calnumber]['enddate']); 
 
@@ -580,11 +580,11 @@ if ($_GET['action'] != "ical")
                                 {
                                     if (isset($summaries[$month][$day]['item'][$k]))
                                     {
-                                        $calendar .= "<div style=\"background-color:{$summaries[$month][$day]['item'][$k]['colour']};display:inline;height:100%;padding:2px;padding-top:4px;padding-bottom:4px;\"><span class=\"hintanchor\" style=\"padding:0;margin:0;\" title=\"{$summaries[$month][$day]['item'][$k]['summary']} :: <b>Start Date: </b>{$summaries[$month][$day]['item'][$k]['startdate']}<br /><b>Start Time: </b>{$summaries[$month][$day]['item'][$k]['starttime']}<br /><b>End Date: </b>{$summaries[$month][$day]['item'][$k]['enddate']}<br /><b>End Time: </b>{$summaries[$month][$day]['item'][$k]['endtime']}<br />{$summaries[$month][$day]['item'][$k]['detail']}\">&nbsp;</span></div>";
+                                        $calendar .= "<div style=\"background-color:{$summaries[$month][$day]['item'][$k]['colour']};display:inline;height:100%;padding:2px;padding-top:4px;padding-bottom:4px;\"><span class=\"hintanchor\" style=\"padding:0;margin:0;\" title=\"{$summaries[$month][$day]['item'][$k]['summary']} :: &lt;b&gt;Start Date: &lt;/b&gt;{$summaries[$month][$day]['item'][$k]['startdate']}&lt;br /&gt;&lt;b&gt;Start Time: &lt;/b&gt;{$summaries[$month][$day]['item'][$k]['starttime']}&lt;br /&gt;&lt;b&gt;End Date: &lt;/b&gt;{$summaries[$month][$day]['item'][$k]['enddate']}&lt;br /&gt;&lt;b&gt;End Time: &lt;/b&gt;{$summaries[$month][$day]['item'][$k]['endtime']}&lt;br /&gt;{$summaries[$month][$day]['item'][$k]['detail']}\">&nbsp;</span></div>";
                                     }
                                     else
                                     {
-                                        $calendar .= "<div style=\"background-color:#fff;display:inline;height:100%;padding:2px;padding-top:4px;padding-bottom:4px;\">&nbsp;</div>";
+                                        $calendar .= "<div class=\"calendar_year_view_row\" style=\"display:inline;height:100%;padding:2px;padding-top:4px;padding-bottom:4px;border:0;\">&nbsp;</div>";
                                     }
                                 }
                             }
@@ -672,8 +672,8 @@ if ($_GET['action'] != "ical")
                 for($numcal=0;$numcal<=$numcalendar;$numcal++)
                 {
                     $temp = $calitems[$numcal];
-                    $temp['startdate'] = $temp['startdate'] - getuseroffset($check['uname']);
-                    $temp['enddate'] = $temp['enddate'] - getuseroffset($check['uname']);
+                    $temp['startdate'] = $temp['startdate'];
+                    $temp['enddate'] = $temp['enddate'];
                     $startdate = $temp['startdate'];
                     $enddate = $temp['enddate'];
 
@@ -829,7 +829,7 @@ if ($_GET['action'] != "ical")
                                 $colour = rgb2hex2rgb($items[$week][$j][$k]['color']);
                                 $colour1['b'] = $colour1['g'] = $colour1['r'] = ($colour['r'] + $colour['g'] + $colour['b'])/3 > 100 ? 0 : 255;
                                 $colour = rgb2hex2rgb($colour1['r'] . '.' . $colour1['g'] . '.' . $colour1['b']);
-                                $calendar .= "<td colspan=\"{$items[$week][$j][$k]['length']}\" class=\"calendar_item\" style=\"vertical-align:middle;\"><div class=\"calendar_item_div\" style=\"background-color:{$items[$week][$j][$k]['color']};color:{$colour};border-color:{$colour}\"><span style=\"color:{$colour};\" class=\"hintanchor\" title=\"{$items[$week][$j][$k]['shortsummary']} :: <b>Start Date: </b>{$items[$week][$j][$k]['startdate']}<br /><b>Start Time: </b>{$items[$week][$j][$k]['starttime']}<br /><b>End Date: </b>{$items[$week][$j][$k]['enddate']}<br /><b>End Time: </b>{$items[$week][$j][$k]['endtime']}<br />{$items[$week][$j][$k]['detail']}\">{$items[$week][$j][$k]['summary']}</span>". ($items[$week][$j][$k]['details'] == 1 ? "<a href=\"index.php?page=calender&amp;item={$items[$week][$j][$k]['id']}&amp;menuid={$menuid}\"><img src=\"{$templateinfo['imagedir']}page.gif\" alt=\"Read more\" title=\"Read more\" border=\"0\"/></a>" : '') ."</div></td>";
+                                $calendar .= "<td colspan=\"{$items[$week][$j][$k]['length']}\" class=\"calendar_item\" style=\"vertical-align:middle;\"><div class=\"calendar_item_div\" style=\"background-color:{$items[$week][$j][$k]['color']};color:{$colour};border-color:{$colour}\"><span style=\"color:{$colour};\" class=\"hintanchor\" title=\"{$items[$week][$j][$k]['shortsummary']} :: &lt;b&gt;Start Date: &lt;/b&gt;{$items[$week][$j][$k]['startdate']}&lt;br /&gt;&lt;b&gt;Start Time: &lt;/b&gt;{$items[$week][$j][$k]['starttime']}&lt;br /&gt;&lt;b&gt;End Date: &lt;/b&gt;{$items[$week][$j][$k]['enddate']}&lt;br /&gt;&lt;b&gt;End Time: &lt;/b&gt;{$items[$week][$j][$k]['endtime']}&lt;br /&gt;{$items[$week][$j][$k]['detail']}\">{$items[$week][$j][$k]['summary']}</span>". ($items[$week][$j][$k]['details'] == 1 ? "<a href=\"index.php?page=calender&amp;item={$items[$week][$j][$k]['id']}&amp;menuid={$menuid}\"><img src=\"{$templateinfo['imagedir']}page.gif\" alt=\"Read more\" title=\"Read more\" border=\"0\"/></a>" : '') ."</div></td>";
                                 for ($l=$j;$l<=7;$l++)
                                 {
                                     if ($items[$week][$l][$k]['itemhere'])
@@ -977,22 +977,21 @@ if ($_GET['action'] != "ical")
                     }
                     if ($allowed)
                     {
-                        $temp['startdate'] = $temp['startdate'] - getuseroffset($check['uname']);
-                        $temp['enddate'] = $temp['enddate'] - getuseroffset($check['uname']);
+                        $temp['startdate'] = $temp['startdate'];
+                        $temp['enddate'] = $temp['enddate'];
                         $height = $temp['detail'] != NULL ? 'auto' : 50;
                         $temp['sdate'] = strftime("%Y-%m-%d", $temp['startdate']);
                         $temp['edate'] = strftime("%Y-%m-%d", $temp['enddate']);
                         $temp['stime'] = strftime("%H:%M", $temp['startdate']);
                         $temp['etime'] = strftime("%H:%M", $temp['enddate']);
                         $calendar .= "
-        <div style=\"border:1px solid #000;margin:2px;padding:10px;clear:both;height:{$height}px\">
-        <div style=\"clear:both\"><h3 style=\"text-align:left;margin:0px;padding:0px;\">" . censor($temp['summary']) ."</h3>
+        <div class=\"newsitem\">
+        <h3>" . censor($temp['summary']) ."</h3>
         <span class=\"smalltext\"><b>Start Date: </b>{$temp['sdate']} | <b>Start Time: </b>{$temp['stime']}</span><br />
-        <span class=\"smalltext\"><b>End Date: </b>{$temp['edate']} | <b>End Time: </b>{$temp['etime']}</span>
-        </div>";
+        <span class=\"smalltext\"><b>End Date: </b>{$temp['edate']} | <b>End Time: </b>{$temp['etime']}</span>";
                         if ($temp['detail'] != NULL)
                         {
-                            $calendar .= "<div>".censor($temp['detail'])."</div>";  
+                            $calendar .= "<p>".censor($temp['detail'])."</p>";  
                         }
                         $calendar .= "</div>";             
                     }                        

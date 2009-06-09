@@ -21,19 +21,6 @@ function hide(id)
 }
 
 
-function itemss()
-{
-    var urlenabled = {/literal}{if $numpages > 0}true{else}false{/if}{literal};
-    if (document.form2.items.selectedIndex==0 && urlenabled == true)
-    {
-        show('urldiv');
-    }
-    else
-    {
-        hide('urldiv');
-    }
-}
-
 function showitems(id)
 {
 	var item = null;
@@ -64,15 +51,10 @@ function showitems(id)
   {/literal}
   <h2>Menu Manager</h2>
 {if $action == "view" || $action == ""}
-<div align="center"><div style="width:100%">
-<div id="navcontainer" align="center">
-    <ul class="mootabs_title">
-        <li title="left">Left Menu</li>
-        <li title="right">Right Menu</li>
-        <li title="top">Top Menu</li>
-    </ul>
+<div id="navcontainer">
 
-<div id="left" class="mootabs_panel">
+<h4 title="left">Left Menu</h4>
+<div id="left">
 <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=newcat&amp;side=left" title="Add menu"><img src="{$tempdir}admin/images/add.png" alt="Add menu" border="0" /></a>
 {/if}{if $editallowed}<a href="{$pagename}&amp;action=fixcat" title="Fix Positions"><img src="{$tempdir}admin/images/fix.png" alt="Fix Positions" border="0" /></a>
 {/if}</div>
@@ -106,7 +88,8 @@ function showitems(id)
   </table>
 </div>
 
-<div id="right" class="mootabs_panel">
+<h4 title="right">Right Menu</h4>
+<div id="right">
 <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=newcat&amp;side=right" title="Add menu"><img src="{$tempdir}admin/images/add.png" alt="Add menu" border="0" /></a>
 {/if}{if $editallowed}<a href="{$pagename}&amp;action=fixcat" title="Fix Positions"><img src="{$tempdir}admin/images/fix.png" alt="Fix Positions" border="0" /></a>{/if}</div>
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable1">
@@ -139,7 +122,8 @@ function showitems(id)
   </table>
 </div>
 
-<div id="top" class="mootabs_panel">
+<h4 title="top">Top Menu</h4>
+<div id="top">
 <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=newcat&amp;side=top" title="Add menu"><img src="{$tempdir}admin/images/add.png" alt="Add menu" border="0" /></a>
 {/if}{if $editallowed}<a href="{$pagename}&amp;action=fixcat" title="Fix Positions"><img src="{$tempdir}admin/images/fix.png" alt="Fix Positions" border="0" /></a>
 {/if}</div>
@@ -172,7 +156,7 @@ function showitems(id)
   </tbody>
 </table>
 </div>
-</div></div></div>
+</div>
   {elseif $action == "catview"}<div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=newitem&amp;id={$menu.id}" title="Add item"><img src="{$tempdir}admin/images/add.png" alt="Add item" border="0" /></a>
 {/if}<a href="{$pagename}&amp;activetab={$menu.side}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a></div>
   {if $numitems > 0}
@@ -249,6 +233,7 @@ function checkAll(type)
         document.getElementById(type + itemList[i]).checked = document.getElementById('all'+type).checked;
     }
 }
+
 //-->
 </script>
   {/literal}  
@@ -307,6 +292,25 @@ function checkAll(type)
 {elseif $action == "newitem" || $action == "edititem"}
   <script type="text/javascript">
 {include file="../scripts/validator.tpl"}
+
+{literal}
+function itemss()
+{
+    var urlenabled = {/literal}{if $numpages > 0}true{else}false{/if}{literal};
+    if (document.form2.items.selectedIndex==0 && urlenabled == true)
+    {
+        show('urldiv');
+        hide('optiondiv');
+    }
+    else
+    {
+        hide('urldiv');
+        show('optiondiv');
+        var url = "admin/get_menu_options_ajax.php";
+        var myAjax1 = new Ajax(url, {method: 'get',update: $('optiondiv')}).request(document.form2.items.value);
+    }
+}
+{/literal}
 </script>
    <div align="center">
 <form name="form2" method="post" action="" onsubmit="return checkForm([['name','text',true,0,0,'']]);">
@@ -363,6 +367,12 @@ function checkAll(type)
      <div id="urldiv" style="display: {if $item.type != 5 && $action == 'edititem'}none;{else}'';{/if}">
      <label for="url" class="label">External Address<span class="hintanchor" title="The address of the external website."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label> 
      <div class="inputboxwrapper">http://<input name="url" type="text" id="url" value="{if $item.type==5}{$item.item}{/if}" class="inputbox" size="255" onblur="checkElement('url', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="urlError">Required</span></div><br />
+     </div>
+     
+      <div id="optiondiv" style="display: {if !$options || $action != 'edititem'}none;{else}'';{/if}">
+      {if $options}
+        {$options}
+      {/if}
      </div>
      
     <label for="target" class="label">Target<span class="hintanchor" title="How should the link be opened."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>

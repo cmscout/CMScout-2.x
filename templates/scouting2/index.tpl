@@ -1,6 +1,6 @@
 {include file="overall_header.tpl"}
 {if $ismessage == true}
-<script>
+<script type="text/javascript">
     {literal}
     function hide(id)
     {
@@ -26,7 +26,7 @@
 <center style="margin:20px;">
  {if $extra != "nomenu"}   <div class="outside-box" style="height:135px;"><span style="text-align:left;"><img align="left" src="{$templateinfo.imagedir}logo.gif" alt="CMScout" /></span>
         <div style="text-align:right;">
-        {if $menu.top != ""}
+        {if $nummenucats.top != ""}
           {section name=cats loop=$nummenucats.top}
           | {section name=itemloop loop=$menu.top[cats].numitems}
            {if $menu.top[cats].items[itemloop].type == 1}
@@ -61,6 +61,7 @@
              {if $menu.left[cats].showhead}<div class="nav-title">{$menu.left[cats].name|upper} ::.:.:..</div>{else}<div class="nav-title">::.:.:..</div>{/if}
 
             {section name=itemloop loop=$menu.left[cats].numitems}
+                {assign var="itemid" value=$menu.left[cats].items[itemloop].id}
                {if $menu.left[cats].items[itemloop].type == 1}
                     <a href="index.php?page={$menu.left[cats].items[itemloop].link}&amp;menuid={$menu.left[cats].items[itemloop].id}" class="nav-link">{$menu.left[cats].items[itemloop].name|upper}</a>
                {elseif $menu.left[cats].items[itemloop].type == 2 || $menu.left[cats].items[itemloop].type == 3}
@@ -110,6 +111,7 @@
              {if $menu.right[cats].showhead}<div class="nav-title">{$menu.right[cats].name|upper} ::.:.:..</div>{else}<div class="nav-title">::.:.:..</div>{/if}
 
             {section name=itemloop loop=$menu.right[cats].numitems}
+               {assign var="itemid" value=$menu.right[cats].items[itemloop].id}
                {if $menu.right[cats].items[itemloop].type == 1}
                     <a href="index.php?page={$menu.right[cats].items[itemloop].link}&amp;menuid={$menu.right[cats].items[itemloop].id}" class="nav-link">{$menu.right[cats].items[itemloop].name|upper}</a>
                {elseif $menu.right[cats].items[itemloop].type == 2 || $menu.right[cats].items[itemloop].type == 3}

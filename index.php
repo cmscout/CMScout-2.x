@@ -37,6 +37,8 @@ $limited_startup = false;
 require_once("common.php");
 $error = false;
 $logout = false;
+$currentPage = "index.php?" . $_SERVER['QUERY_STRING'];
+
 if (isset($_GET['ex'])) $extra = $_GET['ex']; else $extra = "";
 if (isset($_GET['theme'])) $template = $_GET['theme']; else $template = "";
 if ($template == "")

@@ -225,8 +225,9 @@ elseif ($action == "view" && $id != 'NULL')
             }
             $comment = $data->select_fetch_one_row("comments", "WHERE uid='{$check['id']}' AND item_id=$id AND date=$timestamp");
             confirmMail("comment", $comment);
-            show_message("The comment first needs to be reviewed before it will be visible", $page);
+            show_message("The comment first needs to be reviewed before it will be visible", $currentPage);
         }
+        show_message("Thank you for your comment.", $currentPage);
     }
      
     $sql = $data->select_query("comments", "WHERE item_id=$id AND type=0 AND allowed = 1");

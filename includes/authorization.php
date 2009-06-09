@@ -83,7 +83,7 @@ class auth
     {
 		global $config, $data;
         
-        $sql = $data->select_query("onlineusers", "WHERE isbot=0");
+        $sql = $data->select_query("onlineusers");
 		$onlineuser = array();
 		$onlineuser[0] = 0;
 		$onlineuser[1] = 0;
@@ -102,7 +102,7 @@ class auth
 			} 
             elseif ($timediff <= $config['activetime']) 
 			{
-		        if ($temp['isguest'] != 1)
+		        if ($temp['isguest'] != 1 && $temp['isbot'] != 1)
                 {
                     $onlineuser[0]++;
                     $temp2 = $data->select_fetch_one_row("users", "WHERE uname='{$temp['uname']}'", "id");

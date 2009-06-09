@@ -46,14 +46,13 @@ tinyMCE.init
         spellchecker_languages : "+English=en",
         file_browser_callback : "fileBrowser",
         button_tile_map : true,
-        extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]",
-        doctype : "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">"});
+        extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"});
 </script>
 {/literal}
 {/if}
 <script language="JavaScript" type="text/JavaScript" src="includes/functions.js"> </script>
 <script type="text/javascript" src="scripts/mootools.js"></script>
-<script type="text/javascript" src="scripts/mootabs.js"></script>
+<script type="text/javascript" src="scripts/SimpleTabs.js"></script>
 <script src="scripts/datepicker.js" type="text/javascript"></script>
 <link rel="stylesheet" href="{$tempdir}admin/datepicker.css" type="text/css" media="screen" />
 <script type="text/javascript" src="scripts/mooRainbow.js"></script>
@@ -64,7 +63,11 @@ tinyMCE.init
 {literal}
 <script type="text/javascript">
 function initilize(){
-     {/literal}
+    new SimpleTabs($('navcontainer'), {
+              entrySelector: 'h4'
+      });
+
+    {/literal}
      {$onDomReady}
      {literal}
     var Tipies = new Tips($$('.hintanchor'), {
@@ -79,8 +82,7 @@ function initilize(){
         },
         fixed: true
     });
-    
-    var myTabs1 = new mootabs('navcontainer', {height: '100%', width: '100%', mouseOverClass: 'mouseOver', changeTransition: 'none' {/literal}{if $activetab}, activateOnLoad: "{$activetab}"{/if}{literal}});
+
 }
 
 window.onDomReady(initilize); 

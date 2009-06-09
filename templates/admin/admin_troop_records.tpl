@@ -1,5 +1,5 @@
 <h2>Advancement Records</h2>
-<div id="navcontainer" align="center">
+<div align="center">
                         <ul id="navlist">
                                 <!-- CSS Tabs -->
 <li><a id="trooptab" {if $action==""}class="current"{/if} href="{$pagename}&amp;scheme={$schemeNumber}" >View {$scoutlang.advancement_badges}</a></li>
@@ -11,6 +11,7 @@
 <div align="center">
 <div align="left">{$scoutlang.award_scheme}: 
 <script type="text/javascript">
+<!--
 {literal}
 function changeScheme()
 {
@@ -21,6 +22,7 @@ function changeScheme()
     {literal}
 }
 {/literal}
+//-->
 </script>
 <select id="schemes" class="inputbox" onchange="changeScheme()" style="width:300px;">
 {section name=num loop=$numschemes}

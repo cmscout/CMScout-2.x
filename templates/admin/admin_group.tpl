@@ -25,7 +25,7 @@ document.location = "admin.php?page=group&action=delete&id=" + articleId;
 {section name=groups loop=$numgroups}
 <tr valign="top" class="text">
   <td class="text" style="text-align:center;">{if $editallowed}<a href="{$pagename}&amp;action=edit&amp;id={$groups[groups].id}" title="Edit {$groups[groups].teamname}" ><img src="{$tempdir}admin/images/edit.gif" border="0" alt="Edit {$groups[groups].teamname}"/></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;<a href="{$pagename}&amp;subpage=groupusers&amp;gid={$groups[groups].id}" title="View {$groups[groups].teamname} Users"><img src="{$tempdir}admin/images/group.gif" alt="{$groups[groups].teamname} Users" border="0"/></a>&nbsp;&nbsp;{if $publishallowed}<a href="{$pagename}&amp;action=auth&amp;id={$groups[groups].id}" title="{$groups[groups].teamname} access rights" ><img src="{$tempdir}admin/images/key.png" alt="{$groups[groups].teamname} access rights"border="0"/></a>{else}<img src="{$tempdir}admin/images/key_grey.gif" border="0" alt="Editing of access rights Disabled" title="Editing of access rights Disabled" />{/if}&nbsp;&nbsp;{if $deleteallowed}<a href="javascript:confirmDelete({$groups[groups].id})" title="Delete {$groups[groups].teamname}"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$groups[groups].teamname}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</td>
-  <td class="text"><span class="hintanchor" title="Information :: <b>Group Site:</b> {if ($groups[groups].ispublic  == 1)}Yes{else}No{/if}{if $groups[groups].subsite != '0'}<br /><b>Sub site:</b> {$groups[groups].subsite}{/if}{if $groups[groups].getpoints != '0'}<br /><b>Points:</b> {$groups[groups].points}{/if}"><img src="{$tempdir}admin/images/information.png" alt="[?]"/></span>{$groups[groups].teamname}</td>
+  <td class="text"><span class="hintanchor" title="Information :: &lt;b&gt;Group Site:&lt;/b&gt; {if ($groups[groups].ispublic  == 1)}Yes{else}No{/if}{if $groups[groups].getpoints != '0'}&lt;br /&gt;&lt;b&gt;Points:&lt;/b&gt; {$groups[groups].points}{/if}"><img src="{$tempdir}admin/images/information.png" alt="[?]"/></span>{$groups[groups].teamname}</td>
 </tr>
 {/section}
 </tbody>
@@ -156,14 +156,10 @@ document.location = "admin.php?page=group&action=delete&id=" + articleId;
   </script>
 <form name="form1" method="post" action="{$editFormAction}">
 <div align="center"><div class="formlist">
-<div id="navcontainer" align="center">
-<ul class="mootabs_title">
-<li title="normal">Normal User</li>
-<li title="assistant">Assistant Group Leader</li>
-<li title="leader">Group Leader</li>
-</ul>
+<div id="navcontainer">
 
-<div id="normal" class="mootabs_panel">
+<h4 title="normal">Normal User</h4>
+<div id="normal" >
 <div align="center">
     <input name="user_adminpanel" id="user_adminpanel" type="checkbox" value="1" onclick="disable('user');" {if $user.adminpanel == 1}checked="checked"{/if} />Allow access to administration panel
 </div>
@@ -213,7 +209,8 @@ document.location = "admin.php?page=group&action=delete&id=" + articleId;
 </table>
 </div>
 
-<div id="assistant" class="mootabs_panel">
+<h4 title="assistant">Assistant Group Leader</h4>
+<div id="assistant" >
 <div align="center">
 <input name="ass_adminpanel" id="ass_adminpanel" type="checkbox" value="1" onclick="disable('ass');" {if $ass.adminpanel == 1}checked="checked"{/if}/>Allow access to administration panel
 </div>
@@ -263,7 +260,8 @@ document.location = "admin.php?page=group&action=delete&id=" + articleId;
 </table>
 </div>
 
-<div id="leader" class="mootabs_panel">
+<h4 title="leader">Group Leader</h4>
+<div id="leader" >
 <div align="center">
 <input name="gpl_adminpanel" id="gpl_adminpanel" type="checkbox" value="1" onclick="disable('gpl');" {if $gpl.adminpanel == 1}checked="checked"{/if}/>Allow access to administration panel
 </div>

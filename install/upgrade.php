@@ -28,8 +28,8 @@
 $bit = "./../";
 $upgrader = true;
 require_once ("../common.php");
-$version  = "2.01";
-$oldversion = "2.00";
+$version  = "2.02";
+$oldversion = "2.01";
 
 $step = isset($_GET['step']) ? $_GET['step'] : 1;
 ?>
@@ -116,7 +116,7 @@ This is to ensure that all necessary updates are performed.
                     $name = urlencode($config['troopname']);
                     $address = urlencode($config['siteaddress']);
                     
-                    @file("http://www.cmscout.za.net/addsite.php?troopname=$name&address=$address&version=$version");
+                    @file("http://www.cmscout.co.za/addsite.php?troopname=$name&address=$address&version=$version");
 
                     echo "Congratulations. The CMScout database has now been updated to V$version. Don't forget to update the files too. Please delete the install directory before continuing to use your site.";
                 }

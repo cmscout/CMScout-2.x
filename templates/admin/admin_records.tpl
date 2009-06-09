@@ -1,5 +1,5 @@
 <h2>Scouting record of {$memberdetails.firstName} {$memberdetails.lastName}</h2>
-<div id="navcontainer" align="center">
+<div align="center">
                         <ul id="navlist">
                                 <!-- CSS Tabs -->
 <li><a id="trooptab" {if $action=="view_advancements" || $action==""}class="current"{/if} href="{$pagename}&amp;id={$id}&amp;action=view_advancements&amp;scheme={$schemeNumber}" >View {$scoutlang.advancement_badges}</a></li>
@@ -9,7 +9,6 @@
 </ul>
                 </div>
 {if $action=="view_advancements" || $action==""}
-
 <div align="center">
 <div align="right">{$scoutlang.award_scheme}: 
 <script type="text/javascript">

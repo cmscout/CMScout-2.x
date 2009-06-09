@@ -90,7 +90,7 @@ $scriptIncludes['mootools'] = 'scripts/mootools.js';
 $scriptIncludes['gallery'] = 'scripts/jd.gallery.js';
 $scriptIncludes['datepicker'] = 'scripts/datepicker.js';
 $scriptIncludes['mooRainbow'] = 'scripts/mooRainbow.js';
-$scriptIncludes['mootabs'] = 'scripts/mootabs.js';
+$scriptIncludes['mootabs'] = 'scripts/SimpleTabs.js';
 $scriptIncludes['slimbox'] = 'scripts/slimbox.js';
 $scriptIncludes['tinymce'] = 'tiny_mce/tiny_mce_gzip.js';
 
@@ -120,9 +120,9 @@ var Tipies = new Tips($$('.hintanchor'), {
     
     ";
 $domReady['mootabs'] = "
-
-myTabs1 = new mootabs('navcontainer', {height: '100%', width: '100%', mouseOverClass: 'mouseOver', changeTransition: 'none' " . (($activetab != '') ? ", activateOnLoad: \"{$activetab}\"" : '') . "});
-
+  new SimpleTabs($('navcontainer'), {
+          entrySelector: 'h4'
+  });
 ";
 
 $tinyMCETemplate = '';

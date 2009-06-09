@@ -27,13 +27,13 @@
 <?php
 if( !empty($getmodules) )
 {
-	$module['Module Management']['Frontpage Manager'] = "frontpage";
-    $moduledetails[$modulenumbers]['name'] = "Frontpage Manager";
-    $moduledetails[$modulenumbers]['details'] = "Management of frontpage items";
-    $moduledetails[$modulenumbers]['access'] = "Allowed to access the frontpage manager";
-    $moduledetails[$modulenumbers]['add'] = "Allowed to add an item on the frontpage";
-    $moduledetails[$modulenumbers]['edit'] = "Allowed to modify an item on the frontpage";
-    $moduledetails[$modulenumbers]['delete'] = "Allowed to delete an item from the frontpage";
+	$module['Module Management']['Home Page Manager'] = "frontpage";
+    $moduledetails[$modulenumbers]['name'] = "Home Page Manager";
+    $moduledetails[$modulenumbers]['details'] = "Management of the home page";
+    $moduledetails[$modulenumbers]['access'] = "Allowed to access the home page manager";
+    $moduledetails[$modulenumbers]['add'] = "Allowed to add an item on the home page";
+    $moduledetails[$modulenumbers]['edit'] = "Allowed to modify an item on the home page";
+    $moduledetails[$modulenumbers]['delete'] = "Allowed to delete an item from the home page";
     $moduledetails[$modulenumbers]['publish'] = "notused";
     $moduledetails[$modulenumbers]['limit'] = "notused";   
     $moduledetails[$modulenumbers]['id'] = "frontpage";

@@ -17,20 +17,16 @@ function confirmunPublish(articleId)
 {/literal}
 <h2>Event Manager</h2>
 {if $action == ''}
-<div align="center"><div style="width:100%">
-<div id="navcontainer" align="center">
-    <ul class="mootabs_title">
-        <li title="events">Events</li>
-        <li title="ical">iCalendar links</li>
-        </ul>
-<div id="events" class="mootabs_panel">
+<div id="navcontainer">
+<h4 title="events">Events</h4>
+<div id="events">
 {if $addallowed}<div class="toplinks"><a href="{$pagename}&amp;action=new" title="Add Event"><img src="{$tempdir}admin/images/add.png" alt="Add Event" border="0" /></a>
 </div>{/if}
 {if $numevents > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table sortable-onload-3 rowstyle-alt paginate-15" id="sortTable">
 <thead>
 	  <tr>
-		<th width="80px" class="smallhead"></th>
+		<th width="80" class="smallhead"></th>
         <th  width="6%" class="smallhead">Publish</th>
 		<th class="smallhead sortable">Summary</th>
 		<th  width="30%" class="smallhead sortable">Dates</th>
@@ -39,7 +35,7 @@ function confirmunPublish(articleId)
       <tbody>
 	{section name=eventloop	loop=$numevents}
 	  <tr class="text">
-		<td class="text"><div align="center">{if $editallowed}<a href="{$pagename}&amp;action=edit&amp;id={$events[eventloop].id}"><img src="{$tempdir}admin/images/edit.gif" border="0" alt="Edit {$events[eventloop].summary}" title="Edit {$events[eventloop].summary}" /></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $events[eventloop].signup && $editallowed}<a href="{$pagename}&amp;action=signups&amp;id={$events[eventloop].id}"><img src="{$tempdir}admin/images/checkbox.png" border="0" alt="Signup information for {$events[eventloop].summary}" title="Signup information for {$events[eventloop].summary}" /></a>{else}<img src="{$tempdir}admin/images/checkbox_grey.png" border="0" alt="Signup disabled for event" title="Signup disabled for event" />{/if}&nbsp;&nbsp;{if $deleteallowed}<a href="{$pagename}&action=delete&id={$events[eventloop].id}"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$events[eventloop].summary}" title="Delete {$events[eventloop].summary}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
+		<td class="text"><div align="center">{if $editallowed}<a href="{$pagename}&amp;action=edit&amp;id={$events[eventloop].id}"><img src="{$tempdir}admin/images/edit.gif" border="0" alt="Edit {$events[eventloop].summary}" title="Edit {$events[eventloop].summary}" /></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $events[eventloop].signup && $editallowed}<a href="{$pagename}&amp;action=signups&amp;id={$events[eventloop].id}"><img src="{$tempdir}admin/images/checkbox.png" border="0" alt="Signup information for {$events[eventloop].summary}" title="Signup information for {$events[eventloop].summary}" /></a>{else}<img src="{$tempdir}admin/images/checkbox_grey.png" border="0" alt="Signup disabled for event" title="Signup disabled for event" />{/if}&nbsp;&nbsp;{if $deleteallowed}<a href="{$pagename}&amp;action=delete&amp;id={$events[eventloop].id}"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$events[eventloop].summary}" title="Delete {$events[eventloop].summary}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
   <td class="text"><div align="center">{if $publishallowed}{if $events[eventloop].allowed == 0}<a href="javascript:confirmPublish({$events[eventloop].id})"><img src="{$tempdir}admin/images/publish.png" border="0" alt="Publish {$events[eventloop].summary}" title="Publish {$events[eventloop].summary}" /></a>{else}<a href="javascript:confirmunPublish({$events[eventloop].id})"><img src="{$tempdir}admin/images/unpublish.png" border="0" alt="Unpublish {$events[eventloop].summary}" title="Unpublish {$events[eventloop].summary}" /></a>{/if}{else}{if $events[eventloop].allowed == 0}<img src="{$tempdir}admin/images/publish_grey.gif" border="0" alt="Not allowed to publish" title="Not allowed to publish" />{else}<img src="{$tempdir}admin/images/unpublish_grey.gif" border="0" alt="Not allowed to unpublish" title="Not allowed to unpublis" />{/if}{/if}</div></td>
 		<td class="text">{$events[eventloop].summary}</td>
 		<td class="text">{$events[eventloop].startdate|date_format:"%B %e, %Y"} to {$events[eventloop].enddate|date_format:"%B %e, %Y"}</td>
@@ -51,7 +47,9 @@ function confirmunPublish(articleId)
 <div align="center">No events on the calender</div>
 {/if}
  </div>
- <div id="ical" class="mootabs_panel">
+ 
+ <h4 title="ical">iCalendar links</h4>
+ <div id="ical">
   {if $addallowed}<div class="toplinks"><a href="{$pagename}&amp;action=newical" title="Add Link"><img src="{$tempdir}admin/images/add.png" alt="Add Link" border="0" /></a>
 </div>{/if}
  {if $numical > 0}
@@ -76,19 +74,14 @@ function confirmunPublish(articleId)
     {else}
 <div align="center">No iCalendar links</div>
 {/if}
- </div>
+ </div></div>
  {elseif $action == 'signups'}
  <script type="text/javascript">
 {include file="../scripts/validator.tpl"}
 </script>
- <div align="center"><div style="width:100%">
-<div id="navcontainer" align="center">
-    <ul class="mootabs_title">
-        <li title="events">Attendies</li>
-        <li title="ical">Extra information fields</li>
-        <li title="downloads">Attached Downloads</li>
-        </ul>
-<div id="events" class="mootabs_panel">
+<div id="navcontainer">       
+<h4 title="events">Attendies</h4>
+<div id="events">
 <div class="toplinks"><a href="{$pagename}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a></div>
 {if $nummembers > 0}
 {literal}
@@ -188,7 +181,9 @@ function confirmDownloadDelete(articleId)
 <div align="center">No members in database.</div>
 {/if}
  </div>
- <div id="ical" class="mootabs_panel">
+ 
+ <h4 title="ical">Extra information fields</h4>
+ <div id="ical">
   <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=newfield&amp;event={$eventid}" title="Add Field"><img src="{$tempdir}admin/images/add.png" alt="Add Link" border="0" /></a>{/if}<a href="{$pagename}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a></div>
  {if $numfields > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable">
@@ -214,7 +209,9 @@ function confirmDownloadDelete(articleId)
 <div align="center">No extra fields</div>
 {/if}
  </div>
-  <div id="downloads" class="mootabs_panel">
+ 
+ <h4 title="downloads">Attached Downloads</h4>
+  <div id="downloads">
   <div class="toplinks"><a href="{$pagename}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a></div>
  {if $numeventdownloads > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable">

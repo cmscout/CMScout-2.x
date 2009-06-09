@@ -25,83 +25,94 @@
 **************************************************************************/
 ?>
 <?php               
-    $sql = $data->select_query("polls", "WHERE sidebox=1");
-    $poll = $data->fetch_array($sql);
+    $sql = $data->select_query("polls", "WHERE id={$items['option']}");
+    $poll[$items['id']] = $data->fetch_array($sql);
+    
     if ($data->num_rows($sql) == 1)
     {
 
-	$poll['question'] = censor($poll['question']);
-       $poll['options'] = unserialize($poll['options']);
+	    $poll[$items['id']]['question'] = censor($poll[$items['id']]['question']);
+       $poll[$items['id']]['options'] = unserialize($poll[$items['id']]['options']);
 
        $options = array();
-       foreach ($poll['options'] as $id => $value)
+       foreach ($poll[$items['id']]['options'] as $id => $value)
        {
 		$value = censor($value);
 		$options[$id] = $value;
        }
-       $poll['options'] = $options;
+       $poll[$items['id']]['options'] = $options;
 
-	$poll['results'] = unserialize($poll['results']);
+	$poll[$items['id']]['results'] = unserialize($poll[$items['id']]['results']);
        $options = array();
-       foreach ($poll['results'] as $id => $value)
+       foreach ($poll[$items['id']]['results'] as $id => $value)
        {
 		$id = censor($id);
 		$options[$id] = $value;
        }
-       $poll['results'] = $options;
+       $poll[$items['id']]['results'] = $options;
    
-        $sql = $data->select_query("pollvoters", "WHERE user_id = '{$check['id']}' AND poll_id={$poll['id']}");
-        if (($data->num_rows($sql) > 0 || $check['id'] == "-1") || ($timestamp > $poll['date_stop'] && $poll['date_stop'] != NULL && $poll['date_stop'] != 0))
+        $sql = $data->select_query("pollvoters", "WHERE user_id = '{$check['id']}' AND poll_id={$poll[$items['id']]['id']}");
+        if (($data->num_rows($sql) > 0 || $check['id'] == "-1") || ($timestamp > $poll[$items['id']]['date_stop'] && $poll[$items['id']]['date_stop'] != NULL && $poll[$items['id']]['date_stop'] != 0))
         {
-            $tpl->assign('sideboxvoted', true);
+            $sideboxvoted[$items['id']] = true;
+            $tpl->assign('sideboxvoted', $sideboxvoted);
         }
         else
         {
-            $tpl->assign('sideboxvoted', false);
+            $sideboxvoted[$items['id']] = false;
+            $tpl->assign('sideboxvoted', $sideboxvoted);
         }
-        
-        if ($timestamp > $poll['date_stop'] && $poll['date_stop'] != NULL && $poll['date_stop'] != 0)
+
+        if ($timestamp > $poll[$items['id']]['date_stop'] && $poll[$items['id']]['date_stop'] != NULL && $poll[$items['id']]['date_stop'] != 0)
         {
-            $tpl->assign('sideexpired', true);
+            $sideexpired[$items['id']] = true;
+            $tpl->assign('sideexpired', $sideexpired);
         }
         else
         {
-            $tpl->assign('sideexpired', false);
+            $sideexpired[$items['id']] = false;
+            $tpl->assign('sideexpired', $sideexpired);
         }
-        
+
         $tpl->assign('sideboxpoll', $poll);
 
-        $tpl->assign('numsidepollitems', count($poll['options']));
-        $tpl->assign('sideboxtotalvotes', $data->num_rows($data->select_query("pollvoters", "WHERE poll_id={$poll['id']}")));
+        $numsidepollitems[$items['id']] = count($poll[$items['id']]['options']);
+        $tpl->assign('numsidepollitems', $numsidepollitems);
+        $sideboxtotalvotes[$items['id']] = $data->num_rows($data->select_query("pollvoters", "WHERE poll_id={$poll[$items['id']]['id']}"));
+        $tpl->assign('sideboxtotalvotes', $sideboxtotalvotes);
         $view = $_GET['sideview'];
         
-        if ($view == 1)
+        if ($view == $items['id'])
         {
-            $tpl->assign('sideboxshowresult', true);
+            $sideboxshowresult[$items['id']] = true;
+            $tpl->assign('sideboxshowresult', $sideboxshowresult);
         }
         else
         {
-            $tpl->assign('sideboxshowresult', false);
+            $sideboxshowresult[$items['id']] = false;
+            $tpl->assign('sideboxshowresult', $sideboxshowresult);
         }
 
         $query = $_SERVER['QUERY_STRING'];
-        $query = str_replace("&sideview=1", "", $query);
-	$query2 = $query;
+        $query = str_replace("&sideview={$items['id']}", "", $query);
+	    $query2 = $query;
         $query = htmlentities($query);
         $tpl->assign('pollpage',"index.php?$query");
         
-        if ($_POST['sidepollvote'] == "Vote")
+
+        if ($_POST["sidepollvote_{$items['id']}"] == "Vote")
         {
-            $item = $_POST['sidepoll'];
+
+            $item = $_POST["sidepoll_{$items['id']}"];
             
             $sql = $data->select_query("pollvoters", "WHERE (user_id = '{$check['id']}') AND poll_id={$poll['id']}");
             if ($data->num_rows($sql) == 0)
             {
-                $results = $poll['results'];
+                $results = $poll[$items['id']]['results'];
                 $results[$item]++;
                 $results = safesql(serialize($results), "text");
-                $data->update_query("polls", "results=$results", "id={$poll['id']}");
-                $data->insert_query("pollvoters", "{$poll['id']}, {$check['id']}, '{$_SERVER['REMOTE_ADDR']}'");
+                $data->update_query("polls", "results=$results", "id={$poll[$items['id']]['id']}");
+                $data->insert_query("pollvoters", "{$poll[$items['id']]['id']}, {$check['id']}, '{$_SERVER['REMOTE_ADDR']}'");
                 show_message("Your vote has been counted", "index.php?$query2");
             }
         }

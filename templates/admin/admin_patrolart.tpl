@@ -21,14 +21,11 @@ document.location = "admin.php?page=patrolart&action=deltopic&id=" + articleId;
 //-->
 </script>
 {/literal}
-<div align="center"><div style="width:100%;">
-<div id="navcontainer" align="center">
-<ul class="mootabs_title">
-        <li title="articles">Articles</li>
-        <li title="topics">Topics</li>
-        </ul>
-<div id="articles" class="mootabs_panel">
-{if $addallowed}<a href="{$pagename}&amp;action=new" title="Add Article"><img src="{$tempdir}admin/images/add.png" alt="Add Article" border="0" /></a>{/if}
+<div id="navcontainer">
+
+<h4 title="articles">Articles</h4>
+<div id="articles" >
+{if $addallowed}<div class="toplinks"><a href="{$pagename}&amp;action=new" title="Add Article"><img src="{$tempdir}admin/images/add.png" alt="Add Article" border="0" /></a></div>{/if}
 {if $numarticles > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table sortable-onload-3 rowstyle-alt paginate-15" id="sortTable">
 <thead>
@@ -45,7 +42,7 @@ document.location = "admin.php?page=patrolart&action=deltopic&id=" + articleId;
 <tbody>
 {section name=articles loop=$numarticles}
 <tr class="text">
-  <td class="text"><div align="center">{if $editallowed}<a href="{$pagename}&amp;id={$row[articles].ID}&amp;action=edit"><img src="{$tempdir}admin/images/edit.gif" border="0" alt="Edit {$row[articles].title}" title="Edit {$row[articles].title}" /></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $editallowed}<a href="{$pagename}&amp;action=moveitem&amp;id={$row[articles].ID}" title="Move {$row[articles].title} to a subsite, group site or the main page static content."><img src="{$tempdir}admin/images/move.gif" border="0" alt="Move {$row[articles].title}" /></a>{else}<img src="{$tempdir}admin/images/move_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $deleteallowed}<a href="{$pagename}&action=delete&id={$row[articles].ID}"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$row[articles].title}" title="Delete {$row[articles].title}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
+  <td class="text"><div align="center">{if $editallowed}<a href="{$pagename}&amp;id={$row[articles].ID}&amp;action=edit"><img src="{$tempdir}admin/images/edit.gif" border="0" alt="Edit {$row[articles].title}" title="Edit {$row[articles].title}" /></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $editallowed}<a href="{$pagename}&amp;action=moveitem&amp;id={$row[articles].ID}" title="Move {$row[articles].title} to a subsite, group site or the main page static content."><img src="{$tempdir}admin/images/move.gif" border="0" alt="Move {$row[articles].title}" /></a>{else}<img src="{$tempdir}admin/images/move_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $deleteallowed}<a href="{$pagename}&amp;action=delete&amp;id={$row[articles].ID}"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$row[articles].title}" title="Delete {$row[articles].title}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
   <td class="text"><div align="center">{if $publishallowed}{if $row[articles].allowed == 0}<a href="javascript:confirmPublish({$row[articles].ID})"><img src="{$tempdir}admin/images/publish.png" border="0" alt="Publish {$row[articles].title}" title="Publish {$row[articles].title}" /></a>{else}<a href="javascript:confirmunPublish({$row[articles].ID})"><img src="{$tempdir}admin/images/unpublish.png" border="0" alt="Unpublish {$row[articles].title}" title="Unpublish {$row[articles].title}" /></a>{/if}{else}{if $row[articles].allowed == 0}<img src="{$tempdir}admin/images/publish_grey.gif" border="0" alt="Not allowed to publish" title="Not allowed to publish" />{else}<img src="{$tempdir}admin/images/unpublish_grey.gif" border="0" alt="Not allowed to unpublish" title="Not allowed to unpublis" />{/if}{/if}</div></td>
   <td class="text">{$row[articles].title}</td>
   <td class="text">{$row[articles].author}</td>
@@ -60,7 +57,9 @@ document.location = "admin.php?page=patrolart&action=deltopic&id=" + articleId;
 <div align="center" width="100%">No articles</div>
 {/if}
 </div>
-<div id="topics" class="mootabs_panel">{if $addallowed && !$limitgroup}<div class="toplinks"><a href="{$pagename}&amp;action=newtopic" title="Add topic"><img src="{$tempdir}admin/images/add.png" alt="Add topic" border="0" /></a>
+
+<h4 title="topics">Topics</h4>
+<div id="topics" >{if $addallowed && !$limitgroup}<div class="toplinks"><a href="{$pagename}&amp;action=newtopic" title="Add topic"><img src="{$tempdir}admin/images/add.png" alt="Add topic" border="0" /></a>
 </div>{/if}
 {if $numtopics > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table sortable-onload-3 rowstyle-alt paginate-15" id="sortTable1">
@@ -83,7 +82,7 @@ document.location = "admin.php?page=patrolart&action=deltopic&id=" + articleId;
 <div align="center">No topics</div>
 {/if}
 </div>
-</div></div></div>
+</div>
 {elseif $action=="edit" || $action=="new"}
 <script type="text/javascript">
 {include file="../scripts/validator.tpl"}

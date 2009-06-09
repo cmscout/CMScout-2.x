@@ -49,13 +49,14 @@ if (!$config['disablesite'])
         {
             $staticContent[$temp['id']] = 1;
         }
-        $staticsql = $data->select_query("functions", "WHERE active=1", "id, code, filetouse, mainmodule");
+        $staticsql = $data->select_query("functions", "WHERE active=1", "id, code, filetouse, mainmodule, `options`");
         $functionList = array();
         while ($temp = $data->fetch_array($staticsql))
         {
             $functionList[$temp['id']]['code'] = $temp['code'];
             $functionList[$temp['id']]['filetouse'] = $temp['filetouse'];
             $functionList[$temp['id']]['mainmodule'] = $temp['mainmodule'];
+            $functionList[$temp['id']]['options'] = explode(',', $temp['options']);
         }
         $staticsql = $data->select_query("subsites", "", "id");
         $subsiteList = array();
@@ -147,7 +148,7 @@ if (!$config['disablesite'])
                                             { 
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['type'] = 1;
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['name'] = $subitems['name'];
-                                                $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['link'] = $functionList[$subitems['item']]['code'];
+                                                $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['link'] = $functionList[$subitems['item']]['code'] . ($subitems['option'] != 0 ? str_replace("!#id#!", $subitems['option'], $functionList[$subitems['item']]['options'][5]) : '');;
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['parent'] = $subitems['parent'];
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['target'] = $subitems['target'];
                                             }
@@ -165,7 +166,7 @@ if (!$config['disablesite'])
 					       {
 							if ($functionList[$subitems['item']]['filetouse'] != "" && file_exists("sidebox/{$functionList[$subitems['item']]['filetouse']}".$phpex))
 							{
-							    include_once("sidebox/{$functionList[$subitems['item']]['filetouse']}".$phpex);
+							    include("sidebox/{$functionList[$subitems['item']]['filetouse']}".$phpex);
 							}
 							if (!$menus)
 							{
@@ -185,7 +186,7 @@ if (!$config['disablesite'])
                                             {
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['type'] = 2;
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['name'] = $subitems['name'];
-                                                $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['link'] = "index.php?page=subsite&amp;site={$subitems['item']}&amp;menuid={$subitems['parent']}";
+                                                $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['link'] = "index.php?page=subsite&amp;site={$subitems['item']}&amp;menuid={$subitems['parent']}" . ($subitems['option'] != 0 ? "&amp;content={$subitems['option']}" : '');
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['target'] = $subitems['target'];
                                             }
                                             else
@@ -218,7 +219,7 @@ if (!$config['disablesite'])
                                             {
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['type'] = 2;
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['name'] = $subitems['name'];
-                                                $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['link'] = "index.php?page=patrolpages&amp;patrol={$subitems['item']}&amp;menuid={$subitems['parent']}";
+                                                $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['link'] = "index.php?page=patrolpages&amp;patrol={$subitems['item']}&amp;menuid={$subitems['parent']}" . ($subitems['option'] != 0 ? "&amp;content={$subitems['option']}" : '');
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['id'] = $subitems['id'];                            
                                                 $menu[$side][$catnum[$side]]['items'][$itemnum]['subitem'][$subitemnum]['target'] = $subitems['target'];
                                             }
@@ -258,7 +259,7 @@ if (!$config['disablesite'])
                                     {                                    
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['type'] = 1;
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['name'] = $items['name'];
-                                        $menu[$side][$catnum[$side]]['items'][$itemnum]['link'] = $functionList[$items['item']]['code'];
+                                        $menu[$side][$catnum[$side]]['items'][$itemnum]['link'] = $functionList[$items['item']]['code'] . ($items['option'] != 0 ? str_replace("!#id#!", $items['option'], $functionList[$items['item']]['options'][5]) : '');
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['id'] = $items['id'];
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['target'] = $items['target'];
                                     }
@@ -275,12 +276,13 @@ if (!$config['disablesite'])
 					{
 						 if ($functionList[$items['item']]['filetouse'] != "" && file_exists("sidebox/{$functionList[$items['item']]['filetouse']}".$phpex))
 						{
-						    include_once("sidebox/{$functionList[$items['item']]['filetouse']}".$phpex);
+						    include("sidebox/{$functionList[$items['item']]['filetouse']}".$phpex);
 						}
 						if (!$menus)
 						{
 						    $menu[$side][$catnum[$side]]['items'][$itemnum]['type'] = 4;
 						    $menu[$side][$catnum[$side]]['items'][$itemnum]['name'] = $items['name'];
+                            $menu[$side][$catnum[$side]]['items'][$itemnum]['id'] = $items['id'];
 						    $menu[$side][$catnum[$side]]['items'][$itemnum]['link'] = $functionList[$items['item']]['code'];
 						}
 					}
@@ -295,7 +297,7 @@ if (!$config['disablesite'])
                                     {
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['type'] = 2;
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['name'] = $items['name'];
-                                        $menu[$side][$catnum[$side]]['items'][$itemnum]['link'] = "index.php?page=subsite&amp;site={$items['item']}&amp;menuid={$items['id']}";
+                                        $menu[$side][$catnum[$side]]['items'][$itemnum]['link'] = "index.php?page=subsite&amp;site={$items['item']}&amp;menuid={$items['id']}" . ($items['option'] != 0 ? "&amp;content={$items['option']}" : '');
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['id'] = $items['id'];
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['target'] = $items['target'];
                                     }
@@ -330,7 +332,7 @@ if (!$config['disablesite'])
                                     {
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['type'] = 2;
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['name'] = $items['name'];
-                                        $menu[$side][$catnum[$side]]['items'][$itemnum]['link'] = "index.php?page=patrolpages&amp;patrol={$items['item']}&amp;menuid={$items['id']}";
+                                        $menu[$side][$catnum[$side]]['items'][$itemnum]['link'] = "index.php?page=patrolpages&amp;patrol={$items['item']}&amp;menuid={$items['id']}" . ($items['option'] != 0 ? "&amp;content={$items['option']}" : '');
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['id'] = $items['id'];                            
                                         $menu[$side][$catnum[$side]]['items'][$itemnum]['target'] = $items['target'];
                                     }
@@ -360,7 +362,7 @@ if ($config['disablesite'] || ($catnum['left'] == 0 && $catnum['right'] == 0 && 
     $t = $data->fetch_array($data->select_query("functions", "WHERE name = 'Logon Box'"));
     if ($t['filetouse'] != "" && file_exists("sidebox/{$t['filetouse']}".$phpex))
     {
-        include_once("sidebox/{$t['filetouse']}".$phpex);
+        include("sidebox/{$t['filetouse']}".$phpex);
     }
     $menu['left'][0]['name'] = 'Login';
     $menu['left'][0]['showhead'] = 1;

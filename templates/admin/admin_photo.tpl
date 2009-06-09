@@ -43,7 +43,7 @@ function confirmunPublishart(articleId)
       </thead><tbody>
 	 {section name=albumloop loop=$numalbums}
 		 <tr class="text">
-			<td class="text"><div align="center"><a href="{$pagename}&amp;action=view&amp;id={$albums[albumloop].ID}"><img src="{$tempdir}admin/images/mod.gif" border="0" alt="View Photos for {$albums[albumloop].album_name}" title="View Photos for {$albums[albumloop].album_name}" /></a>&nbsp;&nbsp;{if $deleteallowed}<a href="admin.php?page=photo&action=delete&id={$albums[albumloop].ID}"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$albums[albumloop].album_name}" title="Delete {$albums[albumloop].album_name}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
+			<td class="text"><div align="center"><a href="{$pagename}&amp;action=view&amp;id={$albums[albumloop].ID}"><img src="{$tempdir}admin/images/mod.gif" border="0" alt="View Photos for {$albums[albumloop].album_name}" title="View Photos for {$albums[albumloop].album_name}" /></a>&nbsp;&nbsp;{if $deleteallowed}<a href="admin.php?page=photo&amp;action=delete&amp;id={$albums[albumloop].ID}"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$albums[albumloop].album_name}" title="Delete {$albums[albumloop].album_name}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
             <td class="text"><div align="center">{if $publishallowed}{if $albums[albumloop].allowed == 0}<a href="javascript:confirmPublishart({$albums[albumloop].ID})"><img src="{$tempdir}admin/images/publish.png" border="0" alt="Publish" title="Publish" /></a>{else}<a href="javascript:confirmunPublishart({$albums[albumloop].ID})"><img src="{$tempdir}admin/images/unpublish.png" border="0" alt="Unpublish" title="Unpublish" /></a>{/if}{else}{if $albums[albumloop].allowed == 0}<img src="{$tempdir}admin/images/publish_grey.gif" border="0" alt="Not allowed to publish" title="Not allowed to publish" />{else}<img src="{$tempdir}admin/images/unpublish_grey.gif" border="0" alt="Not allowed to unpublish" title="Not allowed to unpublis" />{/if}{/if}</div></td>
 			<td class="text">{$albums[albumloop].album_name}</td>
 	  </tr>
@@ -56,6 +56,7 @@ function confirmunPublishart(articleId)
 {elseif $action=="view"}
 {literal}
 <script language="javascript" type="text/javascript"> 
+<!--
 function deletephoto(photoid, albumid) {
 if (confirm("This will remove the photo from the album. Continue?"))
 document.location = "admin.php?page=photo&action=deletephoto&pid=" + photoid + "&id=" + albumid;
@@ -106,16 +107,16 @@ function add()
     document.getElementById('albumedit').style.display = 'none';
     document.getElementById('editphoto').style.display='none';
 }
+//-->
 </script>
 {/literal}
 <script type="text/javascript">
 {include file="../scripts/validator.tpl"}
 </script>
-<div align="center"><div class="formlist" style="width:100%" onsubmit="return checkForm([['name','text',true,0,0,'']]);">
 	<h3>{$albuminfo.album_name}</h3>
 <div align="center"><a href="#" onclick="update();">Edit Album</a>&nbsp;|&nbsp;<a href="#" onclick="add();">Add Photo</a></div>
 <div id="albumedit" class="field" style="display:none;">
-<form action="{$editFormAction}" method="post" name="form1">
+<form action="{$editFormAction}" method="post" name="form2" onsubmit="return checkForm([['name','text',true,0,0,'']]);">
 <fieldset>
 <legend>Edit Album</legend>
 <label for="name" class="label">Name<span class="hintanchor" title="Name of the name."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
@@ -131,13 +132,13 @@ function add()
      </select></div><br />
 <div class="submitWrapper">
  <input type="submit" name="Submit" value="Update" class="button" />
- <input type="reset" name="Submit2" value="Cancel" onClick="document.getElementById('albumedit').style.display='none';" class="button" />
+ <input type="reset" name="Submit2" value="Cancel" onclick="document.getElementById('albumedit').style.display='none';" class="button" />
 </div>
 </fieldset>
 </form>
 </div>
 <div id="photoupload" class="field" style="display:none;">
-<form action="{$editFormAction}" method="post" enctype="multipart/form-data" name="form1">
+<form action="{$editFormAction}" method="post" enctype="multipart/form-data" name="form3">
 <fieldset>
 <legend>Upload Photo</legend>
 <label for="filename" class="label">Filename<span class="hintanchor" title="Select the photo file."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
@@ -147,7 +148,7 @@ function add()
 <div class="inputboxwrapper"><input id="caption" name="caption" type="text" size="50" maxlength="255" class="inputbox" /></div><br />
 <div class="submitWrapper">
  <input type="submit" name="Submit" value="Upload Photo" class="button" />
- <input type="reset" name="Submit2" value="Cancel" onClick="document.getElementById('photoupload').style.display='none';" class="button" />
+ <input type="reset" name="Submit2" value="Cancel" onclick="document.getElementById('photoupload').style.display='none';" class="button" />
 </div>
 </fieldset>
 </form>
@@ -165,7 +166,7 @@ function add()
 <input name="photoid" id="photoid" type="hidden" />
 <div class="submitWrapper">
  <input type="submit" name="Submit" value="Update Photo" class="button" />
- <input type="reset" name="Submit2" value="Cancel" onClick="document.getElementById('editphoto{$photos[photo].ID}').style.display='none';" class="button" />
+ <input type="reset" name="Submit2" value="Cancel" onclick="document.getElementById('editphoto{$photos[photo].ID}').style.display='none';" class="button" />
 </div>
 </fieldset>
 </form>
@@ -176,13 +177,13 @@ function add()
 	  <tr>
 		<th width="8%" class="smallhead"></th>
         <th width="10%" class="smallhead">Publish</th>
-		<th class="smallhead" width="140px">Photo</th>
+		<th class="smallhead" width="140">Photo</th>
 		<th width="76%" class="smallhead">Caption</th>
 	  </tr> 
       </thead><tbody>
     {section name=photo loop=$numphotos}
     <tr valign="top" class="text">
-        <td style="text-align:center;" class="text"><div align="center">{if $editallowed}<a href="javascript:showedit({$photos[photo].ID}, '{$photos[photo].caption}');" style="text-align:center"><img border="0" src="{$tempdir}admin/images/edit.gif" title="Edit" alt="Edit"/></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $deleteallowed}<a href="javascript:deletephoto({$photos[photo].ID},{$albuminfo.ID})" style="text-align:center"><img border="0" src="{$tempdir}admin/images/delete.gif" title="Delete" alt="Delete"/></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
+        <td style="text-align:center;" class="text"><div align="center">{if $editallowed}<a href="javascript:showedit({$photos[photo].ID},'{$photos[photo].caption}');" style="text-align:center"><img border="0" src="{$tempdir}admin/images/edit.gif" title="Edit" alt="Edit"/></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $deleteallowed}<a href="javascript:deletephoto({$photos[photo].ID},{$albuminfo.ID})" style="text-align:center"><img border="0" src="{$tempdir}admin/images/delete.gif" title="Delete" alt="Delete"/></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
         <td  style="text-align:center;" class="text"><div align="center">{if $publishallowed}{if $photos[photo].allowed == 0}<a href="javascript:confirmPublishphoto({$photos[photo].ID},{$albuminfo.ID})"><img src="{$tempdir}admin/images/publish.png" border="0" alt="Publish" title="Publish" /></a>{else}<a href="javascript:confirmunPublishphoto({$photos[photo].ID},{$albuminfo.ID})"><img src="{$tempdir}admin/images/unpublish.png" border="0" alt="Unpublish" title="Unpublish" /></a>{/if}{else}{if $photos[photo].allowed == 0}<img src="{$tempdir}admin/images/publish_grey.gif" border="0" alt="Not allowed to publish" title="Not allowed to publish" />{else}<img src="{$tempdir}admin/images/unpublish_grey.gif" border="0" alt="Not allowed to unpublish" title="Not allowed to unpublis" />{/if}{/if}</div></td>
         <td style="text-align:center;" class="text"><a rel="lightbox" href="{$photopath}{$photos[photo].filename}" title="{$photos[photo].caption}"><img src="thumbnail.php?pic={$photos[photo].ID}" alt="{$photos[photo].caption}" border="0" /></a></td>
         <td  class="text">{$photos[photo].caption}</td>
@@ -216,7 +217,7 @@ function add()
 </div>
 <div class="submitWrapper">
 <input type="submit" name="submit" value="Add Album" class="button" />	
-      <input type="button" name="Submit2" value="Cancel" onClick="window.location='admin.php?page=photo'" class="button" /></div>
+      <input type="button" name="Submit2" value="Cancel" onclick="window.location='admin.php?page=photo'" class="button" /></div>
 </form>
 </div>
 {/if}

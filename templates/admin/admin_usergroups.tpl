@@ -21,11 +21,11 @@ document.location = "admin.php?page=users&subpage=usergroups&action=delete&uid={
 </tr>
 {/section}
 <tr>
-<th class="smallhead" colspan="3">Colour Key</td>
+<th class="smallhead" colspan="3">Colour Key</th>
 </tr>
 <tr style="padding:0px;margin:0px;">
 <td colspan="3" style="padding:0px;margin:0px;height:2em">
-<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="padding:0px;margin:0px;" align="center" class="table">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding:0px;margin:0px;" align="center" class="table">
 <tr>
 <td class="text" width="33%" style="text-align:center;font-weight:bold;vertical-align:middle;">Normal User</td>
 <td class="text" width="33%" style="background-color:#cdd7ff;text-align:center;font-weight:bold;vertical-align:middle;">Assistant Group Leader</td>
@@ -36,7 +36,8 @@ document.location = "admin.php?page=users&subpage=usergroups&action=delete&uid={
 </tr>
 {if $editallowed && !$limitgroup}
 <tr>
-<th class="smallhead" colspan="3">Add User to Group</td>
+<th class="smallhead" colspan="3">Add User to Group</th>
+</tr>
 <tr>
 <td class="text" colspan="3">
 <form method="post" action="{$pagename}&amp;subpage=usergroups&amp;action=add&amp;uid={$userinfo.id}">

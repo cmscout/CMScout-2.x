@@ -2,7 +2,7 @@
   <script type="text/javascript">
 <!--
 function confirmDelete(articleId) {
-if (confirm("This will remove this page from the frontpage. Continue?"))
+if (confirm("This will remove this page from the Home Page. Continue?"))
   {/literal}
 document.location = "{$pagename}&action=delete&id=" + articleId;
 {literal}
@@ -10,9 +10,9 @@ document.location = "{$pagename}&action=delete&id=" + articleId;
 //-->
 </script>
   {/literal}
-<h2>Frontpage Manager</h2>
+<h2>Home Page Manager</h2>
 {if $action!="edit" && $action!="new"}
-{if $addallowed}<div class="toplinks"><a href="{$pagename}&amp;action=new" title="Add Item to Frontpage"><img src="{$tempdir}admin/images/add.png" alt="Add Item to Frontpage" border="0" /></a>
+{if $addallowed}<div class="toplinks"><a href="{$pagename}&amp;action=new" title="Add Item to Home Page"><img src="{$tempdir}admin/images/add.png" alt="Add Item to Home Page" border="0" /></a>
 </div>{/if}
 {if $numfront > 0}
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable">
@@ -34,16 +34,16 @@ document.location = "{$pagename}&action=delete&id=" + articleId;
     {/section}</tbody>
 </table>
 {else}
-<div align="center">No items on front page</div>
+<div align="center">No items on Home Page</div>
 {/if}
 {elseif $action=="new" || $action=="edit"}
 <form name="form2" method="post" action="">
 <div align="center">
 <fieldset class="formlist">
-<legend>{if $action=="new"}New{else}Edit{/if} Frontpage Item</legend>
+<legend>{if $action=="new"}New{else}Edit{/if} Home Page Item</legend>
 <div class="field">
     
-    <label class="label" for="itemid">Page<span class="hintanchor" title="Select the frontpage item."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+    <label class="label" for="itemid">Page<span class="hintanchor" title="Select the Home Page item."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper"><select name="itemid" id="itemid" class="inputbox">
       <option value="0" {if $item.item == 0}selected="selected"{/if}>Select a Page</option>
     <optgroup label="Dynamic">

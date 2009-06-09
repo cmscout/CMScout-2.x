@@ -45,7 +45,7 @@ function confirmunPublish(articleId, al)
 <div align="center">No download categories</div>
 {/if}
   {elseif $action == "view"}
-  <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=adddown&amp;id={$catinfo.id}" title="Add Download"><img src="{$tempdir}admin/images/add.png" alt="Add Download" border="0" />{/if}<a href="{$pagename}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a>
+  <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=adddown&amp;id={$catinfo.id}" title="Add Download"><img src="{$tempdir}admin/images/add.png" alt="Add Download" border="0" /></a>{/if}<a href="{$pagename}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a>
 </div>
   {if $numdown > 0}
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table sortable-onload-3 rowstyle-alt paginate-15" id="sortTable">

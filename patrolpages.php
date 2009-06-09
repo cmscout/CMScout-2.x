@@ -142,7 +142,7 @@ else
     $edit = adminauth("patrol", "edit") ? true : false;
     $add = adminauth("patrol", "add") ? true : false;
     $addlink = "admin.php?page=patrol&amp;subpage=patrolcontent&amp;action=new&amp;pid=$patrolid";
-    $editlink = "admin.php?page=patrol&amp;subpage=patrolcontent&id=$content&action=edit&pid=$patrolid";
+    $editlink = "admin.php?page=patrol&amp;subpage=patrolcontent&amp;id=$content&amp;action=edit&amp;pid=$patrolid";
 }
 
 if ($sitecontent === false)

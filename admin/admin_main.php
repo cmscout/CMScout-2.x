@@ -44,7 +44,7 @@ else
         $onlineusers[] = $temp;
     };
     
-        $newversion = file("http://www.cmscout.za.net/latestversion.txt");
+        $newversion = file("http://www.cmscout.co.za/latestversion.txt");
         if (is_array($newversion))
         {
           $comp = strcasecmp(trim($config['version']), trim($newversion[0]));

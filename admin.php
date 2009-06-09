@@ -114,11 +114,11 @@ while( $filename = @readdir($dirname) )
             {
                 if ($moduledetails[$modulenumbers][$name] != "notused" && $moduledetails[$modulenumbers][$name] != "") 
                 {
-                    $moduledetails[$modulenumbers]['description'] .= "<b>$descr:</b> " . $moduledetails[$modulenumbers][$name] . "<br />"; 
+                    $moduledetails[$modulenumbers]['description'] .= "&lt;b&gt;$descr:&lt;/b&gt; " . $moduledetails[$modulenumbers][$name] . "&lt;br /&gt;"; 
                 }
                 else
                 {
-                    $moduledetails[$modulenumbers]['description'] .= "<b>$descr:</b> Does Nothing<br />";
+                    $moduledetails[$modulenumbers]['description'] .= "&lt;b&gt;$descr:&lt;/b&gt; Does Nothing&lt;br /&gt;";
                 }
             }
 

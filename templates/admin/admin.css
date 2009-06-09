@@ -373,6 +373,54 @@ border-bottom: 3px solid #335368;
         border-bottom: 1px solid white;
 }
 
+.tab-wrapper
+{
+	padding-top:1px;
+	border-top:0px;
+}
+.tab-menu
+{
+	list-style:				none;
+	padding:				2px 0;
+	line-height:			        17px;
+	font-size:				12px;
+        text-align: left;
+}
+.tab-menu li
+{
+	display:				inline;
+        padding:                                0;
+	margin:					0 2px;
+}
+.tab-menu li a
+{
+	background-color: #87A3B6;
+	color:#feffff;
+	padding: 2px 8px 2px 8px;
+	margin-right: 2px;
+	cursor: pointer;
+	height: 20px;
+	border: 1px solid #335368;
+}
+.tab-menu li a:hover,
+.tab-menu li a:focus
+{
+  background-color : #335368;
+  color            : #F7FCFF;
+  text-decoration  : none;
+}
+.tab-menu li a:hover
+{
+  background-color : #335368;
+  color            : #F7FCFF;
+  text-decoration  : none;
+}
+.tab-menu li.tab-selected a
+{
+        background: #F7FCFF;
+        color:#335368;
+}
+
 .mootabs_title {
 	list-style-image: none;
 	list-style-type: none;

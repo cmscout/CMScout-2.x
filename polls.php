@@ -116,7 +116,7 @@ else
             $results = safesql(serialize($results), "text");
             $data->update_query("polls", "results=$results", "id={$poll['id']}");
             $data->insert_query("pollvoters", "{$poll['id']}, {$check['id']}, '{$_SERVER['REMOTE_ADDR']}'");
-            show_message("Your vote has been counted", "index.php?page=polls&id=$id");
+            show_message("Your vote has been counted", "index.php?page=polls&id={$poll['id']}");
         }
     }
     $pagenum = 2;

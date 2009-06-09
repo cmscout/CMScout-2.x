@@ -108,16 +108,6 @@ else
             show_admin_message("Poll deleted", "$pagename");  
         }
     }
-    elseif ($action == "sidebox")
-    {
-        $id = safesql($_GET['id'], "int");
-        $sqlq = $data->update_query("polls", "sidebox=0", "sidebox=1");
-        $sqlq = $data->update_query("polls", "sidebox=1", "id=$id");
-        if ($sqlq) 
-        { 
-            show_admin_message("Posted to Sidebox", "$pagename");  
-        }
-    }
     elseif ($action == 'publish' && pageauth("poll", "publish") == 1) 
     {
         $id = safesql($_GET['id'], "int");

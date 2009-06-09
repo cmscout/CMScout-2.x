@@ -3,19 +3,10 @@
 </script>
 <form name="form1" method="post" action="" onsubmit="return checkForm([['troopname','text',true,0,0,'', 'Website Name'],['siteaddress','text',true,0,0,'', 'Site Address'],['sitemail','email',true,0,0,'', 'Website Email'],['numpm','number',true,0,0,'', 'Number of Private Messages'],['uploadlimit','number',true,0,0,'', 'Upload Limit'],['avyy','number',true,0,0,'', 'Avatar Y size'],['avyx','number',true,0,0,'', 'Avatar X size'],['sigsize','number',true,0,0,'', 'Signature Size'],['photox','number',true,0,0,'', 'Maximum Photo X Size'],['photoy','number',true,0,0,'', 'Maximum Photo Y Size'],['numsidebox','number',true,0,0,'', 'Items on Sideboxes'],['numpage','number',true,0,0,'', 'Number of items per page'],['privacy','text',true,0,0,'', 'Privacy Statement']]);">
 <h2>Website Configuration</h2>
-<div align="center"><div style="width:100%;">
 <div class="fieldError" id="anyerror"></div>
-<div id="navcontainer" align="center">
-<ul class="mootabs_title">
-    <li title="website">Website</li>
-    <li title="email">Email</li>
-    <li title="registration">Registration</li>
-    <li title="profile">Profile</li>
-    <li title="layout">Layout</li>
-    <li title="confirm">Confirmation</li>
-</ul>
-
-<div id="website" class="mootabs_panel">
+<div id="navcontainer">
+<h4 title="website">Website</h4>
+<div id="website">
 <div class="field">
     <div class="fieldItem"><label for="troopname" class="label">Website Name<span class="hintanchor" title="The name of your website."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper">{if $editallowed}<input type="text" name="troopname" id="troopname" value="{$configs.troopname}" size="40" class="inputbox" onblur="checkElement('troopname', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="troopnameError">Required</span>{else}{$configs.troopname}{/if}</div></div><br />
@@ -82,7 +73,8 @@
     </div>{/if}
 </div>
 
-<div id="email" class="mootabs_panel">
+<h4 title="email">Email</h4>
+<div id="email">
 <div class="field">
     <div class="fieldItem"><label for="sitemail" class="label">Website Email<span class="hintanchor" title="The webmaster's email address. All emails sent by CMScout will be from this address. The address needs to exist since CMScout will send emails to this address as well."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper">{if $editallowed}<input type="text" name="sitemail" id="sitemail" value="{$configs.sitemail}" size="40" class="inputbox" onblur="checkElement('sitemail', 'email', true, 0, 0, '');" /><br /><span class="fieldError" id="sitemailError">Required: Must be a valid email address.</span>{else}{$configs.sitemail}{/if}</div></div><br />
@@ -117,7 +109,8 @@
     </div>{/if}
 </div>
 
-<div id="registration" class="mootabs_panel">
+<h4 title="registration">Registration</h4>
+<div id="registration">
 <div class="field">
     <div class="fieldItem"><span class="label">Allow registration<span class="hintanchor" title="Are users allowed to register to join the site?"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></span>
     <div class="inputboxwrapper">{if $editallowed}<input type="radio" name="register" id="register:yes" value="1" {if $configs.register == 1}checked="checked"{/if} /><label for="register:yes">Yes</label>
@@ -152,7 +145,7 @@
     <div class="inputboxwrapper">{if $editallowed}<textarea name="welcomemessage" style="width:100%" rows="30" id="welcomemessage"class="inputbox" onblur="checkElement('welcomemessage', 'text', true, 0, 0, '');">{$configs.welcomemessage}</textarea><br /><span class="fieldError" id="welcomemessageError">Required</span>{else}{$configs.welcomemessage}{/if}</div></div><br />
 
     <div class="fieldItem"><label for="privacy" class="label">Privacy Statement<span class="hintanchor" title="A short privacy statement to show to all new users when the register. This is a legal requirement in some countries. You may use HTML here."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-    <div class="inputboxwrapper">{if $editallowed}<textarea name="privacy" style="width:100%" rows="30" id="privacy"class="inputbox" onblur="checkElement('privacy', 'text', true, 0, 0, '');">{$configs.privacy}</textarea><br /><span class="fieldError" id="privacyError">Required</span>{else}{$configs.privacy}{/if}</div></div><br />
+    <div class="inputboxwrapper">{if $editallowed}<textarea name="privacy" style="width:100%" rows="30" id="privacy" class="inputbox" onblur="checkElement('privacy', 'text', true, 0, 0, '');">{$configs.privacy}</textarea><br /><span class="fieldError" id="privacyError">Required</span>{else}{$configs.privacy}{/if}</div></div><br />
 
     </div>
     
@@ -162,7 +155,8 @@
     </div>{/if}
 </div>
 
-<div id="profile" class="mootabs_panel">
+<h4 title="profile">Profile</h4>
+<div id="profile">
 <div class="field">
     <div class="fieldItem"><label for="avyx" class="label">Avatar Size<span class="hintanchor" title="Width x Height. Maximum size of a users avatar in pixels. Enter zero for either value to disable avatars. Default value is 100x100."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper">{if $editallowed}<input type="text" style="width:60px" id="avyx" name="avyx" value="{$configs.avyx}" class="inputbox" onblur="checkElement('avyx', 'number', true, 0, 0, '');" /> x <input type="text" name="avyy" id="avyy" style="width:60px" value="{$configs.avyy}" class="inputbox" onblur="checkElement('avyy', 'number', true, 0, 0, '');" /><br /><span class="fieldError" id="avyxError">Required: Width must be a number.<br /></span><span class="fieldError" id="avyyError">Required: Height must be a number.</span>{else}{$configs.avyx}x{$configs.avyy}{/if}</div></div><br />
@@ -177,7 +171,8 @@
     </div>{/if}
 </div>
 
-<div id="layout" class="mootabs_panel">
+<h4 title="layout">Layout</h4>
+<div id="layout">
 <div class="field">
     <div class="fieldItem"><label for="photox" class="label">Maximum size of photos<span class="hintanchor" title="Maximum size for a photo. CMScout makes sure that scaled down photos keep their aspect ratio. Default value is 800x600. To disable resizing set either value to zero."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper">{if $editallowed}<input type="text" style="width:60px" name="photox" id="photox" value="{$configs.photox}" class="inputbox" onblur="checkElement('photox', 'number', true, 0, 0, '');" /> x <input type="text" name="photoy" id="photoy" style="width:60px" value="{$configs.photoy}" class="inputbox" onblur="checkElement('photoys', 'number', true, 0, 0, '');" /><br /><span class="fieldError" id="photoxError">Required: Width must be a number.<br /></span><span class="fieldError" id="photoyError">Required: Height must be a number.</span>{else}{$configs.photox}x{$configs.photoy}{/if}</div></div><br />
@@ -228,7 +223,8 @@
     </div>{/if}
 </div>
 
-<div id="confirm" class="mootabs_panel">
+<h4 title="confirm">Confirmation</h4>
+<div id="confirm">
 <div class="field">
     <div class="fieldItem"><span class="label">Notify Webmaster<span class="hintanchor" title="Should CMScout send an email to the webmaster address if a item needs to be reviewed?"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></span>
     <div class="inputboxwrapper">{if $editallowed}<input type="radio" name="notify" id="notify:yes" value="1" {if $configs.notify == 1}checked="checked"{/if} /><label for="notify:yes">Yes</label>
@@ -282,4 +278,4 @@
     </div>{/if}
 </div>
 
-</div></div></div></form>
+</div></form>

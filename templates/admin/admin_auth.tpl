@@ -90,15 +90,9 @@ function checkAll(type, action)
           <tr>
           <td colspan="2" class="text">
                 <div align="center">
-<div id="navcontainer" align="center">
-<ul class="mootabs_title">
-    <li title="dtab">CMScout Pages</li>
-    <li title="permi">User Contributions</li>
-    <li title="content">Content</li>
-    <li title="subsite">Subsites</li>
-</ul> 
-
-<div id="dtab" class="mootabs_panel">
+<div id="navcontainer">
+<h4 title="dtab">CMScout Pages</h4>
+<div id="dtab" >
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-21" id="sortTable">
 <thead>
 <tr>
@@ -126,8 +120,9 @@ function checkAll(type, action)
 {/section} </tbody>
 </table> 
 </div>         
-          
-<div id="permi" class="mootabs_panel">
+    
+<h4 title="permi">User Contributions</h4>    
+<div id="permi" >
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-21" id="sortTable2">
 <thead>
 <tr>
@@ -155,8 +150,9 @@ function checkAll(type, action)
 {/section} </tbody>
 </table>      
 </div>
-       
-<div id="content" class="mootabs_panel">
+    
+<h4 title="content">Content</h4>    
+<div id="content" >
 {if $numstatic > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-21" id="sortTable3">
 <thead>
@@ -189,7 +185,8 @@ No content pages available
 {/if}       
 </div> 
 
-<div id="subsite" class="mootabs_panel">
+<h4 title="subsite">Subsites</h4>
+<div id="subsite" >
 {if $numsites > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-21" id="sortTable4">
 <thead>

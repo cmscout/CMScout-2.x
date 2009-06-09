@@ -146,8 +146,9 @@ else
             $parent = isset($_POST['parent']) ? safesql($_POST['parent'], "int") : 0;
             $pos = get_end_pos($id, $parent);
             $target = safesql($_POST['target'], "text");
+            $option = safesql($_POST['options'], "int");
             
-            $sql = $data->insert_query("menu_items", "NULL, $name,  $id, $item, $pos, $type, $parent, $target", "Menus", "Added menu item $name");
+            $sql = $data->insert_query("menu_items", "NULL, $name,  $id, $item, $pos, $type, $parent, $target, $option");
             $data->update_query("menu_cats", "numitems = numitems + 1", "id=$id", "", "", false);
             $action = "catview";
             if ($sql)
@@ -201,8 +202,9 @@ else
             $target = safesql($_POST['target'], "text");
 
             $item = $type == 5 ? $url : safesql($item[0], "text");
-
-            $sql = $data->update_query("menu_items", "name = $name, item = $item, type=$type, parent=$parent, target=$target, pos=$pos", "id=$id", "Menus", "Edited menu item $name");
+            $option = safesql($_POST['options'], "int");
+            
+            $sql = $data->update_query("menu_items", "name = $name, item = $item, type=$type, parent=$parent, target=$target, pos=$pos, `option`=$option", "id=$id");
             
             $action = "catview";
             $id = $_GET['cid'];
@@ -356,9 +358,105 @@ else
         
         $tpl->assign("catname", $bit['name']);
         if ($action == "edititem") 
-        {
+        {       
             $sql = $data->select_query("menu_items", "WHERE id='$id'");
             $item = $data->fetch_array($sql);
+            
+            if ($item['type'] == 2 || $item['type'] == 3)
+            {
+              $itemDetails = $data->select_fetch_one_row("functions", "WHERE id={$item['item']}");
+              $itemOptions = explode(",", $itemDetails['options']);
+              $options = '';
+              if ($itemOptions[0] != "")
+              {
+                $itemSectionSql = $data->select_query($itemOptions[0], "ORDER BY {$itemOptions[2]}", "{$itemOptions[1]},{$itemOptions[2]}");
+                $options .= "<label for=\"options\" class=\"label\">{$itemOptions[4]}</label> 
+                   <div class=\"inputboxwrapper\">
+                   <select name=\"options\" id=\"options\" class=\"inputbox\">";
+                   
+                   if ($item['option'] == 0)
+                   {
+                      $options .= "<option value=\"0\" selected=\"selected\">{$itemOptions[3]}</option>";
+                   }
+                   else
+                   {
+                     $options .= "<option value=\"0\">{$itemOptions[3]}</option>";
+                   }
+                   while ($temp = $data->fetch_array($itemSectionSql))
+                   {
+                     if ($item['option'] == $temp[$itemOptions[1]])
+                     {
+                       $options .= "<option value=\"{$temp[$itemOptions[1]]}\" selected=\"selected\">{$temp[$itemOptions[2]]}</option>";
+                     }
+                     else
+                     {
+                       $options .= "<option value=\"{$temp[$itemOptions[1]]}\">{$temp[$itemOptions[2]]}</option>";
+                     }
+                   }
+                $options .= "</select>
+                </div><br />";
+              }
+              $tpl->assign("options", $options);
+            }
+            elseif ($item['type'] == 4)
+            {
+              $itemSectionSql = $data->select_query("static_content", "WHERE type=2 AND pid = {$item['item']} ORDER BY friendly", "id,friendly");
+              $options .= "<label for=\"options\" class=\"label\">Page</label> 
+                 <div class=\"inputboxwrapper\">
+                 <select name=\"options\" id=\"options\" class=\"inputbox\">";
+                 if ($item['option'] == 0)
+                 {
+                    $options .= "<option value=\"0\" selected=\"selected\">Site home page</option>";
+                 }
+                 else
+                 {
+                   $options .= "<option value=\"0\">Site home page</option>";
+                 }                 
+                 while ($temp = $data->fetch_array($itemSectionSql))
+                 {
+                   if ($item['option'] == $temp['id'])
+                   {
+                      $options .= "<option value=\"{$temp['id']}\" selected=\"selected\">{$temp['friendly']}</option>";
+                   }
+                   else
+                   {
+                     $options .= "<option value=\"{$temp['id']}\">{$temp['friendly']}</option>";
+                   }  
+                 }
+              $options .= "</select>
+              </div><br />";
+              $tpl->assign("options", $options);
+            }
+            elseif ($item['type'] == 7)
+            {
+              $itemSectionSql = $data->select_query("static_content", "WHERE type=1 AND pid = {$item['item']} ORDER BY friendly", "id,friendly");
+              $options .= "<label for=\"options\" class=\"label\">Page</label> 
+                 <div class=\"inputboxwrapper\">
+                 <select name=\"options\" id=\"options\" class=\"inputbox\">";
+                 if ($item['option'] == 0)
+                 {
+                    $options .= "<option value=\"0\" selected=\"selected\">Site home page</option>";
+                 }
+                 else
+                 {
+                   $options .= "<option value=\"0\">Site home page</option>";
+                 }                 
+                 while ($temp = $data->fetch_array($itemSectionSql))
+                 {
+                   if ($item['option'] == $temp['id'])
+                   {
+                      $options .= "<option value=\"{$temp['id']}\" selected=\"selected\">{$temp['friendly']}</option>";
+                   }
+                   else
+                   {
+                     $options .= "<option value=\"{$temp['id']}\">{$temp['friendly']}</option>";
+                   }  
+                 }
+              $options .= "</select>
+              </div><br />";
+              $tpl->assign("options", $options);
+            }
+            
             $tpl->assign('item', $item);
         }
     } 

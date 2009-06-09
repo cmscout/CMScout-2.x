@@ -121,7 +121,7 @@ if ($tid != 'NULL')
         $temp['numtopics'] = $temp2['numtopics'];
         $temp['posttext'] = censor($temp['posttext']);
         $temp['subject'] = censor($temp['subject']);
-        $temp['userpostedname'] = $userIdList[$temp['userposted']];
+        $temp['userpostedname'] = get_username($temp['userposted']);
         $temp['userstatus'] = user_online($temp['userpostedname']);
 
         if ($temp['edituser'])

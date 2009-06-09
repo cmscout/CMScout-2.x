@@ -35,20 +35,18 @@ $numpm = $data->num_rows($sql);
 $inboxpm = array();
 while($temp = $data->fetch_array($sql))
 {
-    $temp2 = $data->select_fetch_one_row("users", "WHERE id={$temp['fromuser']}", "uname");
     $temp['fromuserid'] = $temp['fromuser'];
-    $temp['fromuser'] = $temp2['uname'];
+    $temp['fromuser'] = get_username($temp['fromuser']);
     
     $tousers = explode(',', strip_tags($temp['touser']));
     $temp['touser'] = array();
     $temp['touser']['number'] = count($tousers);
     for ($i=0;$i<count($tousers);$i++)
     {
-        $bla = trim($tousers[$i]);
-        $temp2 = $data->select_fetch_one_row("users", "WHERE id={$bla}", "uname");
-        $temp['touser']['users'][$i]['uname'] = $temp2['uname'];
-        $temp['touser']['users'][$i]['id'] = $bla;
-        $temp['touser']['users'][$i]['status'] = user_online($temp2['uname']);
+        $userid = trim($tousers[$i]);
+        $temp['touser']['users'][$i]['uname'] = get_username($userid);
+        $temp['touser']['users'][$i]['id'] = $userid;
+        $temp['touser']['users'][$i]['status'] = user_online($temp['touser']['users'][$i]['uname']);
     }
     $temp['subject'] = censor($temp['subject']);
     $inboxpm[] = $temp;

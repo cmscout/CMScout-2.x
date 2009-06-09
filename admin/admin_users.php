@@ -136,13 +136,13 @@ else
         {
             $temp['team'] = user_groups_list($temp['id']);
 
-            $detail = "<b>Username:</b> {$temp['uname']}<br />";
-            $detail .= "<b>Real Name:</b> {$temp['firstname']} {$temp['lastname']}<br />";
-            $detail .= "<b>Email Address:</b> {$temp['email']}<br />";
+            $detail = "&lt;b&gt;Username:&lt;/b&gt; {$temp['uname']}&lt;br /&gt;";
+            $detail .= "&lt;b&gt;Real Name:&lt;/b&gt; {$temp['firstname']} {$temp['lastname']}&lt;br /&gt;";
+            $detail .= "&lt;b&gt;Email Address:&lt;/b&gt; {$temp['email']}&lt;br /&gt;";
               
-            $detail .= "<b>Groups:</b> ". strip_tags($temp['team']) ."<br />";
-            if ($temp['status'] == 1) $detail .= "<b>Status:</b> Active<br />";
-            else $detail .= "<b>Status:</b> Inactive<br />";
+            $detail .= "&lt;b&gt;Groups:&lt;/b&gt; ". strip_tags($temp['team']) ."&lt;br /&gt;";
+            if ($temp['status'] == 1) $detail .= "&lt;b&gt;Status:&lt;/b&gt; Active&lt;br /&gt;";
+            else $detail .= "&lt;b&gt;Status:&lt;/b&gt; Inactive&lt;br /&gt;";
             $temp['detail'] = $detail;
             $row[] = $temp;
         }

@@ -16,11 +16,11 @@ document.location = "admin.php?page=users&action=delete&id=" + articleId;
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table sortable-onload-2 rowstyle-alt paginate-15" id="sortTable">
 <thead>
 <tr> 
-  <th width="120px" class="smallhead"></th>
+  <th width="120" class="smallhead"></th>
   <th class="smallhead sortable">Username</th>
-  <th width="200px" class="smallhead sortable">Groups</th>
-  <th width="100px" class="smallhead sortable-date">Last Login</th>
-  <th width="90px" class="smallhead sortable-numeric">Login Count</th>
+  <th width="200" class="smallhead sortable">Groups</th>
+  <th width="100" class="smallhead sortable-date">Last Login</th>
+  <th width="90" class="smallhead sortable-numeric">Login Count</th>
 </tr>
   </thead>
   <tbody>
@@ -44,44 +44,44 @@ document.location = "admin.php?page=users&action=delete&id=" + articleId;
 <div align="center">No Users</div>
 {/if}
 {elseif $action=="Edit"}
-<form name="form1" method="post" onsubmit="return checkForm([['usernames','text',true,0,0,''],['email','email',true,0,0,''],['firstname','text',true,0,0,''],['lastname','text',true,0,0,'']{if $numfields > 0}{section name=fields loop=$numfields}{if $fields[fields].required && ($fields[fields].type==1 || $fields[fields].type==2)},['{$fields[fields].name}', 'text', true, 0, 0, '']{elseif $fields[fields].type==6},['{$fields[fields].name}', 'date', {if $fields[fields].required}true{else}false{/if}, 0, 0, '']{/if}{/section}{/if}]);">
+<form name="form1" method="post" onsubmit="return checkForm([['usernames','text',true,0,0,''],['email','email',true,0,0,''],['firstname','text',true,0,0,''],['lastname','text',true,0,0,'']{if $numfields > 0}{section name=fields loop=$numfields}{if $fields[fields].required && ($fields[fields].type==1 || $fields[fields].type==2)},['{$fields[fields].name}', 'text', true, 0, 0, '']{elseif $fields[fields].type==6},['{$fields[fields].name}', 'date', {if $fields[fields].required}true{else}false{/if}, 0, 0, '']{/if}{/section}{/if}]);" action="">
 <div align="center">
 <div class="formlist">
 <div class="field">
 <fieldset>
 <legend>Website Access</legend>
-<div class="fieldItem"><label for="name" class="label">Username<span class="hintanchor"title="Please don't forget to inform the user of any username changes"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="fieldItem"><label for="usernames" class="label">Username<span class="hintanchor"title="Please don't forget to inform the user of any username changes"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper">{if !$limitgroup}<input name="usernames" id="usernames" type="text" size="40" value="{$uinfo.uname}" class="inputbox" onblur="checkElement('usernames', 'text', true, 0, 0, '');" /><br /><span class="fieldError" id="usernamesError">Required</span>{else}{$uinfo.uname}{/if}</div></div><br />
     
 {if !$limitgroup}
- <div class="fieldItem"><label for="name" class="label">Password<span class="hintanchor"title="Please don't forget to inform the user of any password changes"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-<div class="inputboxwrapper"><input name="passwords" type="text" size="40" class="inputbox" /></div></div><br />
+ <div class="fieldItem"><label for="passwords" class="label">Password<span class="hintanchor"title="Please don't forget to inform the user of any password changes"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="inputboxwrapper"><input name="passwords" id="passwords" type="text" size="40" class="inputbox" /></div></div><br />
 {/if}
     
-<div class="fieldItem"><label for="name" class="label">Status<span class="hintanchor"title="If a user's status is set to inactive the user will not be able to login."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-<div class="inputboxwrapper">{if !$limitgroup}<select name="status" class="inputbox">
-<option value="1" {if $uinfo.status == 1}selected{/if}>Active</option>
-<option value="0" {if $uinfo.status == 0}selected{/if}>Inactive</option>
-<option value="-1" {if $uinfo.status == -1}selected{/if}>Block</option>
+<div class="fieldItem"><label for="status" class="label">Status<span class="hintanchor"title="If a user's status is set to inactive the user will not be able to login."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="inputboxwrapper">{if !$limitgroup}<select name="status" id="status" class="inputbox">
+<option value="1" {if $uinfo.status == 1}selected="selected"{/if}>Active</option>
+<option value="0" {if $uinfo.status == 0}selected="selected"{/if}>Inactive</option>
+<option value="-1" {if $uinfo.status == -1}selected="selected"{/if}>Block</option>
 </select>{else}{if $uinfo.status == 1}Active{elseif $uinfo.status == 0}Inactive{else}Blocked{/if}{/if}</div></div><br />
     
-<div class="fieldItem"><label for="name" class="label">Timezone<span class="hintanchor"title="The users timezone."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="fieldItem"><label for="zone" class="label">Timezone<span class="hintanchor"title="The users timezone."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><select name="zone" id="zone" class="inputbox">
 {section name=zones loop=$numzones}
-    <option value="{$zone[zones].id}" {if ($uinfo.timezone == $zone[zones].id)}selected{/if}>{$zone[zones].offset} Hours</option>
+    <option value="{$zone[zones].id}" {if ($uinfo.timezone == $zone[zones].id)}selected="selected"{/if}>{$zone[zones].offset} Hours</option>
 {/section}
 </select></div></div><br />
 
-<div class="fieldItem"><label for="name" class="label">Email Address<span class="hintanchor"title="Required"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="fieldItem"><label for="email" class="label">Email Address<span class="hintanchor"title="Required"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><input name="email" id="email" type="text" size="60" value="{$uinfo.email}" class="inputbox" onblur="checkElement('email', 'email', true, 0, 0, '');" /><br /><span class="fieldError" id="emailError">Required:Must be a valid email address</span></div></div><br />
 </fieldset>
 
 <fieldset>
 <legend>Personal Information</legend>
-<div class="fieldItem"><label for="name" class="label">First Name<span class="hintanchor"title="Required"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="fieldItem"><label for="firstname" class="label">First Name<span class="hintanchor"title="Required"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><input name="firstname" id="firstname" type="text" size="40" value="{$uinfo.firstname}" onblur="checkElement('firstname', 'text', true, 0, 0, '');" class="inputbox" /><br /><span class="fieldError" id="firstnameError">Required</span></div></div><br />
     
-<div class="fieldItem"><label for="name" class="label">Last Name<span class="hintanchor"title="Required."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+<div class="fieldItem"><label for="lastname" class="label">Last Name<span class="hintanchor"title="Required."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
 <div class="inputboxwrapper"><input name="lastname" id="lastname" type="text" size="40" value="{$uinfo.lastname}" onblur="checkElement('lastname', 'text', true, 0, 0, '');" class="inputbox" /><br /><span class="fieldError" id="lastnameError">Required</span></div></div><br />
 </fieldset>
     

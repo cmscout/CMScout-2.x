@@ -117,7 +117,7 @@ else
                safesql($_POST['zone'], "text"),
                safesql($firstname, "text"),
                safesql($lastname, "text"), 
-               $email, 
+               safesql($email, "text"), 
                safesql($custom, "text"));
             
             if ($password)
@@ -136,7 +136,7 @@ else
                 $insertSQL = sprintf("firstname=%s, lastname=%s, email=%s, custom=%",
                    safesql($firstname, "text"),
                    safesql($lastname, "text"), 
-                   $email,
+                   safesql($email, "text"), 
                    safesql($custom, "text"));
 
                 $Result1 = $data->update_query("users", $insertSQL, "id=$id");

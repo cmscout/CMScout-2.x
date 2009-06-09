@@ -6,16 +6,8 @@
 {/if}
 <div align="center"><div style="width:100%">
 <div id="navcontainer" align="center">
-    <ul class="mootabs_title">
-        <li title="albums">Photo Albums</li>
-        <li title="articles">Articles</li>
-        <li title="events">Events</li>
-        <li title="downloads">Downloads</li>
-        <li title="news">News Items</li>
-        <li title="polls">Polls</li>
-        </ul>
-        
-        <div id="albums" class="mootabs_panel">
+        <h4 title="albums">Photo Albums</h4>
+        <div id="albums" >
             <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable">
 <thead>
                 <tr><th class="smallhead" width="8%"></th><th class="smallhead">Name</th></tr></thead>
@@ -30,7 +22,8 @@
             </table>
         </div>
         
-        <div id="articles" class="mootabs_panel">
+        <h4 title="articles">Articles</h4>
+        <div id="articles" >
                 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable1">
 <thead>
                 <tr><th class="smallhead" width="8%"></th><th class="smallhead">Name</th></tr></thead>
@@ -43,7 +36,8 @@
             </table>        
         </div>   
         
-        <div id="events" class="mootabs_panel">
+        <h4 title="events">Events</h4>
+        <div id="events" >
                 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable2">
 <thead>
                 <tr><th class="smallhead" width="8%"></th><th class="smallhead">Name</th></tr></thead>
@@ -56,7 +50,8 @@
             </table>        
         </div>
         
-        <div id="downloads" class="mootabs_panel">
+        <h4 title="downloads">Downloads</h4>
+        <div id="downloads" >
                 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable3">
 <thead>
                 <tr><th class="smallhead" width="8%"></th><th class="smallhead">Name</th></tr></thead>
@@ -69,7 +64,8 @@
             </table>        
         </div>
         
-        <div id="news" class="mootabs_panel">
+        <h4 title="news">News Items</h4>
+        <div id="news" >
                 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable4">
 <thead>
                 <tr><th class="smallhead" width="8%"></th><th class="smallhead">Name</th></tr></thead>
@@ -82,7 +78,8 @@
             </table>        
         </div>
         
-        <div id="polls" class="mootabs_panel">
+        <h4 title="polls">Polls</h4>
+        <div id="polls" >
                 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable5">
 <thead>
                 <tr class="text"><th class="smallhead" width="8%"></th><th class="smallhead">Name</th></tr></thead>

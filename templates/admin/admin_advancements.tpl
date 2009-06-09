@@ -24,7 +24,7 @@ document.location = "admin.php?page=advancements&action=delreq&rid=" + articleId
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable1">
 <thead>
   <tr valign="top"> 
-    <th width="10%" class="smallhead"</th>
+    <th width="10%" class="smallhead">&nbsp;</th>
     <th class="smallhead">{$scoutlang.award_scheme}</th>
   </tr>
   </thead>
@@ -56,15 +56,11 @@ document.location = "admin.php?page=advancements&action=delreq&rid=" + articleId
 </fieldset>
 </form></div>
 {elseif $action == "viewsch"}
-<h3><div align="center">{$scheme} {$scoutlang.award_scheme}</div></h3>
-<div align="center"><div style="width:100%">
+<h3>{$scheme} {$scoutlang.award_scheme}</h3>
 <div id="navcontainer" align="center">
-<ul class="mootabs_title">
-<li title="advance">{$scoutlang.advancement_badges}</li>
-<li title="other">{$scoutlang.badges}</li>
-</ul>
 
-<div id="advance" class="mootabs_panel">
+<h4 title="advance">{$scoutlang.advancement_badges}</h4>
+<div id="advance">
 <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=newadd&amp;sid={$sid}" title="Add {$scoutlang.advancement_badges}"><img src="{$tempdir}admin/images/add.png" alt="Add {$scoutlang.advancement_badges}" border="0" /></a>
 {/if}<a href="{$pagename}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a></div>
 {if $numads > 0}
@@ -91,7 +87,8 @@ document.location = "admin.php?page=advancements&action=delreq&rid=" + articleId
 {/if}
 </div>
 
-<div id="other" class="mootabs_panel">
+<h4 title="other">{$scoutlang.badges}</h4>
+<div id="other">
 <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=newbadge&amp;sid={$sid}" title="Add {$scoutlang.badges}"><img src="{$tempdir}admin/images/add.png" alt="Add {$scoutlang.badges}" border="0" /></a>
 {/if}<a href="{$pagename}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a></div>
 {if $numbadges > 0}
@@ -115,7 +112,7 @@ document.location = "admin.php?page=advancements&action=delreq&rid=" + articleId
 <div align="center">No {$scoutlang.badges} in {$scheme} {$scoutlang.award_scheme}</div>
 {/if}
 </div>
-</div></div>
+</div>
 {elseif $action == "editbadge" || $action=="newbadge"}
 <div align="center">
 <form name="News" method="post" onsubmit="return checkForm([['name','text',true,0,0,'']]);">
@@ -149,7 +146,7 @@ document.location = "admin.php?page=advancements&action=delreq&rid=" + articleId
 </fieldset>
 </form></div>
 {elseif $action=="viewadd"}
-<h3 style="text-align:center;">{$advan}</h3>
+<h3>{$advan}</h3>
 <div class="toplinks">{if $addallowed}<a href="{$pagename}&amp;action=newreq&amp;id={$id}&amp;sid={$sid}" title="Add Requirement"><img src="{$tempdir}admin/images/add.png" alt="Add Requirement" border="0" /></a>
 {/if}<a href="{$pagename}&amp;action=viewsch&amp;id={$sid}" title="Back"><img src="{$tempdir}admin/images/back.png" alt="Back" border="0" /></a></div>
 {if $numreqs > 0}
@@ -164,7 +161,7 @@ document.location = "admin.php?page=advancements&action=delreq&rid=" + articleId
   <tbody>
   {section name=adloop loop=$numreqs}
   <tr valign="middle" class="text">
-    <td class="text" class="text"><div align="center" >{if $editallowed == 1}<a href="{$pagename}&amp;rid={$req[adloop].ID}&amp;action=editreq&amp;id={$id}&amp;sid={$sid}"><img src="{$tempdir}admin/images/edit.gif" border="0" alt="Edit {$req[adloop].item}" title="Edit {$req[adloop].item}" /></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $deleteallowed == 1}<a href="javascript:confirmDelete2({$req[adloop].ID},{$id},{$sid})"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$req[adloop].item}" title="Delete {$req[adloop].item}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
+    <td class="text"><div align="center" >{if $editallowed == 1}<a href="{$pagename}&amp;rid={$req[adloop].ID}&amp;action=editreq&amp;id={$id}&amp;sid={$sid}"><img src="{$tempdir}admin/images/edit.gif" border="0" alt="Edit {$req[adloop].item}" title="Edit {$req[adloop].item}" /></a>{else}<img src="{$tempdir}admin/images/edit_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;&nbsp;{if $deleteallowed == 1}<a href="javascript:confirmDelete2({$req[adloop].ID},{$id},{$sid})"><img src="{$tempdir}admin/images/delete.gif" border="0" alt="Delete {$req[adloop].item}" title="Delete {$req[adloop].item}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</div></td>
     <td class="text"><span class="hintanchor" title="Description :: {if $req[adloop].description}{$req[adloop].description}{else}No description{/if}"><img src="{$tempdir}admin/images/information.png" alt="[i]"/></span>{$req[adloop].item}</td>
     <td class="text" style="text-align:center">{if $smarty.section.adloop.iteration != 1}{if $editallowed == 1}<a href="{$pagename}&amp;action=moveitemup&amp;id={$id}&amp;rid={$req[adloop].ID}&amp;sid={$sid}"><img src="{$tempdir}admin/images/up.gif" border="0" alt="Up" title="Move Up" /></a>{else}<img src="{$tempdir}admin/images/up_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}&nbsp;{/if}{if $smarty.section.adloop.iteration != $numreqs}{if $editallowed == 1}<a href="{$pagename}&amp;action=moveitemdown&amp;id={$id}&amp;rid={$req[adloop].ID}&amp;sid={$sid}"><img src="{$tempdir}admin/images/down.gif" border="0" alt="Up" title="Move Down" /></a>{else}<img src="{$tempdir}admin/images/down_grey.gif" border="0" alt="Editing Disabled" title="Editing Disabled" />{/if}{/if}</td>
   </tr>

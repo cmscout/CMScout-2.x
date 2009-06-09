@@ -35,20 +35,13 @@ $numpm = $data->num_rows($sql);
 $inboxpm = array();
 while($temp = $data->fetch_array($sql))
 {
+    $temp['touserid'] = $temp['touser'];
+    $temp['touser'] = get_username($temp['touser']);
+    $temp2 = $data->select_fetch_one_row("users", "WHERE id={$temp['fromuser']}", "uname");
     $temp['fromuserid'] = $temp['fromuser'];
-    $temp['fromuser'] = $userIdList[$temp['fromuser']];
-    
-    $tousers = explode(',', strip_tags($temp['touser']));
-    $temp['touser'] = array();
-    $temp['touser']['number'] = count($tousers);
-    for ($i=0;$i<count($tousers);$i++)
-    {
-        $bla = trim($tousers[$i]);
-        $temp['touser']['users'][$i]['uname'] = $userIdList[$bla];
-        $temp['touser']['users'][$i]['id'] = $bla;
-        $temp['touser']['users'][$i]['status'] = user_online($temp2['uname']);
-    }
+    $temp['fromuser'] = get_username($temp['fromuser']);
     $temp['subject'] = censor($temp['subject']);
+    $temp['userstatus'] = user_online($temp['fromuser']);
     $inboxpm[] = $temp;
 }
 

@@ -12,16 +12,12 @@ document.location = "{$pagename}&action=delete&type=" + type + "&id=" + id;{lite
 <div align="center"><div style="width:85%">
 <div id="navcontainer" align="center">
 <ul class="mootabs_title">
-    <li title="album">Photo Albums</li>
-    <li title="article">Articles</li>
-    <li title="event">Events</li>
-    <li title="download">Downloads</li>
-    <li title="news">News Items</li>
-    <li title="poll">Polls</li>
-    <li title="content">Content</li>
+    
+
 </ul>
 
-<div id="album" class="mootabs_panel">
+<h4 title="album">Photo Albums</h4>
+<div id="album">
 {if $numalbums}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable">
 <thead>
@@ -44,7 +40,8 @@ document.location = "{$pagename}&action=delete&type=" + type + "&id=" + id;{lite
 {/if}
 </div>
 
-<div id="article" class="mootabs_panel">
+<h4 title="article">Articles</h4>
+<div id="article">
 {if $numarticles}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable1">
 <thead>
@@ -67,7 +64,8 @@ document.location = "{$pagename}&action=delete&type=" + type + "&id=" + id;{lite
 {/if}
 </div>
 
-<div id="event" class="mootabs_panel">
+<h4 title="event">Events</h4>
+<div id="event">
 {if $numevents}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable2">
 <thead>
@@ -90,7 +88,8 @@ document.location = "{$pagename}&action=delete&type=" + type + "&id=" + id;{lite
 {/if}
 </div>
 
-<div id="download" class="mootabs_panel">
+<h4 title="download">Downloads</h4>
+<div id="download">
 {if $numdownloads}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable3">
 <thead>
@@ -113,7 +112,8 @@ document.location = "{$pagename}&action=delete&type=" + type + "&id=" + id;{lite
 {/if}
 </div>
 
-<div id="news" class="mootabs_panel">
+<h4 title="news">News Items</h4>
+<div id="news">
 {if $numnews}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable4">
 <thead>
@@ -136,7 +136,8 @@ document.location = "{$pagename}&action=delete&type=" + type + "&id=" + id;{lite
 {/if}
 </div>
 
-<div id="poll" class="mootabs_panel">
+<h4 title="poll">Polls</h4>
+<div id="poll">
 {if $numpolls}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable5">
 <thead>
@@ -159,7 +160,8 @@ document.location = "{$pagename}&action=delete&type=" + type + "&id=" + id;{lite
 {/if}
 </div>
 
-<div id="content" class="mootabs_panel">
+<h4 title="content">Content</h4>
+<div id="content">
 {if $numcontents}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable6">
 <thead>

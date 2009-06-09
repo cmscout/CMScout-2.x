@@ -25,11 +25,16 @@
 **************************************************************************/
 ?>
 <?php
-
-$sql = $data->select_query("photos", "ORDER BY id DESC", "id");
+if ($items['option'])
+{
+    $sql = $data->select_query("photos", "WHERE album_id={$items['option']} ORDER BY id DESC", "id");
+}
+else
+{
+    $sql = $data->select_query("photos", "ORDER BY id DESC", "id");
+}
 $temp = $data->fetch_array($sql);
 
-$sideboxphoto = 0;
 if ($data->num_rows($sql))
 {
     $max = $temp['id'];
@@ -38,14 +43,20 @@ if ($data->num_rows($sql))
     do
     {
         $randid = rand(1, $max);
-        $sql = $data->select_query("photos", "WHERE id=$randid");
+        if ($items['option'])
+        {
+            $sql = $data->select_query("photos", "WHERE id=$randid AND album_id={$items['option']}");
+        }
+        else
+        {
+            $sql = $data->select_query("photos", "WHERE id=$randid");
+        }
         if ($data->num_rows($sql) > 0)
         {
-            $sideboxphoto = $data->fetch_array($sql);
+            $sideboxphoto[$items['id']] = $data->fetch_array($sql);
             $ok = true;
         }
     } while ($ok == false);
 }
 $tpl->assign("sideboxphoto", $sideboxphoto);
-
 ?>

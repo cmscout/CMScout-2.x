@@ -82,7 +82,7 @@
     </table></div>
     <p class="accTitle2">Members</p>
     <div class="accContent2">{if $nummembers > 0}
-    <table width="390px" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-8" id="sortTable">
+    <table width="390" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-8" id="sortTable">
     <thead>
     <tr> 
       <th class="smallhead sortable">Name</th>

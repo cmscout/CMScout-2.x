@@ -2,6 +2,7 @@
 {if $numpatrol > 0}
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable">
 <thead>
+<tr>
     <th width="8%"class="smallhead"></th>
     <th class="smallhead">Group</th>
   </tr>

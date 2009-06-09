@@ -13,14 +13,10 @@ function installtheme(articleId)
 }
 //-->
 </script>{/literal}<h2>Template Manager</h2>
- <div align="center"><div style="width:100%">
- <div id="navcontainer" align="center">
-<ul class="mootabs_title">
-<li title="installed">Installed Templates</li>
-<li title="install">Available Templates</li>
-</ul>
+ <div id="navcontainer">
 
-<div id="installed" class="mootabs_panel">
+<h4 title="installed">Installed Templates</h4>
+<div id="installed">
 {if $numinstalledthemes > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table sortable-onload-2 rowstyle-alt paginate-15" id="sortTable">
 <thead>
@@ -47,7 +43,8 @@ function installtheme(articleId)
 {/if}
 </div>
 
-<div id="install" class="mootabs_panel">
+<h4 title="install">Available Templates</h4>
+<div id="install">
 {if $numnotinstalled > 0}
 <table width="98%" cellpadding="0" cellspacing="0" border="0" align="center" class="table sortable-onload-2 rowstyle-alt paginate-15" id="sortTable1">
 <thead>
@@ -71,7 +68,5 @@ function installtheme(articleId)
 {else}
 <div align="center">No templates available to install</div>
 {/if}
-</div>
-</div>
 </div>
 </div>

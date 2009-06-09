@@ -913,8 +913,7 @@ function get_censor()
 function user_online($uname)
 {
     global $onlineUserList;
-    
-    if (!isset($onlineUserList[$uname]))
+    if (!isset($onlineUserList[$uname]) || $uname == "User not found")
     {
         return "offline";
     }
@@ -2334,9 +2333,9 @@ function forumEmail($type, $post, $fid, $topic_id=false)
                 $viewauth = $viewauth || $view_forum[$usergroups[$i]];
                 $readauth = $readauth || $read_topics[$usergroups[$i]];
             }
-            if($topicwatch['notify'] == 1 )
+            if($topicwatch['notify'] == "1" )
             {
-                $data->update_query("forumstopicwatch", "notify=0", "topic_id=$topic_id AND uid='{$topicwatch['username']}'");
+                $data->update_query("forumstopicwatch", "notify=0", "topic_id=$topic_id AND uid='{$topicwatch['uid']}'");
             }
             if ($viewauth == 1 && $readauth == 1 && $temp['allowemail'] == 1 && $temp['replytopic'] == 1)
             {
@@ -2476,6 +2475,21 @@ function html_decode($string )
 	$arrayuse = array_flip(get_html_translation_table(HTML_SPECIALCHARS));
 	$arrayuse['&nbsp;'] = " ";
 	return strtr($string, $arrayuse);
+}
+
+function get_username($userid)
+{
+  global $data, $userIdList;
+   
+  if ($userIdList[$userid])
+  {
+    return $userIdList[$userid];
+  }
+  else
+  {
+    return "User not found";
+  }
+
 }
 
 

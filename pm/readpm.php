@@ -52,17 +52,17 @@ if (($pm['touser'] == $check['id'] && ($pm['type'] != 4 && $pm['type'] != 2)) ||
     $location = "User Control Panel >> Reading {$pm['subject']}";
     $pm['text'] = censor($pm['text']);
     $pm['fromuserid'] = $pm['fromuser'];
-    $pm['fromuser'] = $userIdList[$pm['fromuser']];
+    $pm['fromuser'] = get_username($pm['fromuser']);
     
     $tousers = explode(',', strip_tags($pm['touser']));
     $pm['touser'] = array();
     $pm['touser']['number'] = count($tousers);
     for ($i=0;$i<count($tousers);$i++)
     {
-        $bla = trim($tousers[$i]);
-        $pm['touser']['users'][$i]['uname'] = $userIdList[$bla];
-        $pm['touser']['users'][$i]['id'] = $bla;
-        $pm['touser']['users'][$i]['status'] = user_online($temp2['uname']);
+        $userid = trim($tousers[$i]);
+        $pm['touser']['users'][$i]['uname'] = get_username($userid);
+        $pm['touser']['users'][$i]['id'] = $userid;
+        $pm['touser']['users'][$i]['status'] = user_online($pm['touser']['users'][$i]['uname']);
     }
     $tpl->assign("pm", $pm);
     $pagenum = 2;

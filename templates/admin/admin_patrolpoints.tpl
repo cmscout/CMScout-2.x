@@ -19,10 +19,10 @@
           {if $edits == true}
           <td class="text" align="left" ><div align="left">
           <select id="how_{$points[pointloop].id}" name="how_{$points[pointloop].id}" class="inputbox">
-          <option value="0" />Add</option>
-          <option value="1" />Subtract</option>
-          <option value="2" />Set to</option>
-          <option value="3" selected="selected"/>Ignore</option>
+          <option value="0">Add</option>
+          <option value="1">Subtract</option>
+          <option value="2">Set to</option>
+          <option value="3" selected="selected">Ignore</option>
           </select></div>
           </td>
           <td class="text" align="left" >

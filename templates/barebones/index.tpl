@@ -42,6 +42,7 @@
 {section name=cats loop=$nummenucats.left}
     {if $menu.left[cats].showhead}{$menu.left[cats].name}{/if}
     {section name=itemloop loop=$menu.left[cats].numitems}
+    {assign var="itemid" value=$menu.left[cats].items[itemloop].id}
         {if $menu.left[cats].items[itemloop].type == 1}
             <a href="index.php?page={$menu.left[cats].items[itemloop].link}&amp;menuid={$menu.left[cats].items[itemloop].id}">{$menu.left[cats].items[itemloop].name}</a>
         {elseif $menu.left[cats].items[itemloop].type == 2 || $menu.left[cats].items[itemloop].type == 3}
@@ -86,6 +87,7 @@
     {if $menu.right[cats].showhead}{$menu.right[cats].name}{/if}
 
     {section name=itemloop loop=$menu.right[cats].numitems}
+    {assign var="itemid" value=$menu.right[cats].items[itemloop].id}
         {if $menu.right[cats].items[itemloop].type == 1}
             <a href="index.php?page={$menu.right[cats].items[itemloop].link}&amp;menuid={$menu.right[cats].items[itemloop].id}">{$menu.right[cats].items[itemloop].name}</a>
         {elseif $menu.right[cats].items[itemloop].type == 2 || $menu.right[cats].items[itemloop].type == 3}

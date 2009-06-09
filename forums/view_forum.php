@@ -150,7 +150,7 @@ if (empty($_GET['f']))
                 }
                 $temp3['allowed'] = 1;
                 $temp3['read'] = $readauth;
-                $temp3['lastpostname'] =  $userIdList[$temp3['lastpost']];
+                $temp3['lastpostname'] =  get_username($temp3['lastpost']);
                 $temp3['userstatus'] = user_online($temp3['lastpostname']);
                 $rssuname = safesql(md5($check['uname']), "text");
                 if ($data->num_rows($data->select_query("rssfeeds", "WHERE itemid={$temp3['id']} AND type=1 AND uname=$rssuname", "id")))
@@ -257,9 +257,9 @@ else
             $temp["new"] = 0;
         }
         
-        $temp['userpostedname'] = $userIdList[$temp['userposted']];
+        $temp['userpostedname'] = get_username($temp['userposted']);
 
-        $temp['lastpostname'] = $userIdList[$temp['lastpost']];
+        $temp['lastpostname'] = get_username($temp['lastpost']);
         
         $temp['userstatus1'] = user_online($temp['userpostedname']);
         $temp['userstatus2'] = user_online($temp['lastpostname']);
@@ -309,8 +309,8 @@ else
                 $temp["new"] = 0;
             }
             
-            $temp['userpostedname'] = $userIdList[$temp['userposted']];
-            $temp['lastpostname'] = $userIdList[$temp['lastpost']];
+            $temp['userpostedname'] = get_username($temp['userposted']);
+            $temp['lastpostname'] = get_username($temp['lastpost']);
             
             $temp['userstatus1'] = user_online($temp['userpostedname']);
             $temp['userstatus2'] = user_online($temp['lastpostname']);
@@ -341,8 +341,8 @@ else
             $temp["new"] = 0;
         }
 
-        $temp['userpostedname'] = $userIdList[$temp['userposted']];
-        $temp['lastpostname'] = $userIdList[$temp['lastpost']];
+        $temp['userpostedname'] = get_username($temp['userposted']);
+        $temp['lastpostname'] = get_username($temp['lastpost']);
         
         $temp['userstatus1'] = user_online($temp['userpostedname']);
         $temp['userstatus2'] = user_online($temp['lastpostname']);
@@ -420,7 +420,7 @@ else
             }
             $temp3['allowed'] = 1;
             $temp3['read'] = $readauth;
-            $temp3['lastpostname'] = $userIdList[$temp3['lastpost']];
+            $temp3['lastpostname'] = get_username($temp3['lastpost']);
             $temp3['userstatus'] = user_online($temp3['lastpostname']);
             
             $rssuname = safesql(md5($check['uname']), "text");

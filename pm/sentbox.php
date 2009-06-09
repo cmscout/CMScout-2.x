@@ -36,17 +36,17 @@ $inboxpm = array();
 while($temp = $data->fetch_array($sql))
 {
     $temp['fromuserid'] = $temp['fromuser'];
-    $temp['fromuser'] = $userIdList[$temp['fromuser']];
+    $temp['fromuser'] = get_username($temp['fromuser']);
     
     $tousers = explode(',', strip_tags($temp['touser']));
     $temp['touser'] = array();
     $temp['touser']['number'] = count($tousers);
     for ($i=0;$i<count($tousers);$i++)
     {
-        $bla = trim($tousers[$i]);
-        $temp['touser']['users'][$i]['uname'] = $userIdList[$bla];
-        $temp['touser']['users'][$i]['id'] = $bla;
-        $temp['touser']['users'][$i]['status'] = user_online($userIdList[$bla]);
+        $userid = trim($tousers[$i]);
+        $temp['touser']['users'][$i]['uname'] = get_username($userid);
+        $temp['touser']['users'][$i]['id'] = $userid;
+        $temp['touser']['users'][$i]['status'] = user_online($temp['touser']['users'][$i]['uname']);
     }
     $temp['subject'] = censor($temp['subject']);
     $inboxpm[] = $temp;

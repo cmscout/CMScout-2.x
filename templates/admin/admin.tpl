@@ -1,6 +1,6 @@
 {include file = "admin/admin_header.tpl"}
 {if $infomessage}
-<script>
+<script type="text/javascript">
     {literal}
     function hide(id)
     {
