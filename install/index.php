@@ -27,8 +27,8 @@
 <?php
 require_once("../includes/Smarty.class.php");
 require_once("../includes/functions.php");
-$version = "2.06";
-$oldversion = "2.05";
+$version = "2.07";
+$oldversion = "2.06";
 $tpl = new smarty();
 $tpl->template_dir = "../install/";
 $tpl->compile_dir = '../templates_c/';
@@ -40,6 +40,6 @@ $tpl->assign("upgrade", file_exists("upgrade.php"));
 
 $tpl->assign("version", $version);
 $tpl->assign("oldversion", $oldversion);
-$tpl->assign("copyright", "Powered by CMScout &copy;2005, 2006, 2007 <a href=\"http://www.cmscout.za.net\" title=\"CMScout Group\" target=\"_blank\">CMScout Group</a>");
+$tpl->assign("copyright", "Powered by CMScout &copy;2008 <a href=\"http://www.cmscout.za.net\" title=\"CMScout Group\" target=\"_blank\">CMScout Group</a>");
 $tpl->display("index.tpl");
 ?>

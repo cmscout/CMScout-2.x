@@ -28,13 +28,14 @@
 define("SCOUT_NUKE", 1);
 if (!$upgrader)
 {
-    if (file_exists("install/index.php") && (!file_exists("config.php") || filesize("config.php") == 0))
+    $bit = $bit == '../' ? $bit : '';
+    if (file_exists("{$bit}install/index.php") && (!file_exists("{$bit}config.php") || filesize("{$bit}config.php") == 0))
     {
         header("Location: install/index.php");
     }
-    elseif (file_exists("install/index.php") && file_exists("config.php") && filesize("config.php") > 0)
+    elseif (file_exists("{$bit}install/index.php") && file_exists("{$bit}config.php") && filesize("{$bit}config.php") > 0)
     {
-        include("config.php");
+        include("{$bit}config.php");
         if (isset($dbhost))
         {
             trigger_error("Please ensure that the install directory has been deleted before continuing",E_USER_ERROR);
@@ -44,31 +45,30 @@ if (!$upgrader)
             header("Location: install/index.php");
         }
     }
-    elseif (!file_exists("install/index.php") && file_exists("config.php") && filesize("config.php") > 0)
+    elseif (!file_exists("{$bit}install/index.php") && file_exists("{$bit}config.php") && filesize("{$bit}config.php") > 0)
     {
         if (!$limitedStartup)
         {
-            require_once ("includes/Smarty.class.php");
+            require_once ("{$bit}includes/Smarty.class.php");
         }
-        require_once ("includes/class.phpmailer.php");
-        require_once ("includes/authorization.php");
-        require_once ("config.php");
-        require_once ("includes/db.php");
-        require_once ("includes/functions.php");
+        require_once ("{$bit}includes/class.phpmailer.php");
+        require_once ("{$bit}includes/authorization.php");
+        require_once ("{$bit}config.php");
+        require_once ("{$bit}includes/db.php");
+        require_once ("{$bit}includes/functions.php");
     }
     else
     {
         trigger_error("The configuration file is missing. Normally CMScout would try to install itself then, but it appears that the install file is also missing. Please fix this by either placing the correct configuration file or the install file where it is ment to be.", E_USER_ERROR);
     }
-    
     /********************************************Start Smarty config***************************************************/
     if (!$limitedStartup)
     {
         if (class_exists('Smarty', false))
         {
-	    	class Smarty_Site extends Smarty 
-	        {
-	           function Smarty_Site($themedir)
+            class Smarty_Site extends Smarty 
+            {
+	           function Smarty_Site()
 	           {
 	           
 	                // Class Constructor. These automatically get set with each new instance.
@@ -85,18 +85,22 @@ if (!$upgrader)
 	                $this->force_compile = true;
 	           }
 	        }
+          $tpl = new Smarty_Site();
         }
         else
         {
-        	trigger_error("Error during template startup", E_USER_ERROR);
+           $tpl = new Smarty();
+           $tpl->template_dir = 'templates/';
+           $tpl->compile_dir = 'templates_c/';
+           $tpl->config_dir = 'configs/';
+           $tpl->cache_dir = 'cache/';
+           $tpl->compile_check = true;
+               
+           $tpl->caching = false;
+           $tpl->force_compile = true;
         }
     }
     /********************************************End Smarty config***************************************************/
-    if (!$limitedStartup)
-    {
-        $tpl = new Smarty_Site("");
-
-    }
     $data = new database($dbname, $dbhost, $dbusername, $dbpassword, $dbprefix, $dbport);
     $Auth = new auth();
     if ($data->SelectedDB == 0)

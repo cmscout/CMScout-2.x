@@ -31,7 +31,7 @@ $bit = "./";
 $limitedStartup = true;
 include("common.php");
 require_once ("{$bit}includes/error_handling.php");
-$id = $_GET['pic'];
+$id = safesql($_GET['pic'], 'int');
 $maxsizex = isset($_GET['maxsizex']) ? $_GET['maxsizex'] : 0;
 $maxsizey = isset($_GET['maxsizey']) ? $_GET['maxsizey'] : 0;
 if (isset($_GET['where'])) $where = $_GET['where']; else $where = "";

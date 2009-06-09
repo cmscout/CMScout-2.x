@@ -124,6 +124,8 @@ $today_date["month"] = $date['month'];
 $today_date["year"] = $date['year'];
 $today_date["day"] = $date['mday'];
 
+require_once "includes/iCalcreator.class.php";
+
 if (isset($_GET['item'])) $itemid = safesql($_GET['item'], "int");
 if ($_GET['action'] != "ical")
 {
@@ -1087,8 +1089,6 @@ if ($_GET['action'] != "ical")
 }
 else
 {
-    require_once "{$bit}includes/iCalcreator.class.php";
-
     $calendar = new vcalendar();;
     $calsql = $data->select_query("calendar_items", "WHERE allowed = 1 AND trash=0");     
     while($temp = $data->fetch_array($calsql))

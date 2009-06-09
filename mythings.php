@@ -68,7 +68,7 @@ if ($cat != "" || $action != "")
                 $numteams++;
             }
             
-            $sql = $data->select_query("photos", "WHERE album_id = '$id'");
+            $sql = $data->select_query("photos", "WHERE album_id = $safe_id");
             $numphotos = $data->num_rows($sql);
             $photos = array();
             while ($photos[] = $data->fetch_array($sql));
@@ -97,7 +97,7 @@ if ($cat != "" || $action != "")
                         $insert = sprintf("NULL, %s, %s, %s, $timestamp",
                                             safesql($filename, "text"),
                                             safesql($desc, "text"),
-                                            safesql($id, "int"));
+                                            $safe_id);
             
                         if(confirm('photo') == 1 && $album['allowed'] == 1)
                         {
@@ -175,19 +175,19 @@ if ($cat != "" || $action != "")
             if($action=="delphoto")
             {
                 $pid = $_GET['pid'];
-                if ($data->num_rows($data->select_query("album_track",  "WHERE ID = $id")))
+                if ($data->num_rows($data->select_query("album_track",  "WHERE ID = $safe_id")))
                 {    
                     $sql = $data->select_query("photos", "WHERE ID=$pid");
                     $photo = $data->fetch_array($sql);
                     unlink($config['photopath'] . '/' . $photo['filename']);
-                    $sqlq = $data->delete_query("photos", "ID=$pid AND album_id='$id'", "Albums", "Photo for album $aid deleted by {$uname}");
-                    $data->update_query("album_track", "numphotos = numphotos - 1", "ID=$id", "", "", false);
+                    $sqlq = $data->delete_query("photos", "ID=$pid AND album_id=$safe_id", "Albums", "Photo for album $aid deleted by {$uname}");
+                    $data->update_query("album_track", "numphotos = numphotos - 1", "ID=$safe_id", "", "", false);
                     header("location: index.php?page=mythings&cat=album&id=$id&menuid=$menuid");
                 } 
             }
             elseif ($action == "delete")
             {
-                $sqlq = $data->update_query("album_track", "trash=1", "ID=$id");
+                $sqlq = $data->update_query("album_track", "trash=1", "ID=$safe_id");
                 if ($sqlq) 
                 { 	
                     show_message("Album deleted", "index.php?page=mythings&menuid=$menuid");               
@@ -291,7 +291,7 @@ if ($cat != "" || $action != "")
                         $summary = safesql($_POST['summary'], "text");
                         $related = safesql(serialize($_POST['articles']), "text");
 
-                        $sql = $data->update_query("patrol_articles", "patrol=$patrol, pic=$pic, title=$title, detail=$story, date_post=$timestamp, album_id=$photo, event_id=$event, author=$auth, allowed = $allow, topics=$topics, `order`=$order, summary=$summary, related=$related","ID=$id");	
+                        $sql = $data->update_query("patrol_articles", "patrol=$patrol, pic=$pic, title=$title, detail=$story, date_post=$timestamp, album_id=$photo, event_id=$event, author=$auth, allowed = $allow, topics=$topics, `order`=$order, summary=$summary, related=$related","ID=$safe_id");	
 
                         if (confirm('article')) 
                         {
@@ -365,7 +365,7 @@ if ($cat != "" || $action != "")
             }
             elseif ($action == "delete")
             {
-                $sqlq = $data->update_query("patrol_articles", "trash=1", "ID=$id", "Articles", "Deleted $id");
+                $sqlq = $data->update_query("patrol_articles", "trash=1", "ID=$safe_id", "Articles", "Deleted $id");
                 if ($sqlq)
                 {
                     show_message("Your Article has been deleted.", "index.php?page=mythings&menuid=$menuid");               
@@ -376,7 +376,7 @@ if ($cat != "" || $action != "")
             if ($action == "edit")
             {
                 $pagenum = 10;
-                $calsql = $data->select_query("calendar_items", "WHERE id = $id");
+                $calsql = $data->select_query("calendar_items", "WHERE id = $safe_id");
                 $items = $data->fetch_array($calsql);
                 
                 $startdate = strftime("%Y/%m/%d", $items['startdate']);
@@ -485,12 +485,12 @@ if ($cat != "" || $action != "")
                         $signupusers = safesql($_POST['signupusers'], "int");
                         $patrols = $signupusers != 3 ? safesql(serialize($_POST['patrols']), "text") : safesql(serialize($_POST['invites']), "text");
             
-                        $sql = $data->update_query("calendar_items", "summary = $summary, startdate = $startdate, enddate = $enddate, detail = $detail, `groups` = $groupallowed, colour = $colour, signup=$signup, signupusers=$signupusers, patrols=$patrols, allowed=$allow", "id = $id");
+                        $sql = $data->update_query("calendar_items", "summary = $summary, startdate = $startdate, enddate = $enddate, detail = $detail, `groups` = $groupallowed, colour = $colour, signup=$signup, signupusers=$signupusers, patrols=$patrols, allowed=$allow", "id = $safe_id");
                             if ($sql)
                             {
                                 if (confirm('event'))
                                 {
-                                    $event = $data->select_fetch_one_row("calendar_items", "WHERE id = $id");
+                                    $event = $data->select_fetch_one_row("calendar_items", "WHERE id = $safe_id");
                                     confirmMail("event", $event);
                                 }
 
@@ -510,7 +510,7 @@ if ($cat != "" || $action != "")
                 
                 if ($download != 0)
                 {
-                    $data->insert_query("calendar_downloads", "'', $id, $download, $permissions");
+                    $data->insert_query("calendar_downloads", "'', $safe_id, $download, $permissions");
                     show_message("Download Added", "index.php?page=mythings&cat=events&action=signups&id=$id&activetab=events");
                 }
                 else
@@ -521,13 +521,13 @@ if ($cat != "" || $action != "")
             elseif ($action == "deletefield")
             {
                 $eventid = safesql($_GET['event'], "int");
-                $data->delete_query("profilefields", "id=$id");
+                $data->delete_query("profilefields", "id=$safe_id");
                 show_message("Field Deleted", "index.php?page=mythings&cat=events&action=signups&id=$eventid&activetab=ical&menuid=$menuid");
             }
             elseif ($action == "deletedownload")
             {
                 $eventid = safesql($_GET['event'], "int");
-                $data->delete_query("calendar_downloads", "id=$id");
+                $data->delete_query("calendar_downloads", "id=$safe_id");
                 show_message("Download Removed", "index.php?page=mythings&cat=events&action=signups&id=$eventid&activetab=ical&menuid=$menuid");
             }
             elseif ($action == "newfield" || $action == "editfield")
@@ -537,7 +537,7 @@ if ($cat != "" || $action != "")
                 $eventid = safesql($_GET['event'], "int");
                 if ($action == "editfield")
                 {
-                    $item = $data->select_fetch_one_row("profilefields", "WHERE id=$id");
+                    $item = $data->select_fetch_one_row("profilefields", "WHERE id=$safe_id");
                 
                     $item['options'] = unserialize($item['options']);
 
@@ -546,7 +546,7 @@ if ($cat != "" || $action != "")
                 if ($_POST['Submit'] == "Submit")
                 {       
                     $name = safesql(str_replace(" ", "", $_POST['name']), "text");
-                    if (check_duplicate("profilefields", "name", $name, $id))
+                    if (check_duplicate("profilefields", "name", $name, $safe_id))
                     {
                         show_message("A field with that name already exists");
                     }
@@ -593,7 +593,7 @@ if ($cat != "" || $action != "")
                     }
                     elseif ($action == "editfield")
                     {
-                        $data->update_query("profilefields", "query=$query, options=$options, hint=$hint, type=$type, required=$required, register=$register", "id=$id");
+                        $data->update_query("profilefields", "query=$query, options=$options, hint=$hint, type=$type, required=$required, register=$register", "id=$safe_id");
                         show_message("Field Updated", "index.php?page=mythings&cat=events&action=signups&id=$eventid&activetab=events");
                     }
                 }
@@ -603,7 +603,7 @@ if ($cat != "" || $action != "")
                 $pagenum = 11;
                 $scriptList['mootabs'] = 1;
                 
-                $eventinfo = $data->select_fetch_one_row("calendar_items",  "WHERE id=$id");
+                $eventinfo = $data->select_fetch_one_row("calendar_items",  "WHERE id=$safe_id");
                 
                 $groups = group_sql_list_id("patrol", "OR"); 
                 
@@ -624,7 +624,7 @@ if ($cat != "" || $action != "")
                 $members = array();
                 while ($temp = $data->fetch_array($sql))
                 {
-                    $attendie = $data->select_fetch_one_row("attendies", "WHERE uid={$temp['id']} AND eid = $id");
+                    $attendie = $data->select_fetch_one_row("attendies", "WHERE uid={$temp['id']} AND eid = $safe_id");
                     if ($attendie)
                     {
                         $temp['attend'] = 1;
@@ -635,7 +635,7 @@ if ($cat != "" || $action != "")
                 $tpl->assign("members", $members);
                 $tpl->assign("nummembers", $nummembers);
                 
-                $sql = $data->select_query("profilefields", "WHERE place=2 AND eventid=$id ORDER BY query ASC");
+                $sql = $data->select_query("profilefields", "WHERE place=2 AND eventid=$safe_id ORDER BY query ASC");
                 
                 $numfields = $data->num_rows($sql);
                 $fields = array();
@@ -647,7 +647,7 @@ if ($cat != "" || $action != "")
                 $tpl->assign("numfields", $numfields);
                 $tpl->assign("fields", $fields);
                 
-                $tpl->assign("eventid", $id);
+                $tpl->assign("eventid", $safe_id);
                 $tpl->assign("eventinfo", $eventinfo);
 
                 $sql = $data->select_query("download_cats", "", "id, name, downauth");
@@ -673,7 +673,7 @@ if ($cat != "" || $action != "")
 			    $tempnumber = 0;
 			    while ($temp2 = $data->fetch_array($sql1))
 			    {
-				if ($data->num_rows($data->select_query("calendar_downloads", "WHERE eid=$id AND did = {$temp2['id']}")) == 0)
+				if ($data->num_rows($data->select_query("calendar_downloads", "WHERE eid=$safe_id AND did = {$temp2['id']}")) == 0)
 				{
 					$downloadtemp[] = $temp2;
 					$tempnumber++;
@@ -689,7 +689,7 @@ if ($cat != "" || $action != "")
                 $tpl->assign("numcategories", $numcategories);
                 $tpl->assign("downloads", $downloads);
                 
-                $sql = $data->select_query("calendar_downloads", "WHERE eid=$id");
+                $sql = $data->select_query("calendar_downloads", "WHERE eid=$safe_id");
                 $event_downloads = array();
                 $numeventdownloads = $data->num_rows($sql);
                 while ($temp = $data->fetch_array($sql))
@@ -706,19 +706,19 @@ if ($cat != "" || $action != "")
                 {
                     $attendies = $_POST['attend'];
                     $options = $_POST['options'];
-                    $data->delete_query("attendies", "eid=$id");
+                    $data->delete_query("attendies", "eid=$safe_id");
                     foreach($attendies as $uid => $attend)
                     {
                         if ($attend == 1)
                         {
                             $useroption = safesql(serialize($options[$uid]), "text");
-                            if ($data->num_rows($data->select_query("attendies", "WHERE uid=$uid AND eid = $id")) == 0)
+                            if ($data->num_rows($data->select_query("attendies", "WHERE uid=$uid AND eid = $safe_id")) == 0)
                             {
-                                $data->insert_query("attendies", "'', $uid, $id, $useroption");
+                                $data->insert_query("attendies", "'', $uid, $safe_id, $useroption");
                             }
                             else
                             {
-                                $data->update_query("attendies", "options = $useroption", "uid=$uid AND eid=$id");
+                                $data->update_query("attendies", "options = $useroption", "uid=$uid AND eid=$safe_id");
                             }
                         }
                     }
@@ -727,7 +727,7 @@ if ($cat != "" || $action != "")
             }
             elseif ($action == "delete")
             {
-                $sqlq = $data->update_query("calendar_items", "trash=1", "id=$id", "Calendar", "Deleted $id");
+                $sqlq = $data->update_query("calendar_items", "trash=1", "id=$safe_id", "Calendar", "Deleted $id");
                 if ($sqlq)
                 {
                     show_message("Event has been deleted.", "index.php?page=mythings&menuid=$menuid");                 
@@ -738,7 +738,7 @@ if ($cat != "" || $action != "")
             if ($action == "edit")
             {
                 $pagenum = 8;
-                $sql = $data->select_query("downloads", "WHERE id=$id ");
+                $sql = $data->select_query("downloads", "WHERE id=$safe_id ");
                 $down = $data->fetch_array($sql);
                 $location = "Edit " . censor($down['name']) . " download";
                 $sql = $data->select_query("download_cats");
@@ -820,25 +820,25 @@ if ($cat != "" || $action != "")
                     {
                         if ($_FILES['file']['name'] != "")
                         {
-                            $sql = $data->update_query("downloads", "name = $name, thumbnail=$picture, descs = $desc, cat = $cid, file = $filename, saved_file= $savefile, numdownloads = 0, size = '".ceil($_FILES['file']['size'] / 1024)."', allowed = 0", "id=$id");
-                            $download = $data->select_fetch_one_row("downloads", "WHERE id=$id ");
+                            $sql = $data->update_query("downloads", "name = $name, thumbnail=$picture, descs = $desc, cat = $cid, file = $filename, saved_file= $savefile, numdownloads = 0, size = '".ceil($_FILES['file']['size'] / 1024)."', allowed = 0", "id=$safe_id");
+                            $download = $data->select_fetch_one_row("downloads", "WHERE id=$safe_id ");
                             $extra = "It first needs to be reviewed before it will be available on the site.";
                             confirmMail("download", $download);
                         }
                         else
                         {
-                            $sql = $data->update_query("downloads", "name = $name, thumbnail=$picture, descs = $desc, cat = $cid", "id=$id", "Downloads", "Updated Download $name");
+                            $sql = $data->update_query("downloads", "name = $name, thumbnail=$picture, descs = $desc, cat = $cid", "id=$safe_id", "Downloads", "Updated Download $name");
                         }
                     }
                     else
                     {
                         if ($_FILES['file']['name'] != "")
                         {
-                            $sql = $data->update_query("downloads", "name = $name, thumbnail=$picture, descs = $desc, cat = $cid, file = $filename, saved_file= $savefile, numdownloads = 0, size = '".ceil($_FILES['file']['size'] / 1024)."'", "id=$id", "Downloads", "Updated Download $name");
+                            $sql = $data->update_query("downloads", "name = $name, thumbnail=$picture, descs = $desc, cat = $cid, file = $filename, saved_file= $savefile, numdownloads = 0, size = '".ceil($_FILES['file']['size'] / 1024)."'", "id=$safe_id", "Downloads", "Updated Download $name");
                         }
                         else
                         {
-                            $sql = $data->update_query("downloads", "name = $name, thumbnail=$picture, descs = $desc, cat = $cid", "id=$id", "Downloads", "Updated Download $name");
+                            $sql = $data->update_query("downloads", "name = $name, thumbnail=$picture, descs = $desc, cat = $cid", "id=$safe_id", "Downloads", "Updated Download $name");
                         }
                     }
                     if ($sql)
@@ -854,7 +854,7 @@ if ($cat != "" || $action != "")
             }
             elseif ($action == "delete")
             {
-                $sqlq = $data->update_query("downloads", "trash=1", "id=$id", "Downloads", "Deleted $id");
+                $sqlq = $data->update_query("downloads", "trash=1", "id=$safe_id", "Downloads", "Deleted $id");
                 if ($sqlq)
                 {
                     show_message("Your download has been deleted.", "index.php?page=mythings&menuid=$menuid");             
@@ -865,7 +865,7 @@ if ($cat != "" || $action != "")
             if ($action == "edit")
             {
                 $pagenum = 9;
-                $sql = $data->select_query("newscontent", "WHERE id=$id");
+                $sql = $data->select_query("newscontent", "WHERE id=$safe_id");
 
                 $shownews = $data->fetch_array($Show);
                 $shownews['news'] = $shownews['news'];
@@ -880,11 +880,11 @@ if ($cat != "" || $action != "")
                     if (confirm('news')) $allow = 0;
                     else $allow = 1;
                     $sql = $data->update_query("newscontent", "title=$title, news=$news, allowed = $allow",
-                                                    "id=$id", "News", "Edited News $id");		
+                                                    "id=$safe_id", "News", "Edited News $id");		
                     if (confirm('news')) 
                     {
                         $extra = "The administrator needs to republish your news item now that you have edited it.";
-                        $news = $data->select_fetch_one_row("newscontent", "WHERE id=$id");
+                        $news = $data->select_fetch_one_row("newscontent", "WHERE id=$safe_id");
                         confirmMail("news", $news);
                     }
                     else $extra = "";
@@ -894,7 +894,7 @@ if ($cat != "" || $action != "")
             }
             elseif ($action == "delete")
             {
-                $sqlq = $data->update_query("newscontent", "trash=1", "id=$id", "News Items", "Deleted news");
+                $sqlq = $data->update_query("newscontent", "trash=1", "id=$safe_id", "News Items", "Deleted news");
                 if ($sqlq)
                 {
                     show_message("Your news item has been deleted.", "index.php?page=mythings&menuid=$menuid");               
@@ -904,7 +904,7 @@ if ($cat != "" || $action != "")
             case "pollitems":
                 if ($action == "delete")
                 {
-                    $sqlq = $data->delete_query("polls", "trash=1", "id=$id");
+                    $sqlq = $data->delete_query("polls", "trash=1", "id=$safe_id");
                     if ($sqlq)
                     {
                         show_message("Your poll has been deleted.", "index.php?page=mythings&menuid=$menuid");               
@@ -919,7 +919,7 @@ if ($cat != "" || $action != "")
         $cattype = safesql($cat, "text");
         $tpl->assign("itemid", $id);
         $tpl->assign("cat", $cat);
-        $sql = $data->select_query("owners", "WHERE item_id=$id AND item_type=$cattype");
+        $sql = $data->select_query("owners", "WHERE item_id=$safe_id AND item_type=$cattype");
         $itemowners = array();
         $numitemowners = $data->num_rows($sql);
         while ($temp = $data->fetch_array($sql))
@@ -952,7 +952,7 @@ if ($cat != "" || $action != "")
         $people = array();
         while ($temp = $data->fetch_array($sql))
         {
-            if ($data->num_rows($data->select_query("owners", "WHERE item_id=$id AND item_type=$cattype AND owner_id={$temp['id']} AND owner_type=0")) == 0)
+            if ($data->num_rows($data->select_query("owners", "WHERE item_id=$safe_id AND item_type=$cattype AND owner_id={$temp['id']} AND owner_type=0")) == 0)
             {
                 $people[] = $temp;
                 $numpeople++;
@@ -965,7 +965,7 @@ if ($cat != "" || $action != "")
         $groups = array();
         while ($temp = $data->fetch_array($sql))
         {
-            if ($data->num_rows($data->select_query("owners", "WHERE item_id=$id AND item_type=$cattype AND owner_id={$temp['id']} AND owner_type=1")) == 0)
+            if ($data->num_rows($data->select_query("owners", "WHERE item_id=$safe_id AND item_type=$cattype AND owner_id={$temp['id']} AND owner_type=1")) == 0)
             {
                 $groups[] = $temp;
                 $numteams++;
@@ -990,7 +990,7 @@ if ($cat != "" || $action != "")
                 $time = "0";
             }
             
-            $sql = $data->insert_query("owners", "'', $id, $cattype, $owner, $owner_type, $type_owner, $time");
+            $sql = $data->insert_query("owners", "'', $safe_id, $cattype, $owner, $owner_type, $type_owner, $time");
             if ($sql)
             {                  
                 show_message("Owner added", "index.php?page=mythings&cat=$cat&action=owner&id={$id}&menuid=$menuid"); 
@@ -1202,7 +1202,7 @@ if ($cat != "" || $action != "")
     }
     elseif ($action=="deleteowner")
     {
-        $sqlq = $data->delete_query("owners", "id=$id");
+        $sqlq = $data->delete_query("owners", "id=$safe_id");
         if ($sqlq)
         {
             show_message("Owner removed.", "index.php?page=mythings&cat={$_GET['cat']}&action=owner&id={$_GET['itemid']}&menuid=$menuid"); 

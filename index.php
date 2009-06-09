@@ -28,7 +28,7 @@
 $infoerror = false;
 $isproblem = false;
 $infomessage = false;
-require_once ("{$bit}includes/error_handling.php");
+require_once ("includes/error_handling.php");
 set_error_handler('ErrorHandler');
 error_reporting(E_ERROR|E_PARSE);
 $upgrader = false;

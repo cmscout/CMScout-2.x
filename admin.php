@@ -26,7 +26,7 @@
 ?>
 <?php
 $upgrader = false;
-require_once ("{$bit}includes/error_handling.php");
+require_once ("includes/error_handling.php");
 set_error_handler('ErrorHandler');
 error_reporting(E_ERROR|E_PARSE);
 $upgrader = false;
@@ -78,7 +78,7 @@ else
 
 $uname = $check["uname"];
 
-$pageid = $_GET['page'];
+$pageid = str_replace(array('/', '\\'), array('',''), $_GET['page']);
 /********************************************End Initilization of page*****************************************/
 
 function cmp($a, $b) 

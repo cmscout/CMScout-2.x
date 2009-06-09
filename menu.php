@@ -37,7 +37,7 @@ if (!$config['disablesite'])
     $catnum['right'] = 0;
     $catnum['top'] = 0;
 
-    $menuid = isset($_GET['menuid']) ? $_GET['menuid'] : 0;
+    $menuid = isset($_GET['menuid']) ? safesql($_GET['menuid'], 'int') : 0;
     $tpl->assign("menuid", $menuid);
 
     $catsql = $data->select_query("menu_cats", "WHERE published=1 ORDER BY Position ASC");

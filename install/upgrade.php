@@ -28,8 +28,8 @@
 $bit = "./../";
 $upgrader = true;
 require_once ("../common.php");
-$version  = "2.06";
-$oldversion = "2.05";
+$version  = "2.07";
+$oldversion = "2.06";
 
 $step = isset($_GET['step']) ? $_GET['step'] : 1;
 ?>
