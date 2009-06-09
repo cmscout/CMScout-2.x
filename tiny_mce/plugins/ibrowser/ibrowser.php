@@ -56,8 +56,8 @@
 	$lib_options = liboptions($cfg['ilibs'], '', $clib,'');
 ?>
 <!-- do not delete this line - it's need for proper working of the resizeDialogToContent() function -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <title><?php echo $l->m('im_002'); ?></title>
 <meta http-equiv="Pragma" content="no-cache">
@@ -389,7 +389,6 @@
 		// save image to wysiwyg editor and close window		
 		window.returnValue = args;
 		window.close();				
-		
 		if (iBrowser.isGecko) { // Gecko				
 			<?php					
 				if (!empty($_REQUEST['callback'])) {          				
@@ -1066,11 +1065,10 @@
               <p><strong> <span class="hilight">i</span>Browser</strong> is written and distributed under the GNU General Public License which means that its source code is freely-distributed and available to the general public.</p>
               <p>&nbsp;</p>
               <p>
-              <div class="btnRight">
+               <div class="btnRight">
                 <img src="images/firefox.gif" alt="" title="" width="80" height="15" align="absmiddle" /><img src="images/explorer.gif" alt="" title="" width="80" height="15" align="absmiddle" />
-              </div>
-              <span class="ver"> Version: <?php echo $cfg['ver']; ?> </span>
-              </p>
+               </div>
+               <span class="ver"> Version: <?php echo $cfg['ver']; ?> </span>
             </div>
             <!- // imDiv -->
             <!- INSERT/CHANGE ----------------------------------------------------- -->

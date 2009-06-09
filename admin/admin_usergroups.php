@@ -54,7 +54,30 @@ else
         {
             $data->insert_query("usergroups", "$gid, $uid, $utype");
         }
+    }    
+    elseif ($action == "moveup")
+    {
+        $uid = safesql($_GET['uid'], "int");
+        $userGroups = $data->select_fetch_one_row("usergroups", "WHERE userid=$uid AND groupid=$gid");
+        $userGroups['utype'] = $userGroups['utype'] + 1;
+        if ($userGroups['type'] <= 2)
+        {
+        	$data->update_query("usergroups", "utype={$userGroups['utype']}", "userid = $uid AND groupid=$gid");
+        }
+        show_admin_message("User type changed", str_replace('&amp;', '&', $pagename) . "&uid=$uid");
     }
+    elseif ($action == "movedown")
+    {
+        $uid = safesql($_GET['uid'], "int");
+        $userGroups = $data->select_fetch_one_row("usergroups", "WHERE userid=$uid AND groupid=$gid");
+        $userGroups['utype'] = $userGroups['utype'] - 1;
+        if ($userGroups['type'] >= 0)
+        {
+        	$data->update_query("usergroups", "utype={$userGroups['utype']}", "userid = $uid AND groupid=$gid");
+        }
+        show_admin_message("User type changed", str_replace('&amp;', '&', $pagename) . "&uid=$uid");
+    }
+    
     $sql = $data->select_query("users", "WHERE id=$uid");
     $userinfo = $data->fetch_array($sql);
     

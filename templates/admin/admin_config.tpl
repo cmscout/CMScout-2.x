@@ -41,11 +41,11 @@
     <div class="fieldItem"><label for="zone" class="label">Server Timezone<span class="hintanchor" title="The timezone that the server is set to."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper">{if $editallowed}<select name="zone" id="zone" class="inputbox">
     {section name=zones loop=$numzones}
-    <option value="{$zone[zones].id}" {if ($configs.zone == $zone[zones].id)}selected="selected" {assign var="offset" value=$zone[zones].offset}{/if}>{$zone[zones].offset} Hours</option>
+    <option value="{$zone[zones].id}" {if ($configs.zone == $zone[zones].id)}selected="selected" {assign var="offset" value=$zone[zones].offset}{/if}>{$zone[zones].name} ({$smarty.now+$zone[zones].offset*3600|date_format:"%b %d, %Y @ %R"})</option>
     {/section}
     </select>{else}
     {section name=zones loop=$numzones}
-    {if ($configs.zone == $zone[zones].id)}{$zone[zones].offset} Hours{/if}
+    {if ($configs.zone == $zone[zones].id)}{$zone[zones].name} ({$smarty.now+$zone[zones].offset*3600|date_format:"%b %d, %Y @ %R"}){/if}
     {/section}{/if}</div></div><br />
 
     <div class="fieldItem"><label for="numpm" class="label">Number of PMs<span class="hintanchor" title="How many personal messages can a user have in each box? Default 10"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
@@ -123,6 +123,16 @@
     <div class="fieldItem"><span class="label">Duplicate email<span class="hintanchor" title="Allow more than one user to use an email address."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></span>
     <div class="inputboxwrapper">{if $editallowed}<input type="radio" name="dubemail" id="dubemail:yes" value="1" {if $configs.dubemail == 1}checked="checked"{/if} /><label for="dubemail:yes">Yes</label>
     <input name="dubemail" id="dubemail:no" type="radio" value="0" {if $configs.dubemail == 0}checked="checked"{/if} /><label for="dubemail:no">No</label>{else}{if $configs.dubemail}Yes{else}No{/if}{/if}</div></div><br />
+
+    <div class="fieldItem"><label for="zone" class="label">Default Timezone<span class="hintanchor" title="The default timezone to use for new users."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+    <div class="inputboxwrapper">{if $editallowed}<select name="defaultZone" id="defaultZone" class="inputbox">
+    {section name=zones loop=$numzones}
+    <option value="{$zone[zones].id}" {if ($configs.defaultZone == $zone[zones].id)}selected="selected" {assign var="offset" value=$zone[zones].offset}{/if}>{$zone[zones].name} ({$smarty.now+$zone[zones].offset*3600|date_format:"%b %d, %Y @ %R"})</option>
+    {/section}
+    </select>{else}
+    {section name=zones loop=$numzones}
+    {if ($configs.defaultZone == $zone[zones].id)}{$zone[zones].name} ({$smarty.now+$zone[zones].offset*3600|date_format:"%b %d, %Y @ %R"}){/if}
+    {/section}{/if}</div></div><br />
 
     <div class="fieldItem"><label for="accountactivation" class="label">Account Activation<span class="hintanchor" title="User activation will send the user an email with a activation link that he/she must click to activate their account. Admin activation requires the administrator to activate the account from the user control panel."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper">{if $editallowed}<select name="accountactivation" id="accountactivation" class="inputbox">

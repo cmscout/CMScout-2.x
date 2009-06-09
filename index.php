@@ -25,7 +25,6 @@
 **************************************************************************/
 ?>
 <?php
-$bit = "./";
 $infoerror = false;
 $isproblem = false;
 $infomessage = false;
@@ -219,6 +218,7 @@ $tpl->assign('usersname', $check['uname']);
 $tpl->assign('uname', $check['uname']);
 $tpl->assign('userid', $check['id']);
 $tpl->assign("timeoffset", getuseroffset($check['uname']));
+$tpl->assign("serverOffset", getoffset($config['zone']));
 $tpl->assign("editable", $edit);
 $tpl->assign("editlink", $editlink);
 $tpl->assign("addable", $add);

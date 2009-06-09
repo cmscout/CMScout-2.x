@@ -2384,7 +2384,7 @@ function forumEmail($type, $post, $fid, $topic_id=false)
     }
 }
 
-function email_user($id, $safe_type)
+function email_user($id, $type)
 {
     global $data, $check, $config;
     $safe_type = safesql($type, "text");
@@ -2392,10 +2392,10 @@ function email_user($id, $safe_type)
 
      $temp = $data->select_fetch_one_row("users", "WHERE id = $id", "id, uname, email");
 
-    $postuname = $check['uname'];
+    $postuname = $temp['uname'];
     $website = $config['troopname'];
 
-    $cmscoutTags = array("!#postuname#!", "!#title#!", "!#type#!", "!#link#!", "!#extract#!", "!#website#!");
+    $cmscoutTags = array("!#uname#!", "!#title#!", "!#type#!", "!#link#!", "!#extract#!", "!#website#!");
     $replacements   = array($postuname, $title, '', '', '', $website);
 
     $emailContent = str_replace($cmscoutTags, $replacements, $email['email']);

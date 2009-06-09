@@ -32,7 +32,7 @@ $cssIncludes = array();
 $domReady = array();
 
 $tinyMCEGzip ['advanced'] = 'tinyMCE_GZ.init({
-  plugins : "layer,spellchecker,media,emotions,table,advhr,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,style,inlinepopups",
+  plugins : "inlinepopups,layer,spellchecker,media,emotions,table,advhr,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,style",
   themes : "advanced",
 	languages : "en",
 	disk_cache : true,
@@ -63,10 +63,11 @@ $tinyMCE['advanced'] = 'tinyMCE.init
         file_browser_callback : "fileBrowser",
         content_css : "default.css",
         extended_valid_elements : "a[name|href|target|title|style],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|name|style],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]",
-        doctype : "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">"});';
+        doctype : "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">"
+     });';
 
 $tinyMCEGzip ['simple'] = "tinyMCE_GZ.init({
-	plugins : 'emotions,contextmenu,paste,inlinepopups,spellchecker',
+	plugins : 'emotions,contextmenu,paste,inlinepopups,spellchecker,media,searchreplace',
 	themes : 'advanced',
 	languages : 'en',
 	disk_cache : true,
@@ -77,11 +78,12 @@ $tinyMCE['simple'] = 'tinyMCE.init({
 		mode : "exact",
         elements: "story",
 		theme : "advanced",
-		plugins : "emotions,contextmenu,paste,inlinepopups,spellchecker",
-        theme_advanced_buttons1 : "separator,cut,copy,paste,pastetext,pasteword,separator,spellchecker,separator,bold,italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,forecolor,backcolor",
-        theme_advanced_buttons2 : "separator,bullist,numlist,separator,undo,redo,separator,link,unlink,image,separator,emotions,charmap,separator,cleanup,help,code,separator",
-        theme_advanced_buttons3 : "fontselect,fontsizeselect", 
-        theme_advanced_toolbar_location : "top",
+		plugins : "emotions,contextmenu,paste,inlinepopups,spellchecker,media,searchreplace",
+        theme_advanced_buttons1_add : "separator,spellchecker",
+        theme_advanced_buttons2_add : "media",
+        theme_advanced_buttons2_add_before: "cut,copy,paste,pastetext,pasteword,separator,search,replace,separator",
+        theme_advanced_buttons3_add : "emotions,separator,fontselect,fontsizeselect,forecolor,backcolor",
+		theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
         theme_advanced_statusbar_location : "bottom",
         theme_advanced_resizing : true,
@@ -124,7 +126,9 @@ var Tipies = new Tips($$('.hintanchor'), {
         },
         onHide: function(toolTip) {
             this.fx.start(0);
-        }
+        },
+        fixed: true,
+        offsets: {'x':32,'y':32}
     });
     
     ";

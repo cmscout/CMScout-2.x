@@ -17,7 +17,21 @@ document.location = "admin.php?page=users&subpage=usergroups&action=delete&uid={
 {section name=groups loop=$numusergroups}
 <tr>
 <td class="text" style="text-align:center;">{if $editallowed && !$limitgroup}<a href="javascript:confirmDelete('{$usergroups[groups].id}')"><img src="{$tempdir}admin/images/delete.gif"  border="0" alt="Remove {$userinfo.uname} from {$usergroups[groups].teamname}" title="Remove {$userinfo.uname} from {$usergroups[groups].teamname}" /></a>{else}<img src="{$tempdir}admin/images/delete_grey.gif" border="0" alt="Deleting Disabled" title="Deleting Disabled" />{/if}</td>
-<td colspan="2" class="text" {if $usergroups[groups].type == 1}style="background-color:#cdd7ff;"{elseif $usergroups[groups].type == 2}style="background-color:#eeffff;"{/if}>{$usergroups[groups].teamname}</td>
+<td colspan="2" class="text" {if $usergroups[groups].type == 1}style="background-color:#cdd7ff;"{elseif $usergroups[groups].type == 2}style="background-color:#eeffff;"{/if}>
+	{$usergroups[groups].teamname}
+	{if $editallowed && !$limitgroup && $userinfo.uname != $uname}
+		{if $usergroups[groups].type != 0}
+			<a href="{$pagename}&amp;action=movedown&amp;gid={$usergroups[groups].id}&amp;uid={$userinfo.id}"><img src="{$tempdir}admin/images/down.gif" border="0" alt="Up" title="Downgrade level" /></a>
+		{else}
+			<img src="{$tempdir}admin/images/down_grey.gif" border="0" alt="Up" title="Already lowest level" />
+		{/if}
+		{if $usergroups[groups].type != 2}
+			<a href="{$pagename}&amp;action=moveup&amp;gid={$usergroups[groups].id}&amp;uid={$userinfo.id}"><img src="{$tempdir}admin/images/up.gif" border="0" alt="Up" title="Upgrade level" /></a>
+		{else}
+			<img src="{$tempdir}admin/images/up_grey.gif" border="0" alt="Up" title="Already highest level" />
+		{/if}
+	{/if}
+</td>
 </tr>
 {/section}
 <tr>

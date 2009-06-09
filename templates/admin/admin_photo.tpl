@@ -32,9 +32,9 @@ function confirmunPublishart(articleId)
 {if $action == ''}
 {if $addallowed}<div class="toplinks"><a href="{$pagename}&amp;action=new" title="Add Album"><img src="{$tempdir}admin/images/add.png" alt="Add Album" border="0" /></a>
 </div>{/if}
+{if $numalbums > 0}
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="table rowstyle-alt paginate-15" id="sortTable">
 <thead>
-{if $numalbums > 0}
 	  <tr>
 		<th width="5%" class="smallhead"></th>
         <th width="5%" class="smallhead">Publish</th>

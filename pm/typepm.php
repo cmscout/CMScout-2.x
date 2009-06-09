@@ -258,7 +258,8 @@ if ($_POST['submit'] == "Send PM")
     }
     else
     {
-        $message .= "There was something wrong with your message, please try again or contact the site administrator.";
+        $message .= "There was something wrong with your message, perhaps the user does not exist.";
+        show_message($message, str_replace('&amp;', '&', $postaction), true);
     }
     
     show_message($message, "index.php?page=pmmain&menuid={$menuid}");
@@ -308,5 +309,6 @@ $tpl->assign("pm", $inboxpm);
 $tpl->assign("numpm", $numpm);
 $tpl->assign("onpage", "New Personal Message");
 $scriptList['tinyAdv'] = 1;
+
 $pagenum = 3;
 ?>

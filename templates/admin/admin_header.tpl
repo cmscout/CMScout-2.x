@@ -9,16 +9,7 @@
 <![endif]-->
 {if $editor == true}
 {literal}
-<script language="javascript" type="text/javascript" src="tiny_mce/tiny_mce_gzip.js"></script>
-<script type="text/javascript">
-tinyMCE_GZ.init({
-	plugins : 'advimage,advlink,table,advhr,emotions,insertdatetime,searchreplace,print,contextmenu,paste,fullscreen,inlinepopups,layer,spellchecker,media,ibrowser,style',
-	themes : 'advanced',
-	languages : 'en',
-	disk_cache : true,
-	debug : false
-});
-</script>
+<script language="javascript" type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
 <script language="javascript" type="text/javascript">
 tinyMCE.init
     ({
@@ -45,7 +36,8 @@ tinyMCE.init
         spellchecker_languages : "+English=en",
         file_browser_callback : "fileBrowser",
         button_tile_map : true,
-        extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"});
+        extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
+       });
 </script>
 {/literal}
 {/if}
@@ -63,6 +55,7 @@ tinyMCE.init
 <script type="text/javascript">
 function initilize(){
     new SimpleTabs($('navcontainer'), {
+    		  show: {/literal}{if $activetab == 'right'}1{elseif $activetab == 'top'}2{else}0{/if}{literal},
               entrySelector: 'h4'
       });
 
@@ -79,7 +72,8 @@ function initilize(){
         onHide: function(toolTip) {
             this.fx.start(0);
         },
-        fixed: true
+        fixed: true{/literal}{if $file == "admin_main.tpl" || $file == "admin_contentManager.tpl"}{literal},
+        offsets: {'x':0,'y':78}{/literal}{/if}{literal}
     });
 
 }

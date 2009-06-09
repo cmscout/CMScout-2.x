@@ -55,6 +55,16 @@ document.location = "admin.php?page=group&action=delete&id=" + articleId;
 <div class="inputboxwrapper"><input type="radio" name="points" id="points:yes" value="1" {if $group.getpoints == 1}checked{/if} /><label for="points:yes">Yes</label>
         <input type="radio" name="points" id="points:no" value="0" {if $group.getpoints == 0}checked{/if} /><label for="points:no">No</label></div><br />
 
+    {if $numgroups > 0}
+    <label for="name" class="label">Copy Permissions<span class="hintanchor" title="You can copy the permissions from another group here. This will overwrite any permissions this group may already have."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
+    <div class="inputboxwrapper"><select name="permissions" id="permissions" class="inputbox">
+    <option value="0" selected="selected">Don't copy permissions</option>
+    {section name=groups loop=$numgroups}
+        {if $group.id != $groups[groups].id}<option value="{$groups[groups].id}">{$groups[groups].teamname}</option>{/if}
+    {/section}
+    </select></div><br />
+    {/if}
+
     </div>
     <div class="submitWrapper"><input type="submit" name="Submit" value="Submit" class="button" />
     <input name="Cancel" type="button" id="Cancel" value="Cancel" onclick="history.go(-1);" class="button" />
@@ -156,8 +166,8 @@ document.location = "admin.php?page=group&action=delete&id=" + articleId;
   </script>
 <form name="form1" method="post" action="{$editFormAction}">
 <div align="center"><div class="formlist">
+<h2>{$group.teamname}</h2>
 <div id="navcontainer">
-
 <h4 title="normal">Normal User</h4>
 <div id="normal" >
 <div align="center">

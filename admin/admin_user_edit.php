@@ -103,11 +103,11 @@ else
             {
                 if ($status == 1)
                 {
-                    email_user($id, "account_actived");
+                    email_user($user['id'], "account_actived");
                 }
                 else
                 {
-                    email_user($id, "account_deactived");
+                    email_user($user['id'], "account_deactiv");
                 }
             }
                         

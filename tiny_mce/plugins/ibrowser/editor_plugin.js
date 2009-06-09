@@ -11,7 +11,7 @@
 
 			// load common script
 			tinymce.ScriptLoader.load(url + '/interface/common.js');
-			
+
 			// Register commands
 			ed.addCommand('mceIBrowser', function() {
 				var e = ed.selection.getNode();
@@ -19,7 +19,8 @@
 				// Internal image object like a flash placeholder
 				if (ed.dom.getAttrib(e, 'class').indexOf('mceItem') != -1)
 					return;
-
+				// NJW MOD - Fix for FF3 Compatibility
+				var ib = iBrowser_GetIb();
 				ib.isMSIE  = tinymce.isIE;
 				ib.isGecko = tinymce.isGecko;
 				ib.oEditor = ed; 

@@ -25,7 +25,6 @@
 **************************************************************************/
 ?>
 <?php
-$bit = "./";
 $upgrader = false;
 require_once ("{$bit}includes/error_handling.php");
 set_error_handler('ErrorHandler');
@@ -163,9 +162,9 @@ while ($temp = $data->fetch_array($sql))
         $userauth['edit'][$moduledetails[$i]['id']] = $userauth['edit'][$moduledetails[$i]['id']] || $tempauth['edit'][$moduledetails[$i]['id']];
         $userauth['delete'][$moduledetails[$i]['id']] = $userauth['delete'][$moduledetails[$i]['id']] || $tempauth['delete'][$moduledetails[$i]['id']];
         $userauth['publish'][$moduledetails[$i]['id']] = $userauth['publish'][$moduledetails[$i]['id']] || $tempauth['publish'][$moduledetails[$i]['id']];
-        $userauth['limit'][$moduledetails[$i]['id']] = $userauth['limit'][$moduledetails[$i]['id']] && $tempauth['limit'][$moduledetails[$i]['id']];
+        $userauth['limit'][$moduledetails[$i]['id']] = $userauth['limit'][$moduledetails[$i]['id']] || $tempauth['limit'][$moduledetails[$i]['id']];
     }
-    
+
     $adminpanel = $adminpanel || $tempauth['adminpanel'];
 }
 

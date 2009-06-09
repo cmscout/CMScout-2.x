@@ -69,14 +69,26 @@ else
                 $ispatrol =	safesql($_POST['patrol'], "int");
                 $ispublic =	safesql($_POST['publicgroup'], "int");
                 $getpoints = safesql($_POST['points'], "int");
-                
+                $copypermissions = safesql($_POST['permissions'], "int");
+
                 if ($data->num_rows($data->select_query("groups", "WHERE teamname=$teamname AND id!=$id"))>0)
                 {
                     show_message_back("There is already a group by that name");
                     exit;
                 }
                 
-                $sql3 = $data->update_query("groups", "teamname=$teamname, ispatrol=$ispatrol, ispublic=$ispublic, getpoints=$getpoints", "id = $id");
+                if ($copypermissions != 0)
+                {
+                	$otherGroup = $data->select_fetch_one_row("groups", "WHERE id=$copypermissions");
+                	$normaladmin = safesql($otherGroup['normaladmin'], "text");
+                	$agladmin = safesql($otherGroup['agladmin'], "text");
+                	$gladmin = safesql($otherGroup['gladmin'], "text");
+                	$sql3 = $data->update_query("groups", "teamname=$teamname, ispatrol=$ispatrol, ispublic=$ispublic, getpoints=$getpoints, normaladmin=$normaladmin, agladmin=$agladmin, gladmin=$gladmin", "id = $id");
+                }
+                else
+                {
+                	$sql3 = $data->update_query("groups", "teamname=$teamname, ispatrol=$ispatrol, ispublic=$ispublic, getpoints=$getpoints", "id = $id");
+                }
                 if ($ispublic == 1) 
                 {
                     $sql = $data->select_query("static_content", "WHERE type = 1 AND pid=$id");
@@ -114,13 +126,25 @@ else
                 $ispatrol =	safesql($_POST['patrol'], "int");
                 $ispublic =	safesql($_POST['publicgroup'], "int");
                 $getpoints = safesql($_POST['points'], "int");
+                $copypermissions = safesql($_POST['permissions'], "int");
                 
                 if ($data->num_rows($data->select_query("groups", "WHERE teamname=$teamname"))>0)
                 {
                     show_message_back("There is already a group by that name");
                     exit;
                 }
-                $sql3 = $data->insert_query("groups", "NULL, $teamname, $ispatrol, $ispublic, $getpoints, 0, '', '', ''");
+                if ($copypermissions != 0)
+                {
+                	$otherGroup = $data->select_fetch_one_row("groups", "WHERE id=$copypermissions");
+                	$normaladmin = safesql($otherGroup['normaladmin'], "text");
+                	$agladmin = safesql($otherGroup['agladmin'], "text");
+                	$gladmin = safesql($otherGroup['gladmin'], "text");
+                	$sql3 = $data->insert_query("groups", "NULL, $teamname, $ispatrol, $ispublic, $getpoints, 0, $normaladmin, $agladmin, $gladmin");
+                }
+                else
+                {
+                	$sql3 = $data->insert_query("groups", "NULL, $teamname, $ispatrol, $ispublic, $getpoints, 0, '', '', ''");
+                }
                 if ($ispublic == 1) 
                 {
                     $temp = $data->select_fetch_one_row("groups", "WHERE teamname = $teamname", "id");
@@ -215,6 +239,7 @@ else
                 $ass = unserialize($group['agladmin']);
                 $gpl = unserialize($group['gladmin']);
                 
+                $tpl->assign("group", $group);
                 $tpl->assign("user", $user);
                 $tpl->assign("ass", $ass);
                 $tpl->assign("gpl", $gpl);

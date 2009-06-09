@@ -55,6 +55,29 @@ else
             $data->insert_query("usergroups", "$gid, $uid, $utype");
         }
     }
+    elseif ($action == "moveup")
+    {
+        $uid = safesql($_GET['uid'], "int");
+        $userGroups = $data->select_fetch_one_row("usergroups", "WHERE userid=$uid AND groupid=$gid");
+        $userGroups['utype'] = $userGroups['utype'] + 1;
+        if ($userGroups['type'] <= 2)
+        {
+        	$data->update_query("usergroups", "utype={$userGroups['utype']}", "userid = $uid AND groupid=$gid");
+        }
+        show_admin_message("User type changed", str_replace('&amp;', '&', $pagename) . "&gid=$gid");
+    }
+    elseif ($action == "movedown")
+    {
+        $uid = safesql($_GET['uid'], "int");
+        $userGroups = $data->select_fetch_one_row("usergroups", "WHERE userid=$uid AND groupid=$gid");
+        $userGroups['utype'] = $userGroups['utype'] - 1;
+        if ($userGroups['type'] >= 0)
+        {
+        	$data->update_query("usergroups", "utype={$userGroups['utype']}", "userid = $uid AND groupid=$gid");
+        }
+        show_admin_message("User type changed", str_replace('&amp;', '&', $pagename) . "&gid=$gid");
+    }
+    
     $sql = $data->select_query("groups", "WHERE id=$gid");
     $groupinfo = $data->fetch_array($sql);
     
@@ -85,6 +108,7 @@ else
     
     $tpl->assign("numusers", $numusers);
     $tpl->assign("users", $users);
+    $tpl->assign("uname", $check['uname']);
     $tpl->assign("numgroupusers", $numgroupusers);
     $tpl->assign("groupusers", $groupusers);
     $tpl->assign("groupinfo", $groupinfo);

@@ -99,7 +99,8 @@ else
                             "allowemails"=>true,
                             "defaultview" => true,
                             "startday" => true,
-                            "pagephoto" => true);
+                            "pagephoto" => true,
+    						"defaultZone" => true);
                             
     $submit = $_POST['Submit'];
     $new = array();

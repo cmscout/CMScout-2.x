@@ -326,8 +326,7 @@ if ($_GET['action'] != "ical")
     else 
     {
         $calendar = ""; 
-        
-        
+                
         if (isset($_POST['month']) && $_POST['month'] != "") 
         {
             $month = $_POST["month"];
@@ -346,6 +345,13 @@ if ($_GET['action'] != "ical")
             $year = $today_date['year'];
         }
 
+    
+        if (!$month || !$year)
+        {
+            $month = $today_date['month'];
+            $year = $today_date['year']; 
+        }        
+        
         $found = false;
         $monthnum = 1;
         do 
@@ -372,7 +378,7 @@ if ($_GET['action'] != "ical")
         if ($_GET['year'] != ''&& !isset($_POST['year']))
         {
             $year = $_GET['year'];
-        }
+        }      
         
         if ($monthnum > 12)
         {
@@ -602,7 +608,7 @@ if ($_GET['action'] != "ical")
         }
         elseif ($_GET['view'] == "month" || ($_GET['view'] == "" && $config['defaultview'] == "Month"))
         {       
-            $days = number_days($monthnum);
+        	$days = number_days($monthnum);
                 /* 1: Mon
                 2: Tues
                 3: Wed

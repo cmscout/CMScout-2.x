@@ -20,6 +20,10 @@
 	function iBrowser() {	
 	}
 	var ib = new iBrowser;
+	
+	function iBrowser_GetIb() {
+ 	 return ib;
+	}
 	//-------------------------------------------------------------------------
 	// open iBrowser
 	function iBrowser_open() {			

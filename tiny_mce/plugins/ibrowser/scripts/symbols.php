@@ -21,8 +21,8 @@
 	$l->setBlock('symbols');
 ?>
 <!-- do not delete this line - it's need for proper working of the resizeDialogToContent() function -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <title><?php echo $l->m('title'); ?></title>
 <meta http-equiv="Pragma" content="no-cache">

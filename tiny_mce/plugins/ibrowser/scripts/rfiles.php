@@ -81,8 +81,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title><?php echo $l->m('im_002'); ?></title>
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $l->getCharset(); ?>">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $l->getCharset(); ?>" />
 <style type="text/css">
 <!--
 @import url("../css/style.css");
@@ -231,8 +231,8 @@ html, body {
 -->
 </script>
 <title>Image list</title>
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $l->getCharset(); ?>">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $l->getCharset(); ?>" />
 </head>
 <body onload="init(); hideloadmessage();" dir="<?php echo $l->getDir(); ?>">
 <?php include 'loadmsg.php'; ?>
