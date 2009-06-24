@@ -43,7 +43,7 @@ $installed = 0;
 $errors = "";
 $gotoplace = "";
 $stage = isset($_POST['stage']) ? $_POST['stage'] : 0;
-$version = "2.01";
+$version = "2.07";
 
 if($stage == '' || !isset($stage))
 {
@@ -150,7 +150,8 @@ foreach ($directories as $key=>$dir)
 // config.php ... let's just warn the user it's not writeable
 $dir = 'config.'.$phpEx;
 $write['config'] = $exists['config'] = true;
-
+
+
 if (file_exists($cms_root . $dir))
 {
     if (!is_writeable($cms_root . $dir))
@@ -364,7 +365,8 @@ if($stage == 1)
             if ($gotoplace == "")
                 $gotoplace = "config";
         }      
-        
+        
+
             if ($allok)
             {
                 $dbconnection = @mysql_connect("{$database['hostname']}:{$database['port']}", $database['username'], $database['password']);
@@ -450,9 +452,11 @@ if($stage == 1)
        
         if($stage == 1)
         {
-            $tpl->assign("database", htmlentities(serialize($database)));
+            $tpl->assign("databaseStraight", $database);
+        	$tpl->assign("database", htmlentities(serialize($database)));
             $tpl->assign("admin", htmlentities(serialize($admin)));
             $tpl->assign("config", htmlentities(serialize($config)));
+            $tpl->assign("phpEx", $phpEx);
         }
     }
     else
@@ -466,7 +470,8 @@ if($stage == 1)
 }
 
 if($stage == 2)
-{    
+{
+    
     if ($direct == false)
     {
         $database = $_POST['database'];
@@ -560,7 +565,7 @@ if($stage == 2)
     $name = urlencode($name);
     $address = urlencode($address);
     
-    @file("http://www.cmscout.za.net/addsite.php?troopname=$name&address=$address&version=$version");
+    @file("http://www.cmscout.co.za/addsite.php?troopname=$name&address=$address&version=$version");
     
     $stage = 3;
 }
@@ -579,6 +584,6 @@ $tpl->assign("errors", $errors);
 $tpl->assign("gotoplace", $gotoplace);
 $tpl->assign("installed", $installed);
 $tpl->assign("version", $version);
-$tpl->assign("copyright", "Powered by CMScout &copy;2005, 2006, 2007 <a href=\"http://www.cmscout.za.net\" title=\"CMScout Group\" target=\"_blank\">CMScout Group</a>");
+$tpl->assign("copyright", "Powered by CMScout &copy;2005, 2006, 2007 <a href=\"http://www.cmscout.co.za\" title=\"CMScout Group\" target=\"_blank\">CMScout Group</a>");
 $tpl->display("install.tpl");
 ?>

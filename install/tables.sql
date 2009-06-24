@@ -424,6 +424,7 @@ CREATE TABLE `!#prefix#!frontpage` (
 -- Table structure for table `!#prefix#!functions`
 -- 
 
+
 CREATE TABLE `!#prefix#!functions` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(50) NOT NULL default '',
@@ -432,6 +433,7 @@ CREATE TABLE `!#prefix#!functions` (
   `filetouse` varchar(50) NOT NULL default '',
   `active` tinyint(4) NOT NULL default '1',
   `mainmodule` varchar(50) NOT NULL,
+  `options` longtext NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
@@ -560,6 +562,7 @@ CREATE TABLE `!#prefix#!menu_cats` (
 -- Table structure for table `!#prefix#!menu_items`
 -- 
 
+
 CREATE TABLE `!#prefix#!menu_items` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(50) NOT NULL default '',
@@ -569,6 +572,7 @@ CREATE TABLE `!#prefix#!menu_items` (
   `type` tinyint(4) NOT NULL default '0',
   `parent` int(11) NOT NULL default '0',
   `target` varchar(10) default NULL,
+  `option` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
@@ -775,7 +779,6 @@ CREATE TABLE `!#prefix#!pms` (
 CREATE TABLE `!#prefix#!polls` (
   `id` int(11) NOT NULL auto_increment,
   `question` varchar(255) NOT NULL default '',
-  `sidebox` tinyint(4) NOT NULL default '0',
   `date_start` int(11) NOT NULL default '0',
   `date_stop` int(11) default '0',
   `options` longtext NOT NULL,
@@ -784,6 +787,7 @@ CREATE TABLE `!#prefix#!polls` (
   `trash` tinyint(4) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 

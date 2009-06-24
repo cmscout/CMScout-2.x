@@ -597,13 +597,33 @@ POSSIBILITY OF SUCH DAMAGES.</pre>
 	<div class="inside-box" style="border-top: none;" align="left">
 		<p>Unfortunately CMScout could not write the configuration information directly to your config.php. This may be because the file does not exist or is not writeable.</p>
 
-		<p>You may download the complete config.php to your own PC. You will then need to upload the file manually, replacing any existing config.php in your CMScout root directory. Please remember to upload the file in ASCII format (see your FTP application documentation if you are unsure how to achieve this). When you have uploaded the config.php please click "Done" to move to the next stage</p>
-		<div align="center"><a href="config.php?data={$database}"><input name="down" type="button" value="Download config.php" class="button" /></a>&nbsp; <input name="dldone" type="submit" value="Done" class="button" /></div>
+		<p>You may <a href="config.php?data={$database}">download the complete config.php</a> to your own PC. 
+		You will then need to upload the file manually, replacing any existing config.php in your CMScout root directory. 
+		Please remember to upload the file in ASCII format (see your FTP application documentation if you are unsure how to achieve this). 
+		When you have uploaded the config.php please click "Done" to move to the next stage.</p>
+		<p><span style="color:red;">NOTE: Do not use a download manager to download this file.</span></p>
+		
+		<p>If for some reason the above download does not work please create a file named "config.php" in the root directory of your CMScout installation. 
+		Put the following information into the file (make sure to include everything from &lt;?php to ?>). Once you have done this clikc on "Done" to move to the next stage.</p>
+		<pre style="border:1px solid #51c855;padding:10px;background-color:#ffeaff;">&lt;?php
+    /********************************************************************
+       Auto Generated config file for CMScout
+       DO NOT CHANGE THIS FILE!!
+    *********************************************************************/
+       $dbhost = "{$databaseStraight.hostname}";
+       $dbusername = "{$databaseStraight.username}";
+       $dbpassword = "{$databaseStraight.password}";
+       $dbport = "{$databaseStraight.port}";
+       $dbname = "{$databaseStraight.name}";
+       $dbprefix = "{$databaseStraight.prefix}";
+       $phpex = ".{$phpEx}";
+?></pre>
 		<input name="database" type="hidden" value="{$database}" />
 		<input name="admin" type="hidden" value="{$admin}" />
 		<input name="config" type="hidden" value="{$config}" />
 		<input name="sample" type="hidden" value="{$sample}" />
 		<input name="licenseagreement" type="hidden" value="{$licenseagreement}" />
+		<div align="center"><input name="dldone" type="submit" value="Done" class="button" /></div>
 	</div>
 </div>{elseif $stage == 2}<div style="padding-bottom: 3px;">
 	<div class="inside-box" align="left">

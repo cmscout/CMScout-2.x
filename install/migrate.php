@@ -43,7 +43,7 @@ $installed = 0;
 $errors = "";
 $gotoplace = "";
 $stage = isset($_POST['stage']) ? $_POST['stage'] : 0;
-$version = "2.01";
+$version = "2.07";
 $upgradefrom = "1.23";
 
 if($stage == '' || !isset($stage))
@@ -741,6 +741,7 @@ if($stage == 2)
       //functions
       mysql_query("alter table {$database['prefix']}functions ADD active tinyint(4) NOT NULL default '1' AFTER `filetouse`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
       mysql_query("alter table {$database['prefix']}functions ADD `mainmodule` varchar(50) NOT NULL AFTER `active`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
+      mysql_query("alter table {$database['prefix']}functions ADD `options` longtext NOT NULL") or die("Error at " . __LINE__ . ": " . mysql_error()); 
 
 	//links
       mysql_query("alter table {$database['prefix']}links ADD position tinyint(4) NOT NULL AFTER `cat`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
@@ -754,8 +755,8 @@ if($stage == 2)
       
       //menu_items
       mysql_query("alter table {$database['prefix']}menu_items drop url") or die("Error at " . __LINE__ . ": " . mysql_error()); 
-      mysql_query("ALTER TABLE `{$database['prefix']}menu_items` CHANGE `item` `item` VARCHAR( 255 ) NULL DEFAULT NULL;
-") or die("Error at " . __LINE__ . ": " . mysql_error()); 
+      mysql_query("ALTER TABLE `{$database['prefix']}menu_items` CHANGE `item` `item` VARCHAR( 255 ) NULL DEFAULT NULL;") or die("Error at " . __LINE__ . ": " . mysql_error()); 
+      mysql_query("ALTER TABLE `{$database['prefix']}menu_items` ADD `option` int(11);") or die("Error at " . __LINE__ . ": " . mysql_error()); 
 
         //newscontent
       mysql_query("alter table {$database['prefix']}newscontent ADD attachment varchar(20) NOT NULL AFTER `event`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
@@ -790,7 +791,9 @@ if($stage == 2)
       mysql_query("alter table {$database['prefix']}polls ADD options longtext NOT NULL AFTER `date_stop`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
       mysql_query("alter table {$database['prefix']}polls ADD results longtext NOT NULL AFTER `options`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
       mysql_query("alter table {$database['prefix']}polls ADD trash tinyint(4) NOT NULL AFTER `allowed`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
-      
+      mysql_query("ALTER TABLE `{$database['prefix']}polls` DROP `sidebox`;") or die("Error at " . __LINE__ . ": " . mysql_error()); 
+      mysql_query("TRUNCATE TABLE `{$database['prefix']}polls`;") or die("Error at " . __LINE__ . ": " . mysql_error()); 
+         
       //static_content
       mysql_query("alter table {$database['prefix']}static_content ADD type tinyint(4) NOT NULL AFTER `friendly`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
       mysql_query("alter table {$database['prefix']}static_content ADD frontpage tinyint(4) NOT NULL AFTER `type`") or die("Error at " . __LINE__ . ": " . mysql_error()); 
@@ -940,7 +943,7 @@ if($stage == 2)
     $name = urlencode($name);
     $address = urlencode($address);
     
-    @file("http://www.cmscout.za.net/addsite.php?troopname=$name&address=$address&version=$version");
+    @file("http://www.cmscout.co.za/addsite.php?troopname=$name&address=$address&version=$version");
     
     $stage = 3;
 }
@@ -960,6 +963,6 @@ $tpl->assign("errors", $errors);
 $tpl->assign("gotoplace", $gotoplace);
 $tpl->assign("installed", $installed);
 $tpl->assign("version", $version);
-$tpl->assign("copyright", "Powered by CMScout &copy;2005, 2006, 2007 <a href=\"http://www.cmscout.za.net\" title=\"CMScout Group\" target=\"_blank\">CMScout Group</a>");
+$tpl->assign("copyright", "Powered by CMScout &copy;2005, 2006, 2007 <a href=\"http://www.cmscout.co.za\" title=\"CMScout Group\" target=\"_blank\">CMScout Group</a>");
 $tpl->display("migrate.tpl");
 ?>
