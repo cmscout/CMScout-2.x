@@ -141,7 +141,7 @@ $domReady['mootabs'] = "
 $tinyMCETemplate = '';
 $scriptIncludesTemplate = array();
 $cssIncludesTemplate = array();
-$domReadyTemplate = "{literal}" . $onDomReady;
+$domReadyTemplate = isset($onDomReady) ? "{literal}" . $onDomReady : '{literal}';
 
 $scriptIncludesTemplate[] = $scriptIncludes['mootools'];
 
@@ -182,7 +182,7 @@ $tpl->assign("scriptInclude", $scriptIncludesTemplate);
 $tpl->assign("cssInclude", $cssIncludesTemplate);
 $tpl->assign("onDomReady", $domReadyTemplate . "{/literal}");
 $tpl->assign("tinyMCE", $tinyMCETemplate);
-$tpl->assign("tinyMCEGzip", $tinyMCEGzipTemplate);
+$tpl->assign("tinyMCEGzip", isset($tinyMCEGzipTemplate) ? $tinyMCEGzipTemplate : '');
 $tpl->assign("scriptIncludeNum", count($scriptIncludesTemplate));
 $tpl->assign("cssIncludeNum", count($cssIncludesTemplate));
 ?>

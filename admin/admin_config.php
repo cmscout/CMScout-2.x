@@ -122,9 +122,10 @@ else
                 {
                     $new = urlencode($_POST[$config_name]);
                     $old = urlencode($config['siteaddress']);
-                    //@file("http://www.cmscout.za.net/newaddress.php?address=$old&new=$new");
+                    @file("http://www.cmscout.co.za/newaddress.php?address=$old&new=$new");
                 }
                 $newvalue = safesql($_POST[$config_name], "text", false);
+                echo $newvalue. '<br>';
                 $sql = $data->update_query("config","value = $newvalue", "name = '$config_name'", "", "", false);
             }
         }

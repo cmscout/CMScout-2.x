@@ -506,7 +506,7 @@ function uploadpic($file, $width, $height, $savejpeg = false, $path=false)
 
 function safesql($theValue, $theType, $striptags = true, $addshlashes = true, $notpost = false, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
-    $theValue = $striptags && $type == "text" ? strip_tags($theValue) : ($type == "text" ? safe_html($theValue) : $theValue);
+    $theValue = $striptags && $theType == "text" ? strip_tags($theValue) : ($theType == "text" ? safe_html($theValue) : $theValue);
     if ($notpost == false)
     {
 	$theValue = (!get_magic_quotes_gpc()) ? addslashes(stripslashes($theValue)) : ($theValue);

@@ -89,15 +89,7 @@ if (!$upgrader)
         }
         else
         {
-           $tpl = new Smarty();
-           $tpl->template_dir = 'templates/';
-           $tpl->compile_dir = 'templates_c/';
-           $tpl->config_dir = 'configs/';
-           $tpl->cache_dir = 'cache/';
-           $tpl->compile_check = true;
-               
-           $tpl->caching = false;
-           $tpl->force_compile = true;
+            trigger_error("Error with the templating system. Please ensure that all files were correctly uploaded.",E_USER_ERROR);
         }
     }
     /********************************************End Smarty config***************************************************/

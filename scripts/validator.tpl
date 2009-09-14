@@ -1,9 +1,10 @@
 {literal}
-<!---
-function checkElement(id, type, required, minlength, maxlength, regex) 
+<!--
+function checkElement(id, type, required, minlength, maxlength, regex, returnValid) 
 {
     var name = document.getElementById(id).value;
     var valid = false;
+
     switch (type)
     {
         case "text":
@@ -113,8 +114,8 @@ function checkElement(id, type, required, minlength, maxlength, regex)
         document.getElementById(id).style.borderColor  = "{$templateinfo.invalid}";
         {literal}
         document.getElementById(id).style.borderWidth = "2px";
-        document.getElementById(id).select();
-        document.getElementById(id).focus();
+        //document.getElementById(id).select();
+        //document.getElementById(id).focus();
     }
     else
     {
@@ -124,7 +125,15 @@ function checkElement(id, type, required, minlength, maxlength, regex)
         {literal}
         document.getElementById(id).style.borderWidth = "1px";
     }
-    return valid;
+    
+    if(typeof returnValid != 'undefined')
+    {
+    	return valid;
+    }
+    else
+    {
+    	return true;
+    }
 }
 
 function checkForm(items)
@@ -136,7 +145,7 @@ function checkForm(items)
     for(i=0;i<items.length;i++)
     {
         itemargs = items[i];
-        valid = checkElement(itemargs[0],itemargs[1],itemargs[2],itemargs[3],itemargs[4],itemargs[5]);
+        valid = checkElement(itemargs[0],itemargs[1],itemargs[2],itemargs[3],itemargs[4],itemargs[5], true);
         if (!valid && document.getElementById('anyerror'))
         {
             document.getElementById('anyerror').innerHTML += "Error with " + itemargs[6] + "<br />"; 
