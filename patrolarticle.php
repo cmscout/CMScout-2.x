@@ -260,11 +260,11 @@ elseif ($action == "topic" && $tid != 'NULL')
     
     if (isset($patrolid) && $patrolid != '')
     {
-        $sql = $data->select_query("patrol_articles", "WHERE patrol = $patrolid AND topics <> 'N;' AND topics <> '' ORDER BY {$topic['sort']} {$topic['order']}");
+        $sql = $data->select_query("patrol_articles", "WHERE patrol = $patrolid AND topics <> 'N;' AND topics <> '' AND allowed = 1 AND trash = 0 ORDER BY {$topic['sort']} {$topic['order']}");
     }
     else
     {
-        $sql = $data->select_query("patrol_articles", "WHERE topics <> 'N;' AND topics <> '' ORDER BY {$topic['sort']} {$topic['order']}");
+        $sql = $data->select_query("patrol_articles", "WHERE topics <> 'N;' AND topics <> '' AND allowed = 1 AND trash = 0 ORDER BY {$topic['sort']} {$topic['order']}");
     }
     $articles = array();
     $numarticles = 0;
