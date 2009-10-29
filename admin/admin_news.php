@@ -67,7 +67,7 @@ else
     }
     elseif ($Submit == "Modify" && pageauth("news", "edit") == 1)
     {
-        $news = safesql($_POST['editor'], "text");
+        $news = safesql($_POST['editor'], "text", false);
         $title = safesql($_POST['title'], "text");
         $attachment = safesql($_POST['attachment'], "text");
 
