@@ -43,7 +43,7 @@ $installed = 0;
 $errors = "";
 $gotoplace = "";
 $stage = isset($_POST['stage']) ? $_POST['stage'] : 0;
-$version = "2.07";
+$version = "2.08";
 $upgradefrom = "1.23";
 
 if($stage == '' || !isset($stage))
@@ -963,6 +963,6 @@ $tpl->assign("errors", $errors);
 $tpl->assign("gotoplace", $gotoplace);
 $tpl->assign("installed", $installed);
 $tpl->assign("version", $version);
-$tpl->assign("copyright", "Powered by CMScout &copy;2005, 2006, 2007 <a href=\"http://www.cmscout.co.za\" title=\"CMScout Group\" target=\"_blank\">CMScout Group</a>");
+$tpl->assign("copyright", "Powered by CMScout &copy;2009 <a href=\"http://www.cmscout.co.za\" title=\"CMScout Group\" target=\"_blank\">CMScout Group</a>");
 $tpl->display("migrate.tpl");
 ?>

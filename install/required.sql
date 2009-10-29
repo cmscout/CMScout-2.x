@@ -60,7 +60,8 @@
 ('disclaimer', 'The views expressed in this website are not necessarily those of the Scout Association'),
 ('allowemails', '1'),
 ('defaultview', 'Year'),
-('startday', '1');
+('startday', '1'),
+('defaultZone', '0');
 
 #@#INSERT INTO `!#prefix#!emails` (`id`, `type`, `name`, `email`, `subject`, `customtags`) VALUES 
 (1, 'newitem', 'New Item', 'To !#uname#!, \r\n                \r\nYou indicated that you would like to be informed whenever a new !#type#! is posted to the !#website#! website. !#postuname#! just posted a new !#type#!. Its title is !#title#! and you can view it by going to !#link#!.\r\n\r\nShort extract of the item\r\n********************************\r\n!#extract#!\r\n********************************\r\n\r\nYou may need to login before you can view the item.\r\n    \r\nFrom !#website#! website.', 'New item added', ''),

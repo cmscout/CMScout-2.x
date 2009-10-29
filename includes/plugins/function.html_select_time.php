@@ -26,14 +26,14 @@ function smarty_function_html_select_time($params, &$smarty)
     require_once $smarty->_get_plugin_filepath('shared','make_timestamp');
     require_once $smarty->_get_plugin_filepath('function','html_options');
     /* Default values. */
-    $prefix             = null;
+    $prefix             = "Time_";
     $time               = time();
     $display_hours      = true;
     $display_minutes    = true;
-    $display_seconds    = false;
+    $display_seconds    = true;
     $display_meridian   = true;
     $use_24_hours       = true;
-    $minute_interval    = 15;
+    $minute_interval    = 1;
     $second_interval    = 1;
     /* Should the select boxes be part of an array when returned from PHP?
        e.g. setting it to "birthday", would create "birthday[Hour]",

@@ -1,0 +1,5 @@
+Thu Oct 29 9:15:40 SAST 2009
+---------------------
+Fatal Error: Error with the templating system. Please ensure that all files were correctly uploaded. occured in C:\Documents and Settings\wl\My Documents\Workbench\cmscout2\common.php on line 92
+---------------------
+

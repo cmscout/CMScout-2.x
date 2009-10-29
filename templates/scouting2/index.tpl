@@ -24,8 +24,8 @@
 {/if}
 
 <center style="margin:20px;">
- {if $extra != "nomenu"}   <div class="outside-box" style="height:135px;"><span style="text-align:left;"><img align="left" src="{$templateinfo.imagedir}logo.gif" alt="CMScout" /></span>
-        <div style="text-align:right;">
+ {if $extra != "nomenu"}   <div class="outside-box" style="text-align:left;"><div style="text-align:left;"><img src="{$templateinfo.imagedir}logo.gif" alt="CMScout" /></div>
+        <div style="text-align:left;">
         {if $nummenucats.top != ""}
           {section name=cats loop=$nummenucats.top}
           | {section name=itemloop loop=$menu.top[cats].numitems}

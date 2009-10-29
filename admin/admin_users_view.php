@@ -30,8 +30,7 @@ if( !empty($getmodules) )
 	return;
 }
 else
-{
-    
+{  
     $id = safesql($_GET['id'], "int");
     
     $user_query = $data->select_query("users", "WHERE id=$id");
