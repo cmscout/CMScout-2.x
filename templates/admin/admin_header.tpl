@@ -36,7 +36,7 @@ tinyMCE.init
         spellchecker_languages : "+English=en",
         file_browser_callback : "fileBrowser",
         button_tile_map : true,
-        extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
+        extended_valid_elements : "a[name|href|target|title|style],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|name|style],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]",
        });
 </script>
 {/literal}
