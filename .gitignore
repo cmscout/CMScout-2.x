@@ -1,0 +1,5 @@
+install1/
+templates_c/*
+.settings/
+.project
+.buildpath
