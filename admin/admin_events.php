@@ -151,9 +151,9 @@ $onDomReady .= "var r = new MooRainbow('colourSelector', {
         if ($submit == "Submit")
         {
             $summary = safesql($_POST['summary'], "text");
-            $startdate = strtotime($_POST['sdate']) + $_POST['stime']['Hour']*60*60 + $_POST['stime']['Minute']*60;
-            $enddate = strtotime($_POST['edate']) + $_POST['etime']['Hour']*60*60 + $_POST['etime']['Minute']*60;
-
+            $startdate = strtotime($_POST['sdate']) + $_POST['stime']['Time_Hour']*60*60 + $_POST['stime']['Time_Minute']*60;
+            $enddate = strtotime($_POST['edate']) + $_POST['etime']['Time_Hour']*60*60 + $_POST['etime']['Time_Minute']*60;
+		
             $detail = safesql($_POST['editor'], "text", false);
             $colour = safesql($_POST['colour'], "text");
             $groupallowed = safesql(serialize($_POST['groups']), "text");
@@ -169,7 +169,7 @@ $onDomReady .= "var r = new MooRainbow('colourSelector', {
             }
             elseif ($action == "new")
             {
-                $sql = $data->insert_query("calendar_items", "'', $summary, $startdate, $startdate, $detail, 1, $groupallowed, $timestamp, $colour,$signup, $signupusers,$patrols, 0");
+                $sql = $data->insert_query("calendar_items", "'', $summary, $startdate, $enddate, $detail, 1, $groupallowed, $timestamp, $colour,$signup, $signupusers,$patrols, 0");
                 show_admin_message("Event added", "$pagename");
             }
         

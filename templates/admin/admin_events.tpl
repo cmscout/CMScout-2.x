@@ -454,13 +454,13 @@ function movedown(number)
     <div class="inputboxwrapper"><input name="sdate" id="sdate" type="text"  size="20" maxlength="20" class="inputbox format-y-m-d highlight-days-67{if $action=="new"} range-low-today{/if} first-week-day-{math equation="x - 1" x=$config.startday}" onblur="checkElement('sdate', 'date', true, 0, 0, '');" /><br /><span class="fieldError" id="sdateError">Required: Date in the format: YYYY-MM-DD</span></div></div><br />
      
     <div class="fieldItem"><label for="stime" class="label"><b>Starting Time</b><span class="hintanchor" title="Time that the event starts"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-    <div class="inputboxwrapper">{html_select_time field_array=stime class=inputbox style=width:40px time=$events.startdate}</div></div><br />
+    <div class="inputboxwrapper">{html_select_time field_array=stime class=inputbox style=width:40px time=$events.startdate display_seconds=false}</div></div><br />
     
     <div class="fieldItem"><label for="edate" class="label"><b>Ending Date</b><span class="hintanchor" title="Date that the event ends"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
     <div class="inputboxwrapper"><input name="edate" id="edate" type="text"  size="20" maxlength="20" class="inputbox format-y-m-d highlight-days-67 range-low-{$events.startdate|date_format:"%Y-%m-%d"} first-week-day-{math equation="x - 1" x=$config.startday}" onblur="checkElement('edate', 'date', true, 0, 0, '');"/><br /><span class="fieldError" id="edateError">Required: Date in the format: YYYY-MM-DD</span></div></div><br />
    
     <div class="fieldItem"><label for="etime" class="label"><b>Ending Time</b><span class="hintanchor" title="Tome that the event ends"><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
-    <div class="inputboxwrapper">{html_select_time field_array=etime class=inputbox style=width:40px time=$events.enddate}</div></div><br />
+    <div class="inputboxwrapper">{html_select_time field_array=etime class=inputbox style=width:40px time=$events.enddate display_seconds=false}</div></div><br />
    
    <div class="fieldItem"><label for="colour" class="label"><b>Colour</b><span class="hintanchor" title="Background colour for the event."><img src="{$tempdir}admin/images/help.png" alt="[?]"/></span></label>
    <div class="inputboxwrapper"><input id="colour" name="colour" type="text" size="13" class="inputbox" value="{$events.colour}"  style="background-color:{$events.colour};" onblur="checkElement('colour', 'custom', false, 0, 0, /^#[a-fA-F0-9]*$/);"/><img src="{$tempdir}admin/images/rainbow.png" alt="[r]" width="16" height="16" class="rain" id="colourSelector" /><br /><span class="fieldError" id="colourError">Optional: Must be a valid HTML colour code.</span></div></div><br />

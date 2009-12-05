@@ -42,8 +42,8 @@ if (!$error)
     {        
         if (validate($_POST['validation']))
         {
-            $sdatetime = strtotime($_POST['sdate']) + $_POST['stime']['Hour']*60*60 + $_POST['stime']['Minute']*60;
-            $edatetime = strtotime($_POST['edate']) + $_POST['etime']['Hour']*60*60 + $_POST['etime']['Minute']*60;
+            $sdatetime = strtotime($_POST['sdate']) + $_POST['stime']['Time_Hour']*60*60 + $_POST['stime']['Time_Minute']*60;
+            $edatetime = strtotime($_POST['edate']) + $_POST['etime']['Time_Hour']*60*60 + $_POST['etime']['Time_Minute']*60;
             
             $insert = sprintf("NULL, %s, %s, %s, %s", 
                                 safesql($_POST['summary'], "text"),
