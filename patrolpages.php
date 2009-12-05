@@ -101,7 +101,7 @@ if ($data->num_rows($itemsql) > 0)
         } 
         elseif ($items['type'] == 5) 
         {
-            $sitemenu .= "<li><a href=\"{$items['url']}\" class=\"$style\">{$items['name']}</a></li>";
+            $sitemenu .= "<li><a href=\"http://{$items['item']}\" class=\"$style\">{$items['name']}</a></li>";
         } 
     }
 }
