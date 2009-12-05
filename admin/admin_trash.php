@@ -74,13 +74,11 @@ else
     }
     elseif ($_GET['action'] == "delete")
     {
-        $type = $_GET['type'];
-        $id = safesql($_GET['id'], "int");
-        switch ($type)
-        {
-            case "album":
-                $sqlq = $data->delete_query("album_track", "ID=$id");
-                $sqlq = $data->delete_query("comments", "item_id=$id AND type=1");
+    	function album($id)
+    	{
+    		global $data;
+    		   	$sqlq = $data->delete_query("album_track", "ID=$id");
+              	$sqlq = $data->delete_query("comments", "item_id=$id AND type=1");
                 
                 $sqlq = $data->select_query("photos", "WHERE album_id=$id");
                 while ($temp = $data->fetch_array($sqlq))
@@ -88,33 +86,90 @@ else
                     unlink($config['photopath'] . "/" . $temp['filename']);
                 }
                 $sqlq = $data->delete_query("photos", "album_id=$id");
-                break;
-            case "article":
-                $sqlq = $data->delete_query("patrol_articles", "ID=$id");
+    	}
+    	
+    	function article ($id)
+    	{
+    		global $data;
+    		    $sqlq = $data->delete_query("patrol_articles", "ID=$id");
                 $sqlq = $data->delete_query("comments", "item_id=$id AND type=0");
-                break;
-            case "event":
-                $sqlq = $data->delete_query("calendar_items", "id=$id");
-                break;
-            case "download":
-                $temp = $data->select_fetch_one_row("downloads", "WHERE id=$id");
-                unlink($config['downloadpath'] . "/" . $temp['file']);
-                $sqlq = $data->delete_query("downloads", "id=$id");
-                break;
-            case "news":
-                $sqlq = $data->delete_query("newscontent", "id=$id");
-                break;
-            case "poll":
-                $sqlq = $data->delete_query("polls", "id=$id");
-                break;
-            case "content":
-                $sqlq = $data->delete_query("static_content", "id=$id");
-                $sqlq = $data->delete_query("frontpage", "item=$id AND type=0");
-                $sqlq = $data->delete_query("menu_items", "item=$id AND type=1");
-                break;
-        }
-        
-        show_admin_message("Item permentaly deleted", "$pagename&activetab=$type");
+    	}
+    	
+    	function event($id)
+    	{
+    		global $data;
+    		$sqlq = $data->delete_query("calendar_items", "id=$id");
+    	}
+    	
+    	function download($id)
+    	{
+    		global $data;
+    		$temp = $data->select_fetch_one_row("downloads", "WHERE id=$id");
+            unlink($config['downloadpath'] . "/" . $temp['file']);
+            $sqlq = $data->delete_query("downloads", "id=$id");
+    	}
+    	
+    	function news($id)
+    	{
+    		global $data;
+    		$sqlq = $data->delete_query("newscontent", "id=$id");
+    	}
+    	
+    	function poll($id)
+    	{
+    		global $data;
+    		$sqlq = $data->delete_query("polls", "id=$id");
+    	}
+    	
+    	function content($id)
+    	{
+    		global $data;
+    		$sqlq = $data->delete_query("static_content", "id=$id");
+    		$sqlq = $data->delete_query("frontpage", "item=$id AND type=0");
+    		$sqlq = $data->delete_query("menu_items", "item=$id AND type=1");
+    	}
+    	
+    	function _selectDel($tableName, $function)
+    	{
+    		global $data;
+    		$items = $data->select_query($tableName, 'WHERE `trash`=1');
+    		
+    		while ($item = $data->fetch_array($items))
+    		{
+    			if(isset($item['id']))
+    			{
+    				$function($item['id']);
+    			}
+    			elseif(isset($item['ID']))
+    			{
+    				$function($item['ID']);
+    			}
+    		}
+    	}
+    	
+    	function all($id)
+    	{
+    		_selectDel('album_track', 'album');
+    		_selectDel('patrol_articles', 'article');
+    		_selectDel('calendar_items', 'event');
+    		_selectDel('downloads', 'download');
+    		_selectDel('newscontent', 'news');
+    		_selectDel('polls', 'poll');
+    		_selectDel('static_content', 'content');
+    	}
+    	
+        $type = $_GET['type'];
+        $id = safesql($_GET['id'], "int");
+
+        if($type != '')
+        {
+	        $type($id);
+	        
+	        if($type != 'all')
+	        	show_admin_message("Item permanently deleted", "$pagename&activetab=$type");
+	        else
+	         	show_admin_message("Items permanently deleted", "$pagename");
+        }       
     }
     
     

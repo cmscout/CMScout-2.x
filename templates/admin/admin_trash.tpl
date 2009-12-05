@@ -2,13 +2,15 @@
 <script type="text/javascript">
 <!--
 function confirmDelete(type, id) {
-if (confirm("This will permentaly delete this item. Continue?")){/literal}
+if (confirm(type=='all' ? "This will permentaly delete all items in your trash. Continue?" : "This will permentaly delete this item. Continue?")){/literal}
 document.location = "{$pagename}&action=delete&type=" + type + "&id=" + id;{literal}
 }
 //-->
 </script>
 {/literal}
 <h2>Trash</h2>
+
+<a href="javascript:confirmDelete('all', 0)">Clear out all trash</a>
 <div align="center"><div style="width:85%">
 <div id="navcontainer" align="center">
 <ul class="mootabs_title">
